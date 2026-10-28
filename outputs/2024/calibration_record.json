@@ -1,0 +1,1772 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:6cef569b-fda4-5718-9018-4e469314fc5b",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA CTDPFA salinity calibration, Cabled-15 AT50-29 (2024)",
+  "dateCreated": "2026-10-28T21:02:46+00:00",
+  "variableMeasured": "sea_water_practical_salinity",
+  "rca:correctionKind": "additive",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-10-28T21:02:43+00:00",
+    "prov:endedAtTime": "2026-10-28T21:02:46+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "58181d931d1878444d30b649dc298f8d2eb86f33d097c2007c4be0564fa72180",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "57ccd562c29f24a894f277a602275438e3157b0a93f611914ee547cf96c4e997",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "9c94fd91f135260e2bf94559b29deee83c618d00b5793b23fa7480567574aa29",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "a86c438f979f2771d872966363ce19580da60e25f6fecd7ad1f0b9bcbefbf18e",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "8a3c50869b4227e2aa78e5ccc99710e3c95525f667b69233963203209eb77424",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "6d6bc489a27d2ce0fd53f83d0d1d5fbae2600da5ef955f725ec14715ef475622",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "b5c11121bbf16840dd23428e1d598c324564b20ee02c7fdc01e661999d8a90a1",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "036fe2f2044bcb30227064e7c8f2fc373dfb5f725f7113849b02a8198c24a5ae",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "8f829bf1ec2c3371b54d1e7edf18cdd64b205fde0fcc03c905c8b158ffea7257",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "748ac3d3bb44f1252ec9aa6bd23ea19ea33ab7612b92dcf6ae920674cd3ca3d1",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "c6571495e6f3851f48706b365225fcca2773543a",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3",
+        "platform": "Windows-11-10.0.26200-SP0"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS_profiles_2024.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2024.csv",
+        "sha256": "f720abd2ce5130a8dc5142963f38af6cb8fba8b22a39d9d389d93c458da7e008",
+        "contentSize": 183295,
+        "dateModified": "2026-10-28T18:33:43+00:00",
+        "rca:role": "profile_index_csv",
+        "description": "github[profile_indices]:RS03AXPS_profiles_2024.csv @ OOI-CabledArray/profileIndices commit 3999352e3be8f0df81891d6c5886b642cc7ddeb5 (git blob 20dc6ca66906e62412e4a3dd7c5c6ae4608a6b73)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0010_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20240814T171300.266614-20240831T072259.433249.nc",
+        "contentUrl": "data/raw/ooinet/20261026T215032225Z/deployment0010_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20240814T171300.266614-20240831T072259.433249.nc",
+        "sha256": "868d882cec862cda2edb59990c9c41986f26ab00068c09cbd3bdebe5707e02bb",
+        "contentSize": 91953694,
+        "dateModified": "2026-10-26T21:51:55+00:00",
+        "rca:role": "profiler_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261026T215032225Z/status.json",
+        "sha256": "c7ccdac935d29e00d7a47e53c93d887beee9c9373866e30755ccfdfae8a7b77a",
+        "contentSize": 6278,
+        "dateModified": "2026-10-26T21:51:52+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0010_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261026T215032225Z/deployment0010_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json",
+        "sha256": "351f62da126ecc667a67e6b43974b13e1fcff80ac184f6efa3696adda5d39842",
+        "contentSize": 232926,
+        "dateModified": "2026-10-26T21:51:54+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261026T215032225Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json",
+        "sha256": "f5f30278778401aeb4669dedcc172f253c2751c4bc71c251a2795158dd28d861",
+        "contentSize": 822,
+        "dateModified": "2026-10-26T21:51:55+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "AT50-29_CTD-004.cnv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/CTD%20Data/AT50-29_CTD-004.cnv",
+        "sha256": "a7eca8d9a6aa47b200688c73ee2224413e14d66068be608e302818601b8cd722",
+        "contentSize": 3204139,
+        "dateModified": "2026-10-15T17:30:03+00:00",
+        "rca:role": "reference_cnv",
+        "description": "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-004.cnv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 698a67964e897ff96afb3e5351e33bc589bde96f)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "AT50-29_CTD-004.btl",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/CTD%20Data/AT50-29_CTD-004.btl",
+        "sha256": "205bd309953af52fbaa39411d0d8eac4011583dd0ee827cd5993d64c81794b4e",
+        "contentSize": 20041,
+        "dateModified": "2026-10-15T17:30:03+00:00",
+        "rca:role": "reference_btl",
+        "description": "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-004.btl @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 94e7f21a28de6cc73b509d0590af2368c9837d18)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-15_AT50-29_Salinity_Sample_Data_2025-06-02_ver-1-00.xlsx",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_Salinity_Sample_Data_2025-06-02_ver-1-00.xlsx",
+        "sha256": "e0a8d3fd94b7753d64469ddd3978a188c8bc5999a8cf8b9c690f670d663d283a",
+        "contentSize": 21538,
+        "dateModified": "2026-10-15T17:30:03+00:00",
+        "rca:role": "autosal_xlsx",
+        "description": "github:CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_Salinity_Sample_Data_2025-06-02_ver-1-00.xlsx @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 71e6119091ae05ab33ff543a22987932357255d6)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-15_AT50-29_DiscreteCastLogs.xlsm",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_DiscreteCastLogs.xlsm",
+        "sha256": "703ff9b353144c1e8e754cec777ef7252f1f21f126f3c7988ea07f25f09d0522",
+        "contentSize": 75945,
+        "dateModified": "2026-10-15T17:29:45+00:00",
+        "rca:role": "cast_log_xlsm",
+        "description": "github:CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_DiscreteCastLogs.xlsm @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 159f656a0ada77782178308f7259cd8ce81fae60)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-15_AT50-29_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-15_AT50-29_Discrete_Summary.csv",
+        "sha256": "d6ab3d4e84f38713193e57792c6d394e779c175f5a5524eab9b4118ed7261274",
+        "contentSize": 98898,
+        "dateModified": "2026-10-26T21:45:52+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-15_AT50-29_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 771988eca8945d14201f7af952890be839bd2861)"
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261026T215032225Z",
+    "request_id": "20261026T215032225Z",
+    "reference_designator": "RS03AXPS-SF03A-2A-CTDPFA302",
+    "stream": "streamed/ctdpf_sbe43_sample",
+    "deployment": null,
+    "annotations": [
+      {
+        "id": 5807,
+        "subsite": "RS03AXPS",
+        "node": "SF03A",
+        "sensor": null,
+        "method": null,
+        "stream": null,
+        "annotation": "No comms with SF03A node controller; all pod instruments except PCO2W initially started up, but were no longer reporting until the node controller was swapped (pressure housing had flooded). After initial power up, several instruments were not reporting and digis were not responding to pings; a known DSL modem issue with this node controller that was fixed with a power cycle of SF03A. All instruments are operational.",
+        "exclusion_flag": false,
+        "source": "m.vardaro@gmail.com",
+        "qc_flag": "not_operational",
+        "parameters": [],
+        "start": "2024-08-17 15:54:14",
+        "stop": "2024-08-30 14:49:23"
+      }
+    ],
+    "status": {
+      "20240814T171300-20240815T000000": "complete",
+      "20240815T000000-20240815T120000": "complete",
+      "20240815T120000-20240816T000000": "complete",
+      "20240816T000000-20240816T120000": "complete",
+      "20240816T120000-20240817T000000": "complete",
+      "20240817T000000-20240817T120000": "complete",
+      "20240817T120000-20240818T000000": "complete",
+      "20240818T000000-20240818T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "5bc0cff0-04ea-42c2-950f-4c2ceee441be"
+      },
+      "20240818T120000-20240819T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "6ceaa3bc-8f05-4890-9232-90db06a155fe"
+      },
+      "20240819T000000-20240819T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "148d467e-253f-4042-8371-8da8528705ad"
+      },
+      "20240819T120000-20240820T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "ccff17e8-234a-4b7e-b4a2-5c2f9551e5af"
+      },
+      "20240820T000000-20240820T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "42ee4245-25ef-4052-92d0-3ad8d7fbebe8"
+      },
+      "20240820T120000-20240821T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "be9e1e80-931f-4dae-8345-c8c76ab24211"
+      },
+      "20240821T000000-20240821T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "38ea5ef7-5a25-465d-a414-50ae0078ee95"
+      },
+      "20240821T120000-20240822T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "bc6a1965-b134-44cc-a2ec-95fd9e6513a8"
+      },
+      "20240822T000000-20240822T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "432882fb-964d-4c63-9576-cff1e29c2c1c"
+      },
+      "20240822T120000-20240823T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "6bf81ce1-94df-4bdd-863a-066b75d7c4a4"
+      },
+      "20240823T000000-20240823T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "2a46bd86-d284-41fd-8d2b-015c8dc6517f"
+      },
+      "20240823T120000-20240824T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "c67ccc96-d24a-4b85-b898-dfdd6c37dac6"
+      },
+      "20240824T000000-20240824T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "ab1f5f2c-53ae-475c-a5ba-7505611c557f"
+      },
+      "20240824T120000-20240825T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "f852d719-f8ea-43de-bf43-5376ae3606eb"
+      },
+      "20240825T000000-20240825T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "9c28582a-2cf3-40ad-848b-bd6268c54191"
+      },
+      "20240825T120000-20240826T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "9d7ccb89-c3bc-4d60-b507-d86c277b581a"
+      },
+      "20240826T000000-20240826T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "e2766151-8d9a-45c1-8d19-deb57f6d9f87"
+      },
+      "20240826T120000-20240827T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "e15acbec-f7ca-4871-8e42-c0c8d0904fbf"
+      },
+      "20240827T000000-20240827T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "40f66ad8-de1e-4685-8cad-0952d9c080c0"
+      },
+      "20240827T120000-20240828T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "2e9fb3ca-0752-41fc-9934-8043da8514de"
+      },
+      "20240828T000000-20240828T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "172aab32-93d3-4e90-ba61-141b53943d22"
+      },
+      "20240828T120000-20240829T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "15eac54e-2fd1-4fb7-9caa-129512385e6d"
+      },
+      "20240829T000000-20240829T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "45516d52-5be2-4dc2-a763-b558c405521c"
+      },
+      "20240829T120000-20240830T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "24a40829-26e1-4df6-8c4b-2d86901795da"
+      },
+      "20240830T000000-20240830T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "7e660da0-b16f-4b85-9d89-bb3a0185764d"
+      },
+      "20240830T120000-20240831T000000": "complete",
+      "20240831T000000-20240831T072300": "complete"
+    },
+    "crosscheck_request_folder": null
+  },
+  "rca:profileIndex": {
+    "n_profiles_in_data": 10,
+    "crosscheck_with_own_upcasts": {
+      "tolerance_min": 10.0,
+      "n_upcasts_found": 8,
+      "n_matched": 8,
+      "upcasts": [
+        {
+          "upcast_id": 0,
+          "index_profile": 19040,
+          "start_diff_min": 2.12,
+          "end_minus_peak_min": -0.17,
+          "match": true
+        },
+        {
+          "upcast_id": 1,
+          "index_profile": 19041,
+          "start_diff_min": 1.04,
+          "end_minus_peak_min": -0.17,
+          "match": true
+        },
+        {
+          "upcast_id": 2,
+          "index_profile": 19042,
+          "start_diff_min": -0.79,
+          "end_minus_peak_min": -0.95,
+          "match": true
+        },
+        {
+          "upcast_id": 3,
+          "index_profile": 19043,
+          "start_diff_min": -0.55,
+          "end_minus_peak_min": -0.83,
+          "match": true
+        },
+        {
+          "upcast_id": 4,
+          "index_profile": 19044,
+          "start_diff_min": 1.12,
+          "end_minus_peak_min": -0.18,
+          "match": true
+        },
+        {
+          "upcast_id": 5,
+          "index_profile": 19045,
+          "start_diff_min": 0.13,
+          "end_minus_peak_min": -0.09,
+          "match": true
+        },
+        {
+          "upcast_id": 6,
+          "index_profile": 19046,
+          "start_diff_min": 0.12,
+          "end_minus_peak_min": -0.07,
+          "match": true
+        },
+        {
+          "upcast_id": 7,
+          "index_profile": 19047,
+          "start_diff_min": 0.12,
+          "end_minus_peak_min": -0.83,
+          "match": true
+        }
+      ]
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-004.cnv",
+        "blob_sha": "698a67964e897ff96afb3e5351e33bc589bde96f",
+        "bytes": 3204139,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/CTD%20Data/AT50-29_CTD-004.cnv"
+      },
+      {
+        "path": "CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-004.btl",
+        "blob_sha": "94e7f21a28de6cc73b509d0590af2368c9837d18",
+        "bytes": 20041,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/CTD%20Data/AT50-29_CTD-004.btl"
+      },
+      {
+        "path": "CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_Salinity_Sample_Data_2025-06-02_ver-1-00.xlsx",
+        "blob_sha": "71e6119091ae05ab33ff543a22987932357255d6",
+        "bytes": 21538,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_Salinity_Sample_Data_2025-06-02_ver-1-00.xlsx"
+      },
+      {
+        "path": "CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_DiscreteCastLogs.xlsm",
+        "blob_sha": "159f656a0ada77782178308f7259cd8ce81fae60",
+        "bytes": 75945,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_DiscreteCastLogs.xlsm"
+      },
+      {
+        "path": "FinalSummaries/Cabled-15_AT50-29_Discrete_Summary.csv",
+        "blob_sha": "771988eca8945d14201f7af952890be839bd2861",
+        "bytes": 98898,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-15_AT50-29_Discrete_Summary.csv"
+      }
+    ],
+    "additionalSources": [
+      {
+        "repo": "OOI-CabledArray/profileIndices",
+        "ref": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "commit": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "files": [
+          {
+            "path": "RS03AXPS_profiles_2024.csv",
+            "blob_sha": "20dc6ca66906e62412e4a3dd7c5c6ae4608a6b73",
+            "bytes": 183295,
+            "url": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2024.csv"
+          }
+        ]
+      }
+    ]
+  },
+  "rca:site": "RS03AXPS",
+  "rca:cruise": {
+    "cruise": "Cabled-15",
+    "ship_cruise_id": "AT50-29",
+    "vessel": "R/V Atlantis",
+    "cast": "CTD-004",
+    "cast_start_utc": "2024-08-12T01:28:09+00:00",
+    "last_bottle_closure_utc": "2024-08-12T02:15:50+00:00",
+    "cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+    "definition": "cast_time = midpoint of NMEA cast start (.cnv header) and the last bottle closure (.btl)"
+  },
+  "rca:parameters": {
+    "global": {
+      "variable": "salinity",
+      "correction_kind": "additive",
+      "bin_size_m": 1.0,
+      "smooth_window_bins": 5,
+      "bottle_outlier_psu": 0.01,
+      "extrapolate_reference": false,
+      "bottle_ok_niskin_flags": [
+        "No problems noted"
+      ],
+      "bottle_ok_salinity_flag_prefix": "Acceptable",
+      "upcast": {
+        "smooth_s": 15.0,
+        "w_ascend": -0.03,
+        "max_gap_s": 30.0,
+        "min_span_m": 100.0
+      },
+      "ctd_downcast": {
+        "min_pressure_dbar": 2.0,
+        "heave_tolerance_dbar": 0.5
+      },
+      "oxygen": {
+        "correction_kind": "multiplicative",
+        "winkler_bad_flags": [
+          3.0,
+          4.0
+        ]
+      }
+    },
+    "variants": [
+      {
+        "id": "mask_fullday_prDM",
+        "role": "alternative",
+        "description": "diff<0 mask over the whole requested day, prDM, raw .cnv",
+        "select": "notebook_window_ascending",
+        "window": false,
+        "ref": "raw",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcasts_all_prDM",
+        "role": "alternative",
+        "description": "all labelled upcasts, prDM vs depth, downcast-only reference",
+        "select": "upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)",
+        "select": "upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_first_upcasts_depSM",
+        "role": "primary",
+        "description": "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_first_upcasts_depSM_sal11",
+        "role": "sensitivity",
+        "description": "as primary but against the secondary CTD sensor sal11",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal11"
+      },
+      {
+        "id": "first_upcasts_depSM",
+        "role": "alternative",
+        "description": "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index",
+        "select": "first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00",
+        "select": "nearest_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "nearest_upcast_depSM_sal11",
+        "role": "alternative",
+        "description": "as nearest_upcast_depSM but against the secondary CTD sensor sal11",
+        "select": "nearest_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal11"
+      },
+      {
+        "id": "index_upcasts_all_prDM",
+        "role": "alternative",
+        "description": "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference",
+        "select": "index_upcasts",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference",
+        "select": "index_upcasts",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference",
+        "select": "index_nearest_upcast",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcast_{k}_depSM",
+        "role": "per_upcast",
+        "description": "single upcast {k}, depSM vs depth, downcast-only reference",
+        "select": "each_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      }
+    ],
+    "notebook_window_utc": null
+  },
+  "rca:inputChecks": {
+    "nc_vs_csv": {
+      "status": "not provided",
+      "identical_within_tolerance": null
+    },
+    "ctd_header": {
+      "processing": [
+        "datcnv"
+      ],
+      "nmea_lat": 45.82666666666667,
+      "nmea_lon": -129.749,
+      "nmea_utc": "2024-08-12T01:28:09+00:00",
+      "interval_s": 0.0416667,
+      "bad_flag": -9.99e-29
+    },
+    "ctd_scans_total": 15964,
+    "ctd_scans_downcast_reference": 14316,
+    "autosal_header": {
+      "instrument": "Salinity Sample Analyses, Guildline Autosal 8400B s/n 68-981",
+      "client": "RCA",
+      "date": "2025-04-19T00:00:00",
+      "analyst": "LBT",
+      "std. batch no.": "P165",
+      "salinity": 34.994,
+      "bath temp.": 24,
+      "k15 value": 0.99986,
+      "std. 2rt": 1.99972,
+      "filename": "RCA2024"
+    },
+    "profiler_samples": 313910,
+    "n_upcasts": 8,
+    "profiler_time_start": "2024-08-14T17:13:00.266613760+00:00",
+    "profiler_time_end": "2024-08-31T07:22:59.433249280+00:00"
+  },
+  "rca:bottleCheck": {
+    "sal00": {
+      "sensor": "primary (sal00)",
+      "n": 5,
+      "median_diff_psu": -0.02298674211255758,
+      "mean_diff_psu": -0.02152147555646735,
+      "iqr_psu": 0.00646934719844694,
+      "rmse_psu": 0.02280244585884335,
+      "an31_slope": 1.0005636587720195,
+      "n_excluded_by_flag": 0,
+      "n_outliers_flagged": 1,
+      "without_outliers": {
+        "n": 4,
+        "median_diff_psu": -0.02491804527415553,
+        "rmse_psu": 0.0251914333051787
+      }
+    },
+    "sal11": {
+      "sensor": "secondary (sal11)",
+      "n": 5,
+      "median_diff_psu": -0.02118000123730468,
+      "mean_diff_psu": -0.02128147555646649,
+      "iqr_psu": 0.01467355174712992,
+      "rmse_psu": 0.023026371240042972,
+      "an31_slope": 1.0005581420749798,
+      "n_excluded_by_flag": 0,
+      "n_outliers_flagged": 1,
+      "without_outliers": {
+        "n": 4,
+        "median_diff_psu": -0.02592014754849359,
+        "rmse_psu": 0.025444765790683974
+      }
+    }
+  },
+  "rca:upcasts": [
+    {
+      "upcast_id": 0,
+      "start": "2024-08-14T22:50:06.926938112+00:00",
+      "end": "2024-08-14T23:36:50.027458048+00:00",
+      "mid_time": "2024-08-14T23:13:28.477198080+00:00",
+      "mean_time": "2024-08-14T23:13:28.481551616+00:00",
+      "depth_min": 55.570532509874006,
+      "depth_max": 186.03792444508582,
+      "n": 2804,
+      "mean_speed_ms": -0.046538913207113564
+    },
+    {
+      "upcast_id": 1,
+      "start": "2024-08-30T15:47:02.624337920+00:00",
+      "end": "2024-08-30T16:42:49.716336128+00:00",
+      "mid_time": "2024-08-30T16:14:56.170337024+00:00",
+      "mean_time": "2024-08-30T16:14:56.174733568+00:00",
+      "depth_min": 32.544490265846065,
+      "depth_max": 185.44358116648996,
+      "n": 3348,
+      "mean_speed_ms": -0.04567768591880548
+    },
+    {
+      "upcast_id": 2,
+      "start": "2024-08-30T17:11:12.794217984+00:00",
+      "end": "2024-08-30T18:07:02.911113728+00:00",
+      "mid_time": "2024-08-30T17:39:07.852665856+00:00",
+      "mean_time": "2024-08-30T17:39:07.860545792+00:00",
+      "depth_min": 33.14195368633206,
+      "depth_max": 186.05393207627287,
+      "n": 3351,
+      "mean_speed_ms": -0.045629685635766894
+    },
+    {
+      "upcast_id": 3,
+      "start": "2024-08-30T18:35:26.989648384+00:00",
+      "end": "2024-08-30T19:31:10.049464320+00:00",
+      "mid_time": "2024-08-30T19:03:18.519556352+00:00",
+      "mean_time": "2024-08-30T19:03:18.521793280+00:00",
+      "depth_min": 33.30985476843895,
+      "depth_max": 186.48155135448602,
+      "n": 3344,
+      "mean_speed_ms": -0.0458118942930213
+    },
+    {
+      "upcast_id": 4,
+      "start": "2024-08-30T21:01:07.291830784+00:00",
+      "end": "2024-08-30T22:07:49.396119040+00:00",
+      "mid_time": "2024-08-30T21:34:28.343974912+00:00",
+      "mean_time": "2024-08-30T21:34:28.343362304+00:00",
+      "depth_min": 5.040979397966276,
+      "depth_max": 186.7871131863793,
+      "n": 4003,
+      "mean_speed_ms": -0.04510634003530887
+    },
+    {
+      "upcast_id": 5,
+      "start": "2024-08-31T00:46:07.700926464+00:00",
+      "end": "2024-08-31T01:52:54.837258240+00:00",
+      "mid_time": "2024-08-31T01:19:31.269092352+00:00",
+      "mean_time": "2024-08-31T01:19:31.251829760+00:00",
+      "depth_min": 4.87963873799143,
+      "depth_max": 185.8277584244849,
+      "n": 4008,
+      "mean_speed_ms": -0.044971046077036676
+    },
+    {
+      "upcast_id": 6,
+      "start": "2024-08-31T03:01:06.967784448+00:00",
+      "end": "2024-08-31T04:07:56.097355776+00:00",
+      "mid_time": "2024-08-31T03:34:31.532570112+00:00",
+      "mean_time": "2024-08-31T03:34:31.541819136+00:00",
+      "depth_min": 5.239809027174523,
+      "depth_max": 186.28405646316426,
+      "n": 4010,
+      "mean_speed_ms": -0.04492456247002225
+    },
+    {
+      "upcast_id": 7,
+      "start": "2024-08-31T05:11:07.218686464+00:00",
+      "end": "2024-08-31T06:18:10.329833472+00:00",
+      "mid_time": "2024-08-31T05:44:38.774259968+00:00",
+      "mean_time": "2024-08-31T05:44:38.778819328+00:00",
+      "depth_min": 5.159516040627429,
+      "depth_max": 186.7021779415819,
+      "n": 4024,
+      "mean_speed_ms": -0.04492668369862719
+    }
+  ],
+  "rca:variants": [
+    {
+      "variant_id": "mask_fullday_prDM",
+      "role": "alternative",
+      "description": "diff<0 mask over the whole requested day, prDM, raw .cnv",
+      "selection": "notebook_window_ascending",
+      "upcast_id": null,
+      "n_upcasts": null,
+      "upcast_ids": null,
+      "reference_filter": "raw",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 155579,
+      "n_bins": 189,
+      "depth_min_m": 2.5,
+      "depth_max_m": 190.5,
+      "offset_psu": 0.06669416887924484,
+      "iqr_psu": 0.14563675739275794,
+      "rmse_before_psu": 0.14473734010183537,
+      "rmse_after_offset_psu": 0.11057830126931455,
+      "an31_slope": 0.9975353991027346,
+      "an31_n_bins": 187,
+      "rmse_before_common_bins_psu": 0.14549482090562368,
+      "rmse_after_offset_common_bins_psu": 0.1110611004811863,
+      "rmse_after_slope_common_bins_psu": 0.1054993321511214,
+      "median_residual_after_slope_psu": -0.024226844537039938,
+      "t1_mean_profiler_time_utc": "2024-08-19T09:46:20.057686784+00:00",
+      "sample_time_start_utc": "2024-08-14T17:13:01.267144192+00:00",
+      "sample_time_end_utc": "2024-08-31T07:22:51.432857600+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 175.90571046833333
+    },
+    {
+      "variant_id": "upcasts_all_prDM",
+      "role": "alternative",
+      "description": "all labelled upcasts, prDM vs depth, downcast-only reference",
+      "selection": "upcasts",
+      "upcast_id": null,
+      "n_upcasts": 8,
+      "upcast_ids": "0;1;2;3;4;5;6;7",
+      "reference_filter": "downcast",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 28892,
+      "n_bins": 185,
+      "depth_min_m": 2.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.08352116858891634,
+      "iqr_psu": 0.1685881424670299,
+      "rmse_before_psu": 0.16763826774417334,
+      "rmse_after_offset_psu": 0.12530942955903676,
+      "an31_slope": 0.9971301790134376,
+      "an31_n_bins": 183,
+      "rmse_before_common_bins_psu": 0.16853874158576965,
+      "rmse_after_offset_common_bins_psu": 0.1258160427063854,
+      "rmse_after_slope_common_bins_psu": 0.12062106541218023,
+      "median_residual_after_slope_psu": -0.023462480393554586,
+      "t1_mean_profiler_time_utc": "2024-08-29T09:35:39.995753984+00:00",
+      "sample_time_start_utc": "2024-08-14T22:50:06.926938112+00:00",
+      "sample_time_end_utc": "2024-08-31T06:18:10.329833472+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 415.7279154869444
+    },
+    {
+      "variant_id": "upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)",
+      "selection": "upcasts",
+      "upcast_id": null,
+      "n_upcasts": 8,
+      "upcast_ids": "0;1;2;3;4;5;6;7",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 28892,
+      "n_bins": 185,
+      "depth_min_m": 2.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.07519616858891709,
+      "iqr_psu": 0.15658449525032836,
+      "rmse_before_psu": 0.1572952433156863,
+      "rmse_after_offset_psu": 0.11896819298583651,
+      "an31_slope": 0.9973249501774567,
+      "an31_n_bins": 183,
+      "rmse_before_common_bins_psu": 0.158138500396809,
+      "rmse_after_offset_common_bins_psu": 0.11947607600247082,
+      "rmse_after_slope_common_bins_psu": 0.11399141430948215,
+      "median_residual_after_slope_psu": -0.024298322452636967,
+      "t1_mean_profiler_time_utc": "2024-08-29T09:35:39.995753984+00:00",
+      "sample_time_start_utc": "2024-08-14T22:50:06.926938112+00:00",
+      "sample_time_end_utc": "2024-08-31T06:18:10.329833472+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 415.7279154869444
+    },
+    {
+      "variant_id": "index_first_upcasts_depSM",
+      "role": "primary",
+      "description": "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00",
+      "selection": "index_first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "19040;19041;19042;19043;19044;19045",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 21178,
+      "n_bins": 187,
+      "depth_min_m": 2.5,
+      "depth_max_m": 188.5,
+      "offset_psu": 0.06763988637044349,
+      "iqr_psu": 0.14810216648434604,
+      "rmse_before_psu": 0.1520672147443481,
+      "rmse_after_offset_psu": 0.11785007407763173,
+      "an31_slope": 0.9974674956293432,
+      "an31_n_bins": 185,
+      "rmse_before_common_bins_psu": 0.1528732519902819,
+      "rmse_after_offset_common_bins_psu": 0.11837935557863036,
+      "rmse_after_slope_common_bins_psu": 0.11258340256512238,
+      "median_residual_after_slope_psu": -0.02632284764445103,
+      "t1_mean_profiler_time_utc": "2024-08-28T15:20:33.742932480+00:00",
+      "sample_time_start_utc": "2024-08-14T22:48:00.925753856+00:00",
+      "sample_time_end_utc": "2024-08-31T01:52:59.850333696+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 397.4761785922222
+    },
+    {
+      "variant_id": "index_first_upcasts_depSM_sal11",
+      "role": "sensitivity",
+      "description": "as primary but against the secondary CTD sensor sal11",
+      "selection": "index_first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "19040;19041;19042;19043;19044;19045",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal11",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 21178,
+      "n_bins": 187,
+      "depth_min_m": 2.5,
+      "depth_max_m": 188.5,
+      "offset_psu": 0.06945321639418012,
+      "iqr_psu": 0.15411962937908186,
+      "rmse_before_psu": 0.15269660004571245,
+      "rmse_after_offset_psu": 0.11818305495057013,
+      "an31_slope": 0.9974908468287087,
+      "an31_n_bins": 185,
+      "rmse_before_common_bins_psu": 0.15332197065114297,
+      "rmse_after_offset_common_bins_psu": 0.11880101592409038,
+      "rmse_after_slope_common_bins_psu": 0.11376035180842749,
+      "median_residual_after_slope_psu": -0.024476420982828984,
+      "t1_mean_profiler_time_utc": "2024-08-28T15:20:33.742932480+00:00",
+      "sample_time_start_utc": "2024-08-14T22:48:00.925753856+00:00",
+      "sample_time_end_utc": "2024-08-31T01:52:59.850333696+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 397.4761785922222
+    },
+    {
+      "variant_id": "first_upcasts_depSM",
+      "role": "alternative",
+      "description": "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index",
+      "selection": "first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "0;1;2;3;4;5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 20858,
+      "n_bins": 185,
+      "depth_min_m": 2.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.06949191575544944,
+      "iqr_psu": 0.14393914761870974,
+      "rmse_before_psu": 0.15305771941779533,
+      "rmse_after_offset_psu": 0.11726648456283041,
+      "an31_slope": 0.9974126397873002,
+      "an31_n_bins": 183,
+      "rmse_before_common_bins_psu": 0.15387814168759745,
+      "rmse_after_offset_common_bins_psu": 0.11778908479564791,
+      "rmse_after_slope_common_bins_psu": 0.11180073498272478,
+      "median_residual_after_slope_psu": -0.027448528742986866,
+      "t1_mean_profiler_time_utc": "2024-08-28T17:00:21.558570240+00:00",
+      "sample_time_start_utc": "2024-08-14T22:50:06.926938112+00:00",
+      "sample_time_end_utc": "2024-08-31T01:52:54.837258240+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 399.1394607138889
+    },
+    {
+      "variant_id": "nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00",
+      "selection": "nearest_upcast",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 2804,
+      "n_bins": 134,
+      "depth_min_m": 53.5,
+      "depth_max_m": 186.5,
+      "offset_psu": -0.013815485608297706,
+      "iqr_psu": 0.09481869981336999,
+      "rmse_before_psu": 0.09056585542788403,
+      "rmse_after_offset_psu": 0.0930333678449089,
+      "an31_slope": 0.9997529972453931,
+      "an31_n_bins": 132,
+      "rmse_before_common_bins_psu": 0.09069605105207788,
+      "rmse_after_offset_common_bins_psu": 0.09336436856947672,
+      "rmse_after_slope_common_bins_psu": 0.09003382192113614,
+      "median_residual_after_slope_psu": -0.02137189162009534,
+      "t1_mean_profiler_time_utc": "2024-08-14T23:13:28.481551616+00:00",
+      "sample_time_start_utc": "2024-08-14T22:50:06.926938112+00:00",
+      "sample_time_end_utc": "2024-08-14T23:36:50.027458048+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 69.35805043083333
+    },
+    {
+      "variant_id": "nearest_upcast_depSM_sal11",
+      "role": "alternative",
+      "description": "as nearest_upcast_depSM but against the secondary CTD sensor sal11",
+      "selection": "nearest_upcast",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal11",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 2804,
+      "n_bins": 134,
+      "depth_min_m": 53.5,
+      "depth_max_m": 186.5,
+      "offset_psu": -0.013300281846539974,
+      "iqr_psu": 0.09766017258445814,
+      "rmse_before_psu": 0.0904437443370606,
+      "rmse_after_offset_psu": 0.09284469677501342,
+      "an31_slope": 0.9997426799263943,
+      "an31_n_bins": 132,
+      "rmse_before_common_bins_psu": 0.09056475500715576,
+      "rmse_after_offset_common_bins_psu": 0.09316170724856862,
+      "rmse_after_slope_common_bins_psu": 0.08984862894302659,
+      "median_residual_after_slope_psu": -0.02109270814191433,
+      "t1_mean_profiler_time_utc": "2024-08-14T23:13:28.481551616+00:00",
+      "sample_time_start_utc": "2024-08-14T22:50:06.926938112+00:00",
+      "sample_time_end_utc": "2024-08-14T23:36:50.027458048+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 69.35805043083333
+    },
+    {
+      "variant_id": "index_upcasts_all_prDM",
+      "role": "alternative",
+      "description": "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference",
+      "selection": "index_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 10,
+      "upcast_ids": "19038;19039;19040;19041;19042;19043;19044;19045;19046;19047",
+      "reference_filter": "downcast",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 32277,
+      "n_bins": 188,
+      "depth_min_m": 2.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.06384906143441071,
+      "iqr_psu": 0.1470189905932493,
+      "rmse_before_psu": 0.1433124190981562,
+      "rmse_after_offset_psu": 0.1111854823920986,
+      "an31_slope": 0.9976138957765163,
+      "an31_n_bins": 186,
+      "rmse_before_common_bins_psu": 0.14406581586926057,
+      "rmse_after_offset_common_bins_psu": 0.11168804925910275,
+      "rmse_after_slope_common_bins_psu": 0.10612487158686046,
+      "median_residual_after_slope_psu": -0.024597854784907724,
+      "t1_mean_profiler_time_utc": "2024-08-27T23:46:11.462287104+00:00",
+      "sample_time_start_utc": "2024-08-14T17:43:00.314249728+00:00",
+      "sample_time_end_utc": "2024-08-31T06:18:59.337135616+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 381.9033228575
+    },
+    {
+      "variant_id": "index_upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference",
+      "selection": "index_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 10,
+      "upcast_ids": "19038;19039;19040;19041;19042;19043;19044;19045;19046;19047",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 32277,
+      "n_bins": 188,
+      "depth_min_m": 2.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.058609092797677675,
+      "iqr_psu": 0.133341507641628,
+      "rmse_before_psu": 0.13327951771718877,
+      "rmse_after_offset_psu": 0.10429516629380403,
+      "an31_slope": 0.9978069663220266,
+      "an31_n_bins": 186,
+      "rmse_before_common_bins_psu": 0.13397799764572668,
+      "rmse_after_offset_common_bins_psu": 0.10477678891635044,
+      "rmse_after_slope_common_bins_psu": 0.09976796442985943,
+      "median_residual_after_slope_psu": -0.02288487900416669,
+      "t1_mean_profiler_time_utc": "2024-08-27T23:46:11.462287104+00:00",
+      "sample_time_start_utc": "2024-08-14T17:43:00.314249728+00:00",
+      "sample_time_end_utc": "2024-08-31T06:18:59.337135616+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 381.9033228575
+    },
+    {
+      "variant_id": "index_nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference",
+      "selection": "index_nearest_upcast",
+      "upcast_id": 19038,
+      "n_upcasts": 1,
+      "upcast_ids": "19038",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 840,
+      "n_bins": 39,
+      "depth_min_m": 151.5,
+      "depth_max_m": 189.5,
+      "offset_psu": -0.057758284492948064,
+      "iqr_psu": 0.05906910925173392,
+      "rmse_before_psu": 0.0511167503057315,
+      "rmse_after_offset_psu": 0.037514117983786954,
+      "an31_slope": 1.0011429349901497,
+      "an31_n_bins": 37,
+      "rmse_before_common_bins_psu": 0.05223313555566268,
+      "rmse_after_offset_common_bins_psu": 0.033775887254354105,
+      "rmse_after_slope_common_bins_psu": 0.030133166175811375,
+      "median_residual_after_slope_psu": -0.015879606380529765,
+      "t1_mean_profiler_time_utc": "2024-08-14T17:49:59.828158208+00:00",
+      "sample_time_start_utc": "2024-08-14T17:43:00.314249728+00:00",
+      "sample_time_end_utc": "2024-08-14T17:56:59.371296768+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 63.96675782166666
+    },
+    {
+      "variant_id": "upcast_0_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 0, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 2804,
+      "n_bins": 134,
+      "depth_min_m": 53.5,
+      "depth_max_m": 186.5,
+      "offset_psu": -0.013815485608297706,
+      "iqr_psu": 0.09481869981336999,
+      "rmse_before_psu": 0.09056585542788403,
+      "rmse_after_offset_psu": 0.0930333678449089,
+      "an31_slope": 0.9997529972453931,
+      "an31_n_bins": 132,
+      "rmse_before_common_bins_psu": 0.09069605105207788,
+      "rmse_after_offset_common_bins_psu": 0.09336436856947672,
+      "rmse_after_slope_common_bins_psu": 0.09003382192113614,
+      "median_residual_after_slope_psu": -0.02137189162009534,
+      "t1_mean_profiler_time_utc": "2024-08-14T23:13:28.481551616+00:00",
+      "sample_time_start_utc": "2024-08-14T22:50:06.926938112+00:00",
+      "sample_time_end_utc": "2024-08-14T23:36:50.027458048+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 69.35805043083333
+    },
+    {
+      "variant_id": "upcast_1_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 1, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 1,
+      "n_upcasts": 1,
+      "upcast_ids": "1",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3348,
+      "n_bins": 156,
+      "depth_min_m": 30.5,
+      "depth_max_m": 185.5,
+      "offset_psu": 0.1365880695939623,
+      "iqr_psu": 0.192491537808964,
+      "rmse_before_psu": 0.16566236293454573,
+      "rmse_after_offset_psu": 0.11200092708216268,
+      "an31_slope": 0.9967860926742828,
+      "an31_n_bins": 154,
+      "rmse_before_common_bins_psu": 0.1667325482168946,
+      "rmse_after_offset_common_bins_psu": 0.11175874259125246,
+      "rmse_after_slope_common_bins_psu": 0.11033210898902296,
+      "median_residual_after_slope_psu": 0.01851735450121339,
+      "t1_mean_profiler_time_utc": "2024-08-30T16:14:56.174733568+00:00",
+      "sample_time_start_utc": "2024-08-30T15:47:02.624337920+00:00",
+      "sample_time_end_utc": "2024-08-30T16:42:49.716336128+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 446.3824096480556
+    },
+    {
+      "variant_id": "upcast_2_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 2, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 2,
+      "n_upcasts": 1,
+      "upcast_ids": "2",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3351,
+      "n_bins": 156,
+      "depth_min_m": 31.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.16611117089605898,
+      "iqr_psu": 0.22713709671173987,
+      "rmse_before_psu": 0.2324631647935042,
+      "rmse_after_offset_psu": 0.14851660011644122,
+      "an31_slope": 0.995250390363993,
+      "an31_n_bins": 154,
+      "rmse_before_common_bins_psu": 0.23396772244608868,
+      "rmse_after_offset_common_bins_psu": 0.14825293384776458,
+      "rmse_after_slope_common_bins_psu": 0.146515493337652,
+      "median_residual_after_slope_psu": -0.007819698079856607,
+      "t1_mean_profiler_time_utc": "2024-08-30T17:39:07.860545792+00:00",
+      "sample_time_start_utc": "2024-08-30T17:11:12.794217984+00:00",
+      "sample_time_end_utc": "2024-08-30T18:07:02.911113728+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 447.78565570694445
+    },
+    {
+      "variant_id": "upcast_3_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 3, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 3,
+      "n_upcasts": 1,
+      "upcast_ids": "3",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3344,
+      "n_bins": 156,
+      "depth_min_m": 31.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.12913288358139496,
+      "iqr_psu": 0.19918896803883435,
+      "rmse_before_psu": 0.1891435831674551,
+      "rmse_after_offset_psu": 0.12558788504616866,
+      "an31_slope": 0.9963167615326151,
+      "an31_n_bins": 154,
+      "rmse_before_common_bins_psu": 0.19029586760844305,
+      "rmse_after_offset_common_bins_psu": 0.1260295268540289,
+      "rmse_after_slope_common_bins_psu": 0.12438349273916648,
+      "median_residual_after_slope_psu": -0.008269372024958699,
+      "t1_mean_profiler_time_utc": "2024-08-30T19:03:18.521793280+00:00",
+      "sample_time_start_utc": "2024-08-30T18:35:26.989648384+00:00",
+      "sample_time_end_utc": "2024-08-30T19:31:10.049464320+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 449.1886171647222
+    },
+    {
+      "variant_id": "upcast_4_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 4, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 4,
+      "n_upcasts": 1,
+      "upcast_ids": "4",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 4003,
+      "n_bins": 184,
+      "depth_min_m": 3.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.06157374996830356,
+      "iqr_psu": 0.143664313569694,
+      "rmse_before_psu": 0.12889463458677713,
+      "rmse_after_offset_psu": 0.09853416326842132,
+      "an31_slope": 0.9978298749421252,
+      "an31_n_bins": 182,
+      "rmse_before_common_bins_psu": 0.12952138504955288,
+      "rmse_after_offset_common_bins_psu": 0.09905556536485502,
+      "rmse_after_slope_common_bins_psu": 0.0954012198773406,
+      "median_residual_after_slope_psu": -0.01820948186504623,
+      "t1_mean_profiler_time_utc": "2024-08-30T21:34:28.343362304+00:00",
+      "sample_time_start_utc": "2024-08-30T21:01:07.291830784+00:00",
+      "sample_time_end_utc": "2024-08-30T22:07:49.396119040+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 451.70801204500003
+    },
+    {
+      "variant_id": "upcast_5_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 5, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 5,
+      "n_upcasts": 1,
+      "upcast_ids": "5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 4008,
+      "n_bins": 184,
+      "depth_min_m": 2.5,
+      "depth_max_m": 185.5,
+      "offset_psu": 0.11666449537822743,
+      "iqr_psu": 0.22003584136203536,
+      "rmse_before_psu": 0.21095427813992654,
+      "rmse_after_offset_psu": 0.15438930494762748,
+      "an31_slope": 0.9963924742945819,
+      "an31_n_bins": 182,
+      "rmse_before_common_bins_psu": 0.21210282940288216,
+      "rmse_after_offset_common_bins_psu": 0.15488237401493274,
+      "rmse_after_slope_common_bins_psu": 0.15123790426838615,
+      "median_residual_after_slope_psu": -0.017828883081641322,
+      "t1_mean_profiler_time_utc": "2024-08-31T01:19:31.251829760+00:00",
+      "sample_time_start_utc": "2024-08-31T00:46:07.700926464+00:00",
+      "sample_time_end_utc": "2024-08-31T01:52:54.837258240+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 455.4588199525
+    },
+    {
+      "variant_id": "upcast_6_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 6, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 6,
+      "n_upcasts": 1,
+      "upcast_ids": "6",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 4010,
+      "n_bins": 184,
+      "depth_min_m": 3.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.0797859911035097,
+      "iqr_psu": 0.16095941056612162,
+      "rmse_before_psu": 0.15783457324965233,
+      "rmse_after_offset_psu": 0.11851193667828645,
+      "an31_slope": 0.9973508628901736,
+      "an31_n_bins": 182,
+      "rmse_before_common_bins_psu": 0.15864960894755664,
+      "rmse_after_offset_common_bins_psu": 0.11908050736796752,
+      "rmse_after_slope_common_bins_psu": 0.11541628144280615,
+      "median_residual_after_slope_psu": -0.01881929515731784,
+      "t1_mean_profiler_time_utc": "2024-08-31T03:34:31.541819136+00:00",
+      "sample_time_start_utc": "2024-08-31T03:01:06.967784448+00:00",
+      "sample_time_end_utc": "2024-08-31T04:07:56.097355776+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 457.70890050527777
+    },
+    {
+      "variant_id": "upcast_7_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 7, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 7,
+      "n_upcasts": 1,
+      "upcast_ids": "7",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 4024,
+      "n_bins": 184,
+      "depth_min_m": 3.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.10834218403325835,
+      "iqr_psu": 0.19968981108577033,
+      "rmse_before_psu": 0.18717473163625892,
+      "rmse_after_offset_psu": 0.13495827435394603,
+      "an31_slope": 0.9967629355308844,
+      "an31_n_bins": 182,
+      "rmse_before_common_bins_psu": 0.18817667258629658,
+      "rmse_after_offset_common_bins_psu": 0.13543928032537134,
+      "rmse_after_slope_common_bins_psu": 0.13276668222563462,
+      "median_residual_after_slope_psu": -0.011716562026911959,
+      "t1_mean_profiler_time_utc": "2024-08-31T05:44:38.778819328+00:00",
+      "sample_time_start_utc": "2024-08-31T05:11:07.218686464+00:00",
+      "sample_time_end_utc": "2024-08-31T06:18:10.329833472+00:00",
+      "t1_cast_time_utc": "2024-08-12T01:51:59.500000+00:00",
+      "mean_profiler_minus_cast_h": 459.87757744972225
+    }
+  ],
+  "rca:primaryVariant": "index_first_upcasts_depSM",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "index_first_upcasts_depSM",
+      "value": 0.06763988637044349,
+      "time_mean_profiler_utc": "2024-08-28T15:20:33.742932480+00:00",
+      "time_cast_utc": "2024-08-12T01:51:59.500000+00:00",
+      "notebook_convention_variant": null,
+      "notebook_convention_value": null,
+      "notebook_convention_time_mean_profiler_utc": null
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "no second cruise configured for this year; two-point interpolation not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "caveat",
+      "code": "ctd_processing",
+      "text": "Reference .cnv was processed with datcnv only; alignctd / celltm / loopedit are not applied."
+    },
+    {
+      "severity": "caveat",
+      "code": "ctd_downcast_only",
+      "text": "The .cnv holds the downcast only (15964 scans, 14316 kept after removing ship-heave reversals). Bottle (.btl) averages are taken at upcast bottle closures, so CTD-vs-Autosal uses upcast data while profiler-vs-CTD uses the downcast."
+    },
+    {
+      "severity": "warning",
+      "code": "bottle_outlier",
+      "text": "Niskin 23 (SA-65, ~10 m depSM, sal00): CTD-bottle -0.0078 PSU is more than 0.01 PSU from the median; CTD gradient there +0.000 PSU/m."
+    },
+    {
+      "severity": "warning",
+      "code": "bottle_outlier",
+      "text": "Niskin 23 (SA-65, ~10 m depSM, sal11): CTD-bottle -0.0078 PSU is more than 0.01 PSU from the median; CTD gradient there +0.000 PSU/m."
+    },
+    {
+      "severity": "warning",
+      "code": "autosal_header_date",
+      "text": "Autosal workbook header date is 2025-04-19 but the cast is on 2024-08-12; looks like a template leftover (not changed)."
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240818T000000-20240818T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240818T120000-20240819T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240819T000000-20240819T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240819T120000-20240820T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240820T000000-20240820T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240820T120000-20240821T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240821T000000-20240821T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240821T120000-20240822T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240822T000000-20240822T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240822T120000-20240823T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240823T000000-20240823T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240823T120000-20240824T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240824T000000-20240824T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240824T120000-20240825T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240825T000000-20240825T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240825T120000-20240826T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240826T000000-20240826T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240826T120000-20240827T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240827T000000-20240827T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240827T120000-20240828T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240828T000000-20240828T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240828T120000-20240829T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240829T000000-20240829T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240829T120000-20240830T000000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20240830T000000-20240830T120000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "binned_profiles.csv",
+      "sha256": "889d0eb830a0ff0c4bc6b49b9ef34239b5d4ab1e3f587983d8101c4837e533f7",
+      "contentSize": 1244766
+    },
+    {
+      "name": "bottle_check.csv",
+      "sha256": "221ae3d91028eaa97a931b2d38dcf5458578d6c244ed9f9f15b2f0ba64b09978",
+      "contentSize": 3032
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "3c13e874c251e46cfe383e524002a5004251226481ee7cad5fe0a5e3c6bb19c2",
+      "contentSize": 15923
+    },
+    {
+      "name": "calibration_table.parquet",
+      "sha256": "5e2f9e506c0c946ade4b1a0f4c9b8590cf066366d8f8a2f0c1f571e5443ce5a5",
+      "contentSize": 30356
+    },
+    {
+      "name": "reference_ctd_profile.csv",
+      "sha256": "3221a68977ba2d755a28c7ffb29d2b78edcb2bf837f508b20248208b4fbe96ee",
+      "contentSize": 1486449
+    },
+    {
+      "name": "upcasts.csv",
+      "sha256": "ed0d0db2b0c13f5860e8c141c0e5fbac2e37aa2631a0cbb1bb8cdc440f5308c4",
+      "contentSize": 2062
+    }
+  ]
+}
