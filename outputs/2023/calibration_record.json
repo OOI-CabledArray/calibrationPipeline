@@ -1,0 +1,1445 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:e53233bb-cde7-5697-b9b0-b34f390881c1",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA CTDPFA salinity calibration, Cabled-14 TN422 (2023)",
+  "dateCreated": "2026-10-28T21:02:34+00:00",
+  "variableMeasured": "sea_water_practical_salinity",
+  "rca:correctionKind": "additive",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-10-28T21:02:32+00:00",
+    "prov:endedAtTime": "2026-10-28T21:02:34+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "58181d931d1878444d30b649dc298f8d2eb86f33d097c2007c4be0564fa72180",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "57ccd562c29f24a894f277a602275438e3157b0a93f611914ee547cf96c4e997",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "9c94fd91f135260e2bf94559b29deee83c618d00b5793b23fa7480567574aa29",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "a86c438f979f2771d872966363ce19580da60e25f6fecd7ad1f0b9bcbefbf18e",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "8a3c50869b4227e2aa78e5ccc99710e3c95525f667b69233963203209eb77424",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "6d6bc489a27d2ce0fd53f83d0d1d5fbae2600da5ef955f725ec14715ef475622",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "b5c11121bbf16840dd23428e1d598c324564b20ee02c7fdc01e661999d8a90a1",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "036fe2f2044bcb30227064e7c8f2fc373dfb5f725f7113849b02a8198c24a5ae",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "8f829bf1ec2c3371b54d1e7edf18cdd64b205fde0fcc03c905c8b158ffea7257",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "748ac3d3bb44f1252ec9aa6bd23ea19ea33ab7612b92dcf6ae920674cd3ca3d1",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "c6571495e6f3851f48706b365225fcca2773543a",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3",
+        "platform": "Windows-11-10.0.26200-SP0"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS_profiles_2023.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2023.csv",
+        "sha256": "04bc0b00141c73155fe4426dbbb57275189d34cbbb16abfeacb283b4a87757b2",
+        "contentSize": 56648,
+        "dateModified": "2026-10-28T18:33:30+00:00",
+        "rca:role": "profile_index_csv",
+        "description": "github[profile_indices]:RS03AXPS_profiles_2023.csv @ OOI-CabledArray/profileIndices commit 3999352e3be8f0df81891d6c5886b642cc7ddeb5 (git blob e8e0c800b6c9e6868c57f7fe4b75242180c4d63e)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0009_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20230828T180000.817027-20230829T175959.305275.nc",
+        "contentUrl": "data/raw/ooinet/20261016T195507821Z/deployment0009_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20230828T180000.817027-20230829T175959.305275.nc",
+        "sha256": "54b2eac7661f07d6fff4054a44d98037ffc0ad4da80a820012aa7d87f75ebfb4",
+        "contentSize": 25892687,
+        "dateModified": "2026-10-16T22:20:40+00:00",
+        "rca:role": "profiler_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261016T195507821Z/status.json",
+        "sha256": "f6036c837c167325cc02a75683d6fdc479829262f3bdb11b4eb2e6421275b5c2",
+        "contentSize": 336,
+        "dateModified": "2026-10-16T22:20:36+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0009_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261016T195507821Z/deployment0009_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json",
+        "sha256": "34e77dc8dc79bbdea829a4208589f04c4260a3866a944ce74a5d2842c11d5c5d",
+        "contentSize": 70422,
+        "dateModified": "2026-10-16T22:20:38+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261016T195507821Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json",
+        "sha256": "387f9a1d4a10e3070a35af4b89e190a38ae88f7188b0d8f7228e7038fa1929a5",
+        "contentSize": 23,
+        "dateModified": "2026-10-16T22:20:40+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "TN422_CTD-003.cnv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/CTD%20Data/TN422_CTD-003.cnv",
+        "sha256": "cdc3d1043bfe7a98886342a63f8b927136837e95cbfd767a6308817dfb7e825e",
+        "contentSize": 5124311,
+        "dateModified": "2026-10-15T17:30:05+00:00",
+        "rca:role": "reference_cnv",
+        "description": "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-003.cnv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 4b1625a6c9e386f5d48bd744329b849e81670118)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "TN422_CTD-003.btl",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/CTD%20Data/TN422_CTD-003.btl",
+        "sha256": "2dc522dd9fe3701bbd2d4a039bc7dbefded48949d85a06e37edb38a5d37a7772",
+        "contentSize": 21003,
+        "dateModified": "2026-10-15T17:30:06+00:00",
+        "rca:role": "reference_btl",
+        "description": "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-003.btl @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob df0d4a755c7b1466278b0471537f43381370c127)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-14_TN422_Salinity_Sample_Data_2023-10-05_ver-1-00.xlsm",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_Salinity_Sample_Data_2023-10-05_ver-1-00.xlsm",
+        "sha256": "00e29fd198a2c216bf5fef5b936b93b34e9b498f2b0b6612779e097b3783b02f",
+        "contentSize": 25352,
+        "dateModified": "2026-10-15T17:30:06+00:00",
+        "rca:role": "autosal_xlsx",
+        "description": "github:CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_Salinity_Sample_Data_2023-10-05_ver-1-00.xlsm @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob aa079109113c4446c3a219a131d33f4d4e18200c)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-14_TN422_DiscreteCastLogs.xlsm",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_DiscreteCastLogs.xlsm",
+        "sha256": "020760281bb501c2af477b909b90afbb16ac72b19084b3f44dfc6bd267cbb126",
+        "contentSize": 74110,
+        "dateModified": "2026-10-15T17:29:45+00:00",
+        "rca:role": "cast_log_xlsm",
+        "description": "github:CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_DiscreteCastLogs.xlsm @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 1ba3500c43abced33c20142ab6f30aca5591ef80)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-14_TN422_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-14_TN422_Discrete_Summary.csv",
+        "sha256": "49a41a7a883715aa8877c6a8075e93ff955e1313d8a89d24321ecb4658e30bb3",
+        "contentSize": 118295,
+        "dateModified": "2026-10-26T21:47:22+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-14_TN422_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 946c143a0d9f5bac8fd1618c9b3731e3848539f5)"
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261016T195507821Z",
+    "request_id": "20261016T195507821Z",
+    "reference_designator": "RS03AXPS-SF03A-2A-CTDPFA302",
+    "stream": "streamed/ctdpf_sbe43_sample",
+    "deployment": null,
+    "annotations": [],
+    "status": {
+      "20230828T180000-20230829T060000": "complete",
+      "20230829T060000-20230829T180000": "complete",
+      "20230829T180000-20230829T180000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "f4d3be3f-d1da-4894-a1c6-b08036025401"
+      }
+    },
+    "crosscheck_request_folder": null
+  },
+  "rca:profileIndex": {
+    "n_profiles_in_data": 7,
+    "crosscheck_with_own_upcasts": {
+      "tolerance_min": 10.0,
+      "n_upcasts_found": 6,
+      "n_matched": 5,
+      "upcasts": [
+        {
+          "upcast_id": 0,
+          "index_profile": 16493,
+          "start_diff_min": 16.13,
+          "end_minus_peak_min": -0.05,
+          "match": false
+        },
+        {
+          "upcast_id": 1,
+          "index_profile": 16495,
+          "start_diff_min": 1.08,
+          "end_minus_peak_min": -0.49,
+          "match": true
+        },
+        {
+          "upcast_id": 2,
+          "index_profile": 16496,
+          "start_diff_min": 0.08,
+          "end_minus_peak_min": -0.61,
+          "match": true
+        },
+        {
+          "upcast_id": 3,
+          "index_profile": 16497,
+          "start_diff_min": 0.07,
+          "end_minus_peak_min": -0.04,
+          "match": true
+        },
+        {
+          "upcast_id": 4,
+          "index_profile": 16498,
+          "start_diff_min": 0.08,
+          "end_minus_peak_min": -0.54,
+          "match": true
+        },
+        {
+          "upcast_id": 5,
+          "index_profile": 16499,
+          "start_diff_min": 0.08,
+          "end_minus_peak_min": -1.0,
+          "match": true
+        }
+      ]
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-003.cnv",
+        "blob_sha": "4b1625a6c9e386f5d48bd744329b849e81670118",
+        "bytes": 5124311,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/CTD%20Data/TN422_CTD-003.cnv"
+      },
+      {
+        "path": "CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-003.btl",
+        "blob_sha": "df0d4a755c7b1466278b0471537f43381370c127",
+        "bytes": 21003,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/CTD%20Data/TN422_CTD-003.btl"
+      },
+      {
+        "path": "CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_Salinity_Sample_Data_2023-10-05_ver-1-00.xlsm",
+        "blob_sha": "aa079109113c4446c3a219a131d33f4d4e18200c",
+        "bytes": 25352,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_Salinity_Sample_Data_2023-10-05_ver-1-00.xlsm"
+      },
+      {
+        "path": "CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_DiscreteCastLogs.xlsm",
+        "blob_sha": "1ba3500c43abced33c20142ab6f30aca5591ef80",
+        "bytes": 74110,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_DiscreteCastLogs.xlsm"
+      },
+      {
+        "path": "FinalSummaries/Cabled-14_TN422_Discrete_Summary.csv",
+        "blob_sha": "946c143a0d9f5bac8fd1618c9b3731e3848539f5",
+        "bytes": 118295,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-14_TN422_Discrete_Summary.csv"
+      }
+    ],
+    "additionalSources": [
+      {
+        "repo": "OOI-CabledArray/profileIndices",
+        "ref": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "commit": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "files": [
+          {
+            "path": "RS03AXPS_profiles_2023.csv",
+            "blob_sha": "e8e0c800b6c9e6868c57f7fe4b75242180c4d63e",
+            "bytes": 56648,
+            "url": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2023.csv"
+          }
+        ]
+      }
+    ]
+  },
+  "rca:site": "RS03AXPS",
+  "rca:cruise": {
+    "cruise": "Cabled-14",
+    "ship_cruise_id": "TN422",
+    "vessel": "R/V Thomas G. Thompson",
+    "cast": "CTD-003",
+    "cast_start_utc": "2023-08-25T11:29:03+00:00",
+    "last_bottle_closure_utc": "2023-08-25T12:20:58+00:00",
+    "cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+    "definition": "cast_time = midpoint of NMEA cast start (.cnv header) and the last bottle closure (.btl)"
+  },
+  "rca:parameters": {
+    "global": {
+      "variable": "salinity",
+      "correction_kind": "additive",
+      "bin_size_m": 1.0,
+      "smooth_window_bins": 5,
+      "bottle_outlier_psu": 0.01,
+      "extrapolate_reference": false,
+      "bottle_ok_niskin_flags": [
+        "No problems noted"
+      ],
+      "bottle_ok_salinity_flag_prefix": "Acceptable",
+      "upcast": {
+        "smooth_s": 15.0,
+        "w_ascend": -0.03,
+        "max_gap_s": 30.0,
+        "min_span_m": 100.0
+      },
+      "ctd_downcast": {
+        "min_pressure_dbar": 2.0,
+        "heave_tolerance_dbar": 0.5
+      },
+      "oxygen": {
+        "correction_kind": "multiplicative",
+        "winkler_bad_flags": [
+          3.0,
+          4.0
+        ]
+      }
+    },
+    "variants": [
+      {
+        "id": "mask_fullday_prDM",
+        "role": "alternative",
+        "description": "diff<0 mask over the whole requested day, prDM, raw .cnv",
+        "select": "notebook_window_ascending",
+        "window": false,
+        "ref": "raw",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcasts_all_prDM",
+        "role": "alternative",
+        "description": "all labelled upcasts, prDM vs depth, downcast-only reference",
+        "select": "upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)",
+        "select": "upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_first_upcasts_depSM",
+        "role": "primary",
+        "description": "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_first_upcasts_depSM_sal11",
+        "role": "sensitivity",
+        "description": "as primary but against the secondary CTD sensor sal11",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal11"
+      },
+      {
+        "id": "first_upcasts_depSM",
+        "role": "alternative",
+        "description": "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index",
+        "select": "first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00",
+        "select": "nearest_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "nearest_upcast_depSM_sal11",
+        "role": "alternative",
+        "description": "as nearest_upcast_depSM but against the secondary CTD sensor sal11",
+        "select": "nearest_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal11"
+      },
+      {
+        "id": "index_upcasts_all_prDM",
+        "role": "alternative",
+        "description": "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference",
+        "select": "index_upcasts",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference",
+        "select": "index_upcasts",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference",
+        "select": "index_nearest_upcast",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcast_{k}_depSM",
+        "role": "per_upcast",
+        "description": "single upcast {k}, depSM vs depth, downcast-only reference",
+        "select": "each_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      }
+    ],
+    "notebook_window_utc": null
+  },
+  "rca:inputChecks": {
+    "nc_vs_csv": {
+      "status": "not provided",
+      "identical_within_tolerance": null
+    },
+    "ctd_header": {
+      "processing": [
+        "datcnv"
+      ],
+      "nmea_lat": 45.83433333333333,
+      "nmea_lon": -129.74683333333334,
+      "nmea_utc": "2023-08-25T11:29:03+00:00",
+      "interval_s": 0.0416667,
+      "bad_flag": -9.99e-29
+    },
+    "ctd_scans_total": 24227,
+    "ctd_scans_downcast_reference": 15845,
+    "autosal_header": {
+      "instrument": "Salinity Sample Analyses, Guildline Autosal 8400B s/n 68-981",
+      "client": "Mariela White, Wendi Ruef, D. Kelley",
+      "date": "2023-10-05T00:00:00",
+      "analyst": "Juliet",
+      "std. batch no.": "P165",
+      "salinity": 34.99448961486851,
+      "bath temp.": 24,
+      "filename": null,
+      "k15 value": 0.99986,
+      "std. 2rt": 1.99972
+    },
+    "profiler_samples": 86396,
+    "n_upcasts": 6,
+    "profiler_time_start": "2023-08-28T18:00:00.817027072+00:00",
+    "profiler_time_end": "2023-08-29T17:59:59.305275392+00:00"
+  },
+  "rca:bottleCheck": {
+    "sal00": {
+      "sensor": "primary (sal00)",
+      "n": 5,
+      "median_diff_psu": -0.004218513635443344,
+      "mean_diff_psu": -0.005373179612796264,
+      "iqr_psu": 0.0030685082351027404,
+      "rmse_psu": 0.006319506254254424,
+      "an31_slope": 1.0001434196569399,
+      "n_excluded_by_flag": 0,
+      "n_outliers_flagged": 0,
+      "without_outliers": {
+        "n": 5,
+        "median_diff_psu": -0.004218513635443344,
+        "rmse_psu": 0.006319506254254424
+      }
+    },
+    "sal11": {
+      "sensor": "secondary (sal11)",
+      "n": 5,
+      "median_diff_psu": -0.005218513635448119,
+      "mean_diff_psu": -0.006833179612797835,
+      "iqr_psu": 0.003468508235101808,
+      "rmse_psu": 0.007624047302661724,
+      "an31_slope": 1.0001844002110556,
+      "n_excluded_by_flag": 0,
+      "n_outliers_flagged": 0,
+      "without_outliers": {
+        "n": 5,
+        "median_diff_psu": -0.005218513635448119,
+        "rmse_psu": 0.007624047302661724
+      }
+    }
+  },
+  "rca:upcasts": [
+    {
+      "upcast_id": 0,
+      "start": "2023-08-28T18:00:07.817184256+00:00",
+      "end": "2023-08-28T18:50:56.988425728+00:00",
+      "mid_time": "2023-08-28T18:25:32.402804992+00:00",
+      "mean_time": "2023-08-28T18:25:32.388001536+00:00",
+      "depth_min": 6.72367082492491,
+      "depth_max": 141.62672004954325,
+      "n": 3050,
+      "mean_speed_ms": -0.044180554413040786
+    },
+    {
+      "upcast_id": 1,
+      "start": "2023-08-29T05:11:04.653304320+00:00",
+      "end": "2023-08-29T06:18:30.824677376+00:00",
+      "mid_time": "2023-08-29T05:44:47.738990848+00:00",
+      "mean_time": "2023-08-29T05:44:47.717469952+00:00",
+      "depth_min": 5.393396611348031,
+      "depth_max": 187.46653860222483,
+      "n": 4047,
+      "mean_speed_ms": -0.04493844852287956
+    },
+    {
+      "upcast_id": 2,
+      "start": "2023-08-29T07:41:04.987439616+00:00",
+      "end": "2023-08-29T08:48:23.113473024+00:00",
+      "mid_time": "2023-08-29T08:14:44.050456320+00:00",
+      "mean_time": "2023-08-29T08:14:44.068279552+00:00",
+      "depth_min": 5.529780016977396,
+      "depth_max": 187.76633050856728,
+      "n": 4039,
+      "mean_speed_ms": -0.04508493120451068
+    },
+    {
+      "upcast_id": 3,
+      "start": "2023-08-29T11:31:04.480813568+00:00",
+      "end": "2023-08-29T12:36:57.677457408+00:00",
+      "mid_time": "2023-08-29T12:04:01.079135488+00:00",
+      "mean_time": "2023-08-29T12:04:01.069614080+00:00",
+      "depth_min": 7.799998724981718,
+      "depth_max": 187.49445893629203,
+      "n": 3954,
+      "mean_speed_ms": -0.04544683614328882
+    },
+    {
+      "upcast_id": 4,
+      "start": "2023-08-29T13:51:04.768111616+00:00",
+      "end": "2023-08-29T14:57:27.888549888+00:00",
+      "mid_time": "2023-08-29T14:24:16.328330752+00:00",
+      "mean_time": "2023-08-29T14:24:16.336397312+00:00",
+      "depth_min": 5.485563488552567,
+      "depth_max": 184.9410307791428,
+      "n": 3984,
+      "mean_speed_ms": -0.045016822389242525
+    },
+    {
+      "upcast_id": 5,
+      "start": "2023-08-29T16:06:04.996584448+00:00",
+      "end": "2023-08-29T17:13:00.203343360+00:00",
+      "mid_time": "2023-08-29T16:39:32.599963904+00:00",
+      "mean_time": "2023-08-29T16:39:32.580659968+00:00",
+      "depth_min": 5.384437948308558,
+      "depth_max": 185.7472679595994,
+      "n": 4016,
+      "mean_speed_ms": -0.04488061166265171
+    }
+  ],
+  "rca:variants": [
+    {
+      "variant_id": "mask_fullday_prDM",
+      "role": "alternative",
+      "description": "diff<0 mask over the whole requested day, prDM, raw .cnv",
+      "selection": "notebook_window_ascending",
+      "upcast_id": null,
+      "n_upcasts": null,
+      "upcast_ids": null,
+      "reference_filter": "raw",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 1,
+      "n_profiler_samples": 47906,
+      "n_bins": 189,
+      "depth_min_m": 3.5,
+      "depth_max_m": 191.5,
+      "offset_psu": 0.03798358193868978,
+      "iqr_psu": 0.12618056338714467,
+      "rmse_before_psu": 0.13618048380952558,
+      "rmse_after_offset_psu": 0.11918184190972349,
+      "an31_slope": 0.9980798972051877,
+      "an31_n_bins": 188,
+      "rmse_before_common_bins_psu": 0.13648338038868219,
+      "rmse_after_offset_common_bins_psu": 0.11949199525760344,
+      "rmse_after_slope_common_bins_psu": 0.11231522773141403,
+      "median_residual_after_slope_psu": -0.03250770099915101,
+      "t1_mean_profiler_time_utc": "2023-08-29T05:55:54.388386560+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:01.817244160+00:00",
+      "sample_time_end_utc": "2023-08-29T17:59:59.305275392+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 90.01496899611111
+    },
+    {
+      "variant_id": "upcasts_all_prDM",
+      "role": "alternative",
+      "description": "all labelled upcasts, prDM vs depth, downcast-only reference",
+      "selection": "upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "0;1;2;3;4;5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 23090,
+      "n_bins": 176,
+      "depth_min_m": 12.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.03618436169749728,
+      "iqr_psu": 0.14017512363784768,
+      "rmse_before_psu": 0.1600591492244218,
+      "rmse_after_offset_psu": 0.14341007453430377,
+      "an31_slope": 0.9977920938155355,
+      "an31_n_bins": 176,
+      "rmse_before_common_bins_psu": 0.1600591492244218,
+      "rmse_after_offset_common_bins_psu": 0.14341007453430377,
+      "rmse_after_slope_common_bins_psu": 0.13282602587504772,
+      "median_residual_after_slope_psu": -0.044054920485958604,
+      "t1_mean_profiler_time_utc": "2023-08-29T09:09:44.947820288+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:07.817184256+00:00",
+      "sample_time_end_utc": "2023-08-29T17:13:00.203343360+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 93.24567995
+    },
+    {
+      "variant_id": "upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)",
+      "selection": "upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "0;1;2;3;4;5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 23090,
+      "n_bins": 176,
+      "depth_min_m": 12.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.035499939037769934,
+      "iqr_psu": 0.1311763063252851,
+      "rmse_before_psu": 0.14928517961425214,
+      "rmse_after_offset_psu": 0.13392500707209987,
+      "an31_slope": 0.9980143347487114,
+      "an31_n_bins": 176,
+      "rmse_before_common_bins_psu": 0.14928517961425214,
+      "rmse_after_offset_common_bins_psu": 0.13392500707209987,
+      "rmse_after_slope_common_bins_psu": 0.12579080604400344,
+      "median_residual_after_slope_psu": -0.03630515531828493,
+      "t1_mean_profiler_time_utc": "2023-08-29T09:09:44.947820288+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:07.817184256+00:00",
+      "sample_time_end_utc": "2023-08-29T17:13:00.203343360+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 93.24567995
+    },
+    {
+      "variant_id": "index_first_upcasts_depSM",
+      "role": "primary",
+      "description": "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00",
+      "selection": "index_first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "16493;16494;16495;16496;16497;16498",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 27419,
+      "n_bins": 178,
+      "depth_min_m": 12.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.03426750405115442,
+      "iqr_psu": 0.12045725438416177,
+      "rmse_before_psu": 0.14056693014537536,
+      "rmse_after_offset_psu": 0.12591730185497188,
+      "an31_slope": 0.9981334130608474,
+      "an31_n_bins": 178,
+      "rmse_before_common_bins_psu": 0.14056693014537536,
+      "rmse_after_offset_common_bins_psu": 0.12591730185497188,
+      "rmse_after_slope_common_bins_psu": 0.11860929712652382,
+      "median_residual_after_slope_psu": -0.033228560561983755,
+      "t1_mean_profiler_time_utc": "2023-08-29T06:05:10.233296640+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:00.817027072+00:00",
+      "sample_time_end_utc": "2023-08-29T14:57:59.888916992+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 90.16937036
+    },
+    {
+      "variant_id": "index_first_upcasts_depSM_sal11",
+      "role": "sensitivity",
+      "description": "as primary but against the secondary CTD sensor sal11",
+      "selection": "index_first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "16493;16494;16495;16496;16497;16498",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal11",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 27419,
+      "n_bins": 178,
+      "depth_min_m": 12.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.03543315527288016,
+      "iqr_psu": 0.12261888687416622,
+      "rmse_before_psu": 0.14061781105505175,
+      "rmse_after_offset_psu": 0.12585299785705975,
+      "an31_slope": 0.9981610075306224,
+      "an31_n_bins": 178,
+      "rmse_before_common_bins_psu": 0.14061781105505175,
+      "rmse_after_offset_common_bins_psu": 0.12585299785705975,
+      "rmse_after_slope_common_bins_psu": 0.11920024720210198,
+      "median_residual_after_slope_psu": -0.03130019287396024,
+      "t1_mean_profiler_time_utc": "2023-08-29T06:05:10.233296640+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:00.817027072+00:00",
+      "sample_time_end_utc": "2023-08-29T14:57:59.888916992+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 90.16937036
+    },
+    {
+      "variant_id": "first_upcasts_depSM",
+      "role": "alternative",
+      "description": "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index",
+      "selection": "first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "0;1;2;3;4;5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 23090,
+      "n_bins": 176,
+      "depth_min_m": 12.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.035499939037769934,
+      "iqr_psu": 0.1311763063252851,
+      "rmse_before_psu": 0.14928517961425214,
+      "rmse_after_offset_psu": 0.13392500707209987,
+      "an31_slope": 0.9980143347487114,
+      "an31_n_bins": 176,
+      "rmse_before_common_bins_psu": 0.14928517961425214,
+      "rmse_after_offset_common_bins_psu": 0.13392500707209987,
+      "rmse_after_slope_common_bins_psu": 0.12579080604400344,
+      "median_residual_after_slope_psu": -0.03630515531828493,
+      "t1_mean_profiler_time_utc": "2023-08-29T09:09:44.947820288+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:07.817184256+00:00",
+      "sample_time_end_utc": "2023-08-29T17:13:00.203343360+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 93.24567995
+    },
+    {
+      "variant_id": "nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00",
+      "selection": "nearest_upcast",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 8,
+      "n_profiler_samples": 3050,
+      "n_bins": 130,
+      "depth_min_m": 12.5,
+      "depth_max_m": 141.5,
+      "offset_psu": -0.00048121140750012614,
+      "iqr_psu": 0.23205776359707997,
+      "rmse_before_psu": 0.19262729360746195,
+      "rmse_after_offset_psu": 0.1928315042480156,
+      "an31_slope": 0.9980302154339105,
+      "an31_n_bins": 130,
+      "rmse_before_common_bins_psu": 0.19262729360746195,
+      "rmse_after_offset_common_bins_psu": 0.1928315042480156,
+      "rmse_after_slope_common_bins_psu": 0.17388988860110283,
+      "median_residual_after_slope_psu": -0.07124718492610782,
+      "t1_mean_profiler_time_utc": "2023-08-28T18:25:32.388001536+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:07.817184256+00:00",
+      "sample_time_end_utc": "2023-08-28T18:50:56.988425728+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 78.50885777805556
+    },
+    {
+      "variant_id": "nearest_upcast_depSM_sal11",
+      "role": "alternative",
+      "description": "as nearest_upcast_depSM but against the secondary CTD sensor sal11",
+      "selection": "nearest_upcast",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal11",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 8,
+      "n_profiler_samples": 3050,
+      "n_bins": 130,
+      "depth_min_m": 12.5,
+      "depth_max_m": 141.5,
+      "offset_psu": -0.004356991535498622,
+      "iqr_psu": 0.23574674478881796,
+      "rmse_before_psu": 0.19271556629047695,
+      "rmse_after_offset_psu": 0.19457647543368034,
+      "an31_slope": 0.9980636313226302,
+      "an31_n_bins": 130,
+      "rmse_before_common_bins_psu": 0.19271556629047695,
+      "rmse_after_offset_common_bins_psu": 0.19457647543368034,
+      "rmse_after_slope_common_bins_psu": 0.17448433459101506,
+      "median_residual_after_slope_psu": -0.07391086128190594,
+      "t1_mean_profiler_time_utc": "2023-08-28T18:25:32.388001536+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:07.817184256+00:00",
+      "sample_time_end_utc": "2023-08-28T18:50:56.988425728+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 78.50885777805556
+    },
+    {
+      "variant_id": "index_upcasts_all_prDM",
+      "role": "alternative",
+      "description": "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference",
+      "selection": "index_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 7,
+      "upcast_ids": "16493;16494;16495;16496;16497;16498;16499",
+      "reference_filter": "downcast",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 10,
+      "n_profiler_samples": 31498,
+      "n_bins": 178,
+      "depth_min_m": 12.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.03632659812447869,
+      "iqr_psu": 0.134404185667659,
+      "rmse_before_psu": 0.15132323117868016,
+      "rmse_after_offset_psu": 0.13500087244338177,
+      "an31_slope": 0.997924882944091,
+      "an31_n_bins": 178,
+      "rmse_before_common_bins_psu": 0.15132323117868016,
+      "rmse_after_offset_common_bins_psu": 0.13500087244338177,
+      "rmse_after_slope_common_bins_psu": 0.12597617511875464,
+      "median_residual_after_slope_psu": -0.03931652435700883,
+      "t1_mean_profiler_time_utc": "2023-08-29T07:27:22.879635456+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:00.817027072+00:00",
+      "sample_time_end_utc": "2023-08-29T17:13:59.203928576+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 91.53954989861111
+    },
+    {
+      "variant_id": "index_upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference",
+      "selection": "index_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 7,
+      "upcast_ids": "16493;16494;16495;16496;16497;16498;16499",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 10,
+      "n_profiler_samples": 31498,
+      "n_bins": 178,
+      "depth_min_m": 12.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.03521480752886319,
+      "iqr_psu": 0.12412030017627629,
+      "rmse_before_psu": 0.14065547780195925,
+      "rmse_after_offset_psu": 0.1258373844836646,
+      "an31_slope": 0.9981454055446813,
+      "an31_n_bins": 178,
+      "rmse_before_common_bins_psu": 0.14065547780195925,
+      "rmse_after_offset_common_bins_psu": 0.1258373844836646,
+      "rmse_after_slope_common_bins_psu": 0.1189922169149332,
+      "median_residual_after_slope_psu": -0.03185009114084991,
+      "t1_mean_profiler_time_utc": "2023-08-29T07:27:22.879635456+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:00.817027072+00:00",
+      "sample_time_end_utc": "2023-08-29T17:13:59.203928576+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 91.53954989861111
+    },
+    {
+      "variant_id": "index_nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference",
+      "selection": "index_nearest_upcast",
+      "upcast_id": 16493,
+      "n_upcasts": 1,
+      "upcast_ids": "16493",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 8,
+      "n_profiler_samples": 3060,
+      "n_bins": 130,
+      "depth_min_m": 12.5,
+      "depth_max_m": 141.5,
+      "offset_psu": -0.00048121140750723157,
+      "iqr_psu": 0.23205776359707286,
+      "rmse_before_psu": 0.19264267177658584,
+      "rmse_after_offset_psu": 0.19284690789939393,
+      "an31_slope": 0.9980297098856724,
+      "an31_n_bins": 130,
+      "rmse_before_common_bins_psu": 0.19264267177658584,
+      "rmse_after_offset_common_bins_psu": 0.19284690789939393,
+      "rmse_after_slope_common_bins_psu": 0.17389852078444068,
+      "median_residual_after_slope_psu": -0.07126534473897195,
+      "t1_mean_profiler_time_utc": "2023-08-28T18:25:30.387940352+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:00.817027072+00:00",
+      "sample_time_end_utc": "2023-08-28T18:50:59.989699584+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 78.50830220555555
+    },
+    {
+      "variant_id": "upcast_0_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 0, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 8,
+      "n_profiler_samples": 3050,
+      "n_bins": 130,
+      "depth_min_m": 12.5,
+      "depth_max_m": 141.5,
+      "offset_psu": -0.00048121140750012614,
+      "iqr_psu": 0.23205776359707997,
+      "rmse_before_psu": 0.19262729360746195,
+      "rmse_after_offset_psu": 0.1928315042480156,
+      "an31_slope": 0.9980302154339105,
+      "an31_n_bins": 130,
+      "rmse_before_common_bins_psu": 0.19262729360746195,
+      "rmse_after_offset_common_bins_psu": 0.1928315042480156,
+      "rmse_after_slope_common_bins_psu": 0.17388988860110283,
+      "median_residual_after_slope_psu": -0.07124718492610782,
+      "t1_mean_profiler_time_utc": "2023-08-28T18:25:32.388001536+00:00",
+      "sample_time_start_utc": "2023-08-28T18:00:07.817184256+00:00",
+      "sample_time_end_utc": "2023-08-28T18:50:56.988425728+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 78.50885777805556
+    },
+    {
+      "variant_id": "upcast_1_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 1, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 1,
+      "n_upcasts": 1,
+      "upcast_ids": "1",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 4047,
+      "n_bins": 176,
+      "depth_min_m": 12.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.03629476964114531,
+      "iqr_psu": 0.15612478352714554,
+      "rmse_before_psu": 0.1948021183418677,
+      "rmse_after_offset_psu": 0.1783175207121886,
+      "an31_slope": 0.9974094603225216,
+      "an31_n_bins": 176,
+      "rmse_before_common_bins_psu": 0.1948021183418677,
+      "rmse_after_offset_common_bins_psu": 0.1783175207121886,
+      "rmse_after_slope_common_bins_psu": 0.16471321186394125,
+      "median_residual_after_slope_psu": -0.057843353513185036,
+      "t1_mean_profiler_time_utc": "2023-08-29T05:44:47.717469952+00:00",
+      "sample_time_start_utc": "2023-08-29T05:11:04.653304320+00:00",
+      "sample_time_end_utc": "2023-08-29T06:18:30.824677376+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 89.82978263027779
+    },
+    {
+      "variant_id": "upcast_2_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 2, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 2,
+      "n_upcasts": 1,
+      "upcast_ids": "2",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 4039,
+      "n_bins": 176,
+      "depth_min_m": 12.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.026413250583917858,
+      "iqr_psu": 0.05461343929669127,
+      "rmse_before_psu": 0.16888858795095904,
+      "rmse_after_offset_psu": 0.15881467364138577,
+      "an31_slope": 0.9980935368564483,
+      "an31_n_bins": 176,
+      "rmse_before_common_bins_psu": 0.16888858795095904,
+      "rmse_after_offset_common_bins_psu": 0.15881467364138577,
+      "rmse_after_slope_common_bins_psu": 0.15065193711906077,
+      "median_residual_after_slope_psu": -0.04500895146772521,
+      "t1_mean_profiler_time_utc": "2023-08-29T08:14:44.068279552+00:00",
+      "sample_time_start_utc": "2023-08-29T07:41:04.987439616+00:00",
+      "sample_time_end_utc": "2023-08-29T08:48:23.113473024+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 92.32876896638889
+    },
+    {
+      "variant_id": "upcast_3_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 3, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 3,
+      "n_upcasts": 1,
+      "upcast_ids": "3",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 7,
+      "n_profiler_samples": 3954,
+      "n_bins": 176,
+      "depth_min_m": 12.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.03716151434425541,
+      "iqr_psu": 0.1221121054170009,
+      "rmse_before_psu": 0.12262418201788743,
+      "rmse_after_offset_psu": 0.10560420922636082,
+      "an31_slope": 0.998251141244609,
+      "an31_n_bins": 176,
+      "rmse_before_common_bins_psu": 0.12262418201788743,
+      "rmse_after_offset_common_bins_psu": 0.10560420922636082,
+      "rmse_after_slope_common_bins_psu": 0.09976814854895956,
+      "median_residual_after_slope_psu": -0.026093530365468354,
+      "t1_mean_profiler_time_utc": "2023-08-29T12:04:01.069614080+00:00",
+      "sample_time_start_utc": "2023-08-29T11:31:04.480813568+00:00",
+      "sample_time_end_utc": "2023-08-29T12:36:57.677457408+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 96.1501582261111
+    },
+    {
+      "variant_id": "upcast_4_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 4, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 4,
+      "n_upcasts": 1,
+      "upcast_ids": "4",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 3984,
+      "n_bins": 173,
+      "depth_min_m": 12.5,
+      "depth_max_m": 184.5,
+      "offset_psu": 0.035655906705287066,
+      "iqr_psu": 0.13282934833569726,
+      "rmse_before_psu": 0.12390160400713447,
+      "rmse_after_offset_psu": 0.1060958001197883,
+      "an31_slope": 0.9981270334640902,
+      "an31_n_bins": 173,
+      "rmse_before_common_bins_psu": 0.12390160400713447,
+      "rmse_after_offset_common_bins_psu": 0.1060958001197883,
+      "rmse_after_slope_common_bins_psu": 0.09796138999711615,
+      "median_residual_after_slope_psu": -0.032083772689176726,
+      "t1_mean_profiler_time_utc": "2023-08-29T14:24:16.336397312+00:00",
+      "sample_time_start_utc": "2023-08-29T13:51:04.768111616+00:00",
+      "sample_time_end_utc": "2023-08-29T14:57:27.888549888+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 98.4877323325
+    },
+    {
+      "variant_id": "upcast_5_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 5, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 5,
+      "n_upcasts": 1,
+      "upcast_ids": "5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 9,
+      "n_profiler_samples": 4016,
+      "n_bins": 174,
+      "depth_min_m": 12.5,
+      "depth_max_m": 185.5,
+      "offset_psu": 0.04000549519410512,
+      "iqr_psu": 0.14181498080326627,
+      "rmse_before_psu": 0.14707613411915302,
+      "rmse_after_offset_psu": 0.13197337885084323,
+      "an31_slope": 0.998189135156421,
+      "an31_n_bins": 174,
+      "rmse_before_common_bins_psu": 0.14707613411915302,
+      "rmse_after_offset_common_bins_psu": 0.13197337885084323,
+      "rmse_after_slope_common_bins_psu": 0.12732818550508343,
+      "median_residual_after_slope_psu": -0.025498328016002603,
+      "t1_mean_profiler_time_utc": "2023-08-29T16:39:32.580659968+00:00",
+      "sample_time_start_utc": "2023-08-29T16:06:04.996584448+00:00",
+      "sample_time_end_utc": "2023-08-29T17:13:00.203343360+00:00",
+      "t1_cast_time_utc": "2023-08-25T11:55:00.500000+00:00",
+      "mean_profiler_minus_cast_h": 100.74224462750001
+    }
+  ],
+  "rca:primaryVariant": "index_first_upcasts_depSM",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "index_first_upcasts_depSM",
+      "value": 0.03426750405115442,
+      "time_mean_profiler_utc": "2023-08-29T06:05:10.233296640+00:00",
+      "time_cast_utc": "2023-08-25T11:55:00.500000+00:00",
+      "notebook_convention_variant": null,
+      "notebook_convention_value": null,
+      "notebook_convention_time_mean_profiler_utc": null
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "no second cruise configured for this year; two-point interpolation not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "warning",
+      "code": "upcasts_not_in_profile_index",
+      "text": "1 of 6 upcasts found in the profiler data do not match a profile in the official index.",
+      "detail": {
+        "tolerance_min": 10.0,
+        "n_upcasts_found": 6,
+        "n_matched": 5,
+        "upcasts": [
+          {
+            "upcast_id": 0,
+            "index_profile": 16493,
+            "start_diff_min": 16.13,
+            "end_minus_peak_min": -0.05,
+            "match": false
+          },
+          {
+            "upcast_id": 1,
+            "index_profile": 16495,
+            "start_diff_min": 1.08,
+            "end_minus_peak_min": -0.49,
+            "match": true
+          },
+          {
+            "upcast_id": 2,
+            "index_profile": 16496,
+            "start_diff_min": 0.08,
+            "end_minus_peak_min": -0.61,
+            "match": true
+          },
+          {
+            "upcast_id": 3,
+            "index_profile": 16497,
+            "start_diff_min": 0.07,
+            "end_minus_peak_min": -0.04,
+            "match": true
+          },
+          {
+            "upcast_id": 4,
+            "index_profile": 16498,
+            "start_diff_min": 0.08,
+            "end_minus_peak_min": -0.54,
+            "match": true
+          },
+          {
+            "upcast_id": 5,
+            "index_profile": 16499,
+            "start_diff_min": 0.08,
+            "end_minus_peak_min": -1.0,
+            "match": true
+          }
+        ]
+      }
+    },
+    {
+      "severity": "caveat",
+      "code": "ctd_processing",
+      "text": "Reference .cnv was processed with datcnv only; alignctd / celltm / loopedit are not applied."
+    },
+    {
+      "severity": "caveat",
+      "code": "ctd_downcast_only",
+      "text": "The .cnv holds the downcast only (24227 scans, 15845 kept after removing ship-heave reversals). Bottle (.btl) averages are taken at upcast bottle closures, so CTD-vs-Autosal uses upcast data while profiler-vs-CTD uses the downcast."
+    },
+    {
+      "severity": "warning",
+      "code": "autosal_header_date",
+      "text": "Autosal workbook header date is 2023-10-05 but the cast is on 2023-08-25; looks like a template leftover (not changed)."
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20230829T180000-20230829T180000 returned 404: Request for particles failed for the following reason: All data removed by annotation mask"
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "binned_profiles.csv",
+      "sha256": "cf44bf3ff7089ea5c9097b67c36f19438e3aa8b4cc2b9397d9dfca4e48484ad3",
+      "contentSize": 1073718
+    },
+    {
+      "name": "bottle_check.csv",
+      "sha256": "1c375c677c9caa55dd9c14a8349ff3d3743078df81e8381cf21e785d15b243da",
+      "contentSize": 3514
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "248c7f1f38b9beba3d94051ecf4520ccae1c8394a3f53d30a82afa9ec0884aa4",
+      "contentSize": 14334
+    },
+    {
+      "name": "calibration_table.parquet",
+      "sha256": "d15e1c2ee6bb756ded1a73da29503da84673a48cc5d4b30c10a0c87fa68f2e07",
+      "contentSize": 29763
+    },
+    {
+      "name": "reference_ctd_profile.csv",
+      "sha256": "502f251785fe99f31bb189058a56ea73a057921fc4bcd262c3f608b6f425024a",
+      "contentSize": 2262968
+    },
+    {
+      "name": "upcasts.csv",
+      "sha256": "dc4faedccd746a9088c605883766e046b322ea5ce123b2ea869d0ac5af224161",
+      "contentSize": 1567
+    }
+  ]
+}
