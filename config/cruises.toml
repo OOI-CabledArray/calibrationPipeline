@@ -1,0 +1,898 @@
+# Inputs and processing parameters, one table per cruise year and site. Relative paths resolve against the repository root.
+
+[parameters]
+variable = "salinity"
+correction_kind = "additive"        # "additive" (salinity) | "multiplicative" (gain)
+bin_size_m = 1.0                    # 1 m depth bins, right-closed, labelled by mid-point
+smooth_window_bins = 5              # centred rolling mean over 5 bins
+bottle_outlier_psu = 0.01           # flag a bottle if |(CTD-bottle) - median(CTD-bottle)| exceeds this
+# false: bins outside the depth range of the shipboard CTD profile are excluded. true: the CTD profile is held constant outside its
+# range (numpy.interp). A variant can override it.
+extrapolate_reference = false
+# Cruise bottle flags: a bottle whose Niskin flag is not in bottle_ok_niskin_flags, or whose discrete salinity flag does not start with
+# bottle_ok_salinity_flag_prefix, is excluded from the CTD-vs-Autosal statistics (it stays in bottle_check.csv). A missing flag is ignored.
+bottle_ok_niskin_flags = ["No problems noted"]
+bottle_ok_salinity_flag_prefix = "Acceptable"
+
+[parameters.upcast]                 # rca_sal.profiler.UpcastParams
+smooth_s = 15.0
+w_ascend = -0.03
+max_gap_s = 30.0
+min_span_m = 100.0
+
+[parameters.ctd_downcast]           # rca_sal.seabird.downcast
+min_pressure_dbar = 2.0
+heave_tolerance_dbar = 0.5
+
+
+# ---------------------------------------------------------------------------------------------
+[years.2025]
+cruise = "Cabled-16"
+ship_cruise_id = "AT50-41"
+vessel = "R/V Atlantis"
+cast = "CTD-007"
+deployment = 11
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261026T215158317Z"
+ooinet_crosscheck_request_dir = "data/raw/ooinet/20261007T015602948Z"   # same window, CSV export, separate request
+
+[years.2025.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2025.csv"
+profiler_nc = "data/raw/ooinet/20261026T215158317Z/deployment0011_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20250818T000000.717636-20250819T181659.188647.nc"
+profiler_csv = [
+  "data/raw/ooinet/20261007T015602948Z/deployment0011_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20250818T000000-20250818T115959.csv",
+  "data/raw/ooinet/20261007T015602948Z/deployment0011_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20250818T120000-20250818T235959.csv",
+]
+ooinet_status = "data/raw/ooinet/20261026T215158317Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215158317Z/deployment0011_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215158317Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/CTD Data/AT50-41_CTD-007.cnv"
+reference_btl = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/CTD Data/AT50-41_CTD-007.btl"
+autosal_xlsx = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/Cabled-16_AT50-41_Salinity_Sample_Data_2025-12-17_ver-1-00.xlsx"
+cast_log_xlsm = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/Cabled-16_AT50-41_DiscreteCastLogs.xlsm"
+discrete_summary_csv = "github:FinalSummaries/Cabled-16_AT50-41_Discrete_Summary.csv"
+
+# Profiler time window of the reference notebook CTDPFA_salinity_correction.ipynb, used by the variant that reproduces it.
+[years.2025.notebook_window_utc]
+start = "2025-08-18T00:13:29.770431Z"
+end = "2025-08-18T23:13:28.763959Z"
+
+# --- variants -----------------------------------------------------------------------------------
+# select : "notebook_window_ascending"  -> samples where depth decreased since the previous sample, inside `window` when given
+#          "upcasts"       -> all samples in labelled upcasts (rca_sal.profiler.label_upcasts)
+#          "nearest_upcast"-> samples of the upcast closest in time to the CTD cast
+#          "first_upcasts" -> the first n_upcasts complete upcasts (span >= min_span_m) that start at or after the CTD cast start
+#                             (NMEA time in the .cnv header), pooled; the run stops if the data hold fewer
+#          "each_upcast"   -> one variant per labelled upcast
+#          "index_<rule>"  -> the same rule applied to the upcasts of the official profile index (start to peak)
+# The primary variant of every run uses the same rule: the first 6 complete official-index upcasts after the cast.
+# ref    : "raw" = all .cnv scans;  "downcast" = scans kept by rca_sal.seabird.downcast
+[[years.2025.variants]]
+id = "notebook_window_ascending_prDM"
+role = "regression"
+extrapolate_reference = true          # reproduces the reference notebook, which holds the reference constant outside its range
+description = "notebook reproduction: the notebook's profiler file window, diff<0 mask, prDM vs profiler depth, raw .cnv"
+select = "notebook_window_ascending"
+window = true
+ref = "raw"
+ref_depth_col = "prDM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "mask_fullday_prDM"
+role = "alternative"
+description = "diff<0 mask over the whole requested day, prDM, raw .cnv"
+select = "notebook_window_ascending"
+window = false
+ref = "raw"
+ref_depth_col = "prDM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "upcasts_all_prDM"
+role = "alternative"
+description = "all labelled upcasts, prDM vs depth, downcast-only reference"
+select = "upcasts"
+ref = "downcast"
+ref_depth_col = "prDM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "upcasts_all_depSM"
+role = "alternative"
+description = "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)"
+select = "upcasts"
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "index_first_upcasts_depSM"
+role = "primary"
+description = "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00"
+select = "index_first_upcasts"
+n_upcasts = 6
+min_span_m = 100.0
+needs_profile_index = true
+without_index = "first_upcasts"
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "index_first_upcasts_depSM_sal11"
+role = "sensitivity"
+description = "as primary but against the secondary CTD sensor sal11"
+select = "index_first_upcasts"
+n_upcasts = 6
+min_span_m = 100.0
+needs_profile_index = true
+without_index = "first_upcasts"
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal11"
+
+[[years.2025.variants]]
+id = "first_upcasts_depSM"
+role = "alternative"
+description = "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index"
+select = "first_upcasts"
+n_upcasts = 6
+min_span_m = 100.0
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "nearest_upcast_depSM"
+role = "alternative"
+description = "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00"
+select = "nearest_upcast"
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "nearest_upcast_depSM_sal11"
+role = "alternative"
+description = "as nearest_upcast_depSM but against the secondary CTD sensor sal11"
+select = "nearest_upcast"
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal11"
+
+[[years.2025.variants]]
+id = "index_upcasts_all_prDM"
+role = "alternative"
+description = "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference"
+select = "index_upcasts"
+needs_profile_index = true
+ref = "downcast"
+ref_depth_col = "prDM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "index_upcasts_all_depSM"
+role = "alternative"
+description = "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference"
+select = "index_upcasts"
+needs_profile_index = true
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "index_nearest_upcast_depSM"
+role = "alternative"
+description = "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference"
+select = "index_nearest_upcast"
+needs_profile_index = true
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+[[years.2025.variants]]
+id = "upcast_{k}_depSM"
+role = "per_upcast"
+description = "single upcast {k}, depSM vs depth, downcast-only reference"
+select = "each_upcast"
+ref = "downcast"
+ref_depth_col = "depSM"
+ref_sal_col = "sal00"
+
+# =============================================================================================
+# DOFSTA oxygen gain: Winkler -> shipboard SBE43 -> DOFSTA (reference notebook DOFSTA_gain.ipynb)
+# =============================================================================================
+[parameters.oxygen]
+correction_kind = "multiplicative"  # corrected = raw * gain, gain = median(reference / sensor)
+winkler_bad_flags = [3.0, 4.0]      # the workbook's bottle quality flag: 3 or 4 = bad
+
+[years.2025.oxygen]
+cast = "CTD-007"
+profiler_reference_designator = "RS03AXPS-SF03A-2A-DOFSTA302"
+profiler_stream = "streamed/do_fast_sample"
+ooinet_request_dir = "data/raw/ooinet/20261026T221700325Z"
+
+[years.2025.oxygen.inputs]
+winkler_xls = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/Cabled-16_AT50-41_Oxygen_Sample_Data/Winkler_calculations_19aug25AT50-41.xls"
+dofsta_nc = "data/raw/ooinet/20261026T221700325Z/deployment0011_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20250818T000000.717636-20250819T181659.188647.nc"
+ooinet_status = "data/raw/ooinet/20261026T221700325Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221700325Z/deployment0011_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221700325Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+# DOFSTA time window of the reference notebook DOFSTA_gain.ipynb, used by the variant that reproduces it.
+[years.2025.oxygen.notebook_window_utc]
+start = "2025-08-18T15:45:01.784469Z"
+end = "2025-08-18T17:30:00.948881Z"
+
+# select / ref as for salinity. smooth: apply the 5-bin rolling mean to DOFSTA oxygen.
+# winkler_depth_col: "depth_m" (bottle depth) or "pressure_dbar";  ctd_depth_col: CTD column used for the Winkler match and the DOFSTA bins.
+# bottles: "summary" = cruise discrete summary (discrete_summary_csv; mL/L converted to umol/kg with the CTD S, T, p at the bottle),
+# "workbook" = Winkler workbook (winkler_xls, column AM). Without `bottles` the summary is used when configured.
+# needs_workbook: variant dropped when the run has no workbook.
+[[years.2025.oxygen.variants]]
+id = "notebook_window_ascending_prDM"
+role = "regression"
+extrapolate_reference = true          # reproduces the reference notebook, which holds the CTD profile constant outside its range
+description = "notebook reproduction of T1: the notebook's DOFSTA window, diff<0 mask, no smoothing, Winkler depth (J) vs CTD prDM, raw .cnv"
+select = "notebook_window_ascending"
+window = true
+bottles = "workbook"
+needs_workbook = true
+smooth = false
+ref = "raw"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "prDM"
+use_winkler_flags = false
+
+[[years.2025.oxygen.variants]]
+id = "notebook_window_ascending_prDM_smoothed"
+role = "alternative"
+description = "as notebook_window_ascending_prDM but with the 5-bin rolling mean, as in the notebook's final corrected profile"
+select = "notebook_window_ascending"
+window = true
+bottles = "workbook"
+needs_workbook = true
+smooth = true
+ref = "raw"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "prDM"
+use_winkler_flags = false
+
+[[years.2025.oxygen.variants]]
+id = "index_first_upcasts_depSM"
+role = "primary"
+description = "mean of the first 6 complete official-index upcasts after the CTD cast, Winkler depth vs CTD depSM, downcast-only CTD, flagged Winkler rows excluded"
+select = "index_first_upcasts"
+n_upcasts = 6
+min_span_m = 100.0
+needs_profile_index = true
+without_index = "first_upcasts"
+smooth = true
+ref = "downcast"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "depSM"
+use_winkler_flags = true
+
+[[years.2025.oxygen.variants]]
+id = "index_first_upcasts_depSM_workbook"
+role = "sensitivity"
+description = "as primary but with the Winkler values of the lab workbook (column AM) instead of the discrete summary"
+select = "index_first_upcasts"
+n_upcasts = 6
+min_span_m = 100.0
+needs_profile_index = true
+without_index = "first_upcasts"
+bottles = "workbook"
+needs_workbook = true
+smooth = true
+ref = "downcast"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "depSM"
+use_winkler_flags = true
+
+[[years.2025.oxygen.variants]]
+id = "nearest_upcast_depSM"
+role = "alternative"
+description = "single upcast nearest the CTD cast, Winkler depth vs CTD depSM, downcast-only CTD, flagged Winkler rows excluded"
+select = "nearest_upcast"
+smooth = true
+ref = "downcast"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "depSM"
+use_winkler_flags = true
+
+[[years.2025.oxygen.variants]]
+id = "nearest_upcast_depSM_workbook"
+role = "alternative"
+description = "as nearest_upcast_depSM but with the Winkler values of the lab workbook (column AM)"
+select = "nearest_upcast"
+bottles = "workbook"
+needs_workbook = true
+smooth = true
+ref = "downcast"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "depSM"
+use_winkler_flags = true
+
+[[years.2025.oxygen.variants]]
+id = "nearest_upcast_pressure"
+role = "alternative"
+description = "as nearest_upcast_depSM but Winkler pressure vs CTD prDM"
+select = "nearest_upcast"
+smooth = true
+ref = "downcast"
+winkler_depth_col = "pressure_dbar"
+ctd_depth_col = "prDM"
+use_winkler_flags = true
+
+[[years.2025.oxygen.variants]]
+id = "upcasts_all_depSM"
+role = "alternative"
+description = "all labelled DOFSTA upcasts pooled, Winkler depth vs CTD depSM, downcast-only CTD"
+select = "upcasts"
+smooth = true
+ref = "downcast"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "depSM"
+use_winkler_flags = true
+
+[[years.2025.oxygen.variants]]
+id = "upcast_{k}_depSM"
+role = "per_upcast"
+description = "single upcast {k}, Winkler depth vs CTD depSM, downcast-only CTD"
+select = "each_upcast"
+smooth = true
+ref = "downcast"
+winkler_depth_col = "depth_m"
+ctd_depth_col = "depSM"
+use_winkler_flags = true
+
+# =============================================================================================
+# Deployment summary (rca_sal/deployments.py, Streamlit "Deployments" page, scripts/deployments.py)
+# =============================================================================================
+# Each check is graded against a target and a limit: pass (value meets the target), marginal (between target and limit) or fail
+# (beyond the limit, or no usable data). The severity of a check gives the status level reached by a marginal or failed outcome; the
+# deployment level is the maximum over its checks. better = "higher" where a larger value is better.
+# Targets, limits and severities are provisional and affect only the summary, not the calibrations.
+[deployments]
+single_upcast_variants = ["nearest_upcast_depSM"]          # first present is compared with the primary (salinity)
+single_upcast_variants_oxygen = ["nearest_upcast_depSM"]
+level_labels = { 1 = "good", 2 = "minor issues", 3 = "use with caution", 4 = "not recommended" }
+
+[deployments.severity_levels]          # status level reached by a marginal / failed check of each severity
+critical = { marginal = 3, fail = 4 }
+major = { marginal = 2, fail = 3 }
+minor = { marginal = 1, fail = 2 }
+
+[deployments.salinity]
+# reduction in RMSE of (profiler - CTD) after applying the flat offset, in %
+rmse_reduction_pct = { severity = "critical", target = 5.0, limit = 0.0, better = "higher" }
+# |median(CTD - Autosal)| on the CTD sensor used by the primary variant, outliers removed
+reference_median_abs_psu = { severity = "major", target = 0.005, limit = 0.01, min_bottles = 3 }
+# |primary - single upcast nearest the cast|
+primary_minus_single_upcast_psu = { severity = "major", target = 0.02, limit = 0.05 }
+# IQR of the per-bin profiler - CTD differences of the primary variant
+iqr_psu = { severity = "major", target = 0.03, limit = 0.05 }
+# |offset against the primary CTD sensor - offset against the secondary sensor|
+sensor_agreement_psu = { severity = "minor", target = 0.005, limit = 0.01 }
+# |mean profiler time - CTD cast time| of the primary variant
+time_gap_h = { severity = "minor", target = 6.0, limit = 24.0 }
+
+[deployments.oxygen]
+rmse_reduction_pct = { severity = "critical", target = 50.0, limit = 0.0, better = "higher" }
+# |gain via the CTD (Winkler -> CTD -> DOFSTA) - gain of DOFSTA directly against Winkler|
+chain_vs_direct_gain = { severity = "major", target = 0.01, limit = 0.03 }
+primary_minus_single_upcast_gain = { severity = "major", target = 0.01, limit = 0.02 }
+# |gain - 1|; the OOI BGC Best Practices guide (section 2.4.1) quotes 5-10 % SBE43 drift over a 100-day deployment
+gain_departure_from_one = { severity = "major", target = 0.05, limit = 0.10 }
+# number of Winkler bottles within the depth range of the CTD profile (guide section 2.5.4: avoid correcting from one or two points)
+winkler_bottles_used = { severity = "major", target = 3, limit = 1, better = "higher" }
+gain_iqr = { severity = "major", target = 0.05, limit = 0.1 }
+time_gap_h = { severity = "minor", target = 6.0, limit = 24.0 }
+
+# =============================================================================================
+# Uploaded runs (Streamlit upload page / rca_sal.uploads)
+# =============================================================================================
+[upload]
+template_year = "2025"     # parameters, variants and the oxygen settings of this year are used for uploaded runs
+max_file_mb = 200          # per uploaded file (keep in line with server.maxUploadSize in .streamlit/config.toml)
+workspace_max_age_h = 6    # stale upload workspaces older than this are deleted when a new one is created
+
+# =============================================================================================
+# Discrete-sample data on GitHub. An input "github:<path>" is fetched at run time (rca_sal.github_data) from the repository below at
+# the commit given as ref (a branch name would follow its latest commit). Records name the commit and git blob of each file read.
+# Cache: data/cache/github/<commit>/ (not committed).
+# =============================================================================================
+# --- sites -------------------------------------------------------------------------------------
+# The years below describe the default site. Another site's cast and files are under [years.<year>.sites.<site>]; it shares the
+# Autosal and cast-log workbooks of the cruise.
+[sites]
+default = "RS03AXPS"
+
+[sites.RS03AXPS]
+name = "Axial Base Shallow Profiler"
+short_name = "Axial Base"                 # used by the viewer's run selector and page titles
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+oxygen_reference_designator = "RS03AXPS-SF03A-2A-DOFSTA302"
+oxygen_stream = "streamed/do_fast_sample"
+
+[sites.RS01SBPS]
+name = "Slope Base Shallow Profiler"
+short_name = "Slope Base"
+profiler_reference_designator = "RS01SBPS-SF01A-2A-CTDPFA102"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+oxygen_reference_designator = "RS01SBPS-SF01A-2A-DOFSTA102"
+oxygen_stream = "streamed/do_fast_sample"
+
+[sites.CE04OSPS]
+name = "Oregon Offshore Shallow Profiler"
+short_name = "Oregon Offshore"
+profiler_reference_designator = "CE04OSPS-SF01B-2A-CTDPFA107"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+oxygen_reference_designator = "CE04OSPS-SF01B-2A-DOFSTA107"
+oxygen_stream = "streamed/do_fast_sample"
+
+[profile_index]
+file = "{site}_profiles_{year}.csv"       # in [github_sources.profile_indices]
+
+[github_sources.profile_indices]       # official profile start/peak/end times of the shallow profilers
+repo = "OOI-CabledArray/profileIndices"
+ref = "3999352e3be8f0df81891d6c5886b642cc7ddeb5"
+
+[github]
+repo = "OOI-CabledArray/discreteSummaries"
+ref = "534acc5458f8a7d02ad324a3c8f8d89eea806cb4"
+cache_dir = "data/cache/github"
+
+# =============================================================================================
+# Earlier years: shipboard inputs come from the GitHub repository in [github]. profiler_nc is the OOINet request file saved under
+# data/raw/ooinet/<request timestamp>/ (scripts/fetch_profiler.py). Variants are inherited from the template year ([upload] template_year).
+# =============================================================================================
+
+[years.2020]
+cruise = "Cabled-11"
+ship_cruise_id = "TN382"
+vessel = "R/V Thomas G. Thompson"
+cast = "CTD-003"  # Axial Base 1 km E of SP (the sample log lists only one Niskin on this cast)
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261015T184338113Z"
+
+[years.2020.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2020.csv"
+profiler_nc = "data/raw/ooinet/20261015T184338113Z/deployment0006_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20200807T215332.151851-20200809T215331.621280.nc"
+ooinet_status = "data/raw/ooinet/20261015T184338113Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261015T184338113Z/deployment0006_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261015T184338113Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-11_TN382_2020-08-01/CTD Data/TN382_CTD-003.cnv"
+reference_btl = "github:CruiseData/Cabled-11_TN382_2020-08-01/CTD Data/TN382_CTD-003.btl"
+autosal_xlsx = "github:CruiseData/Cabled-11_TN382_2020-08-01/Cabled-11_TN382_Salinity_Sample_Data_2021-04-29_ver_1-01.xlsm"
+cast_log_xlsm = "github:CruiseData/Cabled-11_TN382_2020-08-01/Cabled-11_TN382_DiscreteCastLogs.xlsm"
+discrete_summary_csv = "github:FinalSummaries/Cabled-11_TN382_Discrete_Summary.csv"
+
+[years.2021]
+cruise = "Cabled-12"
+ship_cruise_id = "TN393"
+vessel = "R/V Thomas G. Thompson"
+cast = "CTD-001"  # Axial Base Shallow Profiler - 500 m NW (CTD-003, 500 m E, is the other Axial Base shallow-profiler cast)
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261026T214841602Z"
+
+[years.2021.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2021.csv"
+profiler_nc = "data/raw/ooinet/20261026T214841602Z/deployment0007_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20210804T180915.887960-20210806T025759.888021.nc"
+ooinet_status = "data/raw/ooinet/20261026T214841602Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T214841602Z/deployment0007_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T214841602Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-001.cnv"
+reference_btl = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-001.btl"
+autosal_xlsx = "github:CruiseData/Cabled-12_TN393_2021-07-30/Cabled-12_TN393_Salinity_Sample_Data_2021-12-14_ver-1-00.xlsm"
+cast_log_xlsm = "github:CruiseData/Cabled-12_TN393_2021-07-30/Cabled-12_TN393_DiscreteCastLogs.xlsm"
+discrete_summary_csv = "github:FinalSummaries/Cabled-12_TN393_Discrete_Summary.csv"
+
+[years.2022]
+cruise = "Cabled-13"
+ship_cruise_id = "TN407"
+vessel = "R/V Thomas G. Thompson"
+cast = "CTD-001"  # Axial Base Shallow Profiler
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261026T214946431Z"
+
+[years.2022.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2022.csv"
+profiler_nc = "data/raw/ooinet/20261026T214946431Z/deployment0008_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20220819T163100.713190-20220824T072259.200626.nc"
+ooinet_status = "data/raw/ooinet/20261026T214946431Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T214946431Z/deployment0008_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T214946431Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-13_TN407_2022-08-08/CTD Data/TN407_CTD-001.cnv"
+reference_btl = "github:CruiseData/Cabled-13_TN407_2022-08-08/CTD Data/TN407_CTD-001.btl"
+autosal_xlsx = "github:CruiseData/Cabled-13_TN407_2022-08-08/Cabled-13_TN407_Salinity_Sample_Data_2022-10-25_ver-1-00.xlsm"
+cast_log_xlsm = "github:CruiseData/Cabled-13_TN407_2022-08-08/Cabled-13_TN407_DiscreteCastLogs.xlsm"
+discrete_summary_csv = "github:FinalSummaries/Cabled-13_TN407_Discrete_Summary.csv"
+
+[years.2023]
+cruise = "Cabled-14"
+ship_cruise_id = "TN422"
+vessel = "R/V Thomas G. Thompson"
+cast = "CTD-003"  # Axial Base Shallow Profiler
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261016T195507821Z"
+
+[years.2023.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2023.csv"
+profiler_nc = "data/raw/ooinet/20261016T195507821Z/deployment0009_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20230828T180000.817027-20230829T175959.305275.nc"
+ooinet_status = "data/raw/ooinet/20261016T195507821Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261016T195507821Z/deployment0009_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261016T195507821Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-003.cnv"
+reference_btl = "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-003.btl"
+autosal_xlsx = "github:CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_Salinity_Sample_Data_2023-10-05_ver-1-00.xlsm"
+cast_log_xlsm = "github:CruiseData/Cabled-14_TN422_2023-08-10/Cabled-14_TN422_DiscreteCastLogs.xlsm"
+discrete_summary_csv = "github:FinalSummaries/Cabled-14_TN422_Discrete_Summary.csv"
+
+[years.2024]
+cruise = "Cabled-15"
+ship_cruise_id = "AT50-29"
+vessel = "R/V Atlantis"
+cast = "CTD-004"  # Axial Base Shallow Profiler
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261026T215032225Z"
+
+[years.2024.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2024.csv"
+profiler_nc = "data/raw/ooinet/20261026T215032225Z/deployment0010_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20240814T171300.266614-20240831T072259.433249.nc"
+ooinet_status = "data/raw/ooinet/20261026T215032225Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215032225Z/deployment0010_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215032225Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-004.cnv"
+reference_btl = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-004.btl"
+autosal_xlsx = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_Salinity_Sample_Data_2025-06-02_ver-1-00.xlsx"
+cast_log_xlsm = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/Cabled-15_AT50-29_DiscreteCastLogs.xlsm"
+discrete_summary_csv = "github:FinalSummaries/Cabled-15_AT50-29_Discrete_Summary.csv"
+
+[ooinet]
+half_window_h = 24   # profiler requests for earlier years cover the CTD cast time +/- this many hours
+index_pad_min = 30   # padding around the profiles chosen with --from-index
+
+# Short synchronous probes of the profiler depth after a cast, to find when it was actually profiling.
+[ooinet.probe]
+days = 7
+step_h = 4
+samples = 200
+
+# --- other shallow-profiler sites -------------------------------------------------------------
+# One entry per site and year: the shipboard cast with the smallest time gap to a profile of the site's official profile index
+# (docs/site_gaps.csv, scripts/site_gaps.py).
+
+[years.2020.sites.CE04OSPS]
+cast = "CTD-010"      # 0 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T195530212Z"
+
+[years.2020.sites.CE04OSPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T195530212Z/deployment0007_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20200812T021200.333123-20200812T180259.419466.nc"
+ooinet_status = "data/raw/ooinet/20261026T195530212Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T195530212Z/deployment0007_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T195530212Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-11_TN382_2020-08-01/CTD Data/TN382_CTD-010.cnv"
+reference_btl = "github:CruiseData/Cabled-11_TN382_2020-08-01/CTD Data/TN382_CTD-010.btl"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2020.csv"
+
+
+[years.2021.sites.CE04OSPS]
+cast = "CTD-006"      # 6.44 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T195743105Z"
+
+[years.2021.sites.CE04OSPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T195743105Z/deployment0008_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20210826T151300.341961-20210827T070759.217330.nc"
+ooinet_status = "data/raw/ooinet/20261026T195743105Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T195743105Z/deployment0008_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T195743105Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-006.cnv"
+reference_btl = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-006.btl"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2021.csv"
+
+
+[years.2022.sites.CE04OSPS]
+cast = "CTD-004"      # 5.87 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T215303348Z"
+
+[years.2022.sites.CE04OSPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T215303348Z/deployment0009_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20220823T160300.656566-20220824T132559.159274.nc"
+ooinet_status = "data/raw/ooinet/20261026T215303348Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215303348Z/deployment0009_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215303348Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-13_TN407_2022-08-08/CTD Data/TN407_CTD-004.cnv"
+reference_btl = "github:CruiseData/Cabled-13_TN407_2022-08-08/CTD Data/TN407_CTD-004.btl"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2022.csv"
+
+
+[years.2023.sites.CE04OSPS]
+cast = "CTD-001"      # 41.01 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T215347588Z"
+
+[years.2023.sites.CE04OSPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T215347588Z/deployment0011_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20230816T231100.197992-20230819T132859.688281.nc"
+ooinet_status = "data/raw/ooinet/20261026T215347588Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215347588Z/deployment0011_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215347588Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-001.cnv"
+reference_btl = "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-001.btl"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2023.csv"
+
+
+[years.2024.sites.CE04OSPS]
+cast = "CTD-001"      # 36.63 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T215432559Z"
+
+[years.2024.sites.CE04OSPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T215432559Z/deployment0012_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20240813T173900.171955-20240823T104259.429956.nc"
+ooinet_status = "data/raw/ooinet/20261026T215432559Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215432559Z/deployment0012_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215432559Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-001.cnv"
+reference_btl = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-001.btl"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2024.csv"
+
+
+[years.2025.sites.CE04OSPS]
+cast = "CTD-010"      # 0.46 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T173328660Z"
+
+[years.2025.sites.CE04OSPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T173328660Z/deployment0013_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20250826T201200.461432-20250827T132759.644269.nc"
+ooinet_status = "data/raw/ooinet/20261026T173328660Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T173328660Z/deployment0013_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T173328660Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/CTD Data/AT50-41_CTD-010.cnv"
+reference_btl = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/CTD Data/AT50-41_CTD-010.btl"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2025.csv"
+
+
+[years.2020.sites.RS01SBPS]
+cast = "CTD-007"      # 0 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T195424406Z"
+
+[years.2020.sites.RS01SBPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T195424406Z/deployment0008_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20200811T065300.076241-20200811T235359.391791.nc"
+ooinet_status = "data/raw/ooinet/20261026T195424406Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T195424406Z/deployment0008_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T195424406Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-11_TN382_2020-08-01/CTD Data/TN382_CTD-007.cnv"
+reference_btl = "github:CruiseData/Cabled-11_TN382_2020-08-01/CTD Data/TN382_CTD-007.btl"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2020.csv"
+
+
+[years.2021.sites.RS01SBPS]
+cast = "CTD-005"      # 32.83 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T195827563Z"
+
+[years.2021.sites.RS01SBPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T195827563Z/deployment0009_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20210825T173000.652962-20210826T180859.304451.nc"
+ooinet_status = "data/raw/ooinet/20261026T195827563Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T195827563Z/deployment0009_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T195827563Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-005.cnv"
+reference_btl = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-005.btl"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2021.csv"
+
+
+[years.2022.sites.RS01SBPS]
+cast = "CTD-009"      # 1.45 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T215600120Z"
+
+[years.2022.sites.RS01SBPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T215600120Z/deployment0010_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20220915T233400.052860-20220917T045559.709230.nc"
+ooinet_status = "data/raw/ooinet/20261026T215600120Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215600120Z/deployment0010_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215600120Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-13_TN407_2022-08-08/CTD Data/TN407_CTD-009.cnv"
+reference_btl = "github:CruiseData/Cabled-13_TN407_2022-08-08/CTD Data/TN407_CTD-009.btl"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2022.csv"
+
+
+[years.2023.sites.RS01SBPS]
+cast = "CTD-002"      # 41.02 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T215704916Z"
+
+[years.2023.sites.RS01SBPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T215704916Z/deployment0011_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20230818T152459.942345-20230820T070759.328104.nc"
+ooinet_status = "data/raw/ooinet/20261026T215704916Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215704916Z/deployment0011_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215704916Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-002.cnv"
+reference_btl = "github:CruiseData/Cabled-14_TN422_2023-08-10/CTD Data/TN422_CTD-002.btl"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2023.csv"
+
+
+[years.2024.sites.RS01SBPS]
+cast = "CTD-002"      # 73.27 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T215749680Z"
+
+[years.2024.sites.RS01SBPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T215749680Z/deployment0012_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20240812T202300.136997-20240816T045559.179610.nc"
+ooinet_status = "data/raw/ooinet/20261026T215749680Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T215749680Z/deployment0012_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T215749680Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-002.cnv"
+reference_btl = "github:CruiseData/Cabled-15_AT50-29_2024-08-08/CTD Data/AT50-29_CTD-002.btl"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2024.csv"
+
+
+[years.2025.sites.RS01SBPS]
+cast = "CTD-008"      # 0.45 h from the nearest profile
+ooinet_request_dir = "data/raw/ooinet/20261026T171912472Z"
+
+[years.2025.sites.RS01SBPS.inputs]
+profiler_nc = "data/raw/ooinet/20261026T171912472Z/deployment0014_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20250825T151800.415186-20250826T070459.824370.nc"
+ooinet_status = "data/raw/ooinet/20261026T171912472Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T171912472Z/deployment0014_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T171912472Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/CTD Data/AT50-41_CTD-008.cnv"
+reference_btl = "github:CruiseData/Cabled-16_AT50-41_2025-08-04/CTD Data/AT50-41_CTD-008.btl"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2025.csv"
+
+# --- oxygen (DOFSTA) -----------------------------------------------------------------------------
+# The DOFSTA file of a run is a separate OOINet request over the time span of its CTDPFA file
+# (scripts/fetch_profiler.py --variable oxygen --match-profiler), so salinity and oxygen use the same upcasts; the DOFSTA data in a
+# CTDPFA request have no depth. The cast is the salinity cast; Winkler data come from the cruise discrete summary. Variants are the
+# template year's.
+
+[years.2020.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220150588Z"
+
+[years.2020.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220150588Z/deployment0006_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20200807T215332.151851-20200809T215331.621280.nc"
+ooinet_status = "data/raw/ooinet/20261026T220150588Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220150588Z/deployment0006_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220150588Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2020.sites.CE04OSPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220257552Z"
+
+[years.2020.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220257552Z/deployment0007_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20200812T021200.333123-20200812T180259.419466.nc"
+ooinet_status = "data/raw/ooinet/20261026T220257552Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220257552Z/deployment0007_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220257552Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2020.sites.RS01SBPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220342378Z"
+
+[years.2020.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220342378Z/deployment0008_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20200811T065300.076241-20200811T235359.391791.nc"
+ooinet_status = "data/raw/ooinet/20261026T220342378Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220342378Z/deployment0008_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220342378Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2021.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220427182Z"
+
+[years.2021.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220427182Z/deployment0007_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20210804T180915.887960-20210806T025759.888021.nc"
+ooinet_status = "data/raw/ooinet/20261026T220427182Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220427182Z/deployment0007_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220427182Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2021.sites.CE04OSPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220532591Z"
+
+[years.2021.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220532591Z/deployment0008_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20210826T151300.341961-20210827T070759.217330.nc"
+ooinet_status = "data/raw/ooinet/20261026T220532591Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220532591Z/deployment0008_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220532591Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2021.sites.RS01SBPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220617157Z"
+
+[years.2021.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220617157Z/deployment0009_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20210825T173000.652962-20210826T180859.304451.nc"
+ooinet_status = "data/raw/ooinet/20261026T220617157Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220617157Z/deployment0009_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220617157Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2022.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220702907Z"
+
+[years.2022.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220702907Z/deployment0008_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20220819T163100.713190-20220824T072259.200626.nc"
+ooinet_status = "data/raw/ooinet/20261026T220702907Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220702907Z/deployment0008_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220702907Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2022.sites.CE04OSPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220848606Z"
+
+[years.2022.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220848606Z/deployment0009_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20220823T160300.656566-20220824T132559.159274.nc"
+ooinet_status = "data/raw/ooinet/20261026T220848606Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220848606Z/deployment0009_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220848606Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2022.sites.RS01SBPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T220933427Z"
+
+[years.2022.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T220933427Z/deployment0010_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20220915T233400.052860-20220917T045559.709230.nc"
+ooinet_status = "data/raw/ooinet/20261026T220933427Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T220933427Z/deployment0010_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T220933427Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2023.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221018133Z"
+
+[years.2023.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221018133Z/deployment0009_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20230828T180000.817027-20230829T175959.305275.nc"
+ooinet_status = "data/raw/ooinet/20261026T221018133Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221018133Z/deployment0009_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221018133Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2023.sites.CE04OSPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221103777Z"
+
+[years.2023.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221103777Z/deployment0011_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20230816T231100.197992-20230819T132859.688281.nc"
+ooinet_status = "data/raw/ooinet/20261026T221103777Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221103777Z/deployment0011_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221103777Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2023.sites.RS01SBPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221150744Z"
+
+[years.2023.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221150744Z/deployment0011_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20230818T152458.942337-20230820T070759.328104.nc"
+ooinet_status = "data/raw/ooinet/20261026T221150744Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221150744Z/deployment0011_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221150744Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2024.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221336848Z"
+
+[years.2024.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221336848Z/deployment0010_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20240814T171300.266614-20240831T072259.433249.nc"
+ooinet_status = "data/raw/ooinet/20261026T221336848Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221336848Z/deployment0010_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221336848Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2024.sites.CE04OSPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221427431Z"
+
+[years.2024.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221427431Z/deployment0012_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20240813T173900.171955-20240823T104259.429956.nc"
+ooinet_status = "data/raw/ooinet/20261026T221427431Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221427431Z/deployment0012_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221427431Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2024.sites.RS01SBPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221554834Z"
+
+[years.2024.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221554834Z/deployment0012_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20240812T202300.136997-20240816T045559.179610.nc"
+ooinet_status = "data/raw/ooinet/20261026T221554834Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221554834Z/deployment0012_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221554834Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2025.sites.CE04OSPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221745011Z"
+
+[years.2025.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221745011Z/deployment0013_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20250826T201200.461432-20250827T132759.644269.nc"
+ooinet_status = "data/raw/ooinet/20261026T221745011Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221745011Z/deployment0013_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221745011Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2025.sites.RS01SBPS.oxygen]
+ooinet_request_dir = "data/raw/ooinet/20261026T221829499Z"
+
+[years.2025.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261026T221829499Z/deployment0014_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20250825T151800.415186-20250826T070459.824370.nc"
+ooinet_status = "data/raw/ooinet/20261026T221829499Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261026T221829499Z/deployment0014_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261026T221829499Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"

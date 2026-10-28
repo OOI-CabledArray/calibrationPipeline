@@ -1,0 +1,8 @@
+# No line-ending conversion: provenance records store the SHA-256 of the exact bytes of every file.
+* -text
+*.nc binary
+*.parquet binary
+
+# NetCDF files above the 100 MB GitHub file limit are stored with Git LFS.
+data/raw/ooinet/20261026T214946431Z/deployment0008_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20220819T163100.713190-20220824T072259.200626.nc filter=lfs diff=lfs merge=lfs -text
+data/raw/ooinet/20261026T215432559Z/deployment0012_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20240813T173900.171955-20240823T104259.429956.nc filter=lfs diff=lfs merge=lfs -text

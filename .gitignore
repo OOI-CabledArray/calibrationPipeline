@@ -1,0 +1,83 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+build/
+dist/
+
+# --- editors and operating system ---
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- coding-assistant and agent files ---
+.claude/
+.agents/
+.cursor/
+.cursorrules
+.aider*
+.continue/
+.codex/
+.gemini/
+.windsurf/
+.github/copilot-instructions.md
+.mcp.json
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+HANDOFF.md
+*.agent.md
+
+# --- secrets and credentials ---
+.streamlit/secrets.toml
+.env
+.env.*
+*.pem
+*.key
+credentials*
+secrets*
+
+# --- run-time state and caches ---
+data/cache/
+data/raw/ooinet/pending_requests.json
+rca_upload_*/
+outputs/1999/
+
+# --- working files that are not part of the pipeline ---
+docs/curves/
+docs/screenshots/
+docs/audit_vs_ooi_bgc_guide.md
+scripts/plot_curves.py
+scripts/probe_profiler.py
+scripts/make_icons.py
+assets/icon-source.ico
+data/raw/ooinet_probes/
+
+# --- superseded OOINet requests: replaced by a later request, not read by any run or test ---
+data/raw/ooinet/20261007T015257715Z/
+data/raw/ooinet/20261007T024431991Z/
+data/raw/ooinet/20261015T180708931Z/
+data/raw/ooinet/20261015T184332720Z/
+data/raw/ooinet/20261015T184334454Z/
+data/raw/ooinet/20261015T184336207Z/
+data/raw/ooinet/20261016T195509706Z/
+data/raw/ooinet/20261016T200514335Z/
+data/raw/ooinet/20261026T195614478Z/
+data/raw/ooinet/20261026T195659098Z/
+data/raw/ooinet/20261026T195913333Z/
+data/raw/ooinet/20261026T195957641Z/
+data/raw/ooinet/20261026T200041043Z/
+data/raw/ooinet/20261026T200125502Z/
