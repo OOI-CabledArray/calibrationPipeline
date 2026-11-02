@@ -15,8 +15,8 @@ OUTCOME_COLOR = {"pass": "green", "marginal": "orange", "fail": "red", "n/a": "g
 
 def _signature() -> tuple:
     """Changes whenever a run's outputs or the config change, so the cached summary is rebuilt."""
-    files = [CONFIG] + sorted(L.OUT.glob("*/calibration_record.json")) + sorted(L.OUT.glob("*/oxygen/calibration_record.json")) \
-        + sorted(L.OUT.glob("*/missing.json")) + sorted(L.OUT.glob("*/oxygen/missing.json"))
+    files = [CONFIG] + sorted(L.OUT.glob("*/calibration_record.json")) + sorted(L.OUT.glob("*/*/calibration_record.json")) \
+        + sorted(L.OUT.glob("*/missing.json")) + sorted(L.OUT.glob("*/*/missing.json"))
     return tuple((str(f), f.stat().st_mtime) for f in files)
 
 
@@ -53,7 +53,8 @@ def compact_summary(g: dict) -> dict:
                                                 "passed": c["passed"], "within_limit": c["within_limit"], "sets_status": c["sets_status"],
                                                 "value": c["value"], "units": c["units"], "summary": c["summary"]} for c in d["checks"]}
             entry["annotations"] = {k: d["annotations"][k] for k in ("has_annotations_on_samples", "has_exclusion_annotation")}
-            entry["reference_extrapolated"] = d["basis"]["reference_extrapolated"]
+            if "reference_extrapolated" in d["basis"]:
+                entry["reference_extrapolated"] = d["basis"]["reference_extrapolated"]
         deps[key] = entry
     return {"refdes": g["refdes"], "deployments": deps}
 
@@ -77,13 +78,13 @@ with st.expander("How the status is set"):
     st.markdown("  \n".join(f":{LEVEL_COLOR[k]}-badge[{k} · {v}]" for k, v in sorted(labels.items())))
     st.dataframe(pd.DataFrame([{"severity": s, "marginal check gives level": v["marginal"], "failed check gives level": v["fail"]}
                                for s, v in sev.items()]), hide_index=True, alt="Status level reached by a marginal or failed check of each severity")
-    for var in ("salinity", "oxygen"):
+    for var in ("salinity", "oxygen", "nitrate"):
         st.markdown(f"**{var.capitalize()} checks**")
         st.dataframe(pd.DataFrame([{"check": k, "severity": v["severity"], "target": v["target"], "limit": v["limit"],
                                     "better": v.get("better", "lower")} for k, v in crit[var].items()]),
                      hide_index=True, alt=f"Targets, limits and severities of the {var} checks")
 
-variable = st.segmented_control("Variable", ["Salinity", "Oxygen"], default="Salinity", key="dep_variable")
+variable = st.segmented_control("Variable", ["Salinity", "Oxygen", "Nitrate"], default="Salinity", key="dep_variable")
 groups = [g for g in summary["instruments"] if g["variable"] == (variable or "Salinity").lower()]
 
 with st.container(horizontal=True):

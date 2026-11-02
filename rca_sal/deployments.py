@@ -11,6 +11,7 @@ Sign conventions:
   salinity  offset_psu = median(profiler - CTD);  S_corrected = S_raw - offset_psu.
             Conductivity: C_corrected = slope * C_raw (AN31), salinity recomputed with PSS-78.
   oxygen    O2_corrected = gain * O2_raw. No flat offset.
+  nitrate   offset_um = median(bottle - SUNA);  NO3_corrected = NO3_L2 + offset_um (step function, OOI BGC guide 3.5.3).
 """
 from __future__ import annotations
 
@@ -37,7 +38,12 @@ def _r(x, nd=4):
 
 
 def _deployment(rec: dict, role: str, configured) -> int | None:
-    """Deployment number from the OOINet file name the run actually read (deploymentNNNN_...), else the config's."""
+    """Deployment number from the OOINet file name the run actually read (deploymentNNNN_...), else the config's. A run that read files of
+    two deployments (a request spanning an exchange) takes the config's."""
+    found = {int(m.group(1)) for u in rec["prov:wasGeneratedBy"]["prov:used"]
+             if u.get("rca:role") == role and (m := _DEP.search(u.get("name", "")))}
+    if len(found) > 1 and configured is not None:
+        return int(configured)
     for u in rec["prov:wasGeneratedBy"]["prov:used"]:
         if u.get("rca:role") == role and (m := _DEP.search(u.get("name", ""))):
             return int(m.group(1))
@@ -118,7 +124,7 @@ def _time_gap(p: pd.Series, spec: dict) -> dict:
 def _rmse(before: float, after: float, spec: dict, units: str, nd: int, extra: dict) -> dict:
     pct = 100 * (before - after) / before if before else None
     verb = "drops" if after < before else "rises" if after > before else "is unchanged"
-    shown = {"umolkg": "umol/kg"}.get(units, units)
+    shown = {"umolkg": "umol/kg", "um": "umol/L"}.get(units, units)
     return _check("rmse_reduction_pct", spec, _r(pct, 1), "%",
                   f"RMSE {verb} from {before:.{nd}f} to {after:.{nd}f} {shown} ({after - before:+.{nd}f} {shown}, "
                   f"{-pct if pct is not None else float('nan'):+.1f}%)",
@@ -301,16 +307,80 @@ def _oxygen_entry(rec: dict, tab: pd.DataFrame, dcfg: dict) -> dict:
     }
 
 
+# ------------------------------------------------------------------ nitrate
+def _nitrate_entry(rec: dict, tab: pd.DataFrame, dcfg: dict) -> dict:
+    crit = dcfg["nitrate"]
+    vid = rec["rca:primaryVariant"]
+    p = tab.loc[vid]
+    if isinstance(p, pd.DataFrame):
+        p = p.iloc[0]
+    n = 0 if pd.isna(p.get("n_matchups")) else int(p["n_matchups"])
+    n_out = 0 if pd.isna(p.get("n_outliers")) else int(p["n_outliers"])
+    off = _num(p.get("offset_um"))
+    acc = rec["rca:parameters"]["nitrate"]["accuracy_um"]
+    checks = [_check("matchups_used", crit["matchups_used"], n, "bottles",
+                     f"{n} of {int(p['n_bottles_usable'])} usable bottles matched the SUNA profile by {p['match_by']} ({n_out} left out as outliers)",
+                     {"n_matchups": n, "n_bottles_usable": int(p["n_bottles_usable"]), "n_outliers": n_out})]
+    if off is None:
+        checks.append(_check("offset_abs_um", crit["offset_abs_um"], None, "umol/L", "no matchups, no offset", {}, outcome="fail"))
+    else:
+        rm = _rmse(float(p["rmse_before_um"]), float(p["rmse_after_um"]), crit["rmse_reduction_pct"], "um", 2, {"n_matchups": n})
+        if n < 3 or abs(off) <= acc:     # one point fits any offset exactly; an offset inside the accuracy is not needed and cannot reduce RMSE
+            rm = {**rm, "outcome": "n/a", "summary": rm["summary"] + (": fewer than 3 matchups" if n < 3 else
+                                                                         f": offset within the +/-{acc} umol/L accuracy, no correction needed")}
+        checks.append(rm)
+        checks.append(_check("offset_abs_um", crit["offset_abs_um"], _r(abs(off), 3), "umol/L",
+                             f"bottle - SUNA median {off:+.2f} umol/L (sensor accuracy +/-{acc} umol/L, guide 3.1)",
+                             {"offset_um": _r(off, 3), "offset_iqr_um": _r(p["offset_iqr_um"], 3), "accuracy_um": acc}))
+        slope, r2 = _num(p.get("fit_slope")), _num(p.get("fit_r2"))
+        fit_text = "no fit (fewer than 3 matchups)" if r2 is None else f"SUNA = {p['fit_intercept_um']:+.2f} + {slope:.3f} x bottle, R^2 {r2:.3f}"
+        checks.append(_check("fit_r2", crit["fit_r2"], _r(r2, 4), "", fit_text, {"slope": _r(slope, 4), "intercept_um": _r(_num(p.get("fit_intercept_um")), 3)},
+                             outcome="n/a" if r2 is None else None))
+        checks.append(_check("fit_slope_departure", crit["fit_slope_departure"], None if slope is None else _r(abs(slope - 1), 4), "",
+                             "no fit" if slope is None else f"fit slope {slope:.3f} is {100 * abs(slope - 1):.1f}% from 1",
+                             {"slope": _r(slope, 4)}, outcome="n/a" if slope is None else None))
+        dep = tab[tab["role"].isin(("depth_matchup", "temperature_matchup"))]
+        if len(dep) and not pd.isna(dep.iloc[0].get("offset_um")):
+            od, other = float(dep.iloc[0]["offset_um"]), dep.iloc[0]["match_by"]
+            checks.append(_check("temperature_vs_depth_offset_um", crit["temperature_vs_depth_offset_um"], _r(abs(off - od), 3), "umol/L",
+                                 f"offset matched by {p['match_by']} {off:+.2f} vs by {other} {od:+.2f} umol/L", {f"offset_{other}_um": _r(od, 3)}))
+        else:
+            checks.append(_check("temperature_vs_depth_offset_um", crit["temperature_vs_depth_offset_um"], None, "umol/L",
+                                 "only one of the temperature and depth matchups has bottles", {}, outcome="n/a"))
+        if p.get("profile_kind") == "parked":
+            checks.append(_check("full_profile", crit["full_profile"], None, "", "the SUNA record nearest the cast was taken with the profiler "
+                                 f"parked ({p['depth_span_m']:.0f} m span): one-point comparison", {"depth_span_m": _r(p["depth_span_m"], 1)},
+                                 outcome="fail"))
+        pp = tab[tab["role"] == "per_profile"]["offset_um"].dropna()
+        if len(pp) > 1:
+            checks.append(_check("profile_offset_range_um", crit["profile_offset_range_um"], _r(pp.max() - pp.min(), 3), "umol/L",
+                                 f"{len(pp)} SUNA profiles in the request give offsets {pp.min():+.2f} to {pp.max():+.2f} umol/L",
+                                 {"n_profiles": int(len(pp)), "min_um": _r(pp.min(), 3), "max_um": _r(pp.max(), 3)}))
+    gap = float(p["hours_from_cast"])
+    checks.append(_check("time_gap_h", crit["time_gap_h"], _r(abs(gap), 2), "h",
+                         f"SUNA profile {abs(gap):.2f} h {'after' if gap >= 0 else 'before'} the CTD cast (profile #{int(p['profile_id'])})",
+                         {"profiler_minus_cast_h": _r(gap, 2), "profile_mean_time_utc": p["profile_mean_time_utc"]}))
+    within = None if pd.isna(p.get("within_accuracy")) else bool(p["within_accuracy"])
+    return {
+        "flat_offset": None if off is None else {"value": round(off, 3), "units": "umol/L",
+                                                 "apply": f"NO3_corrected = NO3_L2 {'+' if off >= 0 else '-'} {abs(off):.3f}"},
+        "function_offset": None,
+        "basis": {"variant": vid, "match_by": p["match_by"], "profile_id": int(p["profile_id"]), "n_matchups": n,
+                  "profiler_minus_cast_h": round(gap, 2), "within_accuracy": within},
+        "annotations": _annotations_block(rec, p),
+        "checks": checks,
+    }
+
+
 # ------------------------------------------------------------------ summary
 def _runs(cfg: dict) -> list[tuple[str, str | None, str]]:
     """(year, site, variable) for every configured run: the default site's salinity and oxygen, then the other sites'."""
     out = []
     for year, y in sorted(cfg["years"].items()):
         out.append((year, None, "salinity"))
-        if "oxygen" in y:
-            out.append((year, None, "oxygen"))
+        out += [(year, None, v) for v in ("oxygen", "nitrate") if v in y]
         for s, sc in sorted(y.get("sites", {}).items()):
-            out += [(year, s, "salinity")] + ([(year, s, "oxygen")] if "oxygen" in sc else [])
+            out += [(year, s, "salinity")] + [(year, s, v) for v in ("oxygen", "nitrate") if v in sc]
     return out
 
 
@@ -328,18 +398,21 @@ def summarize(cfg: dict, outputs: str | Path) -> dict:
     for year, site, var in _runs(cfg):
         ycfg = site_year(cfg, year, site)
         key = run_key(cfg, year, site)
-        folder = outputs / key / ("oxygen" if var == "oxygen" else "")
+        folder = outputs / key / ("" if var == "salinity" else var)
         recp = folder / "calibration_record.json"
         rec = json.loads(recp.read_text(encoding="utf8")) if recp.is_file() else None
         refdes = ycfg.get("profiler_reference_designator")
         if var == "oxygen":
             refdes = ((rec and _oxygen_refdes(rec)) or cfg.get("sites", {}).get(ycfg.get("site"), {}).get("oxygen_reference_designator")
                       or f"{refdes} (oxygen)")
+        elif var == "nitrate":
+            refdes = ((rec and _oxygen_refdes(rec))
+                      or cfg.get("sites", {}).get(ycfg.get("site") or cfg["sites"]["default"], {}).get("nitrate_reference_designator"))
         site_code = ycfg.get("site")
         g = groups.setdefault((var, refdes), {"refdes": refdes, "variable": var, "site": site_code,
                                               "site_name": cfg.get("sites", {}).get(site_code, {}).get("name"), "deployments": []})
         base = {"year": int(year), "run": key, "cruise": ycfg.get("cruise"), "ship_cruise_id": ycfg.get("ship_cruise_id"),
-                "cast": (ycfg.get("oxygen", {}).get("cast") if var == "oxygen" else None) or ycfg.get("cast")}
+                "cast": (ycfg.get(var, {}).get("cast") if var != "salinity" else None) or ycfg.get("cast")}
         if (folder / "missing.json").is_file():
             miss = [m["role"] for m in json.loads((folder / "missing.json").read_text(encoding="utf8"))["missing"]]
             g["deployments"].append({**base, "deployment": ycfg.get("deployment"), "calibrated": False, "calibration": "missing input", "missing": miss,
@@ -353,8 +426,10 @@ def summarize(cfg: dict, outputs: str | Path) -> dict:
         tab = pd.read_csv(folder / "calibration_table.csv").set_index("variant_id")
         if var == "salinity":
             body, dep = _salinity_entry(rec, tab, dcfg), _deployment(rec, "profiler_nc", ycfg.get("deployment"))
-        else:
+        elif var == "oxygen":
             body, dep = _oxygen_entry(rec, tab, dcfg), _deployment(rec, "dofsta_nc", ycfg.get("deployment"))
+        else:
+            body, dep = _nitrate_entry(rec, tab, dcfg), _deployment(rec, "nutnr_nc", ycfg.get("deployment"))
         g["deployments"].append({**base, "deployment": dep, "calibrated": True, "calibration": "calibrated", "record_id": rec["@id"],
                                  "status": status(body["checks"], dcfg), **body})
     for g in groups.values():
@@ -362,7 +437,7 @@ def summarize(cfg: dict, outputs: str | Path) -> dict:
     default = cfg.get("sites", {}).get("default")
     return {"generated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "conventions": CONVENTIONS, "criteria": dcfg,
-            "instruments": sorted(groups.values(), key=lambda g: (g["variable"] != "salinity", g["site"] != default,
+            "instruments": sorted(groups.values(), key=lambda g: (["salinity", "oxygen", "nitrate"].index(g["variable"]), g["site"] != default,
                                                                    g["site"] or "", g["refdes"] or ""))}
 
 

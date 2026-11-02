@@ -1,0 +1,36 @@
+{
+  "annotations": [
+    {
+      "id": 5735,
+      "subsite": "RS03AXPS",
+      "node": "SF03A",
+      "sensor": null,
+      "method": null,
+      "stream": null,
+      "annotation": "All science and engineering ports on the Axial profiler science pod SF03A powered off unexpectedly, with no overcurrent alarm or any other indication of a problem. Attempts to re-power the pod were unsuccessful, likely due to a hard fault, possibly in the slip ring. SF03A has been parked for the remainder of the deployment; instruments will remain off and profiling will be disabled.",
+      "exclusion_flag": false,
+      "source": "wruef@uw.edu",
+      "qc_flag": "not_operational",
+      "parameters": [],
+      "start": "2024-07-24 14:59:00",
+      "stop": "2024-08-11 15:42:00"
+    },
+    {
+      "id": 5409,
+      "subsite": "RS03AXPS",
+      "node": "SF03A",
+      "sensor": "2A-CTDPFA302",
+      "method": "streamed",
+      "stream": "ctdpf_sbe43_sample",
+      "annotation": "The unrealistic oxygen values on the Axial Base Shallow Profiler pod eventually maxed out and then suddenly dropped to flatline at negative values. Investigation is ongoing, but it appears that the oxygen sensor has failed, possibly due to a ruptured membrane.",
+      "exclusion_flag": false,
+      "source": "wruef@uw.edu",
+      "qc_flag": "suspect",
+      "parameters": [
+        8111
+      ],
+      "start": "2024-01-29 23:55:00",
+      "stop": "2024-08-11 15:42:00"
+    }
+  ]
+}

@@ -5,8 +5,8 @@ import streamlit as st
 
 import app_lib as L
 
-choice = st.sidebar.segmented_control("Variable", ["Salinity", "Oxygen"], default="Salinity", key="prov_variable")
-variable = "oxygen" if choice == "Oxygen" else "salinity"
+choice = st.sidebar.segmented_control("Variable", ["Salinity", "Oxygen", "Nitrate"], default="Salinity", key="prov_variable")
+variable = (choice or "Salinity").lower()
 year, rec = L.require_year(variable)
 run = rec["prov:wasGeneratedBy"]
 

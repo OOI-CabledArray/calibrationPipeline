@@ -32,6 +32,7 @@ ALL = ("winkler_xls", "dofsta_nc", "reference_cnv")
     (eos80.dens, (35.0, 5.0, 10000.0), 1069.48914, 1e-4),
     (eos80.adiabatic_gradient, (40.0, 40.0, 10000.0), 3.255976e-4, 1e-9),
     (eos80.ptmp, (40.0, 40.0, 10000.0, 0.0), 36.89073, 1e-4),
+    (eos80.depth_from_pressure, (10000.0, 30.0), 9712.653, 1e-3),
 ])
 def test_eos80_unesco_check_values(fn, args, expect, tol):
     assert float(fn(*args)) == pytest.approx(expect, abs=tol)

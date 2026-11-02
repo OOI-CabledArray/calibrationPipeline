@@ -33,6 +33,9 @@ page = st.navigation({
         st.Page("app_pages/oxygen_winkler.py", title="CTD vs Winkler", icon=":material/biotech:"),
         st.Page("app_pages/oxygen_dofsta.py", title="DOFSTA vs CTD", icon=":material/air:"),
     ],
+    "Nitrate": [
+        st.Page("app_pages/nitrate.py", title="SUNA vs bottles", icon=":material/water_drop:"),
+    ],
     "Your data": [
         st.Page("app_pages/upload.py", title="Run your files", icon=":material/upload_file:"),
     ],

@@ -35,6 +35,33 @@ def _get(url: str, auth: bool = False, timeout: float = 60) -> bytes:
         return r.read()
 
 
+def stream_times(ref_des: str) -> list[dict]:
+    """Streams of an instrument with their method, record count and first and last record time (inventory metadata/times; no data request).
+    Empty when OOINet has no such instrument (HTTP 404)."""
+    site, node, sensor = ref_des.split("-", 2)
+    try:
+        return json.loads(_get(f"{M2M}/{site}/{node}/{sensor}/metadata/times", auth=True))
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return []
+        raise OoinetError(f"OOINet inventory query failed: HTTP {e.code}") from None
+
+
+def stream_parameters(ref_des: str) -> dict[str, list[str]]:
+    """{stream: parameter names (particle keys)} of an instrument from the inventory metadata/parameters; empty when OOINet has no such instrument."""
+    site, node, sensor = ref_des.split("-", 2)
+    try:
+        listed = json.loads(_get(f"{M2M}/{site}/{node}/{sensor}/metadata/parameters", auth=True))
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return {}
+        raise OoinetError(f"OOINet inventory query failed: HTTP {e.code}") from None
+    out: dict[str, list[str]] = {}
+    for p in listed:
+        out.setdefault(p["stream"], []).append(p["particleKey"])
+    return out
+
+
 def request_stamp(now: datetime | None = None) -> str:
     now = now or datetime.now(timezone.utc)
     return now.strftime("%Y%m%dT%H%M%S") + f"{now.microsecond // 1000:03d}Z"

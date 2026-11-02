@@ -1,0 +1,733 @@
+{
+  "provenance": {
+    "25d5dee6-7ee1-422a-969f-962f1457011c": {
+      "file_name": "live-2023-09-11",
+      "parser_name": "mi.instrument.seabird.sbe16plus_v2.dosta.driver",
+      "parser_version": "0.0.1"
+    }
+  },
+  "instrument_provenance": {
+    "RS01SLBS-LJ01A-12-DOSTAD101": [
+      {
+        "@class": ".XDeployment",
+        "eventId": 15536,
+        "editPhase": "OPERATIONAL",
+        "eventName": "RS01SLBS-LJ01A-12-DOSTAD101",
+        "eventType": "DEPLOYMENT",
+        "referenceDesignator": "RS01SLBS-LJ01A-12-DOSTAD101",
+        "deploymentNumber": 10,
+        "versionNumber": 1,
+        "inductiveId": null,
+        "assetUid": null,
+        "dataSource": "Load from [RS01SLBS_Deploy.csv]",
+        "lastModifiedTimestamp": 1791209519945,
+        "tense": "UNKNOWN",
+        "ingestInfo": [],
+        "notes": null,
+        "mooring": {
+          "@class": ".XMooring",
+          "assetId": 802,
+          "assetType": "Mooring",
+          "dataSource": "BulkLoad from [platform_bulk_load-AssetRecord.csv]",
+          "deliveryDate": null,
+          "deliveryOrderNumber": null,
+          "depthRating": null,
+          "description": "Cabled Oregon Slope Base Seafloor",
+          "editPhase": "OPERATIONAL",
+          "events": [],
+          "firmwareVersion": null,
+          "institutionPropertyNumber": null,
+          "institutionPurchaseOrderNumber": null,
+          "lastModifiedTimestamp": 1791209410203,
+          "location": null,
+          "manufacturer": "UW-APL",
+          "mobile": false,
+          "modelNumber": null,
+          "name": null,
+          "notes": null,
+          "ooiPartNumber": null,
+          "ooiPropertyNumber": null,
+          "ooiSerialNumber": null,
+          "owner": "University of Washington",
+          "physicalInfo": {
+            "height": -1.0,
+            "length": -1.0,
+            "weight": -1.0,
+            "width": -1.0
+          },
+          "powerRequirements": null,
+          "purchaseDate": null,
+          "purchasePrice": null,
+          "remoteResources": [],
+          "serialNumber": null,
+          "shelfLifeExpirationDate": null,
+          "softwareVersion": null,
+          "uid": "RS01SLBS-LJ01A-0000"
+        },
+        "node": {
+          "@class": ".XNode",
+          "assetId": 1265,
+          "assetType": "Node",
+          "dataSource": "BulkLoad from [node_bulk_load-AssetRecord.csv]",
+          "deliveryDate": null,
+          "deliveryOrderNumber": null,
+          "depthRating": null,
+          "description": "Cabled Low Power Junction Box",
+          "editPhase": "OPERATIONAL",
+          "events": [],
+          "firmwareVersion": null,
+          "institutionPropertyNumber": null,
+          "institutionPurchaseOrderNumber": null,
+          "lastModifiedTimestamp": 1791209415216,
+          "location": null,
+          "manufacturer": "UW-APL",
+          "mobile": false,
+          "modelNumber": "RS01SLBS-LJ01A",
+          "name": "SN0010",
+          "notes": null,
+          "ooiPartNumber": null,
+          "ooiPropertyNumber": null,
+          "ooiSerialNumber": null,
+          "owner": "University of Washington",
+          "physicalInfo": {
+            "height": -1.0,
+            "length": -1.0,
+            "weight": -1.0,
+            "width": -1.0
+          },
+          "powerRequirements": null,
+          "purchaseDate": null,
+          "purchasePrice": null,
+          "remoteResources": [],
+          "serialNumber": "SN0010",
+          "shelfLifeExpirationDate": null,
+          "softwareVersion": null,
+          "uid": "ATAPL-65310-00010"
+        },
+        "eventStartTime": 1692369180000,
+        "eventStopTime": 1723581240000,
+        "waterDepth": 2902.0,
+        "location": {
+          "depth": 2902.0,
+          "latitude": 44.515235,
+          "longitude": -125.389973,
+          "orbitRadius": null,
+          "location": [
+            -125.389973,
+            44.515235
+          ]
+        },
+        "deployedBy": null,
+        "deployCruiseInfo": {
+          "@class": ".CruiseInfo",
+          "assetUid": null,
+          "cruiseIdentifier": null,
+          "dataSource": "Load from [CruiseInformation.csv]",
+          "editPhase": "OPERATIONAL",
+          "eventId": 327,
+          "eventName": "TN422",
+          "eventStartTime": 1691884800000,
+          "eventStopTime": 1695081599000,
+          "eventType": "CRUISE_INFO",
+          "lastModifiedTimestamp": 1791209387105,
+          "notes": null,
+          "shipName": "Thomas G. Thompson",
+          "tense": "UNKNOWN",
+          "uniqueCruiseIdentifier": "TN422"
+        },
+        "recoveredBy": null,
+        "recoverCruiseInfo": null,
+        "sensor": {
+          "@class": ".XInstrument",
+          "assetId": 1808,
+          "assetType": "Sensor",
+          "dataSource": "BulkLoad from [sensor_bulk_load-AssetRecord.csv]",
+          "deliveryDate": null,
+          "deliveryOrderNumber": null,
+          "depthRating": null,
+          "description": "Dissolved Oxygen Stable Response: DOSTA Series D",
+          "editPhase": "OPERATIONAL",
+          "events": [],
+          "firmwareVersion": null,
+          "institutionPropertyNumber": null,
+          "institutionPurchaseOrderNumber": null,
+          "lastModifiedTimestamp": 1791209422092,
+          "location": null,
+          "manufacturer": "Aanderaa",
+          "mobile": false,
+          "modelNumber": "Optode 4831",
+          "name": "474",
+          "notes": null,
+          "ooiPartNumber": null,
+          "ooiPropertyNumber": null,
+          "ooiSerialNumber": null,
+          "owner": "University of Washington",
+          "physicalInfo": {
+            "height": -1.0,
+            "length": -1.0,
+            "weight": -1.0,
+            "width": -1.0
+          },
+          "powerRequirements": null,
+          "purchaseDate": null,
+          "purchasePrice": 5092.2,
+          "remoteResources": [],
+          "serialNumber": "474",
+          "shelfLifeExpirationDate": null,
+          "softwareVersion": null,
+          "uid": "ATAPL-58320-00013",
+          "calibration": [
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATAPL-58320-00013",
+                  "comments": null,
+                  "dataSource": "ATAPL-58320-00013__20221118.csv",
+                  "eventId": 16285,
+                  "eventName": "CC_conc_coef",
+                  "eventStartTime": 1668729600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209534214,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": [
+                    -1.657221,
+                    1.044688
+                  ]
+                }
+              ],
+              "name": "CC_conc_coef"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATAPL-58320-00013",
+                  "comments": null,
+                  "dataSource": "ATAPL-58320-00013__20221118.csv",
+                  "eventId": 16286,
+                  "eventName": "CC_csv",
+                  "eventStartTime": 1668729600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209534214,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": [
+                    0.00255647,
+                    0.000106623,
+                    2.2751e-06,
+                    202.954,
+                    -0.26121,
+                    -52.1914,
+                    4.0946
+                  ]
+                }
+              ],
+              "name": "CC_csv"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "computed_provenance": {
+    "deployment0010_RS01SLBS-LJ01A-12-DOSTAD101-streamed-do_stable_sample_provenance_20230911T193321.256535-20230911T213322.311557.json": {
+      "parameters": {
+        "ctd_tc_oxygen": [
+          "ac56332d-c3a9-447e-a02f-51222caf0e91"
+        ],
+        "oxy_calphase_voltage": [
+          "030aa490-b3c6-4425-80de-9ddf38bd5c2b"
+        ],
+        "oxy_temp_voltage": [
+          "8689988e-726d-4f9e-a3ec-a70a01b26782"
+        ],
+        "dosta_calibrated_phase": [
+          "c03c85fe-eda1-4743-9c6a-2aa1267c7768"
+        ],
+        "dosta_optode_temperature": [
+          "d224ae14-41ff-426d-bb02-f3a4bc370eac"
+        ],
+        "oxygen_from_calphase": [
+          "a3f8c021-ff95-45a7-bff5-a577948a6444"
+        ],
+        "dissolved_oxygen": [
+          "8ae86a26-bb99-4b48-a1c1-35546cdb8d83"
+        ],
+        "corrected_dissolved_oxygen": [
+          "573739cb-73da-4c79-90e9-b359e5097e45"
+        ]
+      },
+      "calculations": {
+        "ac56332d-c3a9-447e-a02f-51222caf0e91": {
+          "function_name": "(o2_counts / 10000.0) - 10.0",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 60,
+          "function_owner": null,
+          "argument_list": [
+            "o2_counts"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "o2_counts": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 197,
+              "name": "oxygen",
+              "data_product_identifier": "DOCONCS-CNT_L0",
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            }
+          }
+        },
+        "030aa490-b3c6-4425-80de-9ddf38bd5c2b": {
+          "function_name": "counts / 13107.0",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 209,
+          "function_owner": null,
+          "argument_list": [
+            "counts"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "counts": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 835,
+              "name": "oxy_calphase",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            }
+          }
+        },
+        "8689988e-726d-4f9e-a3ec-a70a01b26782": {
+          "function_name": "counts / 13107.0",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 209,
+          "function_owner": null,
+          "argument_list": [
+            "counts"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "counts": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 836,
+              "name": "oxy_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            }
+          }
+        },
+        "c03c85fe-eda1-4743-9c6a-2aa1267c7768": {
+          "function_name": "dosta_phase_volt_to_degree",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 200,
+          "function_owner": "ion_functions.data.do2_functions",
+          "argument_list": [
+            "phase_volt"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "phase_volt": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 8038,
+              "name": "oxy_calphase_voltage",
+              "data_product_identifier": "DOCONCS-VLT_L0",
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            }
+          }
+        },
+        "d224ae14-41ff-426d-bb02-f3a4bc370eac": {
+          "function_name": "dosta_Topt_volt_to_degC",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 199,
+          "function_owner": "ion_functions.data.do2_functions",
+          "argument_list": [
+            "T_optode_volt"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "T_optode_volt": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 8039,
+              "name": "oxy_temp_voltage",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            }
+          }
+        },
+        "a3f8c021-ff95-45a7-bff5-a577948a6444": {
+          "function_name": "do2_SVU",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 59,
+          "function_owner": "ion_functions.data.do2_functions",
+          "argument_list": [
+            "conc_coef",
+            "calphase",
+            "csv",
+            "temp"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "conc_coef": {
+              "sources": [
+                -1.657221,
+                1.044688
+              ],
+              "data_begin": 3903449601.256535,
+              "data_end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557",
+              "type": "CC"
+            },
+            "calphase": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 8040,
+              "name": "dosta_calibrated_phase",
+              "data_product_identifier": "DOCONCS-DEG_L0",
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "csv": {
+              "sources": [
+                0.00255647,
+                0.000106623,
+                2.2751e-06,
+                202.954,
+                -0.26121,
+                -52.1914,
+                4.0946
+              ],
+              "data_begin": 3903449601.256535,
+              "data_end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557",
+              "type": "CC"
+            },
+            "temp": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 8041,
+              "name": "dosta_optode_temperature",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            }
+          }
+        },
+        "8ae86a26-bb99-4b48-a1c1-35546cdb8d83": {
+          "function_name": "do2_salinity_correction",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 61,
+          "function_owner": "ion_functions.data.do2_functions",
+          "argument_list": [
+            "DO",
+            "SP",
+            "lon",
+            "P",
+            "T",
+            "lat"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "DO": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 964,
+              "name": "ctd_tc_oxygen",
+              "data_product_identifier": "DOCONCS_L1",
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-CTDPFB101|streamed|ctdpf_optode_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": true,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "lon": {
+              "sources": -125.389973,
+              "data_begin": 3903449601.256535,
+              "data_end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557",
+              "type": "CC"
+            },
+            "P": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-CTDPFB101|streamed|ctdpf_optode_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": true,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "T": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-CTDPFB101|streamed|ctdpf_optode_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": true,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "lat": {
+              "sources": 44.515235,
+              "data_begin": 3903449601.256535,
+              "data_end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557",
+              "type": "CC"
+            }
+          }
+        },
+        "573739cb-73da-4c79-90e9-b359e5097e45": {
+          "function_name": "do2_salinity_correction",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 61,
+          "function_owner": "ion_functions.data.do2_functions",
+          "argument_list": [
+            "DO",
+            "SP",
+            "lon",
+            "P",
+            "T",
+            "lat"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3903449601.256535,
+              "end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557"
+            },
+            "DO": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-DOSTAD101|streamed|do_stable_sample",
+              "parameter_id": 8107,
+              "name": "oxygen_from_calphase",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-CTDPFB101|streamed|ctdpf_optode_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": true,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "lon": {
+              "sources": -125.389973,
+              "data_begin": 3903449601.256535,
+              "data_end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557",
+              "type": "CC"
+            },
+            "P": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-CTDPFB101|streamed|ctdpf_optode_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": true,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "T": {
+              "type": "parameter",
+              "source": "RS01SLBS|LJ01A|12-CTDPFB101|streamed|ctdpf_optode_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": true,
+              "time_start": 3903449601.256535,
+              "time_startDT": "2023-09-11T19:33:21.256535",
+              "time_end": 3903456802.3115573,
+              "time_endDT": "2023-09-11T21:33:22.311557",
+              "deployments": [
+                10
+              ]
+            },
+            "lat": {
+              "sources": 44.515235,
+              "data_begin": 3903449601.256535,
+              "data_end": 3903456802.3115573,
+              "beginDT": "2023-09-11T19:33:21.256535",
+              "endDT": "2023-09-11T21:33:22.311557",
+              "type": "CC"
+            }
+          }
+        }
+      },
+      "errors": []
+    }
+  },
+  "query_parameter_provenance": {
+    "deployment0010_RS01SLBS-LJ01A-12-DOSTAD101-streamed-do_stable_sample_provenance_20230911T193321.256535-20230911T213322.311557.json": {
+      "query_type": "JSON",
+      "query_uuid": "3ca48e1b-fa45-4a21-8034-698faeb35064",
+      "begin": 3903449602.0,
+      "beginDT": "2023-09-11T19:33:22",
+      "end": 3903456802.0,
+      "endDT": "2023-09-11T21:33:22",
+      "limit": null,
+      "requested_stream": "RS01SLBS-LJ01A-12-CTDPFB101-streamed-ctdpf_optode_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    }
+  },
+  "provenance_messages": {
+    "deployment0010_RS01SLBS-LJ01A-12-DOSTAD101-streamed-do_stable_sample_provenance_20230911T193321.256535-20230911T213322.311557.json": []
+  },
+  "requestUUID": {
+    "deployment0010_RS01SLBS-LJ01A-12-DOSTAD101-streamed-do_stable_sample_provenance_20230911T193321.256535-20230911T213322.311557.json": "3ca48e1b-fa45-4a21-8034-698faeb35064"
+  }
+}

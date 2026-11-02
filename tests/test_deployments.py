@@ -34,7 +34,7 @@ def test_calibrated_entries_match_the_records(summary):
         if d["calibration"] != "calibrated":
             assert d["status"]["level"] is None
             continue
-        folder = ROOT / "outputs" / d["run"] / ("oxygen" if g["variable"] == "oxygen" else "")
+        folder = ROOT / "outputs" / d["run"] / ("" if g["variable"] == "salinity" else g["variable"])
         rec = json.loads((folder / "calibration_record.json").read_text(encoding="utf8"))
         tab = pd.read_csv(folder / "calibration_table.csv").set_index("variant_id")
         p = tab.loc[rec["rca:primaryVariant"]]
@@ -44,8 +44,11 @@ def test_calibrated_entries_match_the_records(summary):
         if g["variable"] == "salinity":
             assert d["flat_offset"]["value"] == pytest.approx(-p["offset_psu"], abs=5e-5)      # S_corrected = S_raw + value
             before, after = p["rmse_before_psu"], p["rmse_after_offset_psu"]
-        else:
+        elif g["variable"] == "oxygen":
             before, after = p["rmse_before_umolkg"], p["rmse_after_umolkg"]
+        else:
+            assert d["flat_offset"]["value"] == pytest.approx(p["offset_um"], abs=5e-4)          # NO3_corrected = NO3 + value
+            before, after = p["rmse_before_um"], p["rmse_after_um"]
         rmse = next(c for c in d["checks"] if c["criterion"] == "rmse_reduction_pct")
         assert rmse["value"] == pytest.approx(100 * (before - after) / before, abs=0.05)
         expected = max([1] + [sev[c["severity"]][c["outcome"]] for c in d["checks"] if c["outcome"] in ("marginal", "fail")])
@@ -148,13 +151,13 @@ def test_yaml_file_parses_back_to_the_summary(summary):
 
 
 def _tables(g, d):
-    folder = ROOT / "outputs" / d["run"] / ("oxygen" if g["variable"] == "oxygen" else "")
+    folder = ROOT / "outputs" / d["run"] / ("" if g["variable"] == "salinity" else g["variable"])
     return pd.read_csv(folder / "calibration_table.csv").set_index("variant_id")
 
 
 def test_the_reference_is_not_extrapolated_except_in_notebook_reproductions(summary):
     for g, d in _all(summary):
-        if d["calibration"] != "calibrated":
+        if d["calibration"] != "calibrated" or g["variable"] == "nitrate":          # nitrate interpolates the sensor, not a reference
             continue
         tab = _tables(g, d)
         assert d["basis"]["reference_extrapolated"] is False

@@ -1,0 +1,40 @@
+{
+  "annotations": [
+    {
+      "id": 4347,
+      "subsite": "RS03AXBS",
+      "node": "LJ03A",
+      "sensor": "12-CTDPFB301",
+      "method": "streamed",
+      "stream": "ctdpf_optode_sample",
+      "annotation": "Analog output from the optodes is produced by using a digital to analog converter (DAC). DAC configuration was initially only done at power up or reset, but firmware version 4.6.4 began updating configuration each time the analog output value was updated to ensure long-term continuous operation. Unfortunately, this also produced a voltage jump, creating erratic noise in the output data. The firmware has been corrected, but only the onboard-calculated Stern-Volmer values [DO from Onboard Calculation (L1 product; 'ctd_tc_oxygen') and DO from Onboard Calculation - Corrected (L2 product; 'dissolved_oxygen')] should be used during this annotated time range, NOT the 'DO from Phase' data which contain the noisy analog signal.",
+      "exclusion_flag": false,
+      "source": "m.vardaro@gmail.com",
+      "qc_flag": "suspect",
+      "parameters": [
+        8109,
+        8110
+      ],
+      "start": "2017-07-31 22:38:00",
+      "stop": "2021-08-03 20:43:00"
+    },
+    {
+      "id": 4340,
+      "subsite": "RS03AXBS",
+      "node": "LJ03A",
+      "sensor": "12-DOSTAD301",
+      "method": "streamed",
+      "stream": "do_stable_sample",
+      "annotation": "Analog output from the optodes is produced by using a digital to analog converter (DAC). DAC configuration was initially only done at power up or reset, but firmware version 4.6.4 began updating configuration each time the analog output value was updated to ensure long-term continuous operation. Unfortunately, this also produced a voltage jump, creating erratic noise in the output data. The firmware has been corrected, but only the onboard-calculated Stern-Volmer values [DO from Onboard Calculation (L1 product; 'ctd_tc_oxygen') and DO from Onboard Calculation - Corrected (L2 product; 'dissolved_oxygen')] should be used during this annotated time range, NOT the 'DO from Phase' data which contain the noisy analog signal.",
+      "exclusion_flag": false,
+      "source": "m.vardaro@gmail.com",
+      "qc_flag": "suspect",
+      "parameters": [
+        8107,
+        8108
+      ],
+      "start": "2017-07-31 22:38:00",
+      "stop": "2021-08-03 20:43:00"
+    }
+  ]
+}

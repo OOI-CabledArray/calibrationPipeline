@@ -1,4 +1,4 @@
-"""Request shallow-profiler CTDPFA data (DOFSTA with --variable oxygen) around the CTD cast of a year; --site selects the site.
+"""Request shallow-profiler CTDPFA data (DOFSTA with --variable oxygen, NUTNR with --variable nitrate) around the CTD cast of a year; --site selects the site.
 
   python scripts/fetch_profiler.py --year 2024      submit a request for the cast time +/- [ooinet] half_window_h
   python scripts/fetch_profiler.py --resume         save every pending request that OOINet has completed
@@ -53,7 +53,7 @@ def finish(entry: dict, wait_s: float) -> bool:
     except ooinet.OoinetError as e:
         print(f"  {entry['year']}{'-' + entry['site'] if entry.get('site') else ''} ({entry['stamp']}): still pending ({e})")
         return False
-    oxy = entry.get("variable") == "oxygen"
+    var = entry.get("variable", "salinity")
     print(f"{entry['year']}: saved {out.relative_to(ROOT)}")
     for f in sorted(out.iterdir()):
         print(f"  {f.name}  {f.stat().st_size:,} bytes")
@@ -63,9 +63,9 @@ def finish(entry: dict, wait_s: float) -> bool:
         return True
     rel = out.relative_to(ROOT).as_posix()
     print("\n  add to config/cruises.toml:")
-    tbl = f'years.{entry["year"]}' + (f'.sites.{entry["site"]}' if entry.get("site") else "") + (".oxygen" if oxy else "")
+    tbl = f'years.{entry["year"]}' + (f'.sites.{entry["site"]}' if entry.get("site") else "") + ("" if var == "salinity" else f".{var}")
     print(f'  [{tbl}] ooinet_request_dir = "{rel}"')
-    print(f'  [{tbl}.inputs] {"dofsta_nc" if oxy else "profiler_nc"} = "{rel}/{ncs[0].name}"')
+    print(f'  [{tbl}.inputs] { {"oxygen": "dofsta_nc", "nitrate": "nutnr_nc"}.get(var, "profiler_nc")} = "{rel}/{ncs[0].name}"')
     for role, pat in (("ooinet_status", "status.json"), ("ooinet_provenance", "aggregate_provenance.json"),
                       ("ooinet_annotations", "annotations.json")):
         m = next((f for f in out.glob("*.json") if f.name.endswith(pat) and (entry["ref_des"] in f.name or pat == "status.json")), None)
@@ -83,7 +83,7 @@ def main(argv=None) -> int:
     ap.add_argument("--wait-min", type=float, default=5, help="how long to wait for OOINet before leaving the request pending")
     ap.add_argument("--config", default=str(ROOT / "config" / "cruises.toml"))
     ap.add_argument("--half-window-h", type=float, default=None)
-    ap.add_argument("--variable", choices=["salinity", "oxygen"], default="salinity", help="CTDPFA (salinity) or DOFSTA (oxygen)")
+    ap.add_argument("--variable", choices=["salinity", "oxygen", "nitrate"], default="salinity", help="CTDPFA (salinity), DOFSTA (oxygen) or NUTNR (nitrate)")
     ap.add_argument("--match-profiler", action="store_true", help="request exactly the time span of the year's configured CTDPFA "
                     "file (profiler_nc), so the DOFSTA covers the same upcasts")
     ap.add_argument("--begin", help="explicit window start (UTC, e.g. 2023-08-28T18:00:00Z) instead of cast +/- half window; needs "
@@ -107,7 +107,7 @@ def main(argv=None) -> int:
         ap.error("give --year, --resume or --list")
     cfg = load_config(a.config)
     y = site_year(cfg, a.year, a.site)
-    half = a.half_window_h if a.half_window_h is not None else cfg["ooinet"]["half_window_h"]
+    half = a.half_window_h if a.half_window_h is not None else (cfg["nitrate"] if a.variable == "nitrate" else cfg["ooinet"])["half_window_h"]
     fmt = lambda t: t.strftime("%Y-%m-%dT%H:%M:%S.000Z")  # noqa: E731
     if a.from_index:
         from rca_sal import github_data, profile_index
@@ -154,9 +154,9 @@ def main(argv=None) -> int:
             return 2
         t0, t1 = cast - pd.Timedelta(hours=half), cast + pd.Timedelta(hours=half)
         print(f"{a.year}: cast {cast:%Y-%m-%d %H:%M} UTC; requesting {fmt(t0)} to {fmt(t1)}")
-    if a.variable == "oxygen":
+    if a.variable in ("oxygen", "nitrate"):
         st = cfg["sites"][a.site or cfg["sites"]["default"]]
-        ref_des, method_stream = st["oxygen_reference_designator"], st["oxygen_stream"]
+        ref_des, method_stream = st[f"{a.variable}_reference_designator"], st[f"{a.variable}_stream"]
     else:
         ref_des, method_stream = y["profiler_reference_designator"], y["profiler_stream"]
     method, stream = method_stream.split("/", 1)

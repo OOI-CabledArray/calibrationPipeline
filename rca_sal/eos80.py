@@ -1,4 +1,4 @@
-"""EOS-80 seawater density and potential temperature (UNESCO 1983), numpy only.
+"""EOS-80 seawater density, potential temperature and depth (UNESCO 1983), numpy only.
 
 Used to convert oxygen from ml/l to umol/kg:
     umol/kg = (ml/l) * 44660 / (sigma_theta + 1000),   sigma_theta = rho(S, theta, 0 dbar) - 1000  [kg/m3].
@@ -76,3 +76,15 @@ def sigma_theta(s, t90, p):
 def oxygen_mll_to_umolkg(o2_ml_per_l, s, t90, p):
     """Sea-Bird oxygen conversion: umol/kg = ml/l * 44660 / (sigma-theta + 1000)."""
     return np.asarray(o2_ml_per_l, float) * UMOL_PER_ML_O2 / (sigma_theta(s, t90, p) + 1000.0)
+
+
+def depth_from_pressure(p_dbar, lat_deg):
+    """Depth [m] from pressure [dbar] and latitude (Saunders and Fofonoff 1976; UNESCO TR44).
+
+    depth = (9.72659 p - 2.2512e-5 p^2 + 2.279e-10 p^3 - 1.82e-15 p^4) / (g(lat) + 1.092e-6 p),
+    g(lat) = 9.780318 (1 + 5.2788e-3 sin^2(lat) + 2.36e-5 sin^4(lat)).
+    """
+    p = np.asarray(p_dbar, float)
+    x = np.sin(np.radians(np.asarray(lat_deg, float))) ** 2
+    g = 9.780318 * (1 + 5.2788e-3 * x + 2.36e-5 * x ** 2)
+    return (((-1.82e-15 * p + 2.279e-10) * p - 2.2512e-5) * p + 9.72659) * p / (g + 1.092e-6 * p)

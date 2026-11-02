@@ -1,4 +1,4 @@
-"""Run every salinity and oxygen run in config/cruises.toml, then write the deployment summary.
+"""Run every salinity, oxygen and nitrate run in config/cruises.toml, then write the deployment summary.
 
   python scripts/run_all.py
 
@@ -27,8 +27,9 @@ def runs(cfg: dict):
         for site in [None, *sorted(y.get("sites", {}))]:
             c = y if site is None else y["sites"][site]
             yield year, site, "salinity"
-            if "oxygen" in c:
-                yield year, site, "oxygen"
+            for v in ("oxygen", "nitrate"):
+                if v in c:
+                    yield year, site, v
 
 
 def main(argv=None) -> int:

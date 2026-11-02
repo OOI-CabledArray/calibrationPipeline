@@ -7,7 +7,7 @@ from streamlit.testing.v1 import AppTest
 
 from tests.conftest import ROOT
 
-PAGES = ["app_pages/bottles.py", "app_pages/profiler.py", "app_pages/oxygen_winkler.py", "app_pages/oxygen_dofsta.py", "app_pages/upload.py", "app_pages/provenance.py"]
+PAGES = ["app_pages/bottles.py", "app_pages/profiler.py", "app_pages/oxygen_winkler.py", "app_pages/oxygen_dofsta.py", "app_pages/nitrate.py", "app_pages/upload.py", "app_pages/provenance.py"]
 pytestmark = pytest.mark.skipif(
     not all((ROOT / "outputs" / "2025" / n).is_file() for n in ("calibration_record.json", "oxygen/calibration_record.json")),
     reason="outputs/2025 (salinity and oxygen) not generated")
@@ -75,3 +75,21 @@ def test_icon_set_is_square_and_complete():
     for name, px in sizes.items():
         assert Image.open(d / name).size == (px, px), name
     assert {(16, 16), (32, 32), (48, 48), (64, 64)} <= set(Image.open(d / "favicon.ico").info["sizes"])
+
+
+def test_nitrate_page_scorecard_comes_from_outputs():
+    at = _run("app_pages/nitrate.py")
+    rec = json.loads((ROOT / "outputs/2025/nitrate/calibration_record.json").read_text(encoding="utf8"))
+    prim = next(v for v in rec["rca:variants"] if v["variant_id"] == rec["rca:primaryVariant"])
+    vals = {m.label: m.value for m in at.metric}
+    assert vals["Offset (µmol/L)"] == f"{prim['offset_um']:+.2f}"
+    assert vals["Bottles matched"] == f"{prim['n_matchups']} of {prim['n_bottles_usable']}"
+
+
+def test_nitrate_page_renders_for_every_run():
+    at = _run("app_pages/nitrate.py")
+    runs = sorted(d.parent.name for d in (ROOT / "outputs").glob("*/nitrate"))
+    assert runs
+    for r in runs:
+        at.sidebar.selectbox[0].set_value(r).run()
+        assert not at.exception, r

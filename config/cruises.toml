@@ -356,6 +356,22 @@ use_winkler_flags = true
 # (beyond the limit, or no usable data). The severity of a check gives the status level reached by a marginal or failed outcome; the
 # deployment level is the maximum over its checks. better = "higher" where a larger value is better.
 # Targets, limits and severities are provisional and affect only the summary, not the calibrations.
+# --- nitrate (scripts/run_year.py --variable nitrate) ---------------------------------------------
+# OOI BGC Best Practices guide v1.1.1, chapter 3: OOI L2 nitrate (salinity_corrected_nitrate, TCSS algorithm) against the discrete
+# nitrate of the reference cast; the SUNA profile closest in time to the cast is compared; matchups by temperature (recommended) and depth.
+[nitrate]
+method = "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3"
+half_window_h = 36.0                   # OOINet request: cast time +/- this (the SUNA samples on two upcasts a day)
+profile_gap_min = 30.0                 # SUNA samples further apart than this belong to different profiles
+min_profile_samples = 10
+min_profile_span_m = 100.0               # a profile spanning less was taken with the profiler parked ('parked')
+spike_window = 5                       # spike test: |x - running median of this many samples| > spike_threshold_um is removed
+spike_threshold_um = 2.0
+bin_size_m = 2.0                       # profile binned to 2 m (SUNA vertical resolution on the cabled profilers, guide 3.1)
+accuracy_um = 2.0                      # sensor accuracy (guide 3.1); also the DI reference-update tolerance
+bottle_outlier_um = 10.0               # matchup left out when |difference - median difference| exceeds this (5 x accuracy): gross errors only
+bottles = "summary"                    # discrete nitrate from discrete_summary_csv, rows of the cast named by `cast`
+
 [deployments]
 single_upcast_variants = ["nearest_upcast_depSM"]          # first present is compared with the primary (salinity)
 single_upcast_variants_oxygen = ["nearest_upcast_depSM"]
@@ -395,6 +411,19 @@ time_gap_h = { severity = "minor", target = 6.0, limit = 24.0 }
 # =============================================================================================
 # Uploaded runs (Streamlit upload page / rca_sal.uploads)
 # =============================================================================================
+[deployments.nitrate]                  # provisional; OOI BGC guide chapter 3
+matchups_used = { severity = "major", target = 6, limit = 3, better = "higher" }
+rmse_reduction_pct = { severity = "critical", target = 25.0, limit = 0.0, better = "higher" }
+# |median(bottle - SUNA)|: the guide expects the in situ sensor within +/-2 umol/L of the discrete samples at deployment (3.4)
+offset_abs_um = { severity = "major", target = 2.0, limit = 5.0 }
+fit_r2 = { severity = "major", target = 0.98, limit = 0.95, better = "higher" }
+fit_slope_departure = { severity = "major", target = 0.05, limit = 0.10 }
+temperature_vs_depth_offset_um = { severity = "minor", target = 0.5, limit = 1.0 }
+profile_offset_range_um = { severity = "minor", target = 1.0, limit = 2.0 }
+time_gap_h = { severity = "minor", target = 6.0, limit = 24.0 }
+# the nearest SUNA record is a full profile (fails when the profiler was parked: one-point comparison)
+full_profile = { severity = "major", target = 1, limit = 1 }
+
 [upload]
 template_year = "2025"     # parameters, variants and the oxygen settings of this year are used for uploaded runs
 max_file_mb = 200          # per uploaded file (keep in line with server.maxUploadSize in .streamlit/config.toml)
@@ -418,6 +447,8 @@ profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
 profiler_stream = "streamed/ctdpf_sbe43_sample"
 oxygen_reference_designator = "RS03AXPS-SF03A-2A-DOFSTA302"
 oxygen_stream = "streamed/do_fast_sample"
+nitrate_reference_designator = "RS03AXPS-SF03A-4A-NUTNRA301"
+nitrate_stream = "streamed/nutnr_a_sample"
 
 [sites.RS01SBPS]
 name = "Slope Base Shallow Profiler"
@@ -426,6 +457,8 @@ profiler_reference_designator = "RS01SBPS-SF01A-2A-CTDPFA102"
 profiler_stream = "streamed/ctdpf_sbe43_sample"
 oxygen_reference_designator = "RS01SBPS-SF01A-2A-DOFSTA102"
 oxygen_stream = "streamed/do_fast_sample"
+nitrate_reference_designator = "RS01SBPS-SF01A-4A-NUTNRA101"
+nitrate_stream = "streamed/nutnr_a_sample"
 
 [sites.CE04OSPS]
 name = "Oregon Offshore Shallow Profiler"
@@ -434,6 +467,8 @@ profiler_reference_designator = "CE04OSPS-SF01B-2A-CTDPFA107"
 profiler_stream = "streamed/ctdpf_sbe43_sample"
 oxygen_reference_designator = "CE04OSPS-SF01B-2A-DOFSTA107"
 oxygen_stream = "streamed/do_fast_sample"
+nitrate_reference_designator = "CE04OSPS-SF01B-4A-NUTNRA102"
+nitrate_stream = "streamed/nutnr_a_sample"
 
 [profile_index]
 file = "{site}_profiles_{year}.csv"       # in [github_sources.profile_indices]
@@ -441,6 +476,26 @@ file = "{site}_profiles_{year}.csv"       # in [github_sources.profile_indices]
 [github_sources.profile_indices]       # official profile start/peak/end times of the shallow profilers
 repo = "OOI-CabledArray/profileIndices"
 ref = "3999352e3be8f0df81891d6c5886b642cc7ddeb5"
+
+[github_sources.asset_management]       # deployment tables (position, depth, start and stop) of the OOI instruments
+repo = "oceanobservatories/asset-management"
+ref = "63038a1e4847779688bf0a3feaab3df5831173f1"
+
+[inventory]                              # scripts/instrument_inventory.py
+last_year = 2025                         # cruises after this year are not read
+max_distance_km = 5.0                    # ship CTD cast start position to the instrument's deployment position
+max_distance_rov_km = 0.25               # the same for ROV bottle samples, which are taken at the instrument
+max_depth_difference_m = 30.0            # bottle depth to the deployment depth, fixed-depth instruments only
+max_gap_hours = 72.0                     # bottle closure time to the nearest start or stop of a deployment, when none contains it
+sites = ["RS01SBPD", "RS01SBPS", "RS01SLBS", "RS01SUM1", "RS01SUM2", "RS03ASHS", "RS03AXBS", "RS03AXPD", "RS03AXPS", "RS03CCAL",
+         "RS03ECAL", "RS03INT1", "RS03INT2", "CE02SHBP", "CE02SHSM", "CE02SHSP", "CE04OSBP", "CE04OSPD", "CE04OSPS", "CE04OSSM"]
+
+[seafloor]                               # scripts/fetch_seafloor.py
+instruments = ["RS03AXBS-LJ03A-12-CTDPFB301", "RS01SLBS-LJ01A-12-CTDPFB101"]
+stream = "streamed/ctdpf_optode_sample"
+window_gap_h = 12.0                      # bottle times closer than this share one request
+pad_h = 1.0                              # request window padding before the first and after the last bottle
+half_window_min = 10.0                   # instrument samples within this time of a bottle closure give its instrument value
 
 [github]
 repo = "OOI-CabledArray/discreteSummaries"
@@ -896,3 +951,169 @@ dofsta_nc = "data/raw/ooinet/20261026T221829499Z/deployment0014_RS01SBPS-SF01A-2
 ooinet_status = "data/raw/ooinet/20261026T221829499Z/status.json"
 ooinet_provenance = "data/raw/ooinet/20261026T221829499Z/deployment0014_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
 ooinet_annotations = "data/raw/ooinet/20261026T221829499Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2025.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T195138253Z"
+
+[years.2025.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195138253Z/deployment0011_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20250817T074007.294546-20250819T220736.308555.nc"
+ooinet_status = "data/raw/ooinet/20261102T195138253Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195138253Z/deployment0011_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195138253Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2020.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T195328068Z"
+
+[years.2020.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195328068Z/deployment0006_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20200807T210011.640592-20200810T084726.081754.nc"
+ooinet_status = "data/raw/ooinet/20261102T195328068Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195328068Z/deployment0006_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195328068Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2020.sites.CE04OSPS.nitrate]
+cast = "CTD-009"                        # CTD-010 (salinity) has nitrate below 350 m only; CTD-009 is the cast of the guide's worked example (3.6)
+cast_reason = "the salinity reference cast has discrete nitrate below 350 m only"
+ooinet_request_dir = "data/raw/ooinet/20261102T195432081Z"
+
+[years.2020.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195432081Z/deployment0007_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20200810T204742.131660-20200813T083121.189231.nc"
+ooinet_status = "data/raw/ooinet/20261102T195432081Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195432081Z/deployment0007_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195432081Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2021.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T195616256Z"
+
+[years.2021.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195616256Z/deployment0006_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20210801T210008.584975-20210802T220753.318238.nc"
+ooinet_status = "data/raw/ooinet/20261102T195616256Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195616256Z/deployment0006_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195616256Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2021.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T195700924Z"
+
+[years.2021.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195700924Z/deployment0008_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20210824T234753.108472-20210827T211635.746102.nc"
+ooinet_status = "data/raw/ooinet/20261102T195700924Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195700924Z/deployment0008_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195700924Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2022.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T195824833Z"
+
+[years.2022.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195824833Z/deployment0008_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20220813T005955.265521-20220813T170950.045280.nc"
+ooinet_status = "data/raw/ooinet/20261102T195824833Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195824833Z/deployment0008_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195824833Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2022.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T195928361Z"
+
+[years.2022.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T195928361Z/deployment0010_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20220915T162049.302183-20220917T083011.214283.nc"
+ooinet_status = "data/raw/ooinet/20261102T195928361Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T195928361Z/deployment0010_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T195928361Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2022.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200012154Z"
+
+[years.2022.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T200012154Z/deployment0009_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20220824T072110.329110-20220824T215122.703848.nc"
+ooinet_status = "data/raw/ooinet/20261102T200012154Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200012154Z/deployment0009_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200012154Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2023.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200055615Z"
+
+[years.2023.nitrate.inputs]
+nutnr_nc = [
+  "data/raw/ooinet/20261102T200055615Z/deployment0008_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20230823T232936.671107-20230825T130936.530685.nc",
+  "data/raw/ooinet/20261102T200055615Z/deployment0009_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20230826T165631.463881-20230826T165631.463881.nc",
+]
+ooinet_status = "data/raw/ooinet/20261102T200055615Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200055615Z/deployment0009_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200055615Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2023.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200140751Z"
+
+[years.2023.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = [
+  "data/raw/ooinet/20261102T200140751Z/deployment0010_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20230815T105406.955412-20230815T122045.328808.nc",
+  "data/raw/ooinet/20261102T200140751Z/deployment0011_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20230817T213227.733121-20230817T213653.719572.nc",
+]
+ooinet_status = "data/raw/ooinet/20261102T200140751Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200140751Z/deployment0011_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200140751Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2023.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200225255Z"
+
+[years.2023.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T200225255Z/deployment0010_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20230813T204111.498320-20230814T215050.186119.nc"
+ooinet_status = "data/raw/ooinet/20261102T200225255Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200225255Z/deployment0010_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200225255Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2024.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200308517Z"
+
+[years.2024.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T200308517Z/deployment0010_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20240812T164522.068675-20240812T165643.648022.nc"
+ooinet_status = "data/raw/ooinet/20261102T200308517Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200308517Z/deployment0010_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200308517Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2024.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200352239Z"
+
+[years.2024.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = [
+  "data/raw/ooinet/20261102T200352239Z/deployment0011_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20240808T114711.757080-20240809T062806.916499.nc",
+  "data/raw/ooinet/20261102T200352239Z/deployment0012_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20240809T203145.472148-20240810T225737.765767.nc",
+]
+ooinet_status = "data/raw/ooinet/20261102T200352239Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200352239Z/deployment0012_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200352239Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2024.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200437097Z"
+
+[years.2024.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = [
+  "data/raw/ooinet/20261102T200437097Z/deployment0011_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20240807T190728.158885-20240808T171302.961939.nc",
+  "data/raw/ooinet/20261102T200437097Z/deployment0012_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20240809T130254.293163-20240810T015728.808219.nc",
+]
+ooinet_status = "data/raw/ooinet/20261102T200437097Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200437097Z/deployment0012_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200437097Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2025.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200522050Z"
+
+[years.2025.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T200522050Z/deployment0014_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20250824T072207.407448-20250826T215004.156417.nc"
+ooinet_status = "data/raw/ooinet/20261102T200522050Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200522050Z/deployment0014_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200522050Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2025.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261102T200605694Z"
+
+[years.2025.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261102T200605694Z/deployment0013_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20250825T081424.060023-20250828T081347.493659.nc"
+ooinet_status = "data/raw/ooinet/20261102T200605694Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261102T200605694Z/deployment0013_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261102T200605694Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+# No nitrate run possible: the summary has no discrete nitrate on cast CTD-007 (2020), and OOINet returned no SUNA data (HTTP 404) for
+# the cast time +/- [nitrate] half_window_h (2021). Listed so the deployment summary shows them as missing input.
+[years.2020.sites.RS01SBPS.nitrate]
+inputs = {}
+
+[years.2021.sites.RS01SBPS.nitrate]
+inputs = {}

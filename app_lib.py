@@ -60,7 +60,7 @@ def uploaded_runs() -> dict:
 def folder(year, variable: str = "salinity") -> Path:
     """Output folder of a run. `year` is "2025" for the repository outputs or "2025 (uploaded)" for a session run."""
     root = Path(uploaded_runs()[year]) if year in uploaded_runs() else OUT
-    return root / str(year).removesuffix(UPLOAD_SUFFIX) / ("oxygen" if variable == "oxygen" else "")
+    return root / str(year).removesuffix(UPLOAD_SUFFIX) / ("" if variable == "salinity" else variable)
 
 
 def mtime(year, name: str, variable: str = "salinity") -> float:
@@ -92,11 +92,13 @@ def run_site(run) -> str:
 
 
 def run_label(run, variable: str = "salinity") -> str:
-    """'2025 · Axial Base · RS03AXPS-SF03A-2A-CTDPFA302' (the DOFSTA designator for variable='oxygen'); an uploaded run keeps its own label."""
+    """'2025 · Axial Base · RS03AXPS-SF03A-2A-CTDPFA302' (the DOFSTA or NUTNR designator for variable='oxygen' or 'nitrate'); an uploaded
+    run keeps its own label."""
     s = _site(run)
     if s is None:
         return str(run)
-    return f"{run_site(run)} · {s[2]['oxygen_reference_designator' if variable == 'oxygen' else 'profiler_reference_designator']}"
+    key = "profiler_reference_designator" if variable == "salinity" else f"{variable}_reference_designator"
+    return f"{run_site(run)} · {s[2].get(key, '')}"
 
 
 def run_caption(run) -> str:
@@ -104,7 +106,8 @@ def run_caption(run) -> str:
     s = _site(run)
     if s is None:
         return "Run made from uploaded files."
-    return f"{s[2]['name']}  \nSalinity: `{s[2]['profiler_reference_designator']}`  \nOxygen: `{s[2]['oxygen_reference_designator']}`"
+    return (f"{s[2]['name']}  \nSalinity: `{s[2]['profiler_reference_designator']}`  \nOxygen: `{s[2]['oxygen_reference_designator']}`"
+            + (f"  \nNitrate: `{s[2]['nitrate_reference_designator']}`" if "nitrate_reference_designator" in s[2] else ""))
 
 
 def years_on_disk() -> list[str]:
@@ -137,7 +140,7 @@ def require_year(variable: str = "salinity") -> tuple[str, dict]:
     rec = get(year, "calibration_record.json", "json", variable)
     if rec is None:
         y, _, site = str(year).removesuffix(UPLOAD_SUFFIX).partition("-")
-        cmd = f"python scripts/run_year.py --year {y}" + (f" --site {site}" if site else "") + (" --variable oxygen" if variable == "oxygen" else "")
+        cmd = f"python scripts/run_year.py --year {y}" + (f" --site {site}" if site else "") + ("" if variable == "salinity" else f" --variable {variable}")
         st.error(f"{year}: no {variable} calibration record in outputs. Run `{cmd}`.", icon=":material/error:")
         st.stop()
     return year, rec
