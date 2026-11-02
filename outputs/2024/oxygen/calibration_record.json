@@ -4,20 +4,20 @@
     "prov": "http://www.w3.org/ns/prov#",
     "rca": "urn:rca-salinity:term/"
   },
-  "@id": "urn:uuid:0bf7b81f-70de-5fbd-a3d9-eddcfe747fe9",
+  "@id": "urn:uuid:c8302116-9254-52e2-81de-804452c0660b",
   "@type": [
     "Dataset",
     "prov:Entity"
   ],
   "name": "RCA DOFSTA oxygen gain, Cabled-15 AT50-29 (2024), Axial Base Shallow Profiler",
-  "dateCreated": "2026-10-28T21:02:47+00:00",
+  "dateCreated": "2026-11-02T20:22:50+00:00",
   "variableMeasured": "corrected_dissolved_oxygen",
   "rca:correctionKind": "multiplicative",
   "rca:site": "RS03AXPS",
   "prov:wasGeneratedBy": {
     "@type": "prov:Activity",
-    "prov:startedAtTime": "2026-10-28T21:02:46+00:00",
-    "prov:endedAtTime": "2026-10-28T21:02:47+00:00",
+    "prov:startedAtTime": "2026-11-02T20:22:49+00:00",
+    "prov:endedAtTime": "2026-11-02T20:22:50+00:00",
     "prov:wasAssociatedWith": {
       "@type": [
         "SoftwareApplication",
@@ -47,7 +47,7 @@
         },
         {
           "path": "rca_sal/deployments.py",
-          "sha256": "58181d931d1878444d30b649dc298f8d2eb86f33d097c2007c4be0564fa72180",
+          "sha256": "59fc838004ad8614312716c551da4447aa0c161ad0547755cc392cc9b892a57b",
           "role": "code"
         },
         {
@@ -57,7 +57,7 @@
         },
         {
           "path": "rca_sal/eos80.py",
-          "sha256": "9c94fd91f135260e2bf94559b29deee83c618d00b5793b23fa7480567574aa29",
+          "sha256": "aae6fa877db17d26c7ecf49304f381e662dade2b6844afd24ab57d43c77ae5cc",
           "role": "code"
         },
         {
@@ -71,8 +71,18 @@
           "role": "code"
         },
         {
+          "path": "rca_sal/instruments.py",
+          "sha256": "ea0a0ac44dd43817143e031eb53436660a2da0bcf0ffeb21ff20910727f31b68",
+          "role": "code"
+        },
+        {
           "path": "rca_sal/lineage.py",
           "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/nitrate.py",
+          "sha256": "0543edb1579419c44696fbb27714db67c07ce9117f363afbfdc17dfb75f256a3",
           "role": "code"
         },
         {
@@ -82,7 +92,7 @@
         },
         {
           "path": "rca_sal/ooinet.py",
-          "sha256": "8a3c50869b4227e2aa78e5ccc99710e3c95525f667b69233963203209eb77424",
+          "sha256": "30fea611c220c6e5242239a26767a535479021ba880c21897683d8022cfec33b",
           "role": "code"
         },
         {
@@ -93,6 +103,11 @@
         {
           "path": "rca_sal/pipeline.py",
           "sha256": "b5c11121bbf16840dd23428e1d598c324564b20ee02c7fdc01e661999d8a90a1",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_no3.py",
+          "sha256": "1b3388f05f75bb3b855b62afc7a1037f70209859923c37b6b2edbad32c95728d",
           "role": "code"
         },
         {
@@ -121,23 +136,28 @@
           "role": "code"
         },
         {
+          "path": "rca_sal/seafloor.py",
+          "sha256": "9cd0170cab888540f1ea0248dec88740b92ad3e2c3ea9ffa45fda426ee2b17cd",
+          "role": "code"
+        },
+        {
           "path": "rca_sal/uploads.py",
           "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
           "role": "code"
         },
         {
           "path": "config/cruises.toml",
-          "sha256": "8f829bf1ec2c3371b54d1e7edf18cdd64b205fde0fcc03c905c8b158ffea7257",
+          "sha256": "7665bbcb391e961b4853d4dbe991b941e1afb3cb4d076fa9ab0143952a24e7f0",
           "role": "config"
         },
         {
           "path": "scripts/run_year.py",
-          "sha256": "748ac3d3bb44f1252ec9aa6bd23ea19ea33ab7612b92dcf6ae920674cd3ca3d1",
+          "sha256": "2347cfb6377fe90398dafb68f78c802c29b31a7ecac13488292bafae025e98bc",
           "role": "code"
         }
       ],
       "rca:codeVersion": {
-        "git_commit": "c6571495e6f3851f48706b365225fcca2773543a",
+        "git_commit": "7dc8a1cccc39687c1d42895c3c6d432467fef7e3",
         "uncommitted_changes_in_code_or_config": false
       },
       "rca:runtime": {
@@ -1085,32 +1105,32 @@
   "rca:outputs": [
     {
       "name": "binned_profiles.csv",
-      "sha256": "a4b589ec8f1fe3288be2f1beb698ad93035e8320da6c2cd2215d92a99659dacc",
+      "sha256": "1d1b5e467136bd664e25dedf5a276966fd04f0aca8c20a8a9eaae3ca8616ffe8",
       "contentSize": 894052
     },
     {
       "name": "calibration_table.csv",
-      "sha256": "300515510e4faf5cd6479c6530548e94095bed2dc6b54f3425f0d0d8a78ede8c",
+      "sha256": "800e44d6337c36a34c24917437d5ba9e316f928bfd9d8e17c9e9c5de4e7a999c",
       "contentSize": 10766
     },
     {
       "name": "calibration_table.parquet",
-      "sha256": "e3517b6614303730316c2df1aa47d38cfa8c5c575c3151599ed7b4b6db6a3348",
+      "sha256": "466d8b6e2b568e665b36533b0c099f1948290dcf2b454c1ea85638c7b3c00222",
       "contentSize": 30829
     },
     {
       "name": "ctd_o2_profiles.csv",
-      "sha256": "bf544131f51d1663d0b83510f7db049891ed45ef7e8e7bf1f627dea210a63863",
+      "sha256": "75c3e1eea6977902b29c6f077267253f1ac02921ec89d150a2a844cb4c4af061",
       "contentSize": 6294439
     },
     {
       "name": "upcasts.csv",
-      "sha256": "803d75de746edbe61537d7ef40abbd8c9d2c7a29900bbb64c785a6c78835c72c",
+      "sha256": "306b17b5542e12deb87d8063f6d0faea9726a6e6375950698e1c84ca40822e5e",
       "contentSize": 2062
     },
     {
       "name": "winkler_check.csv",
-      "sha256": "73ccb6dd7a894410eb70ff7eea633fdcf1f3e7c9af167f188f7343eab91f75d2",
+      "sha256": "f98b6cf7f095dc8763336ae600a43d924dbc3a138845e0923b22a442a675f1b0",
       "contentSize": 17220
     }
   ]

@@ -1,0 +1,545 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:9d895a40-d31a-521b-8307-9524413d1eb5",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA SUNA nitrate validation, Cabled-13 TN407 (2022), Oregon Offshore Shallow Profiler",
+  "dateCreated": "2026-11-02T20:22:23+00:00",
+  "variableMeasured": "salinity_corrected_nitrate",
+  "rca:correctionKind": "additive",
+  "rca:site": "CE04OSPS",
+  "rca:method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-11-02T20:22:22+00:00",
+    "prov:endedAtTime": "2026-11-02T20:22:23+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "59fc838004ad8614312716c551da4447aa0c161ad0547755cc392cc9b892a57b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "57ccd562c29f24a894f277a602275438e3157b0a93f611914ee547cf96c4e997",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "aae6fa877db17d26c7ecf49304f381e662dade2b6844afd24ab57d43c77ae5cc",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "a86c438f979f2771d872966363ce19580da60e25f6fecd7ad1f0b9bcbefbf18e",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/instruments.py",
+          "sha256": "ea0a0ac44dd43817143e031eb53436660a2da0bcf0ffeb21ff20910727f31b68",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/nitrate.py",
+          "sha256": "0543edb1579419c44696fbb27714db67c07ce9117f363afbfdc17dfb75f256a3",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "30fea611c220c6e5242239a26767a535479021ba880c21897683d8022cfec33b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "6d6bc489a27d2ce0fd53f83d0d1d5fbae2600da5ef955f725ec14715ef475622",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "b5c11121bbf16840dd23428e1d598c324564b20ee02c7fdc01e661999d8a90a1",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_no3.py",
+          "sha256": "1b3388f05f75bb3b855b62afc7a1037f70209859923c37b6b2edbad32c95728d",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "036fe2f2044bcb30227064e7c8f2fc373dfb5f725f7113849b02a8198c24a5ae",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seafloor.py",
+          "sha256": "9cd0170cab888540f1ea0248dec88740b92ad3e2c3ea9ffa45fda426ee2b17cd",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "7665bbcb391e961b4853d4dbe991b941e1afb3cb4d076fa9ab0143952a24e7f0",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "2347cfb6377fe90398dafb68f78c802c29b31a7ecac13488292bafae025e98bc",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "7dc8a1cccc39687c1d42895c3c6d432467fef7e3",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-13_TN407_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-13_TN407_Discrete_Summary.csv",
+        "sha256": "920eae08bff31afe887ee372eb48658afb68ad555a4be40f4f6518e04a1a90eb",
+        "contentSize": 119356,
+        "dateModified": "2026-10-26T21:47:21+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-13_TN407_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 2cfc40626ce3f18c72ce5787be6b72049c472023)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0009_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20220824T072110.329110-20220824T215122.703848.nc",
+        "contentUrl": "data/raw/ooinet/20261102T200012154Z/deployment0009_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20220824T072110.329110-20220824T215122.703848.nc",
+        "sha256": "0e834909c8c029c86d0b9b084f2ec129a67e1f58df96653e7bc16dec119cde45",
+        "contentSize": 448099,
+        "dateModified": "2026-11-02T20:00:52+00:00",
+        "rca:role": "nutnr_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261102T200012154Z/status.json",
+        "sha256": "6a1051d3dfc129f8c30c4e76bebdef8912f807eb5a91d42fc6ebb224ccbffe8b",
+        "contentSize": 286,
+        "dateModified": "2026-11-02T20:00:52+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0009_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261102T200012154Z/deployment0009_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json",
+        "sha256": "b9a362507900df475d729a234bad50120ff32484f163800f8410333c325b1eba",
+        "contentSize": 78875,
+        "dateModified": "2026-11-02T20:00:52+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261102T200012154Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json",
+        "sha256": "59de7b8d2c4db8dc54e73c7b5b57bb64546e36a15e7aa3eee2c862152e3caa61",
+        "contentSize": 607,
+        "dateModified": "2026-11-02T20:00:53+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261102T200012154Z",
+    "request_id": "20261102T200012154Z",
+    "reference_designator": "CE04OSPS-SF01B-4A-NUTNRA102",
+    "stream": "streamed/nutnr_a_sample",
+    "deployment": null,
+    "annotations": [
+      {
+        "id": 4135,
+        "subsite": "CE04OSPS",
+        "node": "SF01B",
+        "sensor": "4A-NUTNRA102",
+        "method": "streamed",
+        "stream": null,
+        "annotation": "NUTNRA102 was turned off following the SF01B profiler pod level-wind issue, because mission execution depends on the profiler moving. Discussion of a potential software solution is ongoing.",
+        "exclusion_flag": false,
+        "source": "m.vardaro@gmail.com",
+        "qc_flag": "not_operational",
+        "parameters": [],
+        "start": "2022-05-02 21:51:00",
+        "stop": "2022-09-03 18:05:00"
+      }
+    ],
+    "status": {
+      "20220821T224106-20220823T000000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: All data removed by annotation mask",
+        "requestUUID": "00900fca-50fc-4236-b3e2-b9db7a849094"
+      },
+      "20220823T000000-20220824T224106": "complete"
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "FinalSummaries/Cabled-13_TN407_Discrete_Summary.csv",
+        "blob_sha": "2cfc40626ce3f18c72ce5787be6b72049c472023",
+        "bytes": 119356,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-13_TN407_Discrete_Summary.csv"
+      }
+    ]
+  },
+  "rca:cruise": {
+    "cruise": "Cabled-13",
+    "ship_cruise_id": "TN407",
+    "vessel": "R/V Thomas G. Thompson",
+    "cast": "CTD-004",
+    "first_bottle_closure_utc": "2022-08-23T11:02:57+00:00",
+    "last_bottle_closure_utc": "2022-08-23T11:49:22+00:00",
+    "cast_time_utc": "2022-08-23T11:26:09.500000+00:00",
+    "definition": "cast_time = midpoint of the cast's first and last bottle closure"
+  },
+  "rca:parameters": {
+    "nitrate": {
+      "method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
+      "half_window_h": 36.0,
+      "profile_gap_min": 30.0,
+      "min_profile_samples": 10,
+      "min_profile_span_m": 100.0,
+      "spike_window": 5,
+      "spike_threshold_um": 2.0,
+      "bin_size_m": 2.0,
+      "accuracy_um": 2.0,
+      "bottle_outlier_um": 10.0,
+      "bottles": "summary"
+    }
+  },
+  "rca:inputChecks": {
+    "sensor_samples_after_cleaning": 415,
+    "spikes_removed": 0,
+    "annotation_excluded": 0,
+    "n_profiles": 2,
+    "bottles": 10,
+    "bottles_usable": 7,
+    "nitrate_units": "umol L-1"
+  },
+  "rca:profiles": [
+    {
+      "profile_id": 1,
+      "start_utc": "2022-08-24T07:21:10.329109504+00:00",
+      "end_utc": "2022-08-24T08:31:16.412349952+00:00",
+      "n_samples": 205,
+      "deployment": 9,
+      "depth_min_m": 7.026836759312627,
+      "depth_max_m": 193.24681164379083,
+      "temperature_min": 7.569414809968842,
+      "temperature_max": 15.995191967928543,
+      "mean_time_utc": "2022-08-24T07:55:49.315710633+00:00",
+      "hours_from_cast": 20.49439325295361,
+      "kind": "full"
+    },
+    {
+      "profile_id": 2,
+      "start_utc": "2022-08-24T20:41:10.909362688+00:00",
+      "end_utc": "2022-08-24T21:51:22.703848448+00:00",
+      "n_samples": 210,
+      "deployment": 9,
+      "depth_min_m": 6.070869339474719,
+      "depth_max_m": 193.0283243818871,
+      "temperature_min": 7.55370494248327,
+      "temperature_max": 15.534544814355378,
+      "mean_time_utc": "2022-08-24T21:16:12.719759813+00:00",
+      "hours_from_cast": 33.834227711059164,
+      "kind": "full"
+    }
+  ],
+  "rca:variants": [
+    {
+      "variant_id": "nearest_profile_temperature",
+      "role": "primary",
+      "match_by": "temperature",
+      "profile_id": 1,
+      "deployment": 9,
+      "profile_kind": "full",
+      "depth_span_m": 186.2199748844782,
+      "profile_mean_time_utc": "2022-08-24T07:55:49.315710633+00:00",
+      "hours_from_cast": 20.49439325295361,
+      "n_sensor_samples": 205,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 94,
+      "depth_min_m": 7.026836759312627,
+      "depth_max_m": 193.24681164379083,
+      "temperature_min": 7.569414809968842,
+      "temperature_max": 15.995191967928543,
+      "n_bottles_usable": 7,
+      "annotations_on_samples": "[{\"id\": 4135, \"qc_flag\": \"not_operational\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA102\", \"start\": \"2022-05-02 21:51:00\", \"stop\": \"2022-09-03 18:05:00\", \"n_samples\": 205, \"annotation\": \"NUTNRA102 was turned off following the SF01B profiler pod level-wind issue, because mission execution depends on the profiler moving. Discussion of a potential software solution is ongoing.\"}]",
+      "n_matchups": 6,
+      "n_outliers": 0,
+      "offset_um": -1.1755548506981988,
+      "offset_iqr_um": 2.8072770791499924,
+      "mean_diff_um": -1.7153712171528264,
+      "rmse_before_um": 3.1798416565909773,
+      "rmse_after_um": 2.731354290063294,
+      "max_abs_diff_um": 6.894490622792121,
+      "within_accuracy": true,
+      "fit_slope": 0.888528226776,
+      "fit_intercept_um": 3.7138042276037293,
+      "fit_r2": 0.9674911576925285,
+      "mean_profiler_minus_cast_h": 20.49439325295361,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "nearest_profile_depth",
+      "role": "depth_matchup",
+      "match_by": "depth",
+      "profile_id": 1,
+      "deployment": 9,
+      "profile_kind": "full",
+      "depth_span_m": 186.2199748844782,
+      "profile_mean_time_utc": "2022-08-24T07:55:49.315710633+00:00",
+      "hours_from_cast": 20.49439325295361,
+      "n_sensor_samples": 205,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 94,
+      "depth_min_m": 7.026836759312627,
+      "depth_max_m": 193.24681164379083,
+      "temperature_min": 7.569414809968842,
+      "temperature_max": 15.995191967928543,
+      "n_bottles_usable": 7,
+      "annotations_on_samples": "[{\"id\": 4135, \"qc_flag\": \"not_operational\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA102\", \"start\": \"2022-05-02 21:51:00\", \"stop\": \"2022-09-03 18:05:00\", \"n_samples\": 205, \"annotation\": \"NUTNRA102 was turned off following the SF01B profiler pod level-wind issue, because mission execution depends on the profiler moving. Discussion of a potential software solution is ongoing.\"}]",
+      "n_matchups": 5,
+      "n_outliers": 0,
+      "offset_um": -0.4243725916725296,
+      "offset_iqr_um": 4.727879227961295,
+      "mean_diff_um": -2.4939527571346525,
+      "rmse_before_um": 3.7948077092766574,
+      "rmse_after_um": 3.5304287638812712,
+      "max_abs_diff_um": 6.754853240959596,
+      "within_accuracy": true,
+      "fit_slope": 0.9075476068814816,
+      "fit_intercept_um": 3.8690975108329115,
+      "fit_r2": 0.9525112051748444,
+      "mean_profiler_minus_cast_h": 20.49439325295361,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_1_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 1,
+      "deployment": 9,
+      "profile_kind": "full",
+      "depth_span_m": 186.2199748844782,
+      "profile_mean_time_utc": "2022-08-24T07:55:49.315710633+00:00",
+      "hours_from_cast": 20.49439325295361,
+      "n_sensor_samples": 205,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 94,
+      "depth_min_m": 7.026836759312627,
+      "depth_max_m": 193.24681164379083,
+      "temperature_min": 7.569414809968842,
+      "temperature_max": 15.995191967928543,
+      "n_bottles_usable": 7,
+      "annotations_on_samples": "[{\"id\": 4135, \"qc_flag\": \"not_operational\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA102\", \"start\": \"2022-05-02 21:51:00\", \"stop\": \"2022-09-03 18:05:00\", \"n_samples\": 205, \"annotation\": \"NUTNRA102 was turned off following the SF01B profiler pod level-wind issue, because mission execution depends on the profiler moving. Discussion of a potential software solution is ongoing.\"}]",
+      "n_matchups": 6,
+      "n_outliers": 0,
+      "offset_um": -1.1755548506981988,
+      "offset_iqr_um": 2.8072770791499924,
+      "mean_diff_um": -1.7153712171528264,
+      "rmse_before_um": 3.1798416565909773,
+      "rmse_after_um": 2.731354290063294,
+      "max_abs_diff_um": 6.894490622792121,
+      "within_accuracy": true,
+      "fit_slope": 0.888528226776,
+      "fit_intercept_um": 3.7138042276037293,
+      "fit_r2": 0.9674911576925285,
+      "mean_profiler_minus_cast_h": 20.49439325295361,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_2_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 2,
+      "deployment": 9,
+      "profile_kind": "full",
+      "depth_span_m": 186.9574550424124,
+      "profile_mean_time_utc": "2022-08-24T21:16:12.719759813+00:00",
+      "hours_from_cast": 33.834227711059164,
+      "n_sensor_samples": 210,
+      "n_spikes_removed": 0,
+      "n_negative": 5,
+      "n_bins": 94,
+      "depth_min_m": 6.070869339474719,
+      "depth_max_m": 193.0283243818871,
+      "temperature_min": 7.55370494248327,
+      "temperature_max": 15.534544814355378,
+      "n_bottles_usable": 7,
+      "annotations_on_samples": "[{\"id\": 4135, \"qc_flag\": \"not_operational\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA102\", \"start\": \"2022-05-02 21:51:00\", \"stop\": \"2022-09-03 18:05:00\", \"n_samples\": 210, \"annotation\": \"NUTNRA102 was turned off following the SF01B profiler pod level-wind issue, because mission execution depends on the profiler moving. Discussion of a potential software solution is ongoing.\"}]",
+      "n_matchups": 6,
+      "n_outliers": 0,
+      "offset_um": -0.2732866055490216,
+      "offset_iqr_um": 2.3188567408840917,
+      "mean_diff_um": -0.22975978827545088,
+      "rmse_before_um": 1.7843201036251286,
+      "rmse_after_um": 1.770000919693088,
+      "max_abs_diff_um": 3.1858532087547307,
+      "within_accuracy": true,
+      "fit_slope": 0.9104913372998179,
+      "fit_intercept_um": 1.8344446433545072,
+      "fit_r2": 0.9892587673361657,
+      "mean_profiler_minus_cast_h": 33.834227711059164,
+      "n_annotation_excluded": 0
+    }
+  ],
+  "rca:primaryVariant": "nearest_profile_temperature",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "nearest_profile_temperature",
+      "offset_um": -1.1755548506981988,
+      "time_cast_utc": "2022-08-23T11:26:09.500000+00:00"
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "drift needs a matchup at recovery of the same deployment (guide 3.5.3); not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "caveat",
+      "code": "nitrate_negative",
+      "text": "5 SUNA sample(s) are negative; kept (guide 3.5.2: evaluate, do not assume)."
+    },
+    {
+      "severity": "caveat",
+      "code": "nitrate_l2",
+      "text": "Sensor values are OOI L2 salinity_corrected_nitrate (TCSS), computed by OOI with the profiler's own, uncalibrated CTD; temperature matchups use that CTD temperature and the cast's CTD temperature 1."
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "bottle_matchups.csv",
+      "sha256": "f2de6bb436220d97ea27accb80d078c8033ad8bdde0ff4546e0b2c41a270e7c7",
+      "contentSize": 5993
+    },
+    {
+      "name": "bottles.csv",
+      "sha256": "53aa7680c4353a512fb723ac10fe7dd769297dfc991a0677d572d829c376a02c",
+      "contentSize": 975
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "3e9c84d23d6b256504610ece2ebbc755962f3f72240cfaa3a4e2a210c23f218f",
+      "contentSize": 4510
+    },
+    {
+      "name": "profiles.csv",
+      "sha256": "6e348510ce0debac3f67289bbcc34e4ba6f1ca81f04313b4dc7d778dc2d94383",
+      "contentSize": 569
+    },
+    {
+      "name": "sensor_profiles.csv",
+      "sha256": "f76885be25688d81086e9101f4bdb3f4d019e21481686952b158d7a272ba6d40",
+      "contentSize": 46668
+    },
+    {
+      "name": "sensor_samples.csv",
+      "sha256": "b94cb870a8c1af2f60c5605850c45a6f0cfaefabc67110e3a12967c009470ee2",
+      "contentSize": 82047
+    }
+  ]
+}

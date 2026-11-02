@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-10-28T21:03:06+00:00",
-  "conventions": "salinity  offset_psu = median(profiler - CTD);  S_corrected = S_raw - offset_psu.\n            Conductivity: C_corrected = slope * C_raw (AN31), salinity recomputed with PSS-78.\n  oxygen    O2_corrected = gain * O2_raw. No flat offset.",
+  "generated_utc": "2026-11-02T20:23:21+00:00",
+  "conventions": "salinity  offset_psu = median(profiler - CTD);  S_corrected = S_raw - offset_psu.\n            Conductivity: C_corrected = slope * C_raw (AN31), salinity recomputed with PSS-78.\n  oxygen    O2_corrected = gain * O2_raw. No flat offset.\n  nitrate   offset_um = median(bottle - SUNA);  NO3_corrected = NO3_L2 + offset_um (step function, OOI BGC guide 3.5.3).",
   "criteria": {
     "single_upcast_variants": [
       "nearest_upcast_depSM"
@@ -100,6 +100,56 @@
         "target": 6.0,
         "limit": 24.0
       }
+    },
+    "nitrate": {
+      "matchups_used": {
+        "severity": "major",
+        "target": 6,
+        "limit": 3,
+        "better": "higher"
+      },
+      "rmse_reduction_pct": {
+        "severity": "critical",
+        "target": 25.0,
+        "limit": 0.0,
+        "better": "higher"
+      },
+      "offset_abs_um": {
+        "severity": "major",
+        "target": 2.0,
+        "limit": 5.0
+      },
+      "fit_r2": {
+        "severity": "major",
+        "target": 0.98,
+        "limit": 0.95,
+        "better": "higher"
+      },
+      "fit_slope_departure": {
+        "severity": "major",
+        "target": 0.05,
+        "limit": 0.1
+      },
+      "temperature_vs_depth_offset_um": {
+        "severity": "minor",
+        "target": 0.5,
+        "limit": 1.0
+      },
+      "profile_offset_range_um": {
+        "severity": "minor",
+        "target": 1.0,
+        "limit": 2.0
+      },
+      "time_gap_h": {
+        "severity": "minor",
+        "target": 6.0,
+        "limit": 24.0
+      },
+      "full_profile": {
+        "severity": "major",
+        "target": 1,
+        "limit": 1
+      }
     }
   },
   "instruments": [
@@ -118,7 +168,7 @@
           "deployment": 6,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:89331aa0-7010-5002-acf8-7d1c427859a3",
+          "record_id": "urn:uuid:6ef57b73-db52-5d81-9868-ce22172b63d7",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -365,7 +415,7 @@
           "deployment": 7,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:e4a03424-a822-51a9-a4f7-65ddb89cef81",
+          "record_id": "urn:uuid:33219f75-1577-5d78-a2e8-c2769f058c80",
           "status": {
             "level": 4,
             "label": "not recommended",
@@ -609,7 +659,7 @@
           "deployment": 8,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:fed506fc-72a8-563a-a1ba-fde1775e0b1b",
+          "record_id": "urn:uuid:326ef2a1-031b-5bc4-bfd8-a2cb0ee66260",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -856,7 +906,7 @@
           "deployment": 9,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:e53233bb-cde7-5697-b9b0-b34f390881c1",
+          "record_id": "urn:uuid:d450606d-9650-55bf-b562-6f46a60c0739",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -1103,7 +1153,7 @@
           "deployment": 10,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:6cef569b-fda4-5718-9018-4e469314fc5b",
+          "record_id": "urn:uuid:2780ee16-8670-5582-833d-7804e9212a4e",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -1353,7 +1403,7 @@
           "deployment": 11,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:d37eed08-2ed7-50af-8f59-172c55b95ef2",
+          "record_id": "urn:uuid:b3d2b99d-aa61-5855-9e0e-fde29b087a08",
           "status": {
             "level": 2,
             "label": "minor issues",
@@ -1620,7 +1670,7 @@
           "deployment": 7,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:3d315a8d-a13e-5c69-9732-e7ce407ccba8",
+          "record_id": "urn:uuid:4723e81e-1a32-5c11-af4c-c635cecb18fb",
           "status": {
             "level": 1,
             "label": "good",
@@ -1863,7 +1913,7 @@
           "deployment": 8,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:c6130485-7389-5158-9a94-77dfda7a2c42",
+          "record_id": "urn:uuid:d82e37d0-258e-53bb-bf23-3013c4bd9818",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -2112,7 +2162,7 @@
           "deployment": 9,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:e8b3c7ec-77ca-548a-ae73-956939df72c3",
+          "record_id": "urn:uuid:c7de1f24-6b0b-5de2-9dfd-de49652c232b",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -2360,7 +2410,7 @@
           "deployment": 11,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:6ccf0726-969f-52b4-853e-de6c9a1893e3",
+          "record_id": "urn:uuid:b93cabb8-ade6-5f37-a5d3-3400e0fe0fe5",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -2608,7 +2658,7 @@
           "deployment": 12,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:6ea2d4ff-8f2d-5c3e-a597-a9437d613176",
+          "record_id": "urn:uuid:7a61d2ee-077c-50e0-8d43-959fbcb88e4d",
           "status": {
             "level": 4,
             "label": "not recommended",
@@ -2856,7 +2906,7 @@
           "deployment": 13,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:96610a8f-8966-561b-a1e6-10730c3e90ef",
+          "record_id": "urn:uuid:4a217ea0-ce6a-5bd9-9d63-c7c7264b318e",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -3116,7 +3166,7 @@
           "deployment": 8,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:49413721-e43d-524a-acb9-7d72601ed3f2",
+          "record_id": "urn:uuid:b5299ea0-503c-5b96-b790-bebe6bd1d4e3",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -3365,7 +3415,7 @@
           "deployment": 9,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:a21b52ed-8ac8-5e56-ac93-6a291b1a042b",
+          "record_id": "urn:uuid:ed5427e3-adce-58eb-89ab-37f38b504388",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -3612,7 +3662,7 @@
           "deployment": 10,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:f2c025fa-3352-5591-91cd-50850354842c",
+          "record_id": "urn:uuid:bd42e253-3cab-5691-b085-b2c7c4cdaf32",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -3863,7 +3913,7 @@
           "deployment": 11,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:264b2660-4dc7-5a1a-b2bc-92ac2d7feede",
+          "record_id": "urn:uuid:691223e0-52b4-5824-b71e-413dc2c0accf",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -4109,7 +4159,7 @@
           "deployment": 12,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:42d02b14-acca-576c-9560-c1e9c497e858",
+          "record_id": "urn:uuid:9fcfb023-f870-5225-9211-87fa1691b1ad",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -4356,7 +4406,7 @@
           "deployment": 14,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:a406c5d3-00cb-5ffd-a627-95ce83f1f84e",
+          "record_id": "urn:uuid:f9e14537-0df1-53f7-a008-999d23da43fd",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -4612,7 +4662,7 @@
           "deployment": 6,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:245f649b-520d-56c9-8cff-f0adf4368445",
+          "record_id": "urn:uuid:c2d50cdc-4b64-586a-a863-14f33f5ab68b",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -4871,7 +4921,7 @@
           "deployment": 7,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:35fa3f4a-54cd-5b6c-83b0-39d8c7c7ff6c",
+          "record_id": "urn:uuid:afece96c-7554-5df8-b275-ed5b32d252ea",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -5135,7 +5185,7 @@
           "deployment": 8,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:678ce50d-b771-5225-b7e4-e19eb9d219b8",
+          "record_id": "urn:uuid:ae56a07e-69a1-5f67-8d1d-cee14d36cba8",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -5394,7 +5444,7 @@
           "deployment": 9,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:0fe49ebb-df4a-5e69-a4bd-79befd821336",
+          "record_id": "urn:uuid:6d52f5e5-ca3e-5194-a494-0c88a827cd72",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -5658,7 +5708,7 @@
           "deployment": 10,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:0bf7b81f-70de-5fbd-a3d9-eddcfe747fe9",
+          "record_id": "urn:uuid:c8302116-9254-52e2-81de-804452c0660b",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -5920,7 +5970,7 @@
           "deployment": 11,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:eb55e46b-2824-50f4-bf6e-16b13a4ae0aa",
+          "record_id": "urn:uuid:e6d76d73-3203-5814-868e-4daca4a67719",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -6198,7 +6248,7 @@
           "deployment": 7,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:f017a764-dbc8-51aa-9566-6f7e239f11ba",
+          "record_id": "urn:uuid:b0054a93-3724-5d72-a8cc-52d09167e0a8",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -6452,7 +6502,7 @@
           "deployment": 8,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:ed30e0bf-695f-58ce-8832-094a67dc4ad7",
+          "record_id": "urn:uuid:ebd4f8e4-b3a1-52bc-b74a-3745d4499ad1",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -6716,7 +6766,7 @@
           "deployment": 9,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:f0e288b5-440d-58d1-8187-61d6a5b289bb",
+          "record_id": "urn:uuid:ad50da70-5b47-5fed-8248-8bc64208df36",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -6978,7 +7028,7 @@
           "deployment": 11,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:a0d7907c-24a0-5fe0-9a08-0ec22250724f",
+          "record_id": "urn:uuid:0b2f917e-89ce-5cad-82e6-1ea83960852a",
           "status": {
             "level": 4,
             "label": "not recommended",
@@ -7239,7 +7289,7 @@
           "deployment": 12,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:13bbf85a-9c46-5520-954c-6f8ae99913b2",
+          "record_id": "urn:uuid:178d2fe4-0d3d-5256-86d3-431827995921",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -7503,7 +7553,7 @@
           "deployment": 13,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:198dfddf-998b-57bc-87a7-c115970e7ffc",
+          "record_id": "urn:uuid:099dc632-6852-5977-acdc-e9b7d50da4a7",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -7770,7 +7820,7 @@
           "deployment": 8,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:5e5e0d58-d7e0-543c-a169-eb8c9f47edd8",
+          "record_id": "urn:uuid:49584791-2c91-5746-ac36-2da8980b2f6b",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -8027,7 +8077,7 @@
           "deployment": 9,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:b3cd43f8-25f9-537f-a218-809fcc4fd461",
+          "record_id": "urn:uuid:ae0a1d6f-83e3-575f-93ff-882d43cfcf1b",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -8291,7 +8341,7 @@
           "deployment": 10,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:108aa0be-f884-56cb-a003-5c9baf2f2f5c",
+          "record_id": "urn:uuid:cd440e0e-52fe-5e97-bd64-69582117e522",
           "status": {
             "level": 4,
             "label": "not recommended",
@@ -8553,7 +8603,7 @@
           "deployment": 11,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:c843660f-a8fd-5929-b61e-bd814fad9568",
+          "record_id": "urn:uuid:5ec40908-f155-5faf-b478-e17ff721f789",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -8815,7 +8865,7 @@
           "deployment": 12,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:fd1afa25-59c3-5429-82a2-24ea860a35de",
+          "record_id": "urn:uuid:637e5966-e31c-5cd6-bb9e-1643a7ab33cc",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -9081,7 +9131,7 @@
           "deployment": 14,
           "calibrated": true,
           "calibration": "calibrated",
-          "record_id": "urn:uuid:1afeaf2c-b1f6-528b-b0d0-317af68e7b5a",
+          "record_id": "urn:uuid:14fe6675-a185-5d28-b1e2-dcea45b0d99a",
           "status": {
             "level": 3,
             "label": "use with caution",
@@ -9334,6 +9384,4356 @@
               "sets_status": false
             }
           ]
+        }
+      ]
+    },
+    {
+      "refdes": "RS03AXPS-SF03A-4A-NUTNRA301",
+      "variable": "nitrate",
+      "site": "RS03AXPS",
+      "site_name": "Axial Base Shallow Profiler",
+      "deployments": [
+        {
+          "year": 2020,
+          "run": "2020",
+          "cruise": "Cabled-11",
+          "ship_cruise_id": "TN382",
+          "cast": "CTD-003",
+          "deployment": 6,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:aa5932a1-d803-5b5f-9254-57a8ff247f0e",
+          "status": {
+            "level": 2,
+            "label": "minor issues",
+            "all_checks_pass": false,
+            "n_pass": 5,
+            "n_marginal": 2,
+            "n_fail": 0,
+            "n_not_assessed": 1,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": false,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": false,
+              "profile_offset_range_um": true,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "fit_r2"
+            ],
+            "set_by": [
+              "fit_r2 marginal (major): SUNA = +0.43 + 0.951 x bottle, R^2 0.976"
+            ],
+            "other_issues": [
+              "temperature_vs_depth_offset_um marginal (minor): offset matched by temperature +0.37 vs by depth -0.17 umol/L"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE rises from 1.61 to 1.63 umol/L (+0.02 umol/L, +1.4%): offset within the +/-2.0 umol/L accuracy, no correction needed"
+            ]
+          },
+          "flat_offset": {
+            "value": 0.375,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 0.375"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 2,
+            "n_matchups": 9,
+            "profiler_minus_cast_h": -0.7,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 9,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 3.0,
+              "margin_to_limit": 6.0,
+              "summary": "9 of 10 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 9,
+                "n_bottles_usable": 10,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": -1.4,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": -26.4,
+              "margin_to_limit": -1.4,
+              "summary": "RMSE rises from 1.61 to 1.63 umol/L (+0.02 umol/L, +1.4%): offset within the +/-2.0 umol/L accuracy, no correction needed",
+              "details": {
+                "rmse_before_um": 1.61,
+                "rmse_after_um": 1.63,
+                "change_um": 0.02,
+                "change_pct": 1.4,
+                "n_matchups": 9
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.375,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 1.625,
+              "margin_to_limit": 4.625,
+              "summary": "bottle - SUNA median +0.37 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 0.375,
+                "offset_iqr_um": 0.875,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 0.9764,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": -0.0036,
+              "margin_to_limit": 0.0264,
+              "summary": "SUNA = +0.43 + 0.951 x bottle, R^2 0.976",
+              "details": {
+                "slope": 0.9509,
+                "intercept_um": 0.429
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0491,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0009,
+              "margin_to_limit": 0.0509,
+              "summary": "fit slope 0.951 is 4.9% from 1",
+              "details": {
+                "slope": 0.9509
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 0.545,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -0.045,
+              "margin_to_limit": 0.455,
+              "summary": "offset matched by temperature +0.37 vs by depth -0.17 umol/L",
+              "details": {
+                "offset_depth_um": -0.17
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.491,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": 0.509,
+              "margin_to_limit": 1.509,
+              "summary": "5 SUNA profiles in the request give offsets -0.12 to +0.37 umol/L",
+              "details": {
+                "n_profiles": 5,
+                "min_um": -0.116,
+                "max_um": 0.375
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.7,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 5.3,
+              "margin_to_limit": 23.3,
+              "summary": "SUNA profile 0.70 h before the CTD cast (profile #2)",
+              "details": {
+                "profiler_minus_cast_h": -0.7,
+                "profile_mean_time_utc": "2020-08-08T21:33:38.432203356+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2021,
+          "run": "2021",
+          "cruise": "Cabled-12",
+          "ship_cruise_id": "TN393",
+          "cast": "CTD-001",
+          "deployment": 6,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:87f0bf08-801f-5298-896b-0e89c1e941ef",
+          "status": {
+            "level": 2,
+            "label": "minor issues",
+            "all_checks_pass": false,
+            "n_pass": 7,
+            "n_marginal": 1,
+            "n_fail": 0,
+            "n_not_assessed": 0,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": true,
+              "offset_abs_um": false,
+              "fit_r2": true,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": true,
+              "profile_offset_range_um": true,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "offset_abs_um"
+            ],
+            "set_by": [
+              "offset_abs_um marginal (major): bottle - SUNA median -4.26 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)"
+            ],
+            "other_issues": [],
+            "not_assessed": []
+          },
+          "flat_offset": {
+            "value": -4.258,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 - 4.258"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 3,
+            "n_matchups": 10,
+            "profiler_minus_cast_h": -4.29,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 10,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 4.0,
+              "margin_to_limit": 7.0,
+              "summary": "10 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 10,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "pass",
+              "value": 84.9,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 59.9,
+              "margin_to_limit": 84.9,
+              "summary": "RMSE drops from 4.08 to 0.62 umol/L (-3.46 umol/L, -84.9%)",
+              "details": {
+                "rmse_before_um": 4.08,
+                "rmse_after_um": 0.62,
+                "change_um": -3.46,
+                "change_pct": -84.9,
+                "n_matchups": 10
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 4.258,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -2.258,
+              "margin_to_limit": 0.742,
+              "summary": "bottle - SUNA median -4.26 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": -4.258,
+                "offset_iqr_um": 0.642,
+                "accuracy_um": 2.0
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.9966,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": 0.0166,
+              "margin_to_limit": 0.0466,
+              "summary": "SUNA = +3.87 + 1.014 x bottle, R^2 0.997",
+              "details": {
+                "slope": 1.0137,
+                "intercept_um": 3.869
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0137,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0363,
+              "margin_to_limit": 0.0863,
+              "summary": "fit slope 1.014 is 1.4% from 1",
+              "details": {
+                "slope": 1.0137
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.447,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.053,
+              "margin_to_limit": 0.553,
+              "summary": "offset matched by temperature -4.26 vs by depth -3.81 umol/L",
+              "details": {
+                "offset_depth_um": -3.811
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.666,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": 0.334,
+              "margin_to_limit": 1.334,
+              "summary": "3 SUNA profiles in the request give offsets -4.26 to -3.59 umol/L",
+              "details": {
+                "n_profiles": 3,
+                "min_um": -4.258,
+                "max_um": -3.592
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 4.29,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 1.71,
+              "margin_to_limit": 19.71,
+              "summary": "SUNA profile 4.29 h before the CTD cast (profile #3)",
+              "details": {
+                "profiler_minus_cast_h": -4.29,
+                "profile_mean_time_utc": "2021-08-02T21:34:00.584960193+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2022,
+          "run": "2022",
+          "cruise": "Cabled-13",
+          "ship_cruise_id": "TN407",
+          "cast": "CTD-001",
+          "deployment": 8,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:0b76179d-006c-50a4-b167-a54cad87439d",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 2,
+            "n_marginal": 1,
+            "n_fail": 2,
+            "n_not_assessed": 3,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": false,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": true,
+              "full_profile": false,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 11 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "offset_abs_um marginal (major): bottle - SUNA median +2.33 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 2.33 to 0.00 umol/L (-2.33 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit"
+            ]
+          },
+          "flat_offset": {
+            "value": 2.332,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 2.332"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 1,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": 5.35,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 1,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 11 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 11,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 2.33 to 0.00 umol/L (-2.33 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 2.33,
+                "rmse_after_um": 0.0,
+                "change_um": -2.33,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 2.332,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -0.332,
+              "margin_to_limit": 2.668,
+              "summary": "bottle - SUNA median +2.33 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 2.332,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.403,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.097,
+              "margin_to_limit": 0.597,
+              "summary": "offset matched by temperature +2.33 vs by depth +1.93 umol/L",
+              "details": {
+                "offset_depth_um": 1.928
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 0.2
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 5.35,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 0.65,
+              "margin_to_limit": 18.65,
+              "summary": "SUNA profile 5.35 h after the CTD cast (profile #1)",
+              "details": {
+                "profiler_minus_cast_h": 5.35,
+                "profile_mean_time_utc": "2022-08-13T01:28:31.177644530+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2023,
+          "run": "2023",
+          "cruise": "Cabled-14",
+          "ship_cruise_id": "TN422",
+          "cast": "CTD-003",
+          "deployment": 8,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:723996dc-2ede-5a7b-98f4-bb0f28552941",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 1,
+            "n_marginal": 2,
+            "n_fail": 2,
+            "n_not_assessed": 3,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": false,
+              "full_profile": false,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (3 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "temperature_vs_depth_offset_um marginal (minor): offset matched by temperature +1.99 vs by depth +2.74 umol/L",
+              "time_gap_h marginal (minor): SUNA profile 17.45 h before the CTD cast (profile #1)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 1.99 to 0.00 umol/L (-1.99 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit"
+            ]
+          },
+          "flat_offset": {
+            "value": 1.989,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 1.989"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 1,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": -17.45,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 2,
+            "has_annotations_on_samples": true,
+            "n_on_samples": 2,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": [
+              {
+                "id": 4655,
+                "qc_flag": null,
+                "exclusion_flag": false,
+                "sensor": "4A-NUTNRA301",
+                "start": "2023-01-30 22:29:00",
+                "stop": "2023-08-25 13:14:00",
+                "n_samples": 433,
+                "annotation": "The instrument was put in periodic sampling mode while the profiler is stationary. Periodic sampling parameters set to 1 sec sampling every 5 min."
+              },
+              {
+                "id": 4852,
+                "qc_flag": null,
+                "exclusion_flag": false,
+                "sensor": null,
+                "start": "2022-12-30 06:25:31",
+                "stop": "2023-08-25 13:14:00",
+                "n_samples": 433,
+                "annotation": "On December 30th, the Axial Shallow Profiler tripped on level wind high current during a downcast at a depth of 40m. Troubleshooting indicated that there was mechanical binding at one side of the level wind mechanism and/or cart, and as a result the SP Float could not be moved deeper. Instrument operation and data recording were not affected by this fault and data continued to flow with the float at 40m."
+              }
+            ]
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 1.99 to 0.00 umol/L (-1.99 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 1.99,
+                "rmse_after_um": 0.0,
+                "change_um": -1.99,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 1.989,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 0.011,
+              "margin_to_limit": 3.011,
+              "summary": "bottle - SUNA median +1.99 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 1.989,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 0.748,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -0.248,
+              "margin_to_limit": 0.252,
+              "summary": "offset matched by temperature +1.99 vs by depth +2.74 umol/L",
+              "details": {
+                "offset_depth_um": 2.738
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (3 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 3.3
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 17.45,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -11.45,
+              "margin_to_limit": 6.55,
+              "summary": "SUNA profile 17.45 h before the CTD cast (profile #1)",
+              "details": {
+                "profiler_minus_cast_h": -17.45,
+                "profile_mean_time_utc": "2023-08-24T18:36:46.207238181+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2024,
+          "run": "2024",
+          "cruise": "Cabled-15",
+          "ship_cruise_id": "AT50-29",
+          "cast": "CTD-004",
+          "deployment": 10,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:3d044871-b5b3-5e4e-bb9c-ba106e1712d4",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 1,
+            "n_marginal": 1,
+            "n_fail": 3,
+            "n_not_assessed": 3,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": false,
+              "full_profile": false,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "temperature_vs_depth_offset_um fail (minor): offset matched by temperature +1.99 vs by depth +3.56 umol/L",
+              "time_gap_h marginal (minor): SUNA profile 14.90 h after the CTD cast (profile #1)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 1.99 to 0.00 umol/L (-1.99 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit"
+            ]
+          },
+          "flat_offset": {
+            "value": 1.994,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 1.994"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 1,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": 14.9,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 2,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 1.99 to 0.00 umol/L (-1.99 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 1.99,
+                "rmse_after_um": 0.0,
+                "change_um": -1.99,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 1.994,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 0.006,
+              "margin_to_limit": 3.006,
+              "summary": "bottle - SUNA median +1.99 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 1.994,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "fail",
+              "value": 1.569,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -1.069,
+              "margin_to_limit": -0.569,
+              "summary": "offset matched by temperature +1.99 vs by depth +3.56 umol/L",
+              "details": {
+                "offset_depth_um": 3.563
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 0.0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 14.9,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -8.9,
+              "margin_to_limit": 9.1,
+              "summary": "SUNA profile 14.90 h after the CTD cast (profile #1)",
+              "details": {
+                "profiler_minus_cast_h": 14.9,
+                "profile_mean_time_utc": "2024-08-12T16:51:08.527302393+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2025,
+          "run": "2025",
+          "cruise": "Cabled-16",
+          "ship_cruise_id": "AT50-41",
+          "cast": "CTD-007",
+          "deployment": 11,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:61274597-517a-534a-9aa6-238e9c075140",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 5,
+            "n_marginal": 3,
+            "n_fail": 0,
+            "n_not_assessed": 0,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": false,
+              "offset_abs_um": false,
+              "fit_r2": false,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": true,
+              "profile_offset_range_um": true,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "rmse_reduction_pct"
+            ],
+            "set_by": [
+              "rmse_reduction_pct marginal (critical): RMSE drops from 2.46 to 2.12 umol/L (-0.34 umol/L, -13.8%)"
+            ],
+            "other_issues": [
+              "offset_abs_um marginal (major): bottle - SUNA median +2.01 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "fit_r2 marginal (major): SUNA = -1.39 + 1.000 x bottle, R^2 0.974"
+            ],
+            "not_assessed": []
+          },
+          "flat_offset": {
+            "value": 2.012,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 2.012"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 4,
+            "n_matchups": 10,
+            "profiler_minus_cast_h": 5.29,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 1,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 10,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 4.0,
+              "margin_to_limit": 7.0,
+              "summary": "10 of 12 usable bottles matched the SUNA profile by temperature (1 left out as outliers)",
+              "details": {
+                "n_matchups": 10,
+                "n_bottles_usable": 12,
+                "n_outliers": 1
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "marginal",
+              "value": 13.8,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": -11.2,
+              "margin_to_limit": 13.8,
+              "summary": "RMSE drops from 2.46 to 2.12 umol/L (-0.34 umol/L, -13.8%)",
+              "details": {
+                "rmse_before_um": 2.46,
+                "rmse_after_um": 2.12,
+                "change_um": -0.34,
+                "change_pct": -13.8,
+                "n_matchups": 10
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": true
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 2.012,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -0.012,
+              "margin_to_limit": 2.988,
+              "summary": "bottle - SUNA median +2.01 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 2.012,
+                "offset_iqr_um": 1.757,
+                "accuracy_um": 2.0
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 0.9738,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": -0.0062,
+              "margin_to_limit": 0.0238,
+              "summary": "SUNA = -1.39 + 1.000 x bottle, R^2 0.974",
+              "details": {
+                "slope": 1.0001,
+                "intercept_um": -1.394
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0001,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0499,
+              "margin_to_limit": 0.0999,
+              "summary": "fit slope 1.000 is 0.0% from 1",
+              "details": {
+                "slope": 1.0001
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.263,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.237,
+              "margin_to_limit": 0.737,
+              "summary": "offset matched by temperature +2.01 vs by depth +2.28 umol/L",
+              "details": {
+                "offset_depth_um": 2.275
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.586,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": 0.414,
+              "margin_to_limit": 1.414,
+              "summary": "6 SUNA profiles in the request give offsets +2.01 to +2.60 umol/L",
+              "details": {
+                "n_profiles": 6,
+                "min_um": 2.012,
+                "max_um": 2.599
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 5.29,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 0.71,
+              "margin_to_limit": 18.71,
+              "summary": "SUNA profile 5.29 h after the CTD cast (profile #4)",
+              "details": {
+                "profiler_minus_cast_h": 5.29,
+                "profile_mean_time_utc": "2025-08-18T21:33:56.776350224+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "refdes": "CE04OSPS-SF01B-4A-NUTNRA102",
+      "variable": "nitrate",
+      "site": "CE04OSPS",
+      "site_name": "Oregon Offshore Shallow Profiler",
+      "deployments": [
+        {
+          "year": 2020,
+          "run": "2020-CE04OSPS",
+          "cruise": "Cabled-11",
+          "ship_cruise_id": "TN382",
+          "cast": "CTD-009",
+          "deployment": 7,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:18386c18-d199-5054-9330-a2da79caada3",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 5,
+            "n_marginal": 1,
+            "n_fail": 1,
+            "n_not_assessed": 1,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": false,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": false,
+              "profile_offset_range_um": true,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "fit_r2"
+            ],
+            "set_by": [
+              "fit_r2 fail (major): SUNA = +1.45 + 0.951 x bottle, R^2 0.948"
+            ],
+            "other_issues": [
+              "temperature_vs_depth_offset_um marginal (minor): offset matched by temperature +0.58 vs by depth +0.03 umol/L"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE rises from 1.71 to 1.87 umol/L (+0.16 umol/L, +9.4%): offset within the +/-2.0 umol/L accuracy, no correction needed"
+            ]
+          },
+          "flat_offset": {
+            "value": 0.581,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 0.581"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 3,
+            "n_matchups": 6,
+            "profiler_minus_cast_h": -2.76,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 6,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 0.0,
+              "margin_to_limit": 3.0,
+              "summary": "6 of 9 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 6,
+                "n_bottles_usable": 9,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": -9.4,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": -34.4,
+              "margin_to_limit": -9.4,
+              "summary": "RMSE rises from 1.71 to 1.87 umol/L (+0.16 umol/L, +9.4%): offset within the +/-2.0 umol/L accuracy, no correction needed",
+              "details": {
+                "rmse_before_um": 1.71,
+                "rmse_after_um": 1.87,
+                "change_um": 0.16,
+                "change_pct": 9.4,
+                "n_matchups": 6
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.581,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 1.419,
+              "margin_to_limit": 4.419,
+              "summary": "bottle - SUNA median +0.58 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 0.581,
+                "offset_iqr_um": 0.76,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 0.9479,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": -0.0321,
+              "margin_to_limit": -0.0021,
+              "summary": "SUNA = +1.45 + 0.951 x bottle, R^2 0.948",
+              "details": {
+                "slope": 0.9515,
+                "intercept_um": 1.451
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0485,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0015,
+              "margin_to_limit": 0.0515,
+              "summary": "fit slope 0.951 is 4.9% from 1",
+              "details": {
+                "slope": 0.9515
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 0.55,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -0.05,
+              "margin_to_limit": 0.45,
+              "summary": "offset matched by temperature +0.58 vs by depth +0.03 umol/L",
+              "details": {
+                "offset_depth_um": 0.031
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.264,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": 0.736,
+              "margin_to_limit": 1.736,
+              "summary": "6 SUNA profiles in the request give offsets +0.58 to +0.84 umol/L",
+              "details": {
+                "n_profiles": 6,
+                "min_um": 0.581,
+                "max_um": 0.845
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 2.76,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 3.24,
+              "margin_to_limit": 21.24,
+              "summary": "SUNA profile 2.76 h before the CTD cast (profile #3)",
+              "details": {
+                "profiler_minus_cast_h": -2.76,
+                "profile_mean_time_utc": "2020-08-11T21:16:13.245680607+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2021,
+          "run": "2021-CE04OSPS",
+          "cruise": "Cabled-12",
+          "ship_cruise_id": "TN393",
+          "cast": "CTD-006",
+          "deployment": 8,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:463a129b-fbf7-53bc-8637-b31e490d7837",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 3,
+            "n_marginal": 3,
+            "n_fail": 2,
+            "n_not_assessed": 0,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": true,
+              "offset_abs_um": false,
+              "fit_r2": false,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": false,
+              "profile_offset_range_um": false,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "fit_r2"
+            ],
+            "set_by": [
+              "fit_r2 fail (major): SUNA = +3.52 + 0.987 x bottle, R^2 0.929"
+            ],
+            "other_issues": [
+              "offset_abs_um marginal (major): bottle - SUNA median -2.63 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "temperature_vs_depth_offset_um marginal (minor): offset matched by temperature -2.63 vs by depth -2.10 umol/L",
+              "profile_offset_range_um fail (minor): 3 SUNA profiles in the request give offsets -4.36 to -1.97 umol/L",
+              "time_gap_h marginal (minor): SUNA profile 23.87 h after the CTD cast (profile #2)"
+            ],
+            "not_assessed": []
+          },
+          "flat_offset": {
+            "value": -2.633,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 - 2.633"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 2,
+            "n_matchups": 8,
+            "profiler_minus_cast_h": 23.87,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 8,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 2.0,
+              "margin_to_limit": 5.0,
+              "summary": "8 of 10 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 8,
+                "n_bottles_usable": 10,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "pass",
+              "value": 33.7,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 8.7,
+              "margin_to_limit": 33.7,
+              "summary": "RMSE drops from 4.21 to 2.79 umol/L (-1.42 umol/L, -33.7%)",
+              "details": {
+                "rmse_before_um": 4.21,
+                "rmse_after_um": 2.79,
+                "change_um": -1.42,
+                "change_pct": -33.7,
+                "n_matchups": 8
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 2.633,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -0.633,
+              "margin_to_limit": 2.367,
+              "summary": "bottle - SUNA median -2.63 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": -2.633,
+                "offset_iqr_um": 1.739,
+                "accuracy_um": 2.0
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 0.9286,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": -0.0514,
+              "margin_to_limit": -0.0214,
+              "summary": "SUNA = +3.52 + 0.987 x bottle, R^2 0.929",
+              "details": {
+                "slope": 0.9873,
+                "intercept_um": 3.516
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0127,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0373,
+              "margin_to_limit": 0.0873,
+              "summary": "fit slope 0.987 is 1.3% from 1",
+              "details": {
+                "slope": 0.9873
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 0.532,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -0.032,
+              "margin_to_limit": 0.468,
+              "summary": "offset matched by temperature -2.63 vs by depth -2.10 umol/L",
+              "details": {
+                "offset_depth_um": -2.1
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "fail",
+              "value": 2.388,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": -1.388,
+              "margin_to_limit": -0.388,
+              "summary": "3 SUNA profiles in the request give offsets -4.36 to -1.97 umol/L",
+              "details": {
+                "n_profiles": 3,
+                "min_um": -4.357,
+                "max_um": -1.968
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 23.87,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -17.87,
+              "margin_to_limit": 0.13,
+              "summary": "SUNA profile 23.87 h after the CTD cast (profile #2)",
+              "details": {
+                "profiler_minus_cast_h": 23.87,
+                "profile_mean_time_utc": "2021-08-27T09:50:35.946066222+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2022,
+          "run": "2022-CE04OSPS",
+          "cruise": "Cabled-13",
+          "ship_cruise_id": "TN407",
+          "cast": "CTD-004",
+          "deployment": 9,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:9d895a40-d31a-521b-8307-9524413d1eb5",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 3,
+            "n_marginal": 3,
+            "n_fail": 1,
+            "n_not_assessed": 1,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": false,
+              "fit_slope_departure": false,
+              "temperature_vs_depth_offset_um": false,
+              "profile_offset_range_um": true,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "fit_slope_departure"
+            ],
+            "set_by": [
+              "fit_slope_departure fail (major): fit slope 0.889 is 11.1% from 1"
+            ],
+            "other_issues": [
+              "fit_r2 marginal (major): SUNA = +3.71 + 0.889 x bottle, R^2 0.967",
+              "temperature_vs_depth_offset_um marginal (minor): offset matched by temperature -1.18 vs by depth -0.42 umol/L",
+              "time_gap_h marginal (minor): SUNA profile 20.49 h after the CTD cast (profile #1)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 3.18 to 2.73 umol/L (-0.45 umol/L, -14.1%): offset within the +/-2.0 umol/L accuracy, no correction needed"
+            ]
+          },
+          "flat_offset": {
+            "value": -1.176,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 - 1.176"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 1,
+            "n_matchups": 6,
+            "profiler_minus_cast_h": 20.49,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 1,
+            "has_annotations_on_samples": true,
+            "n_on_samples": 1,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": [
+              {
+                "id": 4135,
+                "qc_flag": "not_operational",
+                "exclusion_flag": false,
+                "sensor": "4A-NUTNRA102",
+                "start": "2022-05-02 21:51:00",
+                "stop": "2022-09-03 18:05:00",
+                "n_samples": 205,
+                "annotation": "NUTNRA102 was turned off following the SF01B profiler pod level-wind issue, because mission execution depends on the profiler moving. Discussion of a potential software solution is ongoing."
+              }
+            ]
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 6,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 0.0,
+              "margin_to_limit": 3.0,
+              "summary": "6 of 7 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 6,
+                "n_bottles_usable": 7,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 14.1,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": -10.9,
+              "margin_to_limit": 14.1,
+              "summary": "RMSE drops from 3.18 to 2.73 umol/L (-0.45 umol/L, -14.1%): offset within the +/-2.0 umol/L accuracy, no correction needed",
+              "details": {
+                "rmse_before_um": 3.18,
+                "rmse_after_um": 2.73,
+                "change_um": -0.45,
+                "change_pct": -14.1,
+                "n_matchups": 6
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 1.176,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 0.824,
+              "margin_to_limit": 3.824,
+              "summary": "bottle - SUNA median -1.18 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": -1.176,
+                "offset_iqr_um": 2.807,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 0.9675,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": -0.0125,
+              "margin_to_limit": 0.0175,
+              "summary": "SUNA = +3.71 + 0.889 x bottle, R^2 0.967",
+              "details": {
+                "slope": 0.8885,
+                "intercept_um": 3.714
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 0.1115,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": -0.0615,
+              "margin_to_limit": -0.0115,
+              "summary": "fit slope 0.889 is 11.1% from 1",
+              "details": {
+                "slope": 0.8885
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 0.751,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -0.251,
+              "margin_to_limit": 0.249,
+              "summary": "offset matched by temperature -1.18 vs by depth -0.42 umol/L",
+              "details": {
+                "offset_depth_um": -0.424
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.902,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": 0.098,
+              "margin_to_limit": 1.098,
+              "summary": "2 SUNA profiles in the request give offsets -1.18 to -0.27 umol/L",
+              "details": {
+                "n_profiles": 2,
+                "min_um": -1.176,
+                "max_um": -0.273
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 20.49,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -14.49,
+              "margin_to_limit": 3.51,
+              "summary": "SUNA profile 20.49 h after the CTD cast (profile #1)",
+              "details": {
+                "profiler_minus_cast_h": 20.49,
+                "profile_mean_time_utc": "2022-08-24T07:55:49.315710633+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2023,
+          "run": "2023-CE04OSPS",
+          "cruise": "Cabled-14",
+          "ship_cruise_id": "TN422",
+          "cast": "CTD-001",
+          "deployment": 10,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:67bda20c-d5cb-55fa-acdd-e070fdca951e",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 0,
+            "n_marginal": 1,
+            "n_fail": 3,
+            "n_not_assessed": 4,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": false,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": null,
+              "full_profile": false,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "offset_abs_um",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 12 usable bottles matched the SUNA profile by depth (0 left out as outliers)",
+              "offset_abs_um fail (major): bottle - SUNA median +9.93 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "time_gap_h marginal (minor): SUNA profile 9.93 h before the CTD cast (profile #3)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 9.93 to 0.00 umol/L (-9.93 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit",
+              "temperature_vs_depth_offset_um: only one of the temperature and depth matchups has bottles"
+            ]
+          },
+          "flat_offset": {
+            "value": 9.931,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 9.931"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_depth",
+            "match_by": "depth",
+            "profile_id": 3,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": -9.93,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 1,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 12 usable bottles matched the SUNA profile by depth (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 9.93 to 0.00 umol/L (-9.93 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 9.93,
+                "rmse_after_um": 0.0,
+                "change_um": -9.93,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 9.931,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -7.931,
+              "margin_to_limit": -4.931,
+              "summary": "bottle - SUNA median +9.93 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 9.931,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "n/a",
+              "value": null,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "only one of the temperature and depth matchups has bottles",
+              "details": {},
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 0.0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 9.93,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -3.93,
+              "margin_to_limit": 14.07,
+              "summary": "SUNA profile 9.93 h before the CTD cast (profile #3)",
+              "details": {
+                "profiler_minus_cast_h": -9.93,
+                "profile_mean_time_utc": "2023-08-14T21:16:01.519153455+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2024,
+          "run": "2024-CE04OSPS",
+          "cruise": "Cabled-15",
+          "ship_cruise_id": "AT50-29",
+          "cast": "CTD-001",
+          "deployment": 11,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:9bc023b9-c955-560c-b6ef-c001271fb91f",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 0,
+            "n_marginal": 2,
+            "n_fail": 2,
+            "n_not_assessed": 4,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": false,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": null,
+              "full_profile": false,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 12 usable bottles matched the SUNA profile by depth (0 left out as outliers)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (2 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "offset_abs_um marginal (major): bottle - SUNA median +2.63 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "time_gap_h marginal (minor): SUNA profile 8.56 h after the CTD cast (profile #2)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 2.63 to 0.00 umol/L (-2.63 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit",
+              "temperature_vs_depth_offset_um: only one of the temperature and depth matchups has bottles"
+            ]
+          },
+          "flat_offset": {
+            "value": 2.632,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 2.632"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_depth",
+            "match_by": "depth",
+            "profile_id": 2,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": 8.56,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 2,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 12 usable bottles matched the SUNA profile by depth (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 2.63 to 0.00 umol/L (-2.63 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 2.63,
+                "rmse_after_um": 0.0,
+                "change_um": -2.63,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 2.632,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -0.632,
+              "margin_to_limit": 2.368,
+              "summary": "bottle - SUNA median +2.63 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 2.632,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "n/a",
+              "value": null,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "only one of the temperature and depth matchups has bottles",
+              "details": {},
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (2 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 2.0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 8.56,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -2.56,
+              "margin_to_limit": 15.44,
+              "summary": "SUNA profile 8.56 h after the CTD cast (profile #2)",
+              "details": {
+                "profiler_minus_cast_h": 8.56,
+                "profile_mean_time_utc": "2024-08-09T16:07:27.665162361+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2025,
+          "run": "2025-CE04OSPS",
+          "cruise": "Cabled-16",
+          "ship_cruise_id": "AT50-41",
+          "cast": "CTD-010",
+          "deployment": 13,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:68a12221-826d-5081-933d-a5f01ebeac2d",
+          "status": {
+            "level": 2,
+            "label": "minor issues",
+            "all_checks_pass": false,
+            "n_pass": 6,
+            "n_marginal": 0,
+            "n_fail": 1,
+            "n_not_assessed": 1,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": true,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": true,
+              "profile_offset_range_um": false,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "profile_offset_range_um"
+            ],
+            "set_by": [
+              "profile_offset_range_um fail (minor): 7 SUNA profiles in the request give offsets -2.42 to +3.08 umol/L"
+            ],
+            "other_issues": [],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 1.32 to 1.11 umol/L (-0.21 umol/L, -16.2%): offset within the +/-2.0 umol/L accuracy, no correction needed"
+            ]
+          },
+          "flat_offset": {
+            "value": 0.855,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 0.855"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 4,
+            "n_matchups": 10,
+            "profiler_minus_cast_h": 0.54,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 10,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 4.0,
+              "margin_to_limit": 7.0,
+              "summary": "10 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 10,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 16.2,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": -8.8,
+              "margin_to_limit": 16.2,
+              "summary": "RMSE drops from 1.32 to 1.11 umol/L (-0.21 umol/L, -16.2%): offset within the +/-2.0 umol/L accuracy, no correction needed",
+              "details": {
+                "rmse_before_um": 1.32,
+                "rmse_after_um": 1.11,
+                "change_um": -0.21,
+                "change_pct": -16.2,
+                "n_matchups": 10
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.855,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 1.145,
+              "margin_to_limit": 4.145,
+              "summary": "bottle - SUNA median +0.85 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 0.855,
+                "offset_iqr_um": 1.374,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.9921,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": 0.0121,
+              "margin_to_limit": 0.0421,
+              "summary": "SUNA = -1.02 + 1.014 x bottle, R^2 0.992",
+              "details": {
+                "slope": 1.0136,
+                "intercept_um": -1.015
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0136,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0364,
+              "margin_to_limit": 0.0864,
+              "summary": "fit slope 1.014 is 1.4% from 1",
+              "details": {
+                "slope": 1.0136
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.07,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.43,
+              "margin_to_limit": 0.93,
+              "summary": "offset matched by temperature +0.85 vs by depth +0.79 umol/L",
+              "details": {
+                "offset_depth_um": 0.785
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "fail",
+              "value": 5.497,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": -4.497,
+              "margin_to_limit": -3.497,
+              "summary": "7 SUNA profiles in the request give offsets -2.42 to +3.08 umol/L",
+              "details": {
+                "n_profiles": 7,
+                "min_um": -2.418,
+                "max_um": 3.079
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.54,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 5.46,
+              "margin_to_limit": 23.46,
+              "summary": "SUNA profile 0.54 h after the CTD cast (profile #4)",
+              "details": {
+                "profiler_minus_cast_h": 0.54,
+                "profile_mean_time_utc": "2025-08-26T21:16:05.917885163+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "refdes": "RS01SBPS-SF01A-4A-NUTNRA101",
+      "variable": "nitrate",
+      "site": "RS01SBPS",
+      "site_name": "Slope Base Shallow Profiler",
+      "deployments": [
+        {
+          "year": 2022,
+          "run": "2022-RS01SBPS",
+          "cruise": "Cabled-13",
+          "ship_cruise_id": "TN407",
+          "cast": "CTD-009",
+          "deployment": 10,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:04d5a1bf-57fa-55b6-bc90-b00ebaf13155",
+          "status": {
+            "level": 1,
+            "label": "good",
+            "all_checks_pass": false,
+            "n_pass": 6,
+            "n_marginal": 1,
+            "n_fail": 0,
+            "n_not_assessed": 1,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": true,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": true,
+              "profile_offset_range_um": true,
+              "time_gap_h": false
+            },
+            "set_by_checks": [],
+            "set_by": [],
+            "other_issues": [
+              "time_gap_h marginal (minor): SUNA profile 8.71 h after the CTD cast (profile #2)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 1.49 to 0.59 umol/L (-0.90 umol/L, -60.2%): offset within the +/-2.0 umol/L accuracy, no correction needed"
+            ]
+          },
+          "flat_offset": {
+            "value": 1.178,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 1.178"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 2,
+            "n_matchups": 10,
+            "profiler_minus_cast_h": 8.71,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 10,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 4.0,
+              "margin_to_limit": 7.0,
+              "summary": "10 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 10,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 60.2,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 35.2,
+              "margin_to_limit": 60.2,
+              "summary": "RMSE drops from 1.49 to 0.59 umol/L (-0.90 umol/L, -60.2%): offset within the +/-2.0 umol/L accuracy, no correction needed",
+              "details": {
+                "rmse_before_um": 1.49,
+                "rmse_after_um": 0.59,
+                "change_um": -0.9,
+                "change_pct": -60.2,
+                "n_matchups": 10
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 1.178,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 0.822,
+              "margin_to_limit": 3.822,
+              "summary": "bottle - SUNA median +1.18 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 1.178,
+                "offset_iqr_um": 0.612,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.9973,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": 0.0173,
+              "margin_to_limit": 0.0473,
+              "summary": "SUNA = -0.72 + 0.973 x bottle, R^2 0.997",
+              "details": {
+                "slope": 0.9728,
+                "intercept_um": -0.721
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0272,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0228,
+              "margin_to_limit": 0.0728,
+              "summary": "fit slope 0.973 is 2.7% from 1",
+              "details": {
+                "slope": 0.9728
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.091,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.409,
+              "margin_to_limit": 0.909,
+              "summary": "offset matched by temperature +1.18 vs by depth +1.09 umol/L",
+              "details": {
+                "offset_depth_um": 1.086
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.668,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": 0.332,
+              "margin_to_limit": 1.332,
+              "summary": "4 SUNA profiles in the request give offsets +1.04 to +1.71 umol/L",
+              "details": {
+                "n_profiles": 4,
+                "min_um": 1.041,
+                "max_um": 1.71
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 8.71,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -2.71,
+              "margin_to_limit": 15.29,
+              "summary": "SUNA profile 8.71 h after the CTD cast (profile #2)",
+              "details": {
+                "profiler_minus_cast_h": 8.71,
+                "profile_mean_time_utc": "2022-09-16T07:55:44.254697318+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2023,
+          "run": "2023-RS01SBPS",
+          "cruise": "Cabled-14",
+          "ship_cruise_id": "TN422",
+          "cast": "CTD-002",
+          "deployment": 10,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:36c906cd-d102-5f5e-8bcd-dfaae4f5c324",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 2,
+            "n_marginal": 1,
+            "n_fail": 3,
+            "n_not_assessed": 3,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": true,
+              "full_profile": false,
+              "profile_offset_range_um": false,
+              "time_gap_h": false
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "profile_offset_range_um fail (minor): 2 SUNA profiles in the request give offsets -14.53 to +1.65 umol/L",
+              "time_gap_h marginal (minor): SUNA profile 20.58 h after the CTD cast (profile #2)"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 1.65 to 0.00 umol/L (-1.65 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit"
+            ]
+          },
+          "flat_offset": {
+            "value": 1.654,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 1.654"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 2,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": 20.58,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 1,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 1.65 to 0.00 umol/L (-1.65 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 1.65,
+                "rmse_after_um": 0.0,
+                "change_um": -1.65,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 1.654,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 0.346,
+              "margin_to_limit": 3.346,
+              "summary": "bottle - SUNA median +1.65 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 1.654,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.194,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.306,
+              "margin_to_limit": 0.806,
+              "summary": "offset matched by temperature +1.65 vs by depth +1.85 umol/L",
+              "details": {
+                "offset_depth_um": 1.849
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (0 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 0.1
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "fail",
+              "value": 16.184,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": -15.184,
+              "margin_to_limit": -14.184,
+              "summary": "2 SUNA profiles in the request give offsets -14.53 to +1.65 umol/L",
+              "details": {
+                "n_profiles": 2,
+                "min_um": -14.53,
+                "max_um": 1.654
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 20.58,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": -14.58,
+              "margin_to_limit": 3.42,
+              "summary": "SUNA profile 20.58 h after the CTD cast (profile #2)",
+              "details": {
+                "profiler_minus_cast_h": 20.58,
+                "profile_mean_time_utc": "2023-08-17T21:34:40.450738688+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2024,
+          "run": "2024-RS01SBPS",
+          "cruise": "Cabled-15",
+          "ship_cruise_id": "AT50-29",
+          "cast": "CTD-002",
+          "deployment": 11,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:b0fefc84-0629-5829-8698-c5de9c7edfaa",
+          "status": {
+            "level": 3,
+            "label": "use with caution",
+            "all_checks_pass": false,
+            "n_pass": 2,
+            "n_marginal": 0,
+            "n_fail": 4,
+            "n_not_assessed": 3,
+            "checks_passed": {
+              "matchups_used": false,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": false,
+              "fit_r2": null,
+              "fit_slope_departure": null,
+              "temperature_vs_depth_offset_um": true,
+              "full_profile": false,
+              "profile_offset_range_um": false,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "matchups_used",
+              "offset_abs_um",
+              "full_profile"
+            ],
+            "set_by": [
+              "matchups_used fail (major): 1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "offset_abs_um fail (major): bottle - SUNA median +6.04 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "full_profile fail (major): the SUNA record nearest the cast was taken with the profiler parked (1 m span): one-point comparison"
+            ],
+            "other_issues": [
+              "profile_offset_range_um fail (minor): 3 SUNA profiles in the request give offsets +1.56 to +6.04 umol/L"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 6.04 to 0.00 umol/L (-6.04 umol/L, -100.0%): fewer than 3 matchups",
+              "fit_r2: no fit (fewer than 3 matchups)",
+              "fit_slope_departure: no fit"
+            ]
+          },
+          "flat_offset": {
+            "value": 6.041,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 6.041"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 2,
+            "n_matchups": 1,
+            "profiler_minus_cast_h": 1.97,
+            "within_accuracy": false
+          },
+          "annotations": {
+            "n_in_request": 2,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 1,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": -5.0,
+              "margin_to_limit": -2.0,
+              "summary": "1 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 1,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 100.0,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": 75.0,
+              "margin_to_limit": 100.0,
+              "summary": "RMSE drops from 6.04 to 0.00 umol/L (-6.04 umol/L, -100.0%): fewer than 3 matchups",
+              "details": {
+                "rmse_before_um": 6.04,
+                "rmse_after_um": 0.0,
+                "change_um": -6.04,
+                "change_pct": -100.0,
+                "n_matchups": 1
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "fail",
+              "value": 6.041,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": -4.041,
+              "margin_to_limit": -1.041,
+              "summary": "bottle - SUNA median +6.04 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 6.041,
+                "offset_iqr_um": 0.0,
+                "accuracy_um": 2.0
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit (fewer than 3 matchups)",
+              "details": {
+                "slope": null,
+                "intercept_um": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "n/a",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "no fit",
+              "details": {
+                "slope": null
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 0.163,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": 0.337,
+              "margin_to_limit": 0.837,
+              "summary": "offset matched by temperature +6.04 vs by depth +5.88 umol/L",
+              "details": {
+                "offset_depth_um": 5.878
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "full_profile",
+              "severity": "major",
+              "outcome": "fail",
+              "value": null,
+              "units": "",
+              "better": "lower",
+              "target_value": 1,
+              "limit_value": 1,
+              "target": "<= 1",
+              "limit": "<= 1",
+              "margin_to_target": null,
+              "margin_to_limit": null,
+              "summary": "the SUNA record nearest the cast was taken with the profiler parked (1 m span): one-point comparison",
+              "details": {
+                "depth_span_m": 0.8
+              },
+              "level": 3,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "fail",
+              "value": 4.484,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": -3.484,
+              "margin_to_limit": -2.484,
+              "summary": "3 SUNA profiles in the request give offsets +1.56 to +6.04 umol/L",
+              "details": {
+                "n_profiles": 3,
+                "min_um": 1.557,
+                "max_um": 6.041
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 1.97,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 4.03,
+              "margin_to_limit": 22.03,
+              "summary": "SUNA profile 1.97 h after the CTD cast (profile #2)",
+              "details": {
+                "profiler_minus_cast_h": 1.97,
+                "profile_mean_time_utc": "2024-08-09T22:14:24.741883244+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2025,
+          "run": "2025-RS01SBPS",
+          "cruise": "Cabled-16",
+          "ship_cruise_id": "AT50-41",
+          "cast": "CTD-008",
+          "deployment": 14,
+          "calibrated": true,
+          "calibration": "calibrated",
+          "record_id": "urn:uuid:3332a1de-999f-5909-8acc-c0f21455b488",
+          "status": {
+            "level": 2,
+            "label": "minor issues",
+            "all_checks_pass": false,
+            "n_pass": 4,
+            "n_marginal": 2,
+            "n_fail": 1,
+            "n_not_assessed": 1,
+            "checks_passed": {
+              "matchups_used": true,
+              "rmse_reduction_pct": null,
+              "offset_abs_um": true,
+              "fit_r2": false,
+              "fit_slope_departure": true,
+              "temperature_vs_depth_offset_um": false,
+              "profile_offset_range_um": false,
+              "time_gap_h": true
+            },
+            "set_by_checks": [
+              "fit_r2",
+              "temperature_vs_depth_offset_um"
+            ],
+            "set_by": [
+              "fit_r2 marginal (major): SUNA = -1.63 + 0.993 x bottle, R^2 0.973",
+              "temperature_vs_depth_offset_um fail (minor): offset matched by temperature +1.79 vs by depth +0.67 umol/L"
+            ],
+            "other_issues": [
+              "profile_offset_range_um marginal (minor): 6 SUNA profiles in the request give offsets +1.24 to +3.03 umol/L"
+            ],
+            "not_assessed": [
+              "rmse_reduction_pct: RMSE drops from 2.74 to 2.10 umol/L (-0.64 umol/L, -23.4%): offset within the +/-2.0 umol/L accuracy, no correction needed"
+            ]
+          },
+          "flat_offset": {
+            "value": 1.79,
+            "units": "umol/L",
+            "apply": "NO3_corrected = NO3_L2 + 1.790"
+          },
+          "function_offset": null,
+          "basis": {
+            "variant": "nearest_profile_temperature",
+            "match_by": "temperature",
+            "profile_id": 4,
+            "n_matchups": 10,
+            "profiler_minus_cast_h": 5.41,
+            "within_accuracy": true
+          },
+          "annotations": {
+            "n_in_request": 0,
+            "has_annotations_on_samples": false,
+            "n_on_samples": 0,
+            "has_exclusion_annotation": false,
+            "n_samples_dropped_by_annotation": 0,
+            "on_samples": []
+          },
+          "checks": [
+            {
+              "criterion": "matchups_used",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 10,
+              "units": "bottles",
+              "better": "higher",
+              "target_value": 6,
+              "limit_value": 3,
+              "target": ">= 6",
+              "limit": "> 3",
+              "margin_to_target": 4.0,
+              "margin_to_limit": 7.0,
+              "summary": "10 of 12 usable bottles matched the SUNA profile by temperature (0 left out as outliers)",
+              "details": {
+                "n_matchups": 10,
+                "n_bottles_usable": 12,
+                "n_outliers": 0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "rmse_reduction_pct",
+              "severity": "critical",
+              "outcome": "n/a",
+              "value": 23.4,
+              "units": "%",
+              "better": "higher",
+              "target_value": 25.0,
+              "limit_value": 0.0,
+              "target": ">= 25.0",
+              "limit": "> 0.0",
+              "margin_to_target": -1.6,
+              "margin_to_limit": 23.4,
+              "summary": "RMSE drops from 2.74 to 2.10 umol/L (-0.64 umol/L, -23.4%): offset within the +/-2.0 umol/L accuracy, no correction needed",
+              "details": {
+                "rmse_before_um": 2.74,
+                "rmse_after_um": 2.1,
+                "change_um": -0.64,
+                "change_pct": -23.4,
+                "n_matchups": 10
+              },
+              "level": 1,
+              "assessed": false,
+              "passed": null,
+              "within_limit": null,
+              "sets_status": false
+            },
+            {
+              "criterion": "offset_abs_um",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 1.79,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 2.0,
+              "limit_value": 5.0,
+              "target": "<= 2.0",
+              "limit": "<= 5.0",
+              "margin_to_target": 0.21,
+              "margin_to_limit": 3.21,
+              "summary": "bottle - SUNA median +1.79 umol/L (sensor accuracy +/-2.0 umol/L, guide 3.1)",
+              "details": {
+                "offset_um": 1.79,
+                "offset_iqr_um": 1.3,
+                "accuracy_um": 2.0
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "fit_r2",
+              "severity": "major",
+              "outcome": "marginal",
+              "value": 0.9725,
+              "units": "",
+              "better": "higher",
+              "target_value": 0.98,
+              "limit_value": 0.95,
+              "target": ">= 0.98",
+              "limit": "> 0.95",
+              "margin_to_target": -0.0075,
+              "margin_to_limit": 0.0225,
+              "summary": "SUNA = -1.63 + 0.993 x bottle, R^2 0.973",
+              "details": {
+                "slope": 0.9931,
+                "intercept_um": -1.634
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": true
+            },
+            {
+              "criterion": "fit_slope_departure",
+              "severity": "major",
+              "outcome": "pass",
+              "value": 0.0069,
+              "units": "",
+              "better": "lower",
+              "target_value": 0.05,
+              "limit_value": 0.1,
+              "target": "<= 0.05",
+              "limit": "<= 0.1",
+              "margin_to_target": 0.0431,
+              "margin_to_limit": 0.0931,
+              "summary": "fit slope 0.993 is 0.7% from 1",
+              "details": {
+                "slope": 0.9931
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "temperature_vs_depth_offset_um",
+              "severity": "minor",
+              "outcome": "fail",
+              "value": 1.121,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 0.5,
+              "limit_value": 1.0,
+              "target": "<= 0.5",
+              "limit": "<= 1.0",
+              "margin_to_target": -0.621,
+              "margin_to_limit": -0.121,
+              "summary": "offset matched by temperature +1.79 vs by depth +0.67 umol/L",
+              "details": {
+                "offset_depth_um": 0.669
+              },
+              "level": 2,
+              "assessed": true,
+              "passed": false,
+              "within_limit": false,
+              "sets_status": true
+            },
+            {
+              "criterion": "profile_offset_range_um",
+              "severity": "minor",
+              "outcome": "marginal",
+              "value": 1.785,
+              "units": "umol/L",
+              "better": "lower",
+              "target_value": 1.0,
+              "limit_value": 2.0,
+              "target": "<= 1.0",
+              "limit": "<= 2.0",
+              "margin_to_target": -0.785,
+              "margin_to_limit": 0.215,
+              "summary": "6 SUNA profiles in the request give offsets +1.24 to +3.03 umol/L",
+              "details": {
+                "n_profiles": 6,
+                "min_um": 1.241,
+                "max_um": 3.026
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": false,
+              "within_limit": true,
+              "sets_status": false
+            },
+            {
+              "criterion": "time_gap_h",
+              "severity": "minor",
+              "outcome": "pass",
+              "value": 5.41,
+              "units": "h",
+              "better": "lower",
+              "target_value": 6.0,
+              "limit_value": 24.0,
+              "target": "<= 6.0",
+              "limit": "<= 24.0",
+              "margin_to_target": 0.59,
+              "margin_to_limit": 18.59,
+              "summary": "SUNA profile 5.41 h after the CTD cast (profile #4)",
+              "details": {
+                "profiler_minus_cast_h": 5.41,
+                "profile_mean_time_utc": "2025-08-25T21:16:47.492857413+00:00"
+              },
+              "level": 1,
+              "assessed": true,
+              "passed": true,
+              "within_limit": true,
+              "sets_status": false
+            }
+          ]
+        },
+        {
+          "year": 2020,
+          "run": "2020-RS01SBPS",
+          "cruise": "Cabled-11",
+          "ship_cruise_id": "TN382",
+          "cast": "CTD-007",
+          "deployment": null,
+          "calibrated": false,
+          "calibration": "missing input",
+          "missing": [
+            "nutnr_nc"
+          ],
+          "status": {
+            "level": null,
+            "label": "not assessed",
+            "reason": "missing input: nutnr_nc"
+          }
+        },
+        {
+          "year": 2021,
+          "run": "2021-RS01SBPS",
+          "cruise": "Cabled-12",
+          "ship_cruise_id": "TN393",
+          "cast": "CTD-005",
+          "deployment": null,
+          "calibrated": false,
+          "calibration": "missing input",
+          "missing": [
+            "nutnr_nc"
+          ],
+          "status": {
+            "level": null,
+            "label": "not assessed",
+            "reason": "missing input: nutnr_nc"
+          }
         }
       ]
     }
