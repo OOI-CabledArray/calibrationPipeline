@@ -202,10 +202,10 @@ def test_run_selector_names_the_site_and_the_instrument_of_every_run():
     assert len(sel.options) == len(runs) == 18
     by_name = {t["short_name"]: t for t in CFG["sites"].values() if isinstance(t, dict)}
     for label in sel.options:
-        year, name, refdes = label.split(" · ")
-        assert year.isdigit() and by_name[name]["profiler_reference_designator"] == refdes, label
+        year, name = label.split(" · ")
+        assert year.isdigit() and name in by_name, label
     first_2025 = [o for o in sel.options if o.startswith("2025 ·")]
-    assert first_2025[0].endswith(CFG["sites"][CFG["sites"]["default"]]["profiler_reference_designator"])      # the default site comes first
+    assert first_2025[0] == f"2025 · {CFG['sites'][CFG['sites']['default']]['short_name']}"                    # the default site comes first
     assert any(CFG["sites"]["RS01SBPS"]["short_name"] in o for o in first_2025) and any(CFG["sites"]["CE04OSPS"]["short_name"] in o for o in first_2025)
     assert not any(o.isdigit() for o in sel.options)                                                          # no bare year any more
     assert any("DOFSTA" in c.value for c in at.sidebar.caption) and any("CTDPFA" in c.value for c in at.sidebar.caption)
@@ -237,11 +237,12 @@ def test_deployments_page_shows_the_booleans_in_its_yaml_and_checks_table():
     assert any("all checks pass" in df.value.columns for df in at.dataframe)
 
 
-def test_page_titles_name_the_site_and_the_instrument():
+def test_page_headers_name_the_site_and_the_instrument():
     at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120)
     at.session_state["year"] = "2022-RS01SBPS"
     at.run()
     for page, needle in (("bottles", "Slope Base"), ("profiler", "RS01SBPS-SF01A-2A-CTDPFA102"), ("oxygen_winkler", "Slope Base"),
                          ("oxygen_dofsta", "RS01SBPS-SF01A-2A-DOFSTA102"), ("provenance", "Slope Base")):
         at.switch_page(f"app_pages/{page}.py").run()
-        assert not at.exception and needle in at.title[0].value and "2022" in at.title[0].value, (page, at.title[0].value)
+        line = next((m.value for m in at.markdown if "2022 · Slope Base" in m.value), "")
+        assert not at.exception and needle in line, (page, line)

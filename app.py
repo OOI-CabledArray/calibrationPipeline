@@ -12,12 +12,11 @@ if (pending := st.session_state.pop("_select_run", None)) is not None:
     st.session_state["year"] = pending
 
 runs = app_lib.years_on_disk()
-st.html("<style>[data-testid='stSidebar'] { min-width: min(27rem, 90vw); }</style>")   # Sidebar width that fits the full run label.
 if runs:
     # The URL carries the run key (?year=2022-RS01SBPS). bind="query-params" would put the display label in the URL when format_func is set.
     if "year" not in st.session_state and st.query_params.get("year") in runs:
         st.session_state["year"] = st.query_params["year"]
-    st.sidebar.selectbox("Run: year, site, instrument", runs, key="year", format_func=app_lib.run_label)
+    st.sidebar.selectbox("Run", runs, key="year", format_func=app_lib.run_site, help="Cruise year and profiler site")
     st.query_params["year"] = st.session_state["year"]
     st.sidebar.caption(app_lib.run_caption(st.session_state["year"]))
 

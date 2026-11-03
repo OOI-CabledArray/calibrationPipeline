@@ -45,7 +45,7 @@ Run the tests with `python -m pytest tests`.
 
 ## The viewer
 
-The app has one page per comparison. Pick a year and site in the sidebar.
+The app has one page per comparison. Pick a run (year and site) in the sidebar; the variant picker is at the top of each page.
 
 - **Deployments**: one line per instrument and deployment, with the correction and a status from 1 (good) to 4 (not recommended).
 - **Salinity**: the ship's CTD against the bottle salinities, then the profiler against the ship's CTD.
@@ -54,7 +54,7 @@ The app has one page per comparison. Pick a year and site in the sidebar.
 - **Run your files**: upload your own files and run the same calculation.
 - **Provenance and export**: every input file with its checksum, and downloads of all results.
 
-Each page starts with the answer in one sentence ("add +2.01 µmol/L"), then the numbers, then the plots.
+Each page starts with the answer in one sentence ("add +2.01 µmol/L") and the deployment status, then the numbers grouped by method, the flags (collapsed, with a count of warnings), then the plots. Per-upcast plots and full tables are in tabs below the main plot.
 
 ## How each correction is worked out
 
