@@ -4,19 +4,19 @@
     "prov": "http://www.w3.org/ns/prov#",
     "rca": "urn:rca-salinity:term/"
   },
-  "@id": "urn:uuid:d82e37d0-258e-53bb-bf23-3013c4bd9818",
+  "@id": "urn:uuid:378e5cf2-6db2-53c1-ad27-b536453bf8dd",
   "@type": [
     "Dataset",
     "prov:Entity"
   ],
   "name": "RCA CTDPFA salinity calibration, Cabled-12 TN393 (2021)",
-  "dateCreated": "2026-11-02T20:22:07+00:00",
+  "dateCreated": "2026-11-06T12:11:01+00:00",
   "variableMeasured": "sea_water_practical_salinity",
   "rca:correctionKind": "additive",
   "prov:wasGeneratedBy": {
     "@type": "prov:Activity",
-    "prov:startedAtTime": "2026-11-02T20:22:05+00:00",
-    "prov:endedAtTime": "2026-11-02T20:22:07+00:00",
+    "prov:startedAtTime": "2026-11-06T12:10:59+00:00",
+    "prov:endedAtTime": "2026-11-06T12:11:01+00:00",
     "prov:wasAssociatedWith": {
       "@type": [
         "SoftwareApplication",
@@ -46,12 +46,12 @@
         },
         {
           "path": "rca_sal/deployments.py",
-          "sha256": "59fc838004ad8614312716c551da4447aa0c161ad0547755cc392cc9b892a57b",
+          "sha256": "778d98770d1794df3c6a6a77a6f894af785a2e394d58049bf3308a9ec5121c10",
           "role": "code"
         },
         {
           "path": "rca_sal/discrete.py",
-          "sha256": "57ccd562c29f24a894f277a602275438e3157b0a93f611914ee547cf96c4e997",
+          "sha256": "a465ea675e03a662c0f0827293765c70960ee157ef160f71cb01caa594e7e805",
           "role": "code"
         },
         {
@@ -66,12 +66,12 @@
         },
         {
           "path": "rca_sal/inputs_check.py",
-          "sha256": "a86c438f979f2771d872966363ce19580da60e25f6fecd7ad1f0b9bcbefbf18e",
+          "sha256": "739b3f3a470c5ccd9795c263753b4b0180068f05260b39dba3879f06e2b00088",
           "role": "code"
         },
         {
           "path": "rca_sal/instruments.py",
-          "sha256": "ea0a0ac44dd43817143e031eb53436660a2da0bcf0ffeb21ff20910727f31b68",
+          "sha256": "967c309c57935fd570c7a80eb38ba5024b7f715ce97af8c55d360f14e74062f7",
           "role": "code"
         },
         {
@@ -96,22 +96,22 @@
         },
         {
           "path": "rca_sal/oxygen.py",
-          "sha256": "6d6bc489a27d2ce0fd53f83d0d1d5fbae2600da5ef955f725ec14715ef475622",
+          "sha256": "eeae3b7919012392b86c82f8efca09e76587e66074104a4f216e4bd8a9ce48ff",
           "role": "code"
         },
         {
           "path": "rca_sal/pipeline.py",
-          "sha256": "b5c11121bbf16840dd23428e1d598c324564b20ee02c7fdc01e661999d8a90a1",
+          "sha256": "0a104b48d790a45e4155be8d3b976218443f3b95bd78f42dfdc4341e412f4d8b",
           "role": "code"
         },
         {
           "path": "rca_sal/pipeline_no3.py",
-          "sha256": "1b3388f05f75bb3b855b62afc7a1037f70209859923c37b6b2edbad32c95728d",
+          "sha256": "01c4dff4d2a9af04312e585613c294d4388a80b8d5de503fa1d2133100d8f4ba",
           "role": "code"
         },
         {
           "path": "rca_sal/pipeline_o2.py",
-          "sha256": "036fe2f2044bcb30227064e7c8f2fc373dfb5f725f7113849b02a8198c24a5ae",
+          "sha256": "4dd4110ab6e6ca51ac971e52cd8f472e6cce63f43bedecbe91aaab7de92e81b2",
           "role": "code"
         },
         {
@@ -146,7 +146,7 @@
         },
         {
           "path": "config/cruises.toml",
-          "sha256": "7665bbcb391e961b4853d4dbe991b941e1afb3cb4d076fa9ab0143952a24e7f0",
+          "sha256": "f35c28fff0f556bfc5e65e2c039f08423dc37e971e0d924334657a5e41c9aa2a",
           "role": "config"
         },
         {
@@ -156,7 +156,7 @@
         }
       ],
       "rca:codeVersion": {
-        "git_commit": "7dc8a1cccc39687c1d42895c3c6d432467fef7e3",
+        "git_commit": "f080fa4940d31e36bf7891ff99351a602612ce2e",
         "uncommitted_changes_in_code_or_config": false
       },
       "rca:runtime": {
@@ -1392,32 +1392,32 @@
   "rca:outputs": [
     {
       "name": "binned_profiles.csv",
-      "sha256": "1c67478c4c930e56701c1fb4f31e90dfd48d961076344c9d34c46514de9b18ae",
+      "sha256": "76dedf7e6a16f0fa31d9161050eb82233e92805d883852f193bfdbe31326b998",
       "contentSize": 1174009
     },
     {
       "name": "bottle_check.csv",
-      "sha256": "1a4b3ab386109227f985b49a98c999bcd6a63c6d6b9998337763b8b5b54c5f07",
+      "sha256": "915acf7fa4b7bd4a8708bf44062f4b82a40e2d7252413b5d93bec9e331f7b487",
       "contentSize": 5398
     },
     {
       "name": "calibration_table.csv",
-      "sha256": "9cfff406820808b82f93698a039af617dcb48a1b6127f8222860b24dadb7472b",
+      "sha256": "5828e87c09745d893bcf1b36b13e0b57f2ef828ea8c72d5423d1aed8bbaed08a",
       "contentSize": 14245
     },
     {
       "name": "calibration_table.parquet",
-      "sha256": "88472a8e604dc0e92f413a771bd5733a7e7f8ef64d20d97b73e8fddf8320af2a",
+      "sha256": "8070ac013ca9321f6937299f4b4a4997fddf778fbff8e71ee13aae1b8d37927e",
       "contentSize": 29632
     },
     {
       "name": "reference_ctd_profile.csv",
-      "sha256": "7c8cb0fe512d41d18583d3a32f154f08dcb2c28c7e27a0add09303f929c9ac80",
+      "sha256": "6736f4b1e2db13546efa5828efb782c711ce4b3bc72058e1d0ba926511bdac56",
       "contentSize": 2673938
     },
     {
       "name": "upcasts.csv",
-      "sha256": "0e09147e8343b916272310c847b616bc3f97dbc62f4c4642b98b17ae33aa3cd6",
+      "sha256": "d3329b5f551631c6ba35904e9b0d6e0e1c8b9ffd0bd4a61f59891ec45b53b146",
       "contentSize": 1565
     }
   ]

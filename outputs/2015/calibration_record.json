@@ -1,0 +1,1467 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:63b51516-7380-5c76-ac77-364b15d36aa2",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA CTDPFA salinity calibration, Cabled-06 TN326 (2015)",
+  "dateCreated": "2026-11-06T12:09:09+00:00",
+  "variableMeasured": "sea_water_practical_salinity",
+  "rca:correctionKind": "additive",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-11-06T12:09:05+00:00",
+    "prov:endedAtTime": "2026-11-06T12:09:09+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "778d98770d1794df3c6a6a77a6f894af785a2e394d58049bf3308a9ec5121c10",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "a465ea675e03a662c0f0827293765c70960ee157ef160f71cb01caa594e7e805",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "aae6fa877db17d26c7ecf49304f381e662dade2b6844afd24ab57d43c77ae5cc",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "739b3f3a470c5ccd9795c263753b4b0180068f05260b39dba3879f06e2b00088",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/instruments.py",
+          "sha256": "967c309c57935fd570c7a80eb38ba5024b7f715ce97af8c55d360f14e74062f7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/nitrate.py",
+          "sha256": "0543edb1579419c44696fbb27714db67c07ce9117f363afbfdc17dfb75f256a3",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "30fea611c220c6e5242239a26767a535479021ba880c21897683d8022cfec33b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "eeae3b7919012392b86c82f8efca09e76587e66074104a4f216e4bd8a9ce48ff",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "0a104b48d790a45e4155be8d3b976218443f3b95bd78f42dfdc4341e412f4d8b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_no3.py",
+          "sha256": "01c4dff4d2a9af04312e585613c294d4388a80b8d5de503fa1d2133100d8f4ba",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "4dd4110ab6e6ca51ac971e52cd8f472e6cce63f43bedecbe91aaab7de92e81b2",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seafloor.py",
+          "sha256": "9cd0170cab888540f1ea0248dec88740b92ad3e2c3ea9ffa45fda426ee2b17cd",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "f35c28fff0f556bfc5e65e2c039f08423dc37e971e0d924334657a5e41c9aa2a",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "2347cfb6377fe90398dafb68f78c802c29b31a7ecac13488292bafae025e98bc",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "f080fa4940d31e36bf7891ff99351a602612ce2e",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3",
+        "platform": "Windows-11-10.0.26200-SP0"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS_profiles_2015.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2015.csv",
+        "sha256": "49c6cd0d9675e9cd525e0c5f7c856cd34d0de10f8a443f4120c295b1460c367c",
+        "contentSize": 72014,
+        "dateModified": "2026-11-06T09:20:22+00:00",
+        "rca:role": "profile_index_csv",
+        "description": "github[profile_indices]:RS03AXPS_profiles_2015.csv @ OOI-CabledArray/profileIndices commit 3999352e3be8f0df81891d6c5886b642cc7ddeb5 (git blob 2dd127479c2746f1a5e17c7d1dfbe2ef6d441b83)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0002_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20150713T120000.653458-20150723T115959.139934.nc",
+        "contentUrl": "data/raw/ooinet/20261106T114316027Z/deployment0002_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20150713T120000.653458-20150723T115959.139934.nc",
+        "sha256": "64d8844a352e7a095d6d88c348777778be07d604758631cfbe19d99326f8ac0e",
+        "contentSize": 238277063,
+        "dateModified": "2026-11-06T11:44:22+00:00",
+        "rca:role": "profiler_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261106T114316027Z/status.json",
+        "sha256": "8f9dcc474d24f06172c7b4a59a42bd129b9075807218337b753a225620f3cfa3",
+        "contentSize": 1245,
+        "dateModified": "2026-11-06T11:44:17+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0002_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261106T114316027Z/deployment0002_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json",
+        "sha256": "c079377063c0da443eae6f87a0dee26fd85edf1e60b802b3d605ba76e18985bd",
+        "contentSize": 485491,
+        "dateModified": "2026-11-06T11:44:19+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261106T114316027Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json",
+        "sha256": "2482555ec65ecc2cc52e1dfb84603735ce14311e9bb639e061a92bafb59fdf9f",
+        "contentSize": 711,
+        "dateModified": "2026-11-06T11:44:22+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "TN326_CTD-011.cnv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.cnv",
+        "sha256": "d86553105354d004756e7941bbe720f1ff8a846fcb583666d156854312fa8ddc",
+        "contentSize": 2282940,
+        "dateModified": "2026-11-06T09:18:49+00:00",
+        "rca:role": "reference_cnv",
+        "description": "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.cnv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 400564b868c926c89c4d1199a13143538b825ab0)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "TN326_CTD-011.btl",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.btl",
+        "sha256": "810617eafac9a301a8ffb5a6af57916d9491aa2eb0b42e5ceadb07602e12a406",
+        "contentSize": 20910,
+        "dateModified": "2026-11-06T09:18:49+00:00",
+        "rca:role": "reference_btl",
+        "description": "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.btl @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 4e89492c224db64c4a2c6195687128cb03c124f3)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-06_TN326_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv",
+        "sha256": "35c6e68fd5799bf2b31bd62f595632d603e6980bd88280aa83535255180fee91",
+        "contentSize": 239871,
+        "dateModified": "2026-11-02T18:59:55+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob f587e4813d49f551be01b20767077de86b8529b2)"
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261106T114316027Z",
+    "request_id": "20261106T114316027Z",
+    "reference_designator": "RS03AXPS-SF03A-2A-CTDPFA302",
+    "stream": "streamed/ctdpf_sbe43_sample",
+    "deployment": null,
+    "annotations": [
+      {
+        "id": 212,
+        "subsite": "RS03AXPS",
+        "node": "SF03A",
+        "sensor": "2A-CTDPFA302",
+        "method": "streamed",
+        "stream": "ctdpf_sbe43_sample",
+        "annotation": "Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.",
+        "exclusion_flag": false,
+        "source": "friedrich.knuth@rutgers.edu",
+        "qc_flag": null,
+        "parameters": [
+          909
+        ],
+        "start": "2015-07-09 04:16:00",
+        "stop": "2016-07-14 00:00:00"
+      }
+    ],
+    "status": {
+      "20150713T120000-20150714T000000": "complete",
+      "20150714T000000-20150714T120000": "complete",
+      "20150714T120000-20150715T000000": "complete",
+      "20150715T000000-20150715T120000": "complete",
+      "20150715T120000-20150716T000000": "complete",
+      "20150716T000000-20150716T120000": "complete",
+      "20150716T120000-20150717T000000": "complete",
+      "20150717T000000-20150717T120000": "complete",
+      "20150717T120000-20150718T000000": "complete",
+      "20150718T000000-20150718T120000": "complete",
+      "20150718T120000-20150719T000000": "complete",
+      "20150719T000000-20150719T120000": "complete",
+      "20150719T120000-20150720T000000": "complete",
+      "20150720T000000-20150720T120000": "complete",
+      "20150720T120000-20150721T000000": "complete",
+      "20150721T000000-20150721T120000": "complete",
+      "20150721T120000-20150722T000000": "complete",
+      "20150722T000000-20150722T120000": "complete",
+      "20150722T120000-20150723T000000": "complete",
+      "20150723T000000-20150723T120000": "complete",
+      "20150723T120000-20150723T120000": {
+        "code": 404,
+        "message": "Request for particles failed for the following reason: Query returned no results for primary stream",
+        "requestUUID": "cc3572f7-070e-49fc-a33e-cda50017d7b8"
+      }
+    },
+    "crosscheck_request_folder": null
+  },
+  "rca:profileIndex": {
+    "n_profiles_in_data": 13,
+    "crosscheck_with_own_upcasts": {
+      "tolerance_min": 10.0,
+      "n_upcasts_found": 7,
+      "n_matched": 7,
+      "upcasts": [
+        {
+          "upcast_id": 0,
+          "index_profile": 574,
+          "start_diff_min": 0.06,
+          "end_minus_peak_min": -0.19,
+          "match": true
+        },
+        {
+          "upcast_id": 1,
+          "index_profile": 580,
+          "start_diff_min": 1.27,
+          "end_minus_peak_min": -0.76,
+          "match": true
+        },
+        {
+          "upcast_id": 2,
+          "index_profile": 582,
+          "start_diff_min": 0.21,
+          "end_minus_peak_min": -0.43,
+          "match": true
+        },
+        {
+          "upcast_id": 3,
+          "index_profile": 583,
+          "start_diff_min": -0.14,
+          "end_minus_peak_min": -0.72,
+          "match": true
+        },
+        {
+          "upcast_id": 4,
+          "index_profile": 584,
+          "start_diff_min": -0.47,
+          "end_minus_peak_min": -1.11,
+          "match": true
+        },
+        {
+          "upcast_id": 5,
+          "index_profile": 585,
+          "start_diff_min": 0.46,
+          "end_minus_peak_min": -0.67,
+          "match": true
+        },
+        {
+          "upcast_id": 6,
+          "index_profile": 586,
+          "start_diff_min": 0.3,
+          "end_minus_peak_min": -0.93,
+          "match": true
+        }
+      ]
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.cnv",
+        "blob_sha": "400564b868c926c89c4d1199a13143538b825ab0",
+        "bytes": 2282940,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.cnv"
+      },
+      {
+        "path": "CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.btl",
+        "blob_sha": "4e89492c224db64c4a2c6195687128cb03c124f3",
+        "bytes": 20910,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.btl"
+      },
+      {
+        "path": "FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv",
+        "blob_sha": "f587e4813d49f551be01b20767077de86b8529b2",
+        "bytes": 239871,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv"
+      }
+    ],
+    "additionalSources": [
+      {
+        "repo": "OOI-CabledArray/profileIndices",
+        "ref": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "commit": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "files": [
+          {
+            "path": "RS03AXPS_profiles_2015.csv",
+            "blob_sha": "2dd127479c2746f1a5e17c7d1dfbe2ef6d441b83",
+            "bytes": 72014,
+            "url": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2015.csv"
+          }
+        ]
+      }
+    ]
+  },
+  "rca:site": "RS03AXPS",
+  "rca:cruise": {
+    "cruise": "Cabled-06",
+    "ship_cruise_id": "TN326",
+    "vessel": "R/V Thomas G. Thompson",
+    "cast": "CTD-011",
+    "cast_start_utc": "2015-07-13T17:03:53+00:00",
+    "last_bottle_closure_utc": "2015-07-13T17:22:51+00:00",
+    "cast_time_utc": "2015-07-13T17:13:22+00:00",
+    "definition": "cast_time = midpoint of NMEA cast start (.cnv header) and the last bottle closure (.btl)"
+  },
+  "rca:parameters": {
+    "global": {
+      "variable": "salinity",
+      "correction_kind": "additive",
+      "bin_size_m": 1.0,
+      "smooth_window_bins": 5,
+      "bottle_outlier_psu": 0.01,
+      "extrapolate_reference": false,
+      "bottle_ok_niskin_flags": [
+        "No problems noted"
+      ],
+      "bottle_ok_salinity_flag_prefix": "Acceptable",
+      "upcast": {
+        "smooth_s": 15.0,
+        "w_ascend": -0.03,
+        "max_gap_s": 30.0,
+        "min_span_m": 100.0
+      },
+      "ctd_downcast": {
+        "min_pressure_dbar": 2.0,
+        "heave_tolerance_dbar": 0.5
+      },
+      "oxygen": {
+        "correction_kind": "multiplicative",
+        "winkler_bad_flags": [
+          3.0,
+          4.0
+        ]
+      }
+    },
+    "variants": [
+      {
+        "id": "mask_fullday_prDM",
+        "role": "alternative",
+        "description": "diff<0 mask over the whole requested day, prDM, raw .cnv",
+        "select": "notebook_window_ascending",
+        "window": false,
+        "ref": "raw",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcasts_all_prDM",
+        "role": "alternative",
+        "description": "all labelled upcasts, prDM vs depth, downcast-only reference",
+        "select": "upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)",
+        "select": "upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_first_upcasts_depSM",
+        "role": "primary",
+        "description": "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_first_upcasts_depSM_sal11",
+        "role": "sensitivity",
+        "description": "as primary but against the secondary CTD sensor sal11",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal11"
+      },
+      {
+        "id": "first_upcasts_depSM",
+        "role": "alternative",
+        "description": "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index",
+        "select": "first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00",
+        "select": "nearest_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "nearest_upcast_depSM_sal11",
+        "role": "alternative",
+        "description": "as nearest_upcast_depSM but against the secondary CTD sensor sal11",
+        "select": "nearest_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal11"
+      },
+      {
+        "id": "index_upcasts_all_prDM",
+        "role": "alternative",
+        "description": "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference",
+        "select": "index_upcasts",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "prDM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference",
+        "select": "index_upcasts",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "index_nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference",
+        "select": "index_nearest_upcast",
+        "needs_profile_index": true,
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      },
+      {
+        "id": "upcast_{k}_depSM",
+        "role": "per_upcast",
+        "description": "single upcast {k}, depSM vs depth, downcast-only reference",
+        "select": "each_upcast",
+        "ref": "downcast",
+        "ref_depth_col": "depSM",
+        "ref_sal_col": "sal00"
+      }
+    ],
+    "notebook_window_utc": null
+  },
+  "rca:inputChecks": {
+    "nc_vs_csv": {
+      "status": "not provided",
+      "identical_within_tolerance": null
+    },
+    "ctd_header": {
+      "processing": [
+        "datcnv"
+      ],
+      "nmea_lat": 45.830333333333336,
+      "nmea_lon": -129.75533333333334,
+      "nmea_utc": "2015-07-13T17:03:53+00:00",
+      "interval_s": 0.0416667,
+      "bad_flag": -9.99e-29
+    },
+    "ctd_scans_total": 12015,
+    "ctd_scans_downcast_reference": 11731,
+    "autosal_header": {},
+    "profiler_samples": 827543,
+    "n_upcasts": 7,
+    "profiler_time_start": "2015-07-13T12:00:00.653457920+00:00",
+    "profiler_time_end": "2015-07-23T11:59:59.139934208+00:00"
+  },
+  "rca:bottleCheck": {
+    "sal00": {
+      "sensor": "primary (sal00)",
+      "n": 12,
+      "median_diff_psu": -0.002649999999999153,
+      "mean_diff_psu": -0.0026749999999987986,
+      "iqr_psu": 0.007224999999996484,
+      "rmse_psu": 0.005785254243908094,
+      "an31_slope": 1.0000727513371874,
+      "n_excluded_by_flag": 0,
+      "n_outliers_flagged": 1,
+      "without_outliers": {
+        "n": 11,
+        "median_diff_psu": -0.0018000000000029104,
+        "rmse_psu": 0.004438160962298445
+      }
+    },
+    "sal11": {
+      "sensor": "secondary (sal11)",
+      "n": 12,
+      "median_diff_psu": -0.001449999999998397,
+      "mean_diff_psu": -0.0016249999999994695,
+      "iqr_psu": 0.009850000000001913,
+      "rmse_psu": 0.006469350817509551,
+      "an31_slope": 1.0000483105537197,
+      "n_excluded_by_flag": 0,
+      "n_outliers_flagged": 1,
+      "without_outliers": {
+        "n": 11,
+        "median_diff_psu": 0.0005999999999986017,
+        "rmse_psu": 0.005393430347107693
+      }
+    }
+  },
+  "rca:upcasts": [
+    {
+      "upcast_id": 0,
+      "start": "2015-07-13T15:23:03.841487360+00:00",
+      "end": "2015-07-13T16:18:48.877640704+00:00",
+      "mid_time": "2015-07-13T15:50:56.359564032+00:00",
+      "mean_time": "2015-07-13T15:50:56.360991232+00:00",
+      "depth_min": 20.504821235329477,
+      "depth_max": 184.3519568450203,
+      "n": 3346,
+      "mean_speed_ms": -0.048972144575213025
+    },
+    {
+      "upcast_id": 1,
+      "start": "2015-07-13T20:57:16.149865984+00:00",
+      "end": "2015-07-13T21:17:14.154934272+00:00",
+      "mid_time": "2015-07-13T21:07:15.152400128+00:00",
+      "mean_time": "2015-07-13T21:07:15.152764928+00:00",
+      "depth_min": 22.1346492813186,
+      "depth_max": 187.83793744905807,
+      "n": 1199,
+      "mean_speed_ms": -0.13820772178835924
+    },
+    {
+      "upcast_id": 2,
+      "start": "2015-07-14T19:25:12.350634496+00:00",
+      "end": "2015-07-14T19:51:34.387786752+00:00",
+      "mid_time": "2015-07-14T19:38:23.369210624+00:00",
+      "mean_time": "2015-07-14T19:38:23.381337600+00:00",
+      "depth_min": 30.634681858488328,
+      "depth_max": 186.3564556277933,
+      "n": 1583,
+      "mean_speed_ms": -0.09838891671309907
+    },
+    {
+      "upcast_id": 3,
+      "start": "2015-07-14T20:30:51.457287168+00:00",
+      "end": "2015-07-14T20:57:16.529467904+00:00",
+      "mid_time": "2015-07-14T20:44:03.993377536+00:00",
+      "mean_time": "2015-07-14T20:44:03.970630656+00:00",
+      "depth_min": 30.410887829192095,
+      "depth_max": 185.85813286167885,
+      "n": 1586,
+      "mean_speed_ms": -0.09799584759571314
+    },
+    {
+      "upcast_id": 4,
+      "start": "2015-07-14T21:36:31.596281344+00:00",
+      "end": "2015-07-14T22:02:53.607323648+00:00",
+      "mid_time": "2015-07-14T21:49:42.601802496+00:00",
+      "mean_time": "2015-07-14T21:49:42.601745664+00:00",
+      "depth_min": 30.123508198618886,
+      "depth_max": 185.50767208954784,
+      "n": 1583,
+      "mean_speed_ms": -0.0981760472304915
+    },
+    {
+      "upcast_id": 5,
+      "start": "2015-07-16T15:56:27.737411584+00:00",
+      "end": "2015-07-16T16:24:19.800263680+00:00",
+      "mid_time": "2015-07-16T16:10:23.768837632+00:00",
+      "mean_time": "2015-07-16T16:10:23.756989696+00:00",
+      "depth_min": 21.13074648709472,
+      "depth_max": 184.5806909727916,
+      "n": 1673,
+      "mean_speed_ms": -0.09770116075673947
+    },
+    {
+      "upcast_id": 6,
+      "start": "2015-07-16T19:51:18.002091008+00:00",
+      "end": "2015-07-16T20:47:04.159866368+00:00",
+      "mid_time": "2015-07-16T20:19:11.080978688+00:00",
+      "mean_time": "2015-07-16T20:19:11.054504704+00:00",
+      "depth_min": 22.99118304992279,
+      "depth_max": 186.60649894980529,
+      "n": 3347,
+      "mean_speed_ms": -0.04889293914096063
+    }
+  ],
+  "rca:variants": [
+    {
+      "variant_id": "mask_fullday_prDM",
+      "role": "alternative",
+      "description": "diff<0 mask over the whole requested day, prDM, raw .cnv",
+      "selection": "notebook_window_ascending",
+      "upcast_id": null,
+      "n_upcasts": null,
+      "upcast_ids": null,
+      "reference_filter": "raw",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 402951, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 402951,
+      "n_bins": 173,
+      "depth_min_m": 18.5,
+      "depth_max_m": 190.5,
+      "offset_psu": 0.03858794033934032,
+      "iqr_psu": 0.0694966233596972,
+      "rmse_before_psu": 0.08375454727342102,
+      "rmse_after_offset_psu": 0.06566919405251723,
+      "an31_slope": 0.9984868056714689,
+      "an31_n_bins": 171,
+      "rmse_before_common_bins_psu": 0.08255125086342299,
+      "rmse_after_offset_common_bins_psu": 0.06483385932830601,
+      "rmse_after_slope_common_bins_psu": 0.06371445040929942,
+      "median_residual_after_slope_psu": -0.0164991312708338,
+      "t1_mean_profiler_time_utc": "2015-07-18T14:28:09.468018688+00:00",
+      "sample_time_start_utc": "2015-07-13T12:00:01.653151744+00:00",
+      "sample_time_end_utc": "2015-07-23T11:59:51.139567616+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 117.24651889388889
+    },
+    {
+      "variant_id": "upcasts_all_prDM",
+      "role": "alternative",
+      "description": "all labelled upcasts, prDM vs depth, downcast-only reference",
+      "selection": "upcasts",
+      "upcast_id": null,
+      "n_upcasts": 7,
+      "upcast_ids": "0;1;2;3;4;5;6",
+      "reference_filter": "downcast",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 14317, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 14317,
+      "n_bins": 170,
+      "depth_min_m": 18.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.039321800041875576,
+      "iqr_psu": 0.0793853150836199,
+      "rmse_before_psu": 0.08487697786560508,
+      "rmse_after_offset_psu": 0.06618276729805869,
+      "an31_slope": 0.9984466445374396,
+      "an31_n_bins": 168,
+      "rmse_before_common_bins_psu": 0.08440551797300838,
+      "rmse_after_offset_common_bins_psu": 0.06601646432057466,
+      "rmse_after_slope_common_bins_psu": 0.06465939888471188,
+      "median_residual_after_slope_psu": -0.017491189269492224,
+      "t1_mean_profiler_time_utc": "2015-07-15T04:12:23.249671936+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:04.159866368+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 34.98368046416667
+    },
+    {
+      "variant_id": "upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all labelled upcasts, depSM vs depth, downcast-only reference (all-upcasts alternative)",
+      "selection": "upcasts",
+      "upcast_id": null,
+      "n_upcasts": 7,
+      "upcast_ids": "0;1;2;3;4;5;6",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 14317, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 14317,
+      "n_bins": 170,
+      "depth_min_m": 18.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.037889854585493765,
+      "iqr_psu": 0.07998887991321624,
+      "rmse_before_psu": 0.08003590405064043,
+      "rmse_after_offset_psu": 0.06507248025244948,
+      "an31_slope": 0.9986543293824193,
+      "an31_n_bins": 168,
+      "rmse_before_common_bins_psu": 0.07948323692075368,
+      "rmse_after_offset_common_bins_psu": 0.0648752669184953,
+      "rmse_after_slope_common_bins_psu": 0.06476167066054794,
+      "median_residual_after_slope_psu": -0.011388045045837458,
+      "t1_mean_profiler_time_utc": "2015-07-15T04:12:23.249671936+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:04.159866368+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 34.98368046416667
+    },
+    {
+      "variant_id": "index_first_upcasts_depSM",
+      "role": "primary",
+      "description": "mean of the first 6 complete official-index upcasts after the CTD cast, depSM vs depth, downcast-only reference, sal00",
+      "selection": "index_first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "580;582;583;584;585;586",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 11340, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 11340,
+      "n_bins": 172,
+      "depth_min_m": 18.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.045174186937998684,
+      "iqr_psu": 0.08807788328604893,
+      "rmse_before_psu": 0.0916539209660913,
+      "rmse_after_offset_psu": 0.07245636626929962,
+      "an31_slope": 0.9984264485523289,
+      "an31_n_bins": 170,
+      "rmse_before_common_bins_psu": 0.08774182659944128,
+      "rmse_after_offset_common_bins_psu": 0.06902399105569124,
+      "rmse_after_slope_common_bins_psu": 0.06882580425765016,
+      "median_residual_after_slope_psu": -0.01275580180886493,
+      "t1_mean_profiler_time_utc": "2015-07-15T15:00:23.509630720+00:00",
+      "sample_time_start_utc": "2015-07-13T20:56:00.149100544+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:59.159849984+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 45.783752674999995
+    },
+    {
+      "variant_id": "index_first_upcasts_depSM_sal11",
+      "role": "sensitivity",
+      "description": "as primary but against the secondary CTD sensor sal11",
+      "selection": "index_first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "580;582;583;584;585;586",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal11",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 11340, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 11340,
+      "n_bins": 172,
+      "depth_min_m": 18.5,
+      "depth_max_m": 189.5,
+      "offset_psu": 0.04834895837331388,
+      "iqr_psu": 0.09207709093685246,
+      "rmse_before_psu": 0.0931693847157142,
+      "rmse_after_offset_psu": 0.07281825658836236,
+      "an31_slope": 0.9983794090187498,
+      "an31_n_bins": 170,
+      "rmse_before_common_bins_psu": 0.08930659443289615,
+      "rmse_after_offset_common_bins_psu": 0.06948610317809156,
+      "rmse_after_slope_common_bins_psu": 0.06951498281223673,
+      "median_residual_after_slope_psu": -0.01156375556848488,
+      "t1_mean_profiler_time_utc": "2015-07-15T15:00:23.509630720+00:00",
+      "sample_time_start_utc": "2015-07-13T20:56:00.149100544+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:59.159849984+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 45.783752674999995
+    },
+    {
+      "variant_id": "first_upcasts_depSM",
+      "role": "alternative",
+      "description": "as primary but on the upcasts found in the profiler data (rca_sal.profiler.label_upcasts) instead of the official index",
+      "selection": "first_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "1;2;3;4;5;6",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 10971, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 10971,
+      "n_bins": 169,
+      "depth_min_m": 19.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.0457461853726997,
+      "iqr_psu": 0.08661449102917373,
+      "rmse_before_psu": 0.09245927357923735,
+      "rmse_after_offset_psu": 0.07287377385641883,
+      "an31_slope": 0.9984131459052731,
+      "an31_n_bins": 167,
+      "rmse_before_common_bins_psu": 0.08791886623001621,
+      "rmse_after_offset_common_bins_psu": 0.06878549913151685,
+      "rmse_after_slope_common_bins_psu": 0.06857023592041403,
+      "median_residual_after_slope_psu": -0.013113199803342468,
+      "t1_mean_profiler_time_utc": "2015-07-15T15:17:41.901529344+00:00",
+      "sample_time_start_utc": "2015-07-13T20:57:16.149865984+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:04.159866368+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 46.072194869166665
+    },
+    {
+      "variant_id": "nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "single upcast nearest the CTD cast, depSM vs depth, downcast-only reference, sal00",
+      "selection": "nearest_upcast",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 3346, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3346,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "offset_psu": 0.006653726029234974,
+      "iqr_psu": 0.04425243429088255,
+      "rmse_before_psu": 0.0674470200219937,
+      "rmse_after_offset_psu": 0.06578017310263123,
+      "an31_slope": 0.9993934586512176,
+      "an31_n_bins": 165,
+      "rmse_before_common_bins_psu": 0.06683042207289737,
+      "rmse_after_offset_common_bins_psu": 0.0652549809325574,
+      "rmse_after_slope_common_bins_psu": 0.06429736376048557,
+      "median_residual_after_slope_psu": -0.016636053272328866,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:50:56.360991232+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:48.877640704+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3737886136111113
+    },
+    {
+      "variant_id": "nearest_upcast_depSM_sal11",
+      "role": "alternative",
+      "description": "as nearest_upcast_depSM but against the secondary CTD sensor sal11",
+      "selection": "nearest_upcast",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal11",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 3346, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3346,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "offset_psu": 0.008242163454283968,
+      "iqr_psu": 0.0461957388593639,
+      "rmse_before_psu": 0.06844781699510807,
+      "rmse_after_offset_psu": 0.06629690279622424,
+      "an31_slope": 0.9993449907234698,
+      "an31_n_bins": 165,
+      "rmse_before_common_bins_psu": 0.06783284392685424,
+      "rmse_after_offset_common_bins_psu": 0.06579249034062447,
+      "rmse_after_slope_common_bins_psu": 0.06484084753579124,
+      "median_residual_after_slope_psu": -0.01597597433591602,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:50:56.360991232+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:48.877640704+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3737886136111113
+    },
+    {
+      "variant_id": "index_upcasts_all_prDM",
+      "role": "alternative",
+      "description": "all upcasts of the official profile index (start to peak), prDM vs depth, downcast-only reference",
+      "selection": "index_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 13,
+      "upcast_ids": "574;575;576;577;578;579;580;581;582;583;584;585;586",
+      "reference_filter": "downcast",
+      "reference_depth_col": "prDM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 16620, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 16620,
+      "n_bins": 173,
+      "depth_min_m": 18.5,
+      "depth_max_m": 190.5,
+      "offset_psu": 0.03875695547579028,
+      "iqr_psu": 0.07840767919829972,
+      "rmse_before_psu": 0.0847758433017993,
+      "rmse_after_offset_psu": 0.06597766881683687,
+      "an31_slope": 0.9984457144831593,
+      "an31_n_bins": 171,
+      "rmse_before_common_bins_psu": 0.08364835434524805,
+      "rmse_after_offset_common_bins_psu": 0.06519797527459943,
+      "rmse_after_slope_common_bins_psu": 0.06369314433595906,
+      "median_residual_after_slope_psu": -0.018313215003409766,
+      "t1_mean_profiler_time_utc": "2015-07-15T00:49:51.594635008+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:00.841258496+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:59.159849984+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 31.608220731944446
+    },
+    {
+      "variant_id": "index_upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all upcasts of the official profile index (start to peak), depSM vs depth, downcast-only reference",
+      "selection": "index_upcasts",
+      "upcast_id": null,
+      "n_upcasts": 13,
+      "upcast_ids": "574;575;576;577;578;579;580;581;582;583;584;585;586",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 16620, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 16620,
+      "n_bins": 173,
+      "depth_min_m": 18.5,
+      "depth_max_m": 190.5,
+      "offset_psu": 0.03719803931137022,
+      "iqr_psu": 0.07660659371810397,
+      "rmse_before_psu": 0.07991473790294627,
+      "rmse_after_offset_psu": 0.06478446660775002,
+      "an31_slope": 0.9986520596075196,
+      "an31_n_bins": 171,
+      "rmse_before_common_bins_psu": 0.07866754403347899,
+      "rmse_after_offset_common_bins_psu": 0.0639520142899947,
+      "rmse_after_slope_common_bins_psu": 0.06373227417119876,
+      "median_residual_after_slope_psu": -0.012067758480625912,
+      "t1_mean_profiler_time_utc": "2015-07-15T00:49:51.594635008+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:00.841258496+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:59.159849984+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 31.608220731944446
+    },
+    {
+      "variant_id": "index_nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "the official-index profile whose upcast is nearest the CTD cast, depSM vs depth, downcast-only reference",
+      "selection": "index_nearest_upcast",
+      "upcast_id": 574,
+      "n_upcasts": 1,
+      "upcast_ids": "574",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 3360, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3360,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "offset_psu": 0.006653726029234974,
+      "iqr_psu": 0.044252434290878995,
+      "rmse_before_psu": 0.06740861985137132,
+      "rmse_after_offset_psu": 0.06574311260251496,
+      "an31_slope": 0.9993937942292959,
+      "an31_n_bins": 165,
+      "rmse_before_common_bins_psu": 0.0668157805895722,
+      "rmse_after_offset_common_bins_psu": 0.06524075601416235,
+      "rmse_after_slope_common_bins_psu": 0.06428401614252693,
+      "median_residual_after_slope_psu": -0.016623662875431933,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:51:00.361028608+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:00.841258496+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:59.877611520+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3726774922222222
+    },
+    {
+      "variant_id": "upcast_0_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 0, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 3346, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3346,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "offset_psu": 0.006653726029234974,
+      "iqr_psu": 0.04425243429088255,
+      "rmse_before_psu": 0.0674470200219937,
+      "rmse_after_offset_psu": 0.06578017310263123,
+      "an31_slope": 0.9993934586512176,
+      "an31_n_bins": 165,
+      "rmse_before_common_bins_psu": 0.06683042207289737,
+      "rmse_after_offset_common_bins_psu": 0.0652549809325574,
+      "rmse_after_slope_common_bins_psu": 0.06429736376048557,
+      "median_residual_after_slope_psu": -0.016636053272328866,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:50:56.360991232+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:48.877640704+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3737886136111113
+    },
+    {
+      "variant_id": "upcast_1_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 1, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 1,
+      "n_upcasts": 1,
+      "upcast_ids": "1",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 1199, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 1199,
+      "n_bins": 168,
+      "depth_min_m": 20.5,
+      "depth_max_m": 187.5,
+      "offset_psu": 0.048065225781336096,
+      "iqr_psu": 0.11555970828101536,
+      "rmse_before_psu": 0.08579935921803815,
+      "rmse_after_offset_psu": 0.07419242999748196,
+      "an31_slope": 0.9987555127156323,
+      "an31_n_bins": 166,
+      "rmse_before_common_bins_psu": 0.08389138081823684,
+      "rmse_after_offset_common_bins_psu": 0.07310826072791897,
+      "rmse_after_slope_common_bins_psu": 0.07335299260256302,
+      "median_residual_after_slope_psu": 0.0023118498119458764,
+      "t1_mean_profiler_time_utc": "2015-07-13T21:07:15.152764928+00:00",
+      "sample_time_start_utc": "2015-07-13T20:57:16.149865984+00:00",
+      "sample_time_end_utc": "2015-07-13T21:17:14.154934272+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 3.89809799
+    },
+    {
+      "variant_id": "upcast_2_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 2, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 2,
+      "n_upcasts": 1,
+      "upcast_ids": "2",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 1583, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 1583,
+      "n_bins": 159,
+      "depth_min_m": 28.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.06363918859742057,
+      "iqr_psu": 0.08696114500150998,
+      "rmse_before_psu": 0.10129355557708067,
+      "rmse_after_offset_psu": 0.06582030228696804,
+      "an31_slope": 0.9978940483555733,
+      "an31_n_bins": 157,
+      "rmse_before_common_bins_psu": 0.10006175205673376,
+      "rmse_after_offset_common_bins_psu": 0.06506071921021703,
+      "rmse_after_slope_common_bins_psu": 0.06398811013800858,
+      "median_residual_after_slope_psu": -0.0175572549362073,
+      "t1_mean_profiler_time_utc": "2015-07-14T19:38:23.381337600+00:00",
+      "sample_time_start_utc": "2015-07-14T19:25:12.350634496+00:00",
+      "sample_time_end_utc": "2015-07-14T19:51:34.387786752+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 26.41705037138889
+    },
+    {
+      "variant_id": "upcast_3_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 3, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 3,
+      "n_upcasts": 1,
+      "upcast_ids": "3",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 1586, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 1586,
+      "n_bins": 158,
+      "depth_min_m": 28.5,
+      "depth_max_m": 185.5,
+      "offset_psu": 0.04900481706425097,
+      "iqr_psu": 0.08400700596043897,
+      "rmse_before_psu": 0.07660474252695526,
+      "rmse_after_offset_psu": 0.06329274776634423,
+      "an31_slope": 0.9987914570280786,
+      "an31_n_bins": 156,
+      "rmse_before_common_bins_psu": 0.07547617973984913,
+      "rmse_after_offset_common_bins_psu": 0.06285861305689144,
+      "rmse_after_slope_common_bins_psu": 0.06288936064274606,
+      "median_residual_after_slope_psu": 0.004260633796722146,
+      "t1_mean_profiler_time_utc": "2015-07-14T20:44:03.970630656+00:00",
+      "sample_time_start_utc": "2015-07-14T20:30:51.457287168+00:00",
+      "sample_time_end_utc": "2015-07-14T20:57:16.529467904+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 27.511658508333333
+    },
+    {
+      "variant_id": "upcast_4_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 4, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 4,
+      "n_upcasts": 1,
+      "upcast_ids": "4",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 1583, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 1583,
+      "n_bins": 158,
+      "depth_min_m": 28.5,
+      "depth_max_m": 185.5,
+      "offset_psu": 0.03919824928191318,
+      "iqr_psu": 0.1092887315092117,
+      "rmse_before_psu": 0.08694231228018559,
+      "rmse_after_offset_psu": 0.0784738294273551,
+      "an31_slope": 0.9989379508353399,
+      "an31_n_bins": 156,
+      "rmse_before_common_bins_psu": 0.08554044714187134,
+      "rmse_after_offset_common_bins_psu": 0.07771768810253485,
+      "rmse_after_slope_common_bins_psu": 0.07802432213455898,
+      "median_residual_after_slope_psu": -0.00017049248163658604,
+      "t1_mean_profiler_time_utc": "2015-07-14T21:49:42.601745664+00:00",
+      "sample_time_start_utc": "2015-07-14T21:36:31.596281344+00:00",
+      "sample_time_end_utc": "2015-07-14T22:02:53.607323648+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 28.605722706944448
+    },
+    {
+      "variant_id": "upcast_5_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 5, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 5,
+      "n_upcasts": 1,
+      "upcast_ids": "5",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 1673, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 1673,
+      "n_bins": 166,
+      "depth_min_m": 19.5,
+      "depth_max_m": 184.5,
+      "offset_psu": 0.047714544480619736,
+      "iqr_psu": 0.13308674225960537,
+      "rmse_before_psu": 0.11134314986313698,
+      "rmse_after_offset_psu": 0.09332651451510009,
+      "an31_slope": 0.9982970032544579,
+      "an31_n_bins": 164,
+      "rmse_before_common_bins_psu": 0.10743513490725215,
+      "rmse_after_offset_common_bins_psu": 0.09009103952380662,
+      "rmse_after_slope_common_bins_psu": 0.08973362658944978,
+      "median_residual_after_slope_psu": -0.014690247519737909,
+      "t1_mean_profiler_time_utc": "2015-07-16T16:10:23.756989696+00:00",
+      "sample_time_start_utc": "2015-07-16T15:56:27.737411584+00:00",
+      "sample_time_end_utc": "2015-07-16T16:24:19.800263680+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 70.95048805249999
+    },
+    {
+      "variant_id": "upcast_6_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 6, depSM vs depth, downcast-only reference",
+      "selection": "upcasts_one",
+      "upcast_id": 6,
+      "n_upcasts": 1,
+      "upcast_ids": "6",
+      "reference_filter": "downcast",
+      "reference_depth_col": "depSM",
+      "reference_sal_col": "sal00",
+      "kind": "additive",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": "[{\"id\": 212, \"qc_flag\": null, \"exclusion_flag\": false, \"sensor\": \"2A-CTDPFA302\", \"start\": \"2015-07-09 04:16:00\", \"stop\": \"2016-07-14 00:00:00\", \"n_samples\": 3347, \"annotation\": \"Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.\"}]",
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_profiler_samples": 3347,
+      "n_bins": 167,
+      "depth_min_m": 20.5,
+      "depth_max_m": 186.5,
+      "offset_psu": 0.03903117545375068,
+      "iqr_psu": 0.07668671366318236,
+      "rmse_before_psu": 0.08637351310401405,
+      "rmse_after_offset_psu": 0.0678621139726614,
+      "an31_slope": 0.9984832843256279,
+      "an31_n_bins": 165,
+      "rmse_before_common_bins_psu": 0.08614645345502507,
+      "rmse_after_offset_common_bins_psu": 0.06789706120371358,
+      "rmse_after_slope_common_bins_psu": 0.06600922991393589,
+      "median_residual_after_slope_psu": -0.01762303522603048,
+      "t1_mean_profiler_time_utc": "2015-07-16T20:19:11.054504704+00:00",
+      "sample_time_start_utc": "2015-07-16T19:51:18.002091008+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:04.159866368+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 75.09695958444445
+    }
+  ],
+  "rca:primaryVariant": "index_first_upcasts_depSM",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "index_first_upcasts_depSM",
+      "value": 0.045174186937998684,
+      "time_mean_profiler_utc": "2015-07-15T15:00:23.509630720+00:00",
+      "time_cast_utc": "2015-07-13T17:13:22+00:00",
+      "notebook_convention_variant": null,
+      "notebook_convention_value": null,
+      "notebook_convention_time_mean_profiler_utc": null
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "no second cruise configured for this year; two-point interpolation not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "caveat",
+      "code": "ctd_processing",
+      "text": "Reference .cnv was processed with datcnv only; alignctd / celltm / loopedit are not applied."
+    },
+    {
+      "severity": "caveat",
+      "code": "ctd_downcast_only",
+      "text": "The .cnv holds the downcast only (12015 scans, 11731 kept after removing ship-heave reversals). Bottle (.btl) averages are taken at upcast bottle closures, so CTD-vs-Autosal uses upcast data while profiler-vs-CTD uses the downcast."
+    },
+    {
+      "severity": "caveat",
+      "code": "bottle_salinity_from_summary",
+      "text": "Bottle salinity is taken from the cruise's discrete summary (the laboratory's Autosal and cast-log workbooks are not available for this cruise); replicates are averaged and the summary's flags are applied."
+    },
+    {
+      "severity": "warning",
+      "code": "bottle_outlier",
+      "text": "Niskin 9 (CTD-011 Niskin 9, ~141 m depSM, sal00): CTD-bottle -0.0136 PSU is more than 0.01 PSU from the median; CTD gradient there +0.010 PSU/m."
+    },
+    {
+      "severity": "warning",
+      "code": "bottle_outlier",
+      "text": "Niskin 9 (CTD-011 Niskin 9, ~141 m depSM, sal11): CTD-bottle -0.0135 PSU is more than 0.01 PSU from the median; CTD gradient there +0.010 PSU/m."
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_empty_window",
+      "text": "OOINet sub-request 20150723T120000-20150723T120000 returned 404: Request for particles failed for the following reason: Query returned no results for primary stream"
+    },
+    {
+      "severity": "info",
+      "code": "ooinet_annotation",
+      "text": "OOI annotation 212 (None; 2015-07-09 04:16:00 to 2016-07-14 00:00:00) covers 11340 of the samples used: Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org."
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "binned_profiles.csv",
+      "sha256": "b709356e4d754107896d1848f683d7ade303722309ec2e7edddf02bd75409c95",
+      "contentSize": 1182492
+    },
+    {
+      "name": "bottle_check.csv",
+      "sha256": "c1752121f537f5f876ee461b2762344bd9d387bb6ff1354be2d79b9c2df81879",
+      "contentSize": 6977
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "aa1626ccc175680072295cad707ce6fddaa9c31268482f6d9fcaaa6131ed3a8d",
+      "contentSize": 23508
+    },
+    {
+      "name": "calibration_table.parquet",
+      "sha256": "331b85a391fd70b5fb40df418a70bd0bec2fa3c23e3dfefff5361ee5aa6a6eef",
+      "contentSize": 32670
+    },
+    {
+      "name": "reference_ctd_profile.csv",
+      "sha256": "c9d70840c8d046c9b73cb9d5f372dd13477952c0965333488a12c43874ed70a2",
+      "contentSize": 1120697
+    },
+    {
+      "name": "upcasts.csv",
+      "sha256": "a8edc5555179a6b3130d9661f6248a9d9a4ac0cc8c9c24de428286d4928b3d34",
+      "contentSize": 1815
+    }
+  ]
+}

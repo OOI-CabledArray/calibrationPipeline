@@ -1,0 +1,530 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:14d4136c-efc6-5d0d-ac54-2ecb51e6ece3",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA SUNA nitrate validation, Cabled-06 TN326 (2015), Slope Base Shallow Profiler",
+  "dateCreated": "2026-11-06T12:09:28+00:00",
+  "variableMeasured": "salinity_corrected_nitrate",
+  "rca:correctionKind": "additive",
+  "rca:site": "RS01SBPS",
+  "rca:method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-11-06T12:09:27+00:00",
+    "prov:endedAtTime": "2026-11-06T12:09:28+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "778d98770d1794df3c6a6a77a6f894af785a2e394d58049bf3308a9ec5121c10",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "a465ea675e03a662c0f0827293765c70960ee157ef160f71cb01caa594e7e805",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "aae6fa877db17d26c7ecf49304f381e662dade2b6844afd24ab57d43c77ae5cc",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "739b3f3a470c5ccd9795c263753b4b0180068f05260b39dba3879f06e2b00088",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/instruments.py",
+          "sha256": "967c309c57935fd570c7a80eb38ba5024b7f715ce97af8c55d360f14e74062f7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/nitrate.py",
+          "sha256": "0543edb1579419c44696fbb27714db67c07ce9117f363afbfdc17dfb75f256a3",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "30fea611c220c6e5242239a26767a535479021ba880c21897683d8022cfec33b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "eeae3b7919012392b86c82f8efca09e76587e66074104a4f216e4bd8a9ce48ff",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "0a104b48d790a45e4155be8d3b976218443f3b95bd78f42dfdc4341e412f4d8b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_no3.py",
+          "sha256": "01c4dff4d2a9af04312e585613c294d4388a80b8d5de503fa1d2133100d8f4ba",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "4dd4110ab6e6ca51ac971e52cd8f472e6cce63f43bedecbe91aaab7de92e81b2",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seafloor.py",
+          "sha256": "9cd0170cab888540f1ea0248dec88740b92ad3e2c3ea9ffa45fda426ee2b17cd",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "f35c28fff0f556bfc5e65e2c039f08423dc37e971e0d924334657a5e41c9aa2a",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "2347cfb6377fe90398dafb68f78c802c29b31a7ecac13488292bafae025e98bc",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "f080fa4940d31e36bf7891ff99351a602612ce2e",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-06_TN326_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv",
+        "sha256": "35c6e68fd5799bf2b31bd62f595632d603e6980bd88280aa83535255180fee91",
+        "contentSize": 239871,
+        "dateModified": "2026-11-02T18:59:55+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob f587e4813d49f551be01b20767077de86b8529b2)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20150715T045953.200990-20150718T115955.255318.nc",
+        "contentUrl": "data/raw/ooinet/20261106T093555588Z/deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20150715T045953.200990-20150718T115955.255318.nc",
+        "sha256": "2475527ca5213bd6ad183f201b62349fd97ca7bb4738510efd1374689de5f66c",
+        "contentSize": 1053328,
+        "dateModified": "2026-11-06T09:36:39+00:00",
+        "rca:role": "nutnr_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261106T093555588Z/status.json",
+        "sha256": "4333ca36cda1c49143ae319ac204403a56328d717db736e4d1c5071e90a7eb59",
+        "contentSize": 103,
+        "dateModified": "2026-11-06T09:36:37+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261106T093555588Z/deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json",
+        "sha256": "9d15dea8f7dd496c3d65e38b13d2943dd1d854736711caab831a93c039e111f4",
+        "contentSize": 113869,
+        "dateModified": "2026-11-06T09:36:38+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261106T093555588Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json",
+        "sha256": "757da07a5b2824b72a99d8d904afb1eb5c63f6a18dd9e8d5a68dd86f0c539db8",
+        "contentSize": 2264,
+        "dateModified": "2026-11-06T09:36:41+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261106T093555588Z",
+    "request_id": "20261106T093555588Z",
+    "reference_designator": "RS01SBPS-SF01A-4A-NUTNRA101",
+    "stream": "streamed/nutnr_a_sample",
+    "deployment": null,
+    "annotations": [
+      {
+        "id": 1370,
+        "subsite": "RS01SBPS",
+        "node": "SF01A",
+        "sensor": "4A-NUTNRA101",
+        "method": "streamed",
+        "stream": "nutnr_a_sample",
+        "annotation": "This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659",
+        "exclusion_flag": false,
+        "source": "friedrich.knuth@rutgers.edu",
+        "qc_flag": "suspect",
+        "parameters": [
+          2320,
+          315
+        ],
+        "start": "2015-07-08 22:22:01.974000",
+        "stop": "2016-02-05 02:00:11.695000"
+      },
+      {
+        "id": 572,
+        "subsite": "RS01SBPS",
+        "node": "SF01A",
+        "sensor": "4A-NUTNRA101",
+        "method": "streamed",
+        "stream": "nutnr_a_sample",
+        "annotation": "This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659...",
+        "exclusion_flag": false,
+        "source": "friedrich.knuth@rutgers.edu",
+        "qc_flag": "suspect",
+        "parameters": [
+          2320,
+          315
+        ],
+        "start": "2015-07-08 22:22:01.974000",
+        "stop": "2016-02-05 02:00:11.695000"
+      },
+      {
+        "id": 209,
+        "subsite": "RS01SBPS",
+        "node": "SF01A",
+        "sensor": "2A-CTDPFA102",
+        "method": "streamed",
+        "stream": "ctdpf_sbe43_sample",
+        "annotation": "Due to errors during vendor calibration, a calibration offset (CC_offset) of -1.7 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.",
+        "exclusion_flag": false,
+        "source": "friedrich.knuth@rutgers.edu",
+        "qc_flag": null,
+        "parameters": [
+          909
+        ],
+        "start": "2015-07-07 20:47:00",
+        "stop": "2016-07-17 00:00:00"
+      }
+    ],
+    "status": {
+      "20150715T044355-20150717T000000": "complete",
+      "20150717T000000-20150718T125536": "complete"
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv",
+        "blob_sha": "f587e4813d49f551be01b20767077de86b8529b2",
+        "bytes": 239871,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv"
+      }
+    ]
+  },
+  "rca:cruise": {
+    "cruise": "Cabled-06",
+    "ship_cruise_id": "TN326",
+    "vessel": "R/V Thomas G. Thompson",
+    "cast": "CTD-014",
+    "first_bottle_closure_utc": "2015-07-16T16:43:55+00:00",
+    "last_bottle_closure_utc": "2015-07-16T16:56:43+00:00",
+    "cast_time_utc": "2015-07-16T16:50:19+00:00",
+    "definition": "cast_time = midpoint of the cast's first and last bottle closure"
+  },
+  "rca:parameters": {
+    "nitrate": {
+      "method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
+      "half_window_h": 36.0,
+      "profile_gap_min": 30.0,
+      "min_profile_samples": 10,
+      "min_profile_span_m": 100.0,
+      "spike_window": 5,
+      "spike_threshold_um": 2.0,
+      "bin_size_m": 2.0,
+      "accuracy_um": 2.0,
+      "bottle_outlier_um": 10.0,
+      "bottles": "summary"
+    }
+  },
+  "rca:inputChecks": {
+    "sensor_samples_after_cleaning": 1391,
+    "spikes_removed": 0,
+    "annotation_excluded": 0,
+    "n_profiles": 1,
+    "bottles": 23,
+    "bottles_usable": 12,
+    "nitrate_units": "umol L-1"
+  },
+  "rca:profiles": [
+    {
+      "profile_id": 1,
+      "start_utc": "2015-07-16T15:59:53.315403264+00:00",
+      "end_utc": "2015-07-16T22:10:44.327015424+00:00",
+      "n_samples": 1205,
+      "deployment": 2,
+      "depth_min_m": 25.465603367208782,
+      "depth_max_m": 199.16587716991097,
+      "temperature_min": 7.476211492299584,
+      "temperature_max": 12.045355096460884,
+      "mean_time_utc": "2015-07-16T19:10:38.091481967+00:00",
+      "hours_from_cast": 2.3386365227686112,
+      "kind": "full"
+    }
+  ],
+  "rca:variants": [
+    {
+      "variant_id": "nearest_profile_temperature",
+      "role": "primary",
+      "match_by": "temperature",
+      "profile_id": 1,
+      "deployment": 2,
+      "profile_kind": "full",
+      "depth_span_m": 173.70027380270218,
+      "profile_mean_time_utc": "2015-07-16T19:10:38.091481967+00:00",
+      "hours_from_cast": 2.3386365227686112,
+      "n_sensor_samples": 1205,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 88,
+      "depth_min_m": 25.465603367208782,
+      "depth_max_m": 199.16587716991097,
+      "temperature_min": 7.476211492299584,
+      "temperature_max": 12.045355096460884,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": "[{\"id\": 1370, \"qc_flag\": \"suspect\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA101\", \"start\": \"2015-07-08 22:22:01.974000\", \"stop\": \"2016-02-05 02:00:11.695000\", \"n_samples\": 1205, \"annotation\": \"This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659\"}, {\"id\": 572, \"qc_flag\": \"suspect\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA101\", \"start\": \"2015-07-08 22:22:01.974000\", \"stop\": \"2016-02-05 02:00:11.695000\", \"n_samples\": 1205, \"annotation\": \"This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659...\"}]",
+      "n_matchups": 8,
+      "n_outliers": 0,
+      "offset_um": 0.40251083634533735,
+      "offset_iqr_um": 0.8582435125884459,
+      "mean_diff_um": 0.1771333790088358,
+      "rmse_before_um": 1.1274150519519193,
+      "rmse_after_um": 1.1359944822419377,
+      "max_abs_diff_um": 2.421501713569766,
+      "within_accuracy": true,
+      "fit_slope": 0.9346861068148915,
+      "fit_intercept_um": 1.1198511504452282,
+      "fit_r2": 0.9899321594525307,
+      "mean_profiler_minus_cast_h": 2.3386365227686112,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "nearest_profile_depth",
+      "role": "depth_matchup",
+      "match_by": "depth",
+      "profile_id": 1,
+      "deployment": 2,
+      "profile_kind": "full",
+      "depth_span_m": 173.70027380270218,
+      "profile_mean_time_utc": "2015-07-16T19:10:38.091481967+00:00",
+      "hours_from_cast": 2.3386365227686112,
+      "n_sensor_samples": 1205,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 88,
+      "depth_min_m": 25.465603367208782,
+      "depth_max_m": 199.16587716991097,
+      "temperature_min": 7.476211492299584,
+      "temperature_max": 12.045355096460884,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": "[{\"id\": 1370, \"qc_flag\": \"suspect\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA101\", \"start\": \"2015-07-08 22:22:01.974000\", \"stop\": \"2016-02-05 02:00:11.695000\", \"n_samples\": 1205, \"annotation\": \"This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659\"}, {\"id\": 572, \"qc_flag\": \"suspect\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA101\", \"start\": \"2015-07-08 22:22:01.974000\", \"stop\": \"2016-02-05 02:00:11.695000\", \"n_samples\": 1205, \"annotation\": \"This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659...\"}]",
+      "n_matchups": 8,
+      "n_outliers": 0,
+      "offset_um": 0.5263760758455813,
+      "offset_iqr_um": 1.6818731385550008,
+      "mean_diff_um": 0.5618498215502665,
+      "rmse_before_um": 1.1316128365168185,
+      "rmse_after_um": 0.9829195167600927,
+      "max_abs_diff_um": 1.7205339174554837,
+      "within_accuracy": true,
+      "fit_slope": 0.9316491293753705,
+      "fit_intercept_um": 0.7954421335260363,
+      "fit_r2": 0.9936306649679223,
+      "mean_profiler_minus_cast_h": 2.3386365227686112,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_1_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 1,
+      "deployment": 2,
+      "profile_kind": "full",
+      "depth_span_m": 173.70027380270218,
+      "profile_mean_time_utc": "2015-07-16T19:10:38.091481967+00:00",
+      "hours_from_cast": 2.3386365227686112,
+      "n_sensor_samples": 1205,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 88,
+      "depth_min_m": 25.465603367208782,
+      "depth_max_m": 199.16587716991097,
+      "temperature_min": 7.476211492299584,
+      "temperature_max": 12.045355096460884,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": "[{\"id\": 1370, \"qc_flag\": \"suspect\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA101\", \"start\": \"2015-07-08 22:22:01.974000\", \"stop\": \"2016-02-05 02:00:11.695000\", \"n_samples\": 1205, \"annotation\": \"This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659\"}, {\"id\": 572, \"qc_flag\": \"suspect\", \"exclusion_flag\": false, \"sensor\": \"4A-NUTNRA101\", \"start\": \"2015-07-08 22:22:01.974000\", \"stop\": \"2016-02-05 02:00:11.695000\", \"n_samples\": 1205, \"annotation\": \"This instrument was deployed with onboard processing set to freshwater mode leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD. Redmine: 8659...\"}]",
+      "n_matchups": 8,
+      "n_outliers": 0,
+      "offset_um": 0.40251083634533735,
+      "offset_iqr_um": 0.8582435125884459,
+      "mean_diff_um": 0.1771333790088358,
+      "rmse_before_um": 1.1274150519519193,
+      "rmse_after_um": 1.1359944822419377,
+      "max_abs_diff_um": 2.421501713569766,
+      "within_accuracy": true,
+      "fit_slope": 0.9346861068148915,
+      "fit_intercept_um": 1.1198511504452282,
+      "fit_r2": 0.9899321594525307,
+      "mean_profiler_minus_cast_h": 2.3386365227686112,
+      "n_annotation_excluded": 0
+    }
+  ],
+  "rca:primaryVariant": "nearest_profile_temperature",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "nearest_profile_temperature",
+      "offset_um": 0.40251083634533735,
+      "time_cast_utc": "2015-07-16T16:50:19+00:00"
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "drift needs a matchup at recovery of the same deployment (guide 3.5.3); not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "info",
+      "code": "nitrate_cast",
+      "text": "Discrete nitrate from cast CTD-014, not the salinity reference cast CTD-020: the cast with the most usable nitrate bottles within 12 h of an official profile"
+    },
+    {
+      "severity": "caveat",
+      "code": "nitrate_l2",
+      "text": "Sensor values are OOI L2 salinity_corrected_nitrate (TCSS), computed by OOI with the profiler's own, uncalibrated CTD; temperature matchups use that CTD temperature and the cast's CTD temperature 1."
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "bottle_matchups.csv",
+      "sha256": "6f77499b3716a6bd2a2f021b506bca74ab4f06dd09c466ffef5024f93e7dc2f7",
+      "contentSize": 7365
+    },
+    {
+      "name": "bottles.csv",
+      "sha256": "38f72b24aa2a68be20758c5452ba8582ec8f51ad4fc29d1d839bc68170f85375",
+      "contentSize": 2002
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "3b8dfe1d1e410ea5e60e5810500c21cb5db6bbc168b8db45396e01b344b8573b",
+      "contentSize": 5620
+    },
+    {
+      "name": "profiles.csv",
+      "sha256": "ab2e088d43175c346103970e276b8806e3e1de3b813d2b51c83dd29e419158eb",
+      "contentSize": 359
+    },
+    {
+      "name": "sensor_profiles.csv",
+      "sha256": "7c104667531d683f632dd61aff80870a85030e3a2c248c8323928a4015e0959f",
+      "contentSize": 33008
+    },
+    {
+      "name": "sensor_samples.csv",
+      "sha256": "c9cee7a0ef4e6f994a5e91d344fa0927885c3810ae35035da0df0cb8ea78a02c",
+      "contentSize": 275276
+    }
+  ]
+}

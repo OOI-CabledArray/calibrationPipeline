@@ -4,21 +4,21 @@
     "prov": "http://www.w3.org/ns/prov#",
     "rca": "urn:rca-salinity:term/"
   },
-  "@id": "urn:uuid:87f0bf08-801f-5298-896b-0e89c1e941ef",
+  "@id": "urn:uuid:7dcc52d2-10ff-5bf8-ab43-d28eccbada8b",
   "@type": [
     "Dataset",
     "prov:Entity"
   ],
   "name": "RCA SUNA nitrate validation, Cabled-12 TN393 (2021), Axial Base Shallow Profiler",
-  "dateCreated": "2026-11-02T20:22:05+00:00",
+  "dateCreated": "2026-11-06T12:10:59+00:00",
   "variableMeasured": "salinity_corrected_nitrate",
   "rca:correctionKind": "additive",
   "rca:site": "RS03AXPS",
   "rca:method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
   "prov:wasGeneratedBy": {
     "@type": "prov:Activity",
-    "prov:startedAtTime": "2026-11-02T20:22:04+00:00",
-    "prov:endedAtTime": "2026-11-02T20:22:05+00:00",
+    "prov:startedAtTime": "2026-11-06T12:10:58+00:00",
+    "prov:endedAtTime": "2026-11-06T12:10:59+00:00",
     "prov:wasAssociatedWith": {
       "@type": [
         "SoftwareApplication",
@@ -48,12 +48,12 @@
         },
         {
           "path": "rca_sal/deployments.py",
-          "sha256": "59fc838004ad8614312716c551da4447aa0c161ad0547755cc392cc9b892a57b",
+          "sha256": "778d98770d1794df3c6a6a77a6f894af785a2e394d58049bf3308a9ec5121c10",
           "role": "code"
         },
         {
           "path": "rca_sal/discrete.py",
-          "sha256": "57ccd562c29f24a894f277a602275438e3157b0a93f611914ee547cf96c4e997",
+          "sha256": "a465ea675e03a662c0f0827293765c70960ee157ef160f71cb01caa594e7e805",
           "role": "code"
         },
         {
@@ -68,12 +68,12 @@
         },
         {
           "path": "rca_sal/inputs_check.py",
-          "sha256": "a86c438f979f2771d872966363ce19580da60e25f6fecd7ad1f0b9bcbefbf18e",
+          "sha256": "739b3f3a470c5ccd9795c263753b4b0180068f05260b39dba3879f06e2b00088",
           "role": "code"
         },
         {
           "path": "rca_sal/instruments.py",
-          "sha256": "ea0a0ac44dd43817143e031eb53436660a2da0bcf0ffeb21ff20910727f31b68",
+          "sha256": "967c309c57935fd570c7a80eb38ba5024b7f715ce97af8c55d360f14e74062f7",
           "role": "code"
         },
         {
@@ -98,22 +98,22 @@
         },
         {
           "path": "rca_sal/oxygen.py",
-          "sha256": "6d6bc489a27d2ce0fd53f83d0d1d5fbae2600da5ef955f725ec14715ef475622",
+          "sha256": "eeae3b7919012392b86c82f8efca09e76587e66074104a4f216e4bd8a9ce48ff",
           "role": "code"
         },
         {
           "path": "rca_sal/pipeline.py",
-          "sha256": "b5c11121bbf16840dd23428e1d598c324564b20ee02c7fdc01e661999d8a90a1",
+          "sha256": "0a104b48d790a45e4155be8d3b976218443f3b95bd78f42dfdc4341e412f4d8b",
           "role": "code"
         },
         {
           "path": "rca_sal/pipeline_no3.py",
-          "sha256": "1b3388f05f75bb3b855b62afc7a1037f70209859923c37b6b2edbad32c95728d",
+          "sha256": "01c4dff4d2a9af04312e585613c294d4388a80b8d5de503fa1d2133100d8f4ba",
           "role": "code"
         },
         {
           "path": "rca_sal/pipeline_o2.py",
-          "sha256": "036fe2f2044bcb30227064e7c8f2fc373dfb5f725f7113849b02a8198c24a5ae",
+          "sha256": "4dd4110ab6e6ca51ac971e52cd8f472e6cce63f43bedecbe91aaab7de92e81b2",
           "role": "code"
         },
         {
@@ -148,7 +148,7 @@
         },
         {
           "path": "config/cruises.toml",
-          "sha256": "7665bbcb391e961b4853d4dbe991b941e1afb3cb4d076fa9ab0143952a24e7f0",
+          "sha256": "f35c28fff0f556bfc5e65e2c039f08423dc37e971e0d924334657a5e41c9aa2a",
           "role": "config"
         },
         {
@@ -158,7 +158,7 @@
         }
       ],
       "rca:codeVersion": {
-        "git_commit": "7dc8a1cccc39687c1d42895c3c6d432467fef7e3",
+        "git_commit": "f080fa4940d31e36bf7891ff99351a602612ce2e",
         "uncommitted_changes_in_code_or_config": false
       },
       "rca:runtime": {
@@ -541,7 +541,7 @@
   "rca:outputs": [
     {
       "name": "bottle_matchups.csv",
-      "sha256": "b879862ce74c16f20dceddaa6e96ea2c65d1f111dbb233b679b863e2f66e29b0",
+      "sha256": "b2f6f276ed446d2b2fd1e04cd1f82fbbdc7655bbcd4f2961c24af293285176ff",
       "contentSize": 12585
     },
     {
@@ -551,7 +551,7 @@
     },
     {
       "name": "calibration_table.csv",
-      "sha256": "a34eccbeaec0e85527d31247c07c34cad59f5a48e87cd0051a98d883f75a24f7",
+      "sha256": "0254ba0890155f5c7321e024f707b0b158856fbbae13ddc77d5dacc0c21e012e",
       "contentSize": 3463
     },
     {
@@ -561,12 +561,12 @@
     },
     {
       "name": "sensor_profiles.csv",
-      "sha256": "846e5c67ee45061c700f02000f8ac38d84464aa575cc4568bd33c072cffb0485",
+      "sha256": "9613e047224c7c83ecee70fb5128cc89fef8dcaed1f2b4402e01109d37e485f6",
       "contentSize": 55575
     },
     {
       "name": "sensor_samples.csv",
-      "sha256": "07161360a08bce6d8abb708aebbaec80a01d66a4ba569191391d55f8bf09dbad",
+      "sha256": "39e653e8bb5cb9ef976be9d6a0eb9ce89da0bb824850f41ed61152066a4a354e",
       "contentSize": 57553
     }
   ]

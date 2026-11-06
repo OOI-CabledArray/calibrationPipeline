@@ -1,0 +1,721 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:61522564-ce60-57ef-91f7-1696bd5a730c",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA SUNA nitrate validation, Cabled-10 AT42-12 (2019), Oregon Offshore Shallow Profiler",
+  "dateCreated": "2026-11-06T12:10:33+00:00",
+  "variableMeasured": "salinity_corrected_nitrate",
+  "rca:correctionKind": "additive",
+  "rca:site": "CE04OSPS",
+  "rca:method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-11-06T12:10:32+00:00",
+    "prov:endedAtTime": "2026-11-06T12:10:33+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "778d98770d1794df3c6a6a77a6f894af785a2e394d58049bf3308a9ec5121c10",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "a465ea675e03a662c0f0827293765c70960ee157ef160f71cb01caa594e7e805",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "aae6fa877db17d26c7ecf49304f381e662dade2b6844afd24ab57d43c77ae5cc",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "739b3f3a470c5ccd9795c263753b4b0180068f05260b39dba3879f06e2b00088",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/instruments.py",
+          "sha256": "967c309c57935fd570c7a80eb38ba5024b7f715ce97af8c55d360f14e74062f7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/nitrate.py",
+          "sha256": "0543edb1579419c44696fbb27714db67c07ce9117f363afbfdc17dfb75f256a3",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "30fea611c220c6e5242239a26767a535479021ba880c21897683d8022cfec33b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "eeae3b7919012392b86c82f8efca09e76587e66074104a4f216e4bd8a9ce48ff",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "0a104b48d790a45e4155be8d3b976218443f3b95bd78f42dfdc4341e412f4d8b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_no3.py",
+          "sha256": "01c4dff4d2a9af04312e585613c294d4388a80b8d5de503fa1d2133100d8f4ba",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "4dd4110ab6e6ca51ac971e52cd8f472e6cce63f43bedecbe91aaab7de92e81b2",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seafloor.py",
+          "sha256": "9cd0170cab888540f1ea0248dec88740b92ad3e2c3ea9ffa45fda426ee2b17cd",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "f35c28fff0f556bfc5e65e2c039f08423dc37e971e0d924334657a5e41c9aa2a",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "2347cfb6377fe90398dafb68f78c802c29b31a7ecac13488292bafae025e98bc",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "f080fa4940d31e36bf7891ff99351a602612ce2e",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-10_AT42-12_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-10_AT42-12_Discrete_Summary.csv",
+        "sha256": "fe826638df0f7f941fc11075594d0d43ac9bac2484b568f752954b5166f5098c",
+        "contentSize": 135672,
+        "dateModified": "2026-11-02T18:59:56+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-10_AT42-12_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 7923b35e5a84a39f00e8d072ec87f01514a973f5)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0006_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20190627T072109.111342-20190629T215114.297421.nc",
+        "contentUrl": "data/raw/ooinet/20261106T112613138Z/deployment0006_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20190627T072109.111342-20190629T215114.297421.nc",
+        "sha256": "48ee53b2b4fb6fcec040c7cfaf9aee13f3adc69c58e133fcce4e357d8961ac7c",
+        "contentSize": 1016958,
+        "dateModified": "2026-11-06T11:27:55+00:00",
+        "rca:role": "nutnr_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261106T112613138Z/status.json",
+        "sha256": "cd45b250c3175b2a8db5a12f98859fde1e2669117ce0e78bfd1156ff4185e3c3",
+        "contentSize": 103,
+        "dateModified": "2026-11-06T11:27:54+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0006_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261106T112613138Z/deployment0006_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json",
+        "sha256": "aa8f401a23e8c08a6ebfd3e7af6c884de99b6e6e1a4244844b52e331d436df9b",
+        "contentSize": 114834,
+        "dateModified": "2026-11-06T11:27:54+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261106T112613138Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json",
+        "sha256": "387f9a1d4a10e3070a35af4b89e190a38ae88f7188b0d8f7228e7038fa1929a5",
+        "contentSize": 23,
+        "dateModified": "2026-11-06T11:27:56+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261106T112613138Z",
+    "request_id": "20261106T112613138Z",
+    "reference_designator": "CE04OSPS-SF01B-4A-NUTNRA102",
+    "stream": "streamed/nutnr_a_sample",
+    "deployment": null,
+    "annotations": [],
+    "status": {
+      "20190627T054140-20190629T000000": "complete",
+      "20190629T000000-20190630T060510": "complete"
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "FinalSummaries/Cabled-10_AT42-12_Discrete_Summary.csv",
+        "blob_sha": "7923b35e5a84a39f00e8d072ec87f01514a973f5",
+        "bytes": 135672,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-10_AT42-12_Discrete_Summary.csv"
+      }
+    ]
+  },
+  "rca:cruise": {
+    "cruise": "Cabled-10",
+    "ship_cruise_id": "AT42-12",
+    "vessel": "R/V Atlantis",
+    "cast": "CTD-012",
+    "first_bottle_closure_utc": "2019-06-28T17:41:40+00:00",
+    "last_bottle_closure_utc": "2019-06-28T18:05:10+00:00",
+    "cast_time_utc": "2019-06-28T17:53:25+00:00",
+    "definition": "cast_time = midpoint of the cast's first and last bottle closure"
+  },
+  "rca:parameters": {
+    "nitrate": {
+      "method": "OOI Biogeochemical Sensor Data: Best Practices & User Guide v1.1.1 (Palevsky, Clayton et al. 2023, doi:10.25607/OBP-1865.2), chapter 3",
+      "half_window_h": 36.0,
+      "profile_gap_min": 30.0,
+      "min_profile_samples": 10,
+      "min_profile_span_m": 100.0,
+      "spike_window": 5,
+      "spike_threshold_um": 2.0,
+      "bin_size_m": 2.0,
+      "accuracy_um": 2.0,
+      "bottle_outlier_um": 10.0,
+      "bottles": "summary"
+    }
+  },
+  "rca:inputChecks": {
+    "sensor_samples_after_cleaning": 1251,
+    "spikes_removed": 0,
+    "annotation_excluded": 0,
+    "n_profiles": 6,
+    "bottles": 15,
+    "bottles_usable": 12,
+    "nitrate_units": "umol L-1"
+  },
+  "rca:profiles": [
+    {
+      "profile_id": 1,
+      "start_utc": "2019-06-27T07:21:09.111342080+00:00",
+      "end_utc": "2019-06-27T08:31:12.142435328+00:00",
+      "n_samples": 209,
+      "deployment": 6,
+      "depth_min_m": 5.968864153953173,
+      "depth_max_m": 191.87720884707426,
+      "temperature_min": 6.780019958641223,
+      "temperature_max": 14.870735641257616,
+      "mean_time_utc": "2019-06-27T07:56:11.946291552+00:00",
+      "hours_from_cast": -33.95362603012445,
+      "kind": "full"
+    },
+    {
+      "profile_id": 2,
+      "start_utc": "2019-06-27T20:41:10.153100800+00:00",
+      "end_utc": "2019-06-27T21:51:08.394198016+00:00",
+      "n_samples": 208,
+      "deployment": 6,
+      "depth_min_m": 6.417912035285409,
+      "depth_max_m": 191.53778381465494,
+      "temperature_min": 7.0100711059480725,
+      "temperature_max": 14.930619579119305,
+      "mean_time_utc": "2019-06-27T21:15:58.314635303+00:00",
+      "hours_from_cast": -20.62407926797139,
+      "kind": "full"
+    },
+    {
+      "profile_id": 3,
+      "start_utc": "2019-06-28T07:21:10.369874944+00:00",
+      "end_utc": "2019-06-28T08:31:21.206960640+00:00",
+      "n_samples": 210,
+      "deployment": 6,
+      "depth_min_m": 5.4331535081777895,
+      "depth_max_m": 192.04553949726082,
+      "temperature_min": 6.944771906160197,
+      "temperature_max": 15.712126138020505,
+      "mean_time_utc": "2019-06-28T07:56:07.824839748+00:00",
+      "hours_from_cast": -9.954770877847778,
+      "kind": "full"
+    },
+    {
+      "profile_id": 4,
+      "start_utc": "2019-06-28T20:41:11.463818752+00:00",
+      "end_utc": "2019-06-28T21:51:16.920754688+00:00",
+      "n_samples": 210,
+      "deployment": 6,
+      "depth_min_m": 5.866693943739227,
+      "depth_max_m": 191.73092516161674,
+      "temperature_min": 7.129740711468164,
+      "temperature_max": 15.702278133526335,
+      "mean_time_utc": "2019-06-28T21:16:14.396206684+00:00",
+      "hours_from_cast": 3.3803878351899996,
+      "kind": "full"
+    },
+    {
+      "profile_id": 5,
+      "start_utc": "2019-06-29T07:21:12.065497600+00:00",
+      "end_utc": "2019-06-29T08:31:19.706243584+00:00",
+      "n_samples": 207,
+      "deployment": 6,
+      "depth_min_m": 6.056799150614648,
+      "depth_max_m": 192.2969191604685,
+      "temperature_min": 7.197292188470055,
+      "temperature_max": 15.167615586803898,
+      "mean_time_utc": "2019-06-29T07:55:52.118547549+00:00",
+      "hours_from_cast": 14.040866263208056,
+      "kind": "full"
+    },
+    {
+      "profile_id": 6,
+      "start_utc": "2019-06-29T20:41:11.922763776+00:00",
+      "end_utc": "2019-06-29T21:51:14.297421312+00:00",
+      "n_samples": 207,
+      "deployment": 6,
+      "depth_min_m": 6.0639327953733995,
+      "depth_max_m": 191.9657206000855,
+      "temperature_min": 7.112041390886532,
+      "temperature_max": 15.666362345136484,
+      "mean_time_utc": "2019-06-29T21:15:55.433778940+00:00",
+      "hours_from_cast": 27.37512049415,
+      "kind": "full"
+    }
+  ],
+  "rca:variants": [
+    {
+      "variant_id": "nearest_profile_temperature",
+      "role": "primary",
+      "match_by": "temperature",
+      "profile_id": 4,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 185.86423121787752,
+      "profile_mean_time_utc": "2019-06-28T21:16:14.396206684+00:00",
+      "hours_from_cast": 3.3803878351899996,
+      "n_sensor_samples": 210,
+      "n_spikes_removed": 0,
+      "n_negative": 2,
+      "n_bins": 94,
+      "depth_min_m": 5.866693943739227,
+      "depth_max_m": 191.73092516161674,
+      "temperature_min": 7.129740711468164,
+      "temperature_max": 15.702278133526335,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 10,
+      "n_outliers": 0,
+      "offset_um": 1.4363762522781567,
+      "offset_iqr_um": 0.963969205050016,
+      "mean_diff_um": 1.085206701924333,
+      "rmse_before_um": 2.4081758610866464,
+      "rmse_after_um": 2.178292323154684,
+      "max_abs_diff_um": 5.391479018290067,
+      "within_accuracy": true,
+      "fit_slope": 0.9277071303968529,
+      "fit_intercept_um": 0.48156268333596625,
+      "fit_r2": 0.9663243824419049,
+      "mean_profiler_minus_cast_h": 3.3803878351899996,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "nearest_profile_depth",
+      "role": "depth_matchup",
+      "match_by": "depth",
+      "profile_id": 4,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 185.86423121787752,
+      "profile_mean_time_utc": "2019-06-28T21:16:14.396206684+00:00",
+      "hours_from_cast": 3.3803878351899996,
+      "n_sensor_samples": 210,
+      "n_spikes_removed": 0,
+      "n_negative": 2,
+      "n_bins": 94,
+      "depth_min_m": 5.866693943739227,
+      "depth_max_m": 191.73092516161674,
+      "temperature_min": 7.129740711468164,
+      "temperature_max": 15.702278133526335,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 10,
+      "n_outliers": 0,
+      "offset_um": 2.451146406274095,
+      "offset_iqr_um": 1.8687521275723322,
+      "mean_diff_um": 2.7908319777205195,
+      "rmse_before_um": 3.4034939016801395,
+      "rmse_after_um": 1.9774766492566624,
+      "max_abs_diff_um": 6.299880522086093,
+      "within_accuracy": false,
+      "fit_slope": 0.9542303666009138,
+      "fit_intercept_um": -1.7988882247898212,
+      "fit_r2": 0.971383129668368,
+      "mean_profiler_minus_cast_h": 3.3803878351899996,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_1_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 1,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 185.90834469312108,
+      "profile_mean_time_utc": "2019-06-27T07:56:11.946291552+00:00",
+      "hours_from_cast": -33.95362603012445,
+      "n_sensor_samples": 209,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 94,
+      "depth_min_m": 5.968864153953173,
+      "depth_max_m": 191.87720884707426,
+      "temperature_min": 6.780019958641223,
+      "temperature_max": 14.870735641257616,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 12,
+      "n_outliers": 0,
+      "offset_um": 1.7113234613569919,
+      "offset_iqr_um": 0.9781655037742716,
+      "mean_diff_um": 1.1254381199631764,
+      "rmse_before_um": 1.755666393042284,
+      "rmse_after_um": 1.4693587564145125,
+      "max_abs_diff_um": 2.4543079397136047,
+      "within_accuracy": true,
+      "fit_slope": 0.9227165639799408,
+      "fit_intercept_um": 0.7077797248664874,
+      "fit_r2": 0.9907387489389996,
+      "mean_profiler_minus_cast_h": -33.95362603012445,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_2_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 2,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 185.11987177936953,
+      "profile_mean_time_utc": "2019-06-27T21:15:58.314635303+00:00",
+      "hours_from_cast": -20.62407926797139,
+      "n_sensor_samples": 208,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 93,
+      "depth_min_m": 6.417912035285409,
+      "depth_max_m": 191.53778381465494,
+      "temperature_min": 7.0100711059480725,
+      "temperature_max": 14.930619579119305,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 11,
+      "n_outliers": 0,
+      "offset_um": 0.9957712866023556,
+      "offset_iqr_um": 1.3489766925850253,
+      "mean_diff_um": 1.2974418786385058,
+      "rmse_before_um": 1.8998044741306344,
+      "rmse_after_um": 1.420178424558408,
+      "max_abs_diff_um": 4.817915234083351,
+      "within_accuracy": true,
+      "fit_slope": 0.9549957262489728,
+      "fit_intercept_um": -0.27243354053985763,
+      "fit_r2": 0.9863473865060846,
+      "mean_profiler_minus_cast_h": -20.62407926797139,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_3_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 3,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 186.61238598908304,
+      "profile_mean_time_utc": "2019-06-28T07:56:07.824839748+00:00",
+      "hours_from_cast": -9.954770877847778,
+      "n_sensor_samples": 210,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 95,
+      "depth_min_m": 5.4331535081777895,
+      "depth_max_m": 192.04553949726082,
+      "temperature_min": 6.944771906160197,
+      "temperature_max": 15.712126138020505,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 11,
+      "n_outliers": 0,
+      "offset_um": 1.6835348057502557,
+      "offset_iqr_um": 0.840994102206789,
+      "mean_diff_um": 1.395214114442831,
+      "rmse_before_um": 1.5905028665564453,
+      "rmse_after_um": 0.8162142882967491,
+      "max_abs_diff_um": 2.561482994175396,
+      "within_accuracy": true,
+      "fit_slope": 0.9483529560496489,
+      "fit_intercept_um": -0.21891137083842746,
+      "fit_r2": 0.998038387567304,
+      "mean_profiler_minus_cast_h": -9.954770877847778,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_4_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 4,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 185.86423121787752,
+      "profile_mean_time_utc": "2019-06-28T21:16:14.396206684+00:00",
+      "hours_from_cast": 3.3803878351899996,
+      "n_sensor_samples": 210,
+      "n_spikes_removed": 0,
+      "n_negative": 2,
+      "n_bins": 94,
+      "depth_min_m": 5.866693943739227,
+      "depth_max_m": 191.73092516161674,
+      "temperature_min": 7.129740711468164,
+      "temperature_max": 15.702278133526335,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 10,
+      "n_outliers": 0,
+      "offset_um": 1.4363762522781567,
+      "offset_iqr_um": 0.963969205050016,
+      "mean_diff_um": 1.085206701924333,
+      "rmse_before_um": 2.4081758610866464,
+      "rmse_after_um": 2.178292323154684,
+      "max_abs_diff_um": 5.391479018290067,
+      "within_accuracy": true,
+      "fit_slope": 0.9277071303968529,
+      "fit_intercept_um": 0.48156268333596625,
+      "fit_r2": 0.9663243824419049,
+      "mean_profiler_minus_cast_h": 3.3803878351899996,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_5_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 5,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 186.24012000985385,
+      "profile_mean_time_utc": "2019-06-29T07:55:52.118547549+00:00",
+      "hours_from_cast": 14.040866263208056,
+      "n_sensor_samples": 207,
+      "n_spikes_removed": 0,
+      "n_negative": 2,
+      "n_bins": 94,
+      "depth_min_m": 6.056799150614648,
+      "depth_max_m": 192.2969191604685,
+      "temperature_min": 7.197292188470055,
+      "temperature_max": 15.167615586803898,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 10,
+      "n_outliers": 0,
+      "offset_um": 1.359297014836704,
+      "offset_iqr_um": 1.2953943100149874,
+      "mean_diff_um": 1.0663675772423868,
+      "rmse_before_um": 1.8014984921375417,
+      "rmse_after_um": 1.4812375443491033,
+      "max_abs_diff_um": 4.046937487181779,
+      "within_accuracy": true,
+      "fit_slope": 0.9432467890106457,
+      "fit_intercept_um": 0.16361809052072324,
+      "fit_r2": 0.9857683549122055,
+      "mean_profiler_minus_cast_h": 14.040866263208056,
+      "n_annotation_excluded": 0
+    },
+    {
+      "variant_id": "profile_6_temperature",
+      "role": "per_profile",
+      "match_by": "temperature",
+      "profile_id": 6,
+      "deployment": 6,
+      "profile_kind": "full",
+      "depth_span_m": 185.9017878047121,
+      "profile_mean_time_utc": "2019-06-29T21:15:55.433778940+00:00",
+      "hours_from_cast": 27.37512049415,
+      "n_sensor_samples": 207,
+      "n_spikes_removed": 0,
+      "n_negative": 0,
+      "n_bins": 93,
+      "depth_min_m": 6.0639327953733995,
+      "depth_max_m": 191.9657206000855,
+      "temperature_min": 7.112041390886532,
+      "temperature_max": 15.666362345136484,
+      "n_bottles_usable": 12,
+      "annotations_on_samples": null,
+      "n_matchups": 10,
+      "n_outliers": 0,
+      "offset_um": 1.4379765778507902,
+      "offset_iqr_um": 1.9561264937035299,
+      "mean_diff_um": 0.2576153613667791,
+      "rmse_before_um": 2.166374266855817,
+      "rmse_after_um": 2.4535819511609054,
+      "max_abs_diff_um": 4.057540754948022,
+      "within_accuracy": true,
+      "fit_slope": 0.9136116709126338,
+      "fit_intercept_um": 1.61463829242903,
+      "fit_r2": 0.9677728010980512,
+      "mean_profiler_minus_cast_h": 27.37512049415,
+      "n_annotation_excluded": 0
+    }
+  ],
+  "rca:primaryVariant": "nearest_profile_temperature",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "nearest_profile_temperature",
+      "offset_um": 1.4363762522781567,
+      "time_cast_utc": "2019-06-28T17:53:25+00:00"
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "drift needs a matchup at recovery of the same deployment (guide 3.5.3); not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "caveat",
+      "code": "nitrate_negative",
+      "text": "4 SUNA sample(s) are negative; kept (guide 3.5.2: evaluate, do not assume)."
+    },
+    {
+      "severity": "caveat",
+      "code": "nitrate_l2",
+      "text": "Sensor values are OOI L2 salinity_corrected_nitrate (TCSS), computed by OOI with the profiler's own, uncalibrated CTD; temperature matchups use that CTD temperature and the cast's CTD temperature 1."
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "bottle_matchups.csv",
+      "sha256": "03b00b44ad5aed3b82a250073b7b456fa3a3a076bd56ae54e128feff93b591be",
+      "contentSize": 19774
+    },
+    {
+      "name": "bottles.csv",
+      "sha256": "2f8a129019c5f0486275a5b3f9271a3627b1d512e77dfa0c36e966a01e00289d",
+      "contentSize": 1375
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "f9d37a6c12b13e879a2c6ebd8fe9e059f41b57af0eadb8541e19de8fb944dc5f",
+      "contentSize": 5241
+    },
+    {
+      "name": "profiles.csv",
+      "sha256": "e63718c4c874f6b030e81868f89f20387d927dc6bee865e24070f3e3599ff7b4",
+      "contentSize": 1429
+    },
+    {
+      "name": "sensor_profiles.csv",
+      "sha256": "e48cbfffde78a587cd2d648861dafcf44494a537412a7c14a9ddf57929f2d410",
+      "contentSize": 92653
+    },
+    {
+      "name": "sensor_samples.csv",
+      "sha256": "b1df93de54b5b84e3ecfd3f6bbe325c02396a54918cbe0000b1b9a78e73768cc",
+      "contentSize": 247158
+    }
+  ]
+}

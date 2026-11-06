@@ -1,0 +1,1062 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rca": "urn:rca-salinity:term/"
+  },
+  "@id": "urn:uuid:58c58cc5-e71a-562b-8f3b-b44e2145a813",
+  "@type": [
+    "Dataset",
+    "prov:Entity"
+  ],
+  "name": "RCA DOFSTA oxygen gain, Cabled-06 TN326 (2015), Axial Base Shallow Profiler",
+  "dateCreated": "2026-11-06T12:09:12+00:00",
+  "variableMeasured": "corrected_dissolved_oxygen",
+  "rca:correctionKind": "multiplicative",
+  "rca:site": "RS03AXPS",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:startedAtTime": "2026-11-06T12:09:09+00:00",
+    "prov:endedAtTime": "2026-11-06T12:09:12+00:00",
+    "prov:wasAssociatedWith": {
+      "@type": [
+        "SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "name": "rca_sal",
+      "rca:codeFiles": [
+        {
+          "path": "rca_sal/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/bottle_check.py",
+          "sha256": "8e9d46dfe5a6fc447da85d5336b5a53df21a88e471740099788e5f7d1d962e2a",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/calibrate.py",
+          "sha256": "661c8756af6044f00fa2f20e9387503acd3633301cd0ac13bcf396efe77a3d82",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/correction.py",
+          "sha256": "0dec6d46fe052167f55b68dbc9ab34a3f4c01e4999e7f0c3e9ece4cc8e708e79",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/deployments.py",
+          "sha256": "778d98770d1794df3c6a6a77a6f894af785a2e394d58049bf3308a9ec5121c10",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/discrete.py",
+          "sha256": "a465ea675e03a662c0f0827293765c70960ee157ef160f71cb01caa594e7e805",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/eos80.py",
+          "sha256": "aae6fa877db17d26c7ecf49304f381e662dade2b6844afd24ab57d43c77ae5cc",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/github_data.py",
+          "sha256": "18c6efcf28e74b2153d8533d691ae1692ae3a7ca16d5e29e0fd762eef304691c",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/inputs_check.py",
+          "sha256": "739b3f3a470c5ccd9795c263753b4b0180068f05260b39dba3879f06e2b00088",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/instruments.py",
+          "sha256": "967c309c57935fd570c7a80eb38ba5024b7f715ce97af8c55d360f14e74062f7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/lineage.py",
+          "sha256": "9782fa016e51ad332e6b79a60ddcba810bb0d1b2c603cad39ce24b02cc72f87b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/nitrate.py",
+          "sha256": "0543edb1579419c44696fbb27714db67c07ce9117f363afbfdc17dfb75f256a3",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooi_qc.py",
+          "sha256": "cf0272a8600e9f6d903418e02b8e52aff0dc4880846f59e9e22a3e3e9152ed72",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/ooinet.py",
+          "sha256": "30fea611c220c6e5242239a26767a535479021ba880c21897683d8022cfec33b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/oxygen.py",
+          "sha256": "eeae3b7919012392b86c82f8efca09e76587e66074104a4f216e4bd8a9ce48ff",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline.py",
+          "sha256": "0a104b48d790a45e4155be8d3b976218443f3b95bd78f42dfdc4341e412f4d8b",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_no3.py",
+          "sha256": "01c4dff4d2a9af04312e585613c294d4388a80b8d5de503fa1d2133100d8f4ba",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pipeline_o2.py",
+          "sha256": "4dd4110ab6e6ca51ac971e52cd8f472e6cce63f43bedecbe91aaab7de92e81b2",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profile_index.py",
+          "sha256": "43fb46cdf6ac14446d04104a3d5f5e4b28374c505bcd620d69eb8bcfc1ea0aa7",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/profiler.py",
+          "sha256": "380b0d54b0c23b9013fc65634713e2e14441f8eb8459ac24fb6cd5013fc0f880",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/pss78.py",
+          "sha256": "91c2be75aa62e7fca6acfe770bf79f60335786307d9d8f0a894b1ee1a6250419",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seabird.py",
+          "sha256": "57878a916d31fe076494fdd5a1a087ff60d84ea7aa079aedcc3b4e2b8bf2026f",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/seafloor.py",
+          "sha256": "9cd0170cab888540f1ea0248dec88740b92ad3e2c3ea9ffa45fda426ee2b17cd",
+          "role": "code"
+        },
+        {
+          "path": "rca_sal/uploads.py",
+          "sha256": "ed1ad1daaaebef140895225eb4f290428ca15943a411902a0875d80687fbdb5b",
+          "role": "code"
+        },
+        {
+          "path": "config/cruises.toml",
+          "sha256": "f35c28fff0f556bfc5e65e2c039f08423dc37e971e0d924334657a5e41c9aa2a",
+          "role": "config"
+        },
+        {
+          "path": "scripts/run_year.py",
+          "sha256": "2347cfb6377fe90398dafb68f78c802c29b31a7ecac13488292bafae025e98bc",
+          "role": "code"
+        }
+      ],
+      "rca:codeVersion": {
+        "git_commit": "f080fa4940d31e36bf7891ff99351a602612ce2e",
+        "uncommitted_changes_in_code_or_config": false
+      },
+      "rca:runtime": {
+        "python": "3.12.10",
+        "pandas": "3.0.6",
+        "numpy": "2.5.3",
+        "platform": "Windows-11-10.0.26200-SP0"
+      }
+    },
+    "prov:used": [
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "TN326_CTD-011.cnv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.cnv",
+        "sha256": "d86553105354d004756e7941bbe720f1ff8a846fcb583666d156854312fa8ddc",
+        "contentSize": 2282940,
+        "dateModified": "2026-11-06T09:18:49+00:00",
+        "rca:role": "reference_cnv",
+        "description": "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.cnv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 400564b868c926c89c4d1199a13143538b825ab0)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "TN326_CTD-011.btl",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.btl",
+        "sha256": "810617eafac9a301a8ffb5a6af57916d9491aa2eb0b42e5ceadb07602e12a406",
+        "contentSize": 20910,
+        "dateModified": "2026-11-06T09:18:49+00:00",
+        "rca:role": "reference_btl",
+        "description": "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.btl @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob 4e89492c224db64c4a2c6195687128cb03c124f3)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "Cabled-06_TN326_Discrete_Summary.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv",
+        "sha256": "35c6e68fd5799bf2b31bd62f595632d603e6980bd88280aa83535255180fee91",
+        "contentSize": 239871,
+        "dateModified": "2026-11-02T18:59:55+00:00",
+        "rca:role": "discrete_summary_csv",
+        "description": "github:FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv @ OOI-CabledArray/discreteSummaries commit 534acc5458f8a7d02ad324a3c8f8d89eea806cb4 (git blob f587e4813d49f551be01b20767077de86b8529b2)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS_profiles_2015.csv",
+        "contentUrl": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2015.csv",
+        "sha256": "49c6cd0d9675e9cd525e0c5f7c856cd34d0de10f8a443f4120c295b1460c367c",
+        "contentSize": 72014,
+        "dateModified": "2026-11-06T09:20:22+00:00",
+        "rca:role": "profile_index_csv",
+        "description": "github[profile_indices]:RS03AXPS_profiles_2015.csv @ OOI-CabledArray/profileIndices commit 3999352e3be8f0df81891d6c5886b642cc7ddeb5 (git blob 2dd127479c2746f1a5e17c7d1dfbe2ef6d441b83)"
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0002_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20150713T120000.653458-20150723T115959.139934.nc",
+        "contentUrl": "data/raw/ooinet/20261106T114422782Z/deployment0002_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20150713T120000.653458-20150723T115959.139934.nc",
+        "sha256": "28295aed2ed51b9444c6843a6086e0b805de584df36ec6224f3d56add46c3755",
+        "contentSize": 153608459,
+        "dateModified": "2026-11-06T11:46:06+00:00",
+        "rca:role": "dofsta_nc",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "status.json",
+        "contentUrl": "data/raw/ooinet/20261106T114422782Z/status.json",
+        "sha256": "7a6fb6e493b0444532967be77f7020e90d2ab3c608255b4ab0fc3bf673e124d3",
+        "contentSize": 303,
+        "dateModified": "2026-11-06T11:46:04+00:00",
+        "rca:role": "ooinet_status",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "deployment0002_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json",
+        "contentUrl": "data/raw/ooinet/20261106T114422782Z/deployment0002_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json",
+        "sha256": "4d3dd33aa55aaa63f04f3be05b2dbd8f55aee26bead8c9e765cb92bd0d5d8553",
+        "contentSize": 55851,
+        "dateModified": "2026-11-06T11:46:04+00:00",
+        "rca:role": "ooinet_provenance",
+        "description": null
+      },
+      {
+        "@type": [
+          "MediaObject",
+          "prov:Entity"
+        ],
+        "name": "RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json",
+        "contentUrl": "data/raw/ooinet/20261106T114422782Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json",
+        "sha256": "2482555ec65ecc2cc52e1dfb84603735ce14311e9bb639e061a92bafb59fdf9f",
+        "contentSize": 711,
+        "dateModified": "2026-11-06T11:46:09+00:00",
+        "rca:role": "ooinet_annotations",
+        "description": null
+      }
+    ]
+  },
+  "rca:ooinet": {
+    "request_folder": "data/raw/ooinet/20261106T114422782Z",
+    "request_id": "20261106T114422782Z",
+    "reference_designator": "RS03AXPS-SF03A-2A-DOFSTA302",
+    "stream": "streamed/do_fast_sample",
+    "deployment": null,
+    "annotations": [
+      {
+        "id": 212,
+        "subsite": "RS03AXPS",
+        "node": "SF03A",
+        "sensor": "2A-CTDPFA302",
+        "method": "streamed",
+        "stream": "ctdpf_sbe43_sample",
+        "annotation": "Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.",
+        "exclusion_flag": false,
+        "source": "friedrich.knuth@rutgers.edu",
+        "qc_flag": null,
+        "parameters": [
+          909
+        ],
+        "start": "2015-07-09 04:16:00",
+        "stop": "2016-07-14 00:00:00"
+      }
+    ],
+    "status": {
+      "20150713T120000-20150715T000000": "complete",
+      "20150715T000000-20150717T000000": "complete",
+      "20150717T000000-20150719T000000": "complete",
+      "20150719T000000-20150721T000000": "complete",
+      "20150721T000000-20150723T000000": "complete",
+      "20150723T000000-20150723T120000": "complete"
+    }
+  },
+  "rca:githubSource": {
+    "repo": "OOI-CabledArray/discreteSummaries",
+    "ref": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "commit": "534acc5458f8a7d02ad324a3c8f8d89eea806cb4",
+    "files": [
+      {
+        "path": "CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.cnv",
+        "blob_sha": "400564b868c926c89c4d1199a13143538b825ab0",
+        "bytes": 2282940,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.cnv"
+      },
+      {
+        "path": "CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.btl",
+        "blob_sha": "4e89492c224db64c4a2c6195687128cb03c124f3",
+        "bytes": 20910,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/CruiseData/Cabled-06_TN326_2015-7-04/CTD%20Data/TN326_CTD-011.btl"
+      },
+      {
+        "path": "FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv",
+        "blob_sha": "f587e4813d49f551be01b20767077de86b8529b2",
+        "bytes": 239871,
+        "url": "https://raw.githubusercontent.com/OOI-CabledArray/discreteSummaries/534acc5458f8a7d02ad324a3c8f8d89eea806cb4/FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv"
+      }
+    ],
+    "additionalSources": [
+      {
+        "repo": "OOI-CabledArray/profileIndices",
+        "ref": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "commit": "3999352e3be8f0df81891d6c5886b642cc7ddeb5",
+        "files": [
+          {
+            "path": "RS03AXPS_profiles_2015.csv",
+            "blob_sha": "2dd127479c2746f1a5e17c7d1dfbe2ef6d441b83",
+            "bytes": 72014,
+            "url": "https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/3999352e3be8f0df81891d6c5886b642cc7ddeb5/RS03AXPS_profiles_2015.csv"
+          }
+        ]
+      }
+    ]
+  },
+  "rca:cruise": {
+    "cruise": "Cabled-06",
+    "ship_cruise_id": "TN326",
+    "vessel": "R/V Thomas G. Thompson",
+    "cast": "CTD-011",
+    "cast_start_utc": "2015-07-13T17:03:53+00:00",
+    "last_bottle_closure_utc": "2015-07-13T17:22:51+00:00",
+    "cast_time_utc": "2015-07-13T17:13:22+00:00",
+    "definition": "cast_time = midpoint of NMEA cast start (.cnv header) and the last bottle closure (.btl)"
+  },
+  "rca:parameters": {
+    "global": {
+      "variable": "salinity",
+      "correction_kind": "additive",
+      "bin_size_m": 1.0,
+      "smooth_window_bins": 5,
+      "bottle_outlier_psu": 0.01,
+      "extrapolate_reference": false,
+      "bottle_ok_niskin_flags": [
+        "No problems noted"
+      ],
+      "bottle_ok_salinity_flag_prefix": "Acceptable",
+      "upcast": {
+        "smooth_s": 15.0,
+        "w_ascend": -0.03,
+        "max_gap_s": 30.0,
+        "min_span_m": 100.0
+      },
+      "ctd_downcast": {
+        "min_pressure_dbar": 2.0,
+        "heave_tolerance_dbar": 0.5
+      },
+      "oxygen": {
+        "correction_kind": "multiplicative",
+        "winkler_bad_flags": [
+          3.0,
+          4.0
+        ]
+      }
+    },
+    "variants": [
+      {
+        "id": "index_first_upcasts_depSM",
+        "role": "primary",
+        "description": "mean of the first 6 complete official-index upcasts after the CTD cast, Winkler depth vs CTD depSM, downcast-only CTD, flagged Winkler rows excluded",
+        "select": "index_first_upcasts",
+        "n_upcasts": 6,
+        "min_span_m": 100.0,
+        "needs_profile_index": true,
+        "without_index": "first_upcasts",
+        "smooth": true,
+        "ref": "downcast",
+        "winkler_depth_col": "depth_m",
+        "ctd_depth_col": "depSM",
+        "use_winkler_flags": true
+      },
+      {
+        "id": "nearest_upcast_depSM",
+        "role": "alternative",
+        "description": "single upcast nearest the CTD cast, Winkler depth vs CTD depSM, downcast-only CTD, flagged Winkler rows excluded",
+        "select": "nearest_upcast",
+        "smooth": true,
+        "ref": "downcast",
+        "winkler_depth_col": "depth_m",
+        "ctd_depth_col": "depSM",
+        "use_winkler_flags": true
+      },
+      {
+        "id": "nearest_upcast_pressure",
+        "role": "alternative",
+        "description": "as nearest_upcast_depSM but Winkler pressure vs CTD prDM",
+        "select": "nearest_upcast",
+        "smooth": true,
+        "ref": "downcast",
+        "winkler_depth_col": "pressure_dbar",
+        "ctd_depth_col": "prDM",
+        "use_winkler_flags": true
+      },
+      {
+        "id": "upcasts_all_depSM",
+        "role": "alternative",
+        "description": "all labelled DOFSTA upcasts pooled, Winkler depth vs CTD depSM, downcast-only CTD",
+        "select": "upcasts",
+        "smooth": true,
+        "ref": "downcast",
+        "winkler_depth_col": "depth_m",
+        "ctd_depth_col": "depSM",
+        "use_winkler_flags": true
+      },
+      {
+        "id": "upcast_{k}_depSM",
+        "role": "per_upcast",
+        "description": "single upcast {k}, Winkler depth vs CTD depSM, downcast-only CTD",
+        "select": "each_upcast",
+        "smooth": true,
+        "ref": "downcast",
+        "winkler_depth_col": "depth_m",
+        "ctd_depth_col": "depSM",
+        "use_winkler_flags": true
+      }
+    ],
+    "notebook_window_utc": null
+  },
+  "rca:inputChecks": {
+    "ctd_header": {
+      "processing": [
+        "datcnv"
+      ],
+      "nmea_lat": 45.830333333333336,
+      "nmea_lon": -129.75533333333334,
+      "nmea_utc": "2015-07-13T17:03:53+00:00",
+      "interval_s": 0.0416667,
+      "bad_flag": -9.99e-29
+    },
+    "ctd_scans_total": 12015,
+    "ctd_scans_downcast_reference": 11731,
+    "winkler_rows": {
+      "summary": 10
+    },
+    "winkler_rows_flagged_bad": 0,
+    "dofsta_samples": 827067,
+    "dofsta_o2_units": "umol kg-1",
+    "n_upcasts": 7,
+    "dofsta_time_start": "2015-07-13T12:00:00.653457920+00:00",
+    "dofsta_time_end": "2015-07-23T11:59:59.139934208+00:00"
+  },
+  "rca:upcasts": [
+    {
+      "upcast_id": 0,
+      "start": "2015-07-13T15:23:03.841487360+00:00",
+      "end": "2015-07-13T16:18:48.877640704+00:00",
+      "mid_time": "2015-07-13T15:50:56.359564032+00:00",
+      "mean_time": "2015-07-13T15:50:56.360991232+00:00",
+      "depth_min": 20.504821235329477,
+      "depth_max": 184.3519568450203,
+      "n": 3346,
+      "mean_speed_ms": -0.048972144575213025
+    },
+    {
+      "upcast_id": 1,
+      "start": "2015-07-13T20:57:16.149865984+00:00",
+      "end": "2015-07-13T21:17:14.154934272+00:00",
+      "mid_time": "2015-07-13T21:07:15.152400128+00:00",
+      "mean_time": "2015-07-13T21:07:15.152764928+00:00",
+      "depth_min": 22.1346492813186,
+      "depth_max": 187.83793744905807,
+      "n": 1199,
+      "mean_speed_ms": -0.13820772178835924
+    },
+    {
+      "upcast_id": 2,
+      "start": "2015-07-14T19:25:12.350634496+00:00",
+      "end": "2015-07-14T19:51:34.387786752+00:00",
+      "mid_time": "2015-07-14T19:38:23.369210624+00:00",
+      "mean_time": "2015-07-14T19:38:23.381337600+00:00",
+      "depth_min": 30.634681858488328,
+      "depth_max": 186.3564556277933,
+      "n": 1583,
+      "mean_speed_ms": -0.09838891671309907
+    },
+    {
+      "upcast_id": 3,
+      "start": "2015-07-14T20:30:51.457287168+00:00",
+      "end": "2015-07-14T20:57:16.529467904+00:00",
+      "mid_time": "2015-07-14T20:44:03.993377536+00:00",
+      "mean_time": "2015-07-14T20:44:03.970630656+00:00",
+      "depth_min": 30.410887829192095,
+      "depth_max": 185.85813286167885,
+      "n": 1586,
+      "mean_speed_ms": -0.09799584759571314
+    },
+    {
+      "upcast_id": 4,
+      "start": "2015-07-14T21:36:31.596281344+00:00",
+      "end": "2015-07-14T22:02:53.607323648+00:00",
+      "mid_time": "2015-07-14T21:49:42.601802496+00:00",
+      "mean_time": "2015-07-14T21:49:42.601745664+00:00",
+      "depth_min": 30.123508198618886,
+      "depth_max": 185.50767208954784,
+      "n": 1583,
+      "mean_speed_ms": -0.0981760472304915
+    },
+    {
+      "upcast_id": 5,
+      "start": "2015-07-16T15:56:27.737411584+00:00",
+      "end": "2015-07-16T16:24:19.800263680+00:00",
+      "mid_time": "2015-07-16T16:10:23.768837632+00:00",
+      "mean_time": "2015-07-16T16:10:23.756989696+00:00",
+      "depth_min": 21.13074648709472,
+      "depth_max": 184.5806909727916,
+      "n": 1673,
+      "mean_speed_ms": -0.09770116075673947
+    },
+    {
+      "upcast_id": 6,
+      "start": "2015-07-16T19:51:18.002091008+00:00",
+      "end": "2015-07-16T20:47:04.159866368+00:00",
+      "mid_time": "2015-07-16T20:19:11.080978688+00:00",
+      "mean_time": "2015-07-16T20:19:11.054504704+00:00",
+      "depth_min": 22.99118304992279,
+      "depth_max": 186.60649894980529,
+      "n": 3347,
+      "mean_speed_ms": -0.04889293914096063
+    }
+  ],
+  "rca:profileIndex": {
+    "n_profiles_in_data": 13
+  },
+  "rca:variants": [
+    {
+      "variant_id": "index_first_upcasts_depSM",
+      "role": "primary",
+      "description": "mean of the first 6 complete official-index upcasts after the CTD cast, Winkler depth vs CTD depSM, downcast-only CTD, flagged Winkler rows excluded",
+      "selection": "index_first_upcasts",
+      "bottle_source": "summary",
+      "upcast_id": null,
+      "n_upcasts": 6,
+      "upcast_ids": "580;582;583;584;585;586",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 11340,
+      "n_bins": 172,
+      "depth_min_m": 18.5,
+      "depth_max_m": 189.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 9,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0589024548159616,
+      "dofsta_gain_iqr": 0.05000717292492052,
+      "rmse_before_umolkg": 18.68597007479628,
+      "rmse_after_umolkg": 13.661384410148857,
+      "dofsta_vs_winkler_direct_gain": 1.067166082164539,
+      "t1_mean_profiler_time_utc": "2015-07-15T15:00:23.509630720+00:00",
+      "sample_time_start_utc": "2015-07-13T20:56:00.149100544+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:59.159849984+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 45.783752674999995
+    },
+    {
+      "variant_id": "nearest_upcast_depSM",
+      "role": "alternative",
+      "description": "single upcast nearest the CTD cast, Winkler depth vs CTD depSM, downcast-only CTD, flagged Winkler rows excluded",
+      "selection": "nearest_upcast",
+      "bottle_source": "summary",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 3346,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 9,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0529502449296297,
+      "dofsta_gain_iqr": 0.021535781292386202,
+      "rmse_before_umolkg": 15.520904339158779,
+      "rmse_after_umolkg": 9.564939614781297,
+      "dofsta_vs_winkler_direct_gain": 1.054942379640378,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:50:56.360991232+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:48.877640704+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3737886136111113
+    },
+    {
+      "variant_id": "nearest_upcast_pressure",
+      "role": "alternative",
+      "description": "as nearest_upcast_depSM but Winkler pressure vs CTD prDM",
+      "selection": "nearest_upcast",
+      "bottle_source": "summary",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "pressure_dbar",
+      "ctd_depth_col": "prDM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 3346,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 9,
+      "ctd_gain": 1.0459521023851335,
+      "ctd_gain_iqr": 0.028580032665225463,
+      "dofsta_gain": 1.055215138697789,
+      "dofsta_gain_iqr": 0.02542182947060545,
+      "rmse_before_umolkg": 16.122219058480848,
+      "rmse_after_umolkg": 9.98645799843913,
+      "dofsta_vs_winkler_direct_gain": 1.0575768010333002,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:50:56.360991232+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:48.877640704+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3737886136111113
+    },
+    {
+      "variant_id": "upcasts_all_depSM",
+      "role": "alternative",
+      "description": "all labelled DOFSTA upcasts pooled, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts",
+      "bottle_source": "summary",
+      "upcast_id": null,
+      "n_upcasts": 7,
+      "upcast_ids": "0;1;2;3;4;5;6",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 14317,
+      "n_bins": 170,
+      "depth_min_m": 18.5,
+      "depth_max_m": 187.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 9,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.056601822880756,
+      "dofsta_gain_iqr": 0.04209478677863299,
+      "rmse_before_umolkg": 17.686342231973683,
+      "rmse_after_umolkg": 11.81495493106361,
+      "dofsta_vs_winkler_direct_gain": 1.0640760230719317,
+      "t1_mean_profiler_time_utc": "2015-07-15T04:12:23.249671936+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:04.159866368+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 34.98368046416667
+    },
+    {
+      "variant_id": "upcast_0_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 0, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 0,
+      "n_upcasts": 1,
+      "upcast_ids": "0",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 3346,
+      "n_bins": 167,
+      "depth_min_m": 18.5,
+      "depth_max_m": 184.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 9,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0529502449296297,
+      "dofsta_gain_iqr": 0.021535781292386202,
+      "rmse_before_umolkg": 15.520904339158779,
+      "rmse_after_umolkg": 9.564939614781297,
+      "dofsta_vs_winkler_direct_gain": 1.054942379640378,
+      "t1_mean_profiler_time_utc": "2015-07-13T15:50:56.360991232+00:00",
+      "sample_time_start_utc": "2015-07-13T15:23:03.841487360+00:00",
+      "sample_time_end_utc": "2015-07-13T16:18:48.877640704+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": -1.3737886136111113
+    },
+    {
+      "variant_id": "upcast_1_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 1, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 1,
+      "n_upcasts": 1,
+      "upcast_ids": "1",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 1199,
+      "n_bins": 168,
+      "depth_min_m": 20.5,
+      "depth_max_m": 187.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 8,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0496122899940143,
+      "dofsta_gain_iqr": 0.05530914770029893,
+      "rmse_before_umolkg": 17.85145482690432,
+      "rmse_after_umolkg": 12.469910879704088,
+      "dofsta_vs_winkler_direct_gain": 1.0515326705840358,
+      "t1_mean_profiler_time_utc": "2015-07-13T21:07:15.152764928+00:00",
+      "sample_time_start_utc": "2015-07-13T20:57:16.149865984+00:00",
+      "sample_time_end_utc": "2015-07-13T21:17:14.154934272+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 3.89809799
+    },
+    {
+      "variant_id": "upcast_2_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 2, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 2,
+      "n_upcasts": 1,
+      "upcast_ids": "2",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 1583,
+      "n_bins": 159,
+      "depth_min_m": 28.5,
+      "depth_max_m": 186.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 8,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0689223259929432,
+      "dofsta_gain_iqr": 0.05175535735631431,
+      "rmse_before_umolkg": 19.99228642101707,
+      "rmse_after_umolkg": 12.107867010790006,
+      "dofsta_vs_winkler_direct_gain": 1.0736293857120156,
+      "t1_mean_profiler_time_utc": "2015-07-14T19:38:23.381337600+00:00",
+      "sample_time_start_utc": "2015-07-14T19:25:12.350634496+00:00",
+      "sample_time_end_utc": "2015-07-14T19:51:34.387786752+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 26.41705037138889
+    },
+    {
+      "variant_id": "upcast_3_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 3, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 3,
+      "n_upcasts": 1,
+      "upcast_ids": "3",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 1586,
+      "n_bins": 158,
+      "depth_min_m": 28.5,
+      "depth_max_m": 185.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 8,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0533166830829188,
+      "dofsta_gain_iqr": 0.04525263927492973,
+      "rmse_before_umolkg": 17.67040999385,
+      "rmse_after_umolkg": 11.29968514435457,
+      "dofsta_vs_winkler_direct_gain": 1.063639801229282,
+      "t1_mean_profiler_time_utc": "2015-07-14T20:44:03.970630656+00:00",
+      "sample_time_start_utc": "2015-07-14T20:30:51.457287168+00:00",
+      "sample_time_end_utc": "2015-07-14T20:57:16.529467904+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 27.511658508333333
+    },
+    {
+      "variant_id": "upcast_4_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 4, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 4,
+      "n_upcasts": 1,
+      "upcast_ids": "4",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 1583,
+      "n_bins": 158,
+      "depth_min_m": 28.5,
+      "depth_max_m": 185.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 8,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.055910927899185,
+      "dofsta_gain_iqr": 0.04892456680589752,
+      "rmse_before_umolkg": 19.63795775830323,
+      "rmse_after_umolkg": 12.942425613463865,
+      "dofsta_vs_winkler_direct_gain": 1.0631612816422784,
+      "t1_mean_profiler_time_utc": "2015-07-14T21:49:42.601745664+00:00",
+      "sample_time_start_utc": "2015-07-14T21:36:31.596281344+00:00",
+      "sample_time_end_utc": "2015-07-14T22:02:53.607323648+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 28.605722706944448
+    },
+    {
+      "variant_id": "upcast_5_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 5, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 5,
+      "n_upcasts": 1,
+      "upcast_ids": "5",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 1673,
+      "n_bins": 166,
+      "depth_min_m": 19.5,
+      "depth_max_m": 184.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 9,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0642455171379448,
+      "dofsta_gain_iqr": 0.08096361807436936,
+      "rmse_before_umolkg": 20.44170297446041,
+      "rmse_after_umolkg": 15.991393871428015,
+      "dofsta_vs_winkler_direct_gain": 1.0519245460229971,
+      "t1_mean_profiler_time_utc": "2015-07-16T16:10:23.756989696+00:00",
+      "sample_time_start_utc": "2015-07-16T15:56:27.737411584+00:00",
+      "sample_time_end_utc": "2015-07-16T16:24:19.800263680+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 70.95048805249999
+    },
+    {
+      "variant_id": "upcast_6_depSM",
+      "role": "per_upcast",
+      "description": "single upcast 6, Winkler depth vs CTD depSM, downcast-only CTD",
+      "selection": "upcasts_one",
+      "bottle_source": "summary",
+      "upcast_id": 6,
+      "n_upcasts": 1,
+      "upcast_ids": "6",
+      "smoothed": true,
+      "reference_filter": "downcast",
+      "winkler_depth_col": "depth_m",
+      "ctd_depth_col": "depSM",
+      "winkler_flags_applied": true,
+      "kind": "multiplicative",
+      "n_annotation_excluded": 0,
+      "annotations_on_samples": null,
+      "reference_extrapolated": false,
+      "n_bins_outside_reference": 0,
+      "n_dofsta_samples": 3347,
+      "n_bins": 167,
+      "depth_min_m": 20.5,
+      "depth_max_m": 186.5,
+      "n_winkler": 10,
+      "n_winkler_available": 10,
+      "n_winkler_direct": 8,
+      "ctd_gain": 1.045921852310555,
+      "ctd_gain_iqr": 0.028570519703148056,
+      "dofsta_gain": 1.0669901594550992,
+      "dofsta_gain_iqr": 0.058709707683185286,
+      "rmse_before_umolkg": 18.653249355110102,
+      "rmse_after_umolkg": 12.570741574677523,
+      "dofsta_vs_winkler_direct_gain": 1.0819700840904307,
+      "t1_mean_profiler_time_utc": "2015-07-16T20:19:11.054504704+00:00",
+      "sample_time_start_utc": "2015-07-16T19:51:18.002091008+00:00",
+      "sample_time_end_utc": "2015-07-16T20:47:04.159866368+00:00",
+      "t1_cast_time_utc": "2015-07-13T17:13:22+00:00",
+      "mean_profiler_minus_cast_h": 75.09695958444445
+    }
+  ],
+  "rca:primaryVariant": "index_first_upcasts_depSM",
+  "rca:twoPoint": {
+    "T1": {
+      "variant": "index_first_upcasts_depSM",
+      "ctd_gain": 1.045921852310555,
+      "dofsta_gain": 1.0589024548159616,
+      "time_mean_profiler_utc": "2015-07-15T15:00:23.509630720+00:00",
+      "time_cast_utc": "2015-07-13T17:13:22+00:00",
+      "notebook_convention_variant": null,
+      "notebook_convention_ctd_gain": null,
+      "notebook_convention_dofsta_gain": null,
+      "notebook_convention_time_mean_profiler_utc": null
+    },
+    "T2": {
+      "status": "missing",
+      "reason": "no second cruise configured for this year; two-point interpolation not computed"
+    }
+  },
+  "rca:flags": [
+    {
+      "severity": "caveat",
+      "code": "ctd_o2_converted",
+      "text": "The .cnv has no sbox0Mm/Kg column, so shipboard SBE43 oxygen was converted from ml/l to umol/kg with the Sea-Bird formula (ml/l x 44660 / (EOS-80 sigma-theta + 1000)), using sal00, t090C and prDM."
+    },
+    {
+      "severity": "caveat",
+      "code": "ctd_processing",
+      "text": "Reference .cnv was processed with datcnv only; alignctd / celltm / loopedit are not applied, which matters for the SBE43 oxygen sensor."
+    },
+    {
+      "severity": "caveat",
+      "code": "winkler_from_summary",
+      "text": "Winkler oxygen is the discrete summary's mL/L value converted to umol/kg with the Sea-Bird formula, using the CTD salinity 1, temperature 1 and pressure at each bottle closure."
+    },
+    {
+      "severity": "caveat",
+      "code": "winkler_depth_limited",
+      "text": "Winkler bottles deeper than the profiler's deepest sample (190 m) are not used for the ship-sensor gain: 2 of 12 rows from the summary left out."
+    }
+  ],
+  "rca:outputs": [
+    {
+      "name": "binned_profiles.csv",
+      "sha256": "cafcacd4c7b1fcd61277287349f8a1e106aacdcbbca004140b3262b342fe0706",
+      "contentSize": 817908
+    },
+    {
+      "name": "calibration_table.csv",
+      "sha256": "f5b40e068a2346e08490fa3655daa75cd5f98c54a63fa4f3e9326acb9f8c7eba",
+      "contentSize": 9880
+    },
+    {
+      "name": "calibration_table.parquet",
+      "sha256": "80e76b68f06d00622d74ff4ad3d900de5d66a03ffbb20565a06ccf5a708ee3f7",
+      "contentSize": 30663
+    },
+    {
+      "name": "ctd_o2_profiles.csv",
+      "sha256": "3690572c3a377c4f03fdbeea764351260f19d989f2de4cffc113df1dcd81f7b1",
+      "contentSize": 5153060
+    },
+    {
+      "name": "upcasts.csv",
+      "sha256": "3699486482c8170f5203e2c3d5680b602e7daf86e337b5d201e39a71dba5312e",
+      "contentSize": 1815
+    },
+    {
+      "name": "winkler_check.csv",
+      "sha256": "c5709e4b5753e3fc0b945893437cf214954b62c54cb06e3b0fda23a950e33c15",
+      "contentSize": 16220
+    }
+  ]
+}
