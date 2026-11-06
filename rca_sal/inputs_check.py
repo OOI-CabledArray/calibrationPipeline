@@ -9,7 +9,8 @@ import pandas as pd
 
 from . import discrete, github_data, seabird
 from . import oxygen as ox
-from .pipeline import OXYGEN_BOTTLE_ROLES, OXYGEN_REQUIRED, PROJECT_ROOT, SALINITY_REQUIRED, _resolve, load_config, site_year
+from .pipeline import (OXYGEN_BOTTLE_ROLES, OXYGEN_REQUIRED, PROJECT_ROOT, SALINITY_REQUIRED, _resolve, load_config, salinity_bottle_roles,
+                       site_year)
 
 
 def _row(role, status, detail="", spec=None):
@@ -30,7 +31,7 @@ def check_year_inputs(year: int, config_path: str | Path, root: Path = PROJECT_R
     inputs = dict(ycfg.get("inputs", {}))
     if oxygen:
         inputs |= ocfg.get("inputs", {})
-    roles = (OXYGEN_REQUIRED + tuple(r for r in OXYGEN_BOTTLE_ROLES if r in inputs)) if oxygen else SALINITY_REQUIRED
+    roles = (OXYGEN_REQUIRED + tuple(r for r in OXYGEN_BOTTLE_ROLES if r in inputs)) if oxygen else SALINITY_REQUIRED + salinity_bottle_roles(inputs)
     if oxygen and not any(r in inputs for r in OXYGEN_BOTTLE_ROLES):
         roles += (OXYGEN_BOTTLE_ROLES[0],)
     cast = (ocfg.get("cast") if oxygen else None) or ycfg.get("cast")
@@ -72,7 +73,17 @@ def check_year_inputs(year: int, config_path: str | Path, root: Path = PROJECT_R
     btl = parse("reference_btl", seabird.read_btl)
     if btl is not None:
         info["btl"] = {"bottles": int(len(btl)), "niskins": sorted(int(b) for b in btl["bottle"])}
-    if not oxygen:
+    if not oxygen and "autosal_xlsx" not in roles:
+        got = parse("discrete_summary_csv", lambda p: discrete.read_summary_salinity(p, cast, cfg["parameters"]["bottle_ok_niskin_flags"][0],
+                                                                                      cfg["parameters"]["bottle_ok_salinity_flag_prefix"]))
+        if got is not None:
+            samples, _ = got
+            info["summary_salinity"] = {"niskins_with_salinity": int(len(samples)), "niskins": samples["niskin"].tolist()}
+            if btl is not None:
+                info["matchable"] = {"niskins_in_btl": int(samples["niskin"].isin(btl["bottle"]).sum()), "of": int(len(samples))}
+            if len(samples) == 0:
+                next(r for r in rows if r["role"] == "discrete_summary_csv").update(status="INCOMPLETE", detail=f"no salinity samples for cast {cast!r}")
+    elif not oxygen:
         autosal = parse("autosal_xlsx", lambda p: discrete.read_autosal(p)[0])
         if autosal is not None:
             info["autosal"] = {"rows": int(len(autosal)), "sample_rows": int((~autosal["is_standard_check"]).sum())}
@@ -101,7 +112,7 @@ def format_report(info: dict) -> str:
     out = [f"{info['year']}  cast {info['cast']}   ready: {'YES' if info['ready'] else 'NO'}"]
     for r in info["inputs"]:
         out.append(f"  [{r['status']:10}] {r['role']:15} {r['detail']}")
-    for k in ("cnv", "btl", "autosal", "cast_log", "matchable", "winkler"):
+    for k in ("cnv", "btl", "autosal", "cast_log", "summary_salinity", "matchable", "winkler"):
         if k in info:
             out.append(f"  {k}: {info[k]}")
     return "\n".join(out)

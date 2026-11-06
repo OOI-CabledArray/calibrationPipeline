@@ -1,7 +1,7 @@
 # Shallow-profiler sensor calibration
 
 This project checks and corrects three sensors on the OOI Regional Cabled Array shallow profilers by comparing them with the
-measurements taken by the ship on each yearly maintenance cruise (2020-2025):
+measurements taken by the ship on each yearly maintenance cruise (2015-2025):
 
 | Sensor | What it measures | What we compare it with | What we produce |
 |---|---|---|---|
@@ -15,7 +15,7 @@ Every number comes from the data files listed in `config/cruises.toml`. If a fil
 
 ## Quick start
 
-You need Python 3.12 and [Git LFS](https://git-lfs.com) (two data files are larger than 100 MB).
+You need Python 3.12 and [Git LFS](https://git-lfs.com) (fourteen data files are larger than 100 MB).
 
 ```
 git lfs install && git lfs pull
@@ -147,6 +147,7 @@ GitHub files are read at the fixed commits named in the config and cached in `da
 | `python scripts/deployments.py` | rebuild `outputs/deployments.yaml` |
 | `python scripts/instrument_inventory.py` | list every CTD and oxygen instrument that has bottle samples nearby |
 | `python scripts/fetch_seafloor.py`, `seafloor_calibrate.py` | first look at the seafloor CTDs (Axial Base and Slope Base) |
+| `python scripts/fetch_early.py` | download the profilers' CTD, oxygen and nitrate data around the 2015-2019 cruises, one request at a time (`--list` to see them, `--ship` to also save the ship's files) |
 
 ## Known quirks in the data
 
@@ -154,6 +155,12 @@ GitHub files are read at the fixed commits named in the config and cached in `da
 - Some years have only a few bottles (two or three for oxygen).
 - In some years the profiler was parked during the cruise, so nitrate could only be compared at one depth.
 - The 2024 and 2025 summaries have salinity and nitrate values without quality flags; they are used and marked "unflagged".
+- The 2015-2019 cruises have no cast-log or Autosal workbooks in the repository's format, so their bottle salinity is read from the discrete
+  summary (replicates averaged, the summary's flags applied) and every such run carries a caveat flag saying so.
+- In 2015-2019 the Winkler bottles used for the ship oxygen sensor are limited to the profiler's depth range (`winkler_within_profiler_range`);
+  the deeper bottles of those casts include near-zero and negative values that make a gain meaningless.
+- In those years the profilers profiled intermittently, so three runs use 10-day request windows (`[[early.extensions]]`), and some runs compare
+  the ship cast with profiles taken days later (the status says so). 2018 Axial Base has no run: the profiler made no profile after the cast.
 - The 2025 bottle sheet has one clearly wrong nitrate value (Niskin 9, cast CTD-007), which is left out automatically.
 - OOI lists the Oregon Offshore profiler range as 20-200 m, but the data reach 4-5 m.
 

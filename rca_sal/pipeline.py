@@ -76,7 +76,15 @@ def _resolve(p: str | Path, root: Path) -> Path:
     return p if p.is_absolute() else (root / p)
 
 
-SALINITY_REQUIRED = ("profiler_nc", "reference_cnv", "reference_btl", "autosal_xlsx", "cast_log_xlsm")
+SALINITY_REQUIRED = ("profiler_nc", "reference_cnv", "reference_btl")
+SALINITY_BOTTLE_SOURCES = (("autosal_xlsx", "cast_log_xlsm"), ("discrete_summary_csv",))    # the lab's workbooks, or the cruise's discrete summary
+
+
+def salinity_bottle_roles(inputs: dict) -> tuple[str, ...]:
+    """Input roles of the bottle-salinity source of a run: the lab's workbooks when any is configured, else the discrete summary.
+    With neither configured the workbooks are returned, so they are reported missing."""
+    workbooks, summary = SALINITY_BOTTLE_SOURCES
+    return summary if not any(r in inputs for r in workbooks) and all(r in inputs for r in summary) else workbooks
 OXYGEN_REQUIRED = ("dofsta_nc", "reference_cnv", "reference_btl")
 OXYGEN_BOTTLE_ROLES = ("discrete_summary_csv", "winkler_xls")    # at least one: the cruise's discrete summary or the lab's workbook
 
@@ -459,7 +467,8 @@ def run_year(year: int, config_path: str | Path, out_root: str | Path, root: Pat
     stale = out / "missing.json"
     if stale.exists():
         stale.unlink()
-    require_roles(ycfg["inputs"], SALINITY_REQUIRED)
+    bottle_roles = salinity_bottle_roles(ycfg["inputs"])
+    require_roles(ycfg["inputs"], SALINITY_REQUIRED + bottle_roles)
     resolved, gh_infos = resolve_github_inputs(cfg, root, ycfg["inputs"])
     ycfg = {**ycfg, "inputs": resolved}
     files = annotate_github(fingerprint_inputs(ycfg, root), gh_infos)   # raises MissingInputError before any computation
@@ -513,8 +522,16 @@ def run_year(year: int, config_path: str | Path, out_root: str | Path, root: Pat
 
     # --- discrete samples + bottle check ---------------------------------------------------------
     btl = seabird.read_btl(P("reference_btl"))
-    autosal, ahdr = discrete.read_autosal(P("autosal_xlsx"))
-    samples = discrete.salinity_samples_for_cast(discrete.read_sample_list(P("cast_log_xlsm")), ycfg["cast"])
+    if "autosal_xlsx" in bottle_roles:
+        autosal, ahdr = discrete.read_autosal(P("autosal_xlsx"))
+        samples = discrete.salinity_samples_for_cast(discrete.read_sample_list(P("cast_log_xlsm")), ycfg["cast"])
+    else:
+        samples, autosal = discrete.read_summary_salinity(P("discrete_summary_csv"), ycfg["cast"], par["bottle_ok_niskin_flags"][0],
+                                                          par["bottle_ok_salinity_flag_prefix"])
+        ahdr = {}
+        flags.append({"severity": "caveat", "code": "bottle_salinity_from_summary",
+                      "text": "Bottle salinity is taken from the cruise's discrete summary (the laboratory's Autosal and cast-log workbooks are not "
+                              "available for this cruise); replicates are averaged and the summary's flags are applied."})
     btab, bsum = bottle_checks(btl, samples, autosal, down, par["bottle_outlier_psu"],
                                par["bottle_ok_niskin_flags"], par["bottle_ok_salinity_flag_prefix"])
     for _, r in btab[btab["excluded_by_flag"] & (btab["sensor"] == "sal00")].iterrows():
@@ -532,7 +549,7 @@ def run_year(year: int, config_path: str | Path, out_root: str | Path, root: Pat
         flags.append({"severity": "warning", "code": "autosal_header_date",
                       "text": f"Autosal workbook header date is {pd.Timestamp(adate).date()} but the cast is on "
                               f"{cast_start.date()}; looks like a template leftover (not changed)."})
-    for h in scan_workbook_years(P("autosal_xlsx"), cast_start.year):
+    for h in scan_workbook_years(P("autosal_xlsx"), cast_start.year) if "autosal_xlsx" in bottle_roles else []:
         flags.append({"severity": "warning", "code": "autosal_other_year",
                       "text": f"Autosal workbook {h['sheet']}!{h['cell']} says {h['text']!r}; cruise year is {cast_start.year} (not changed)."})
 

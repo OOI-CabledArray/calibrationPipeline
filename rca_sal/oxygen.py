@@ -147,20 +147,32 @@ def winkler_gain(wink_depth, wink_o2, ctd_depth, ctd_o2, extrapolate: bool = Tru
     return WinklerGain(float(np.median(ratio[ok])), int(ok.sum()), float(q75 - q25), ratio, at)
 
 
-def read_dofsta_nc(path: str | Path) -> pd.DataFrame:
-    """OOINet DOFSTA do_fast_sample NetCDF -> tidy table (time, depth, corrected O2 in umol/kg)."""
+def within_profiler_range(winkler: pd.DataFrame, deepest_m: float) -> pd.DataFrame:
+    """Winkler rows (column depth_m) no deeper than the profiler's deepest sample; deeper bottles say nothing about the profiler's range."""
+    return winkler[winkler["depth_m"] <= deepest_m].reset_index(drop=True)
+
+
+def read_dofsta_nc(paths) -> pd.DataFrame:
+    """OOINet DOFSTA do_fast_sample NetCDF -> tidy table (time, depth, corrected O2 in umol/kg). Takes one file, or several when a request
+    spans an instrument exchange (one file per deployment); their units must agree."""
     import xarray as xr
+    paths = [paths] if isinstance(paths, (str, Path)) else list(paths)
     want = {"depth_m": "depth", "o2_umolkg": "corrected_dissolved_oxygen"}
-    with xr.open_dataset(path) as ds:
-        dim = ds["depth"].dims[0]
-        missing = [v for v in want.values() if v not in ds]
-        if missing:
-            raise KeyError(f"DOFSTA file has no {missing}")
-        df = pd.DataFrame({"time": pd.to_datetime(ds["time"].values, utc=True)})
-        for k, v in want.items():
-            df[k] = ds[v].values.astype(float)
-        units = ds["corrected_dissolved_oxygen"].attrs.get("units")
-        assert dim in ds["depth"].dims
-    df = df.sort_values("time").reset_index(drop=True)
-    df.attrs["o2_units"] = units
+    frames, units = [], set()
+    for path in paths:
+        with xr.open_dataset(path) as ds:
+            dim = ds["depth"].dims[0]
+            missing = [v for v in want.values() if v not in ds]
+            if missing:
+                raise KeyError(f"DOFSTA file has no {missing}")
+            df = pd.DataFrame({"time": pd.to_datetime(ds["time"].values, utc=True)})
+            for k, v in want.items():
+                df[k] = ds[v].values.astype(float)
+            units.add(ds["corrected_dissolved_oxygen"].attrs.get("units"))
+            assert dim in ds["depth"].dims
+        frames.append(df)
+    if len(units) != 1:
+        raise ValueError(f"the DOFSTA files disagree on the oxygen units: {sorted(map(str, units))}")
+    df = pd.concat(frames, ignore_index=True).sort_values("time").reset_index(drop=True)
+    df.attrs["o2_units"] = units.pop()
     return df

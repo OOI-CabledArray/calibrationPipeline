@@ -221,7 +221,11 @@ def test_deployments_page_shows_the_booleans_in_its_yaml_and_checks_table():
     n_checks = 0
     for doc in docs:
         for dep in doc["deployments"].values():
-            assert isinstance(dep["calibrated"], bool) and isinstance(dep["status"]["level"], int)
+            assert isinstance(dep["calibrated"], bool)
+            if not dep["calibrated"]:                                  # a run that cannot be made is not graded and says why
+                assert dep["status"]["level"] is None and dep["status"]["reason"]
+                continue
+            assert isinstance(dep["status"]["level"], int)
             assert isinstance(dep["status"]["all_checks_pass"], bool)
             assert isinstance(dep["annotations"]["has_annotations_on_samples"], bool) and isinstance(dep["reference_extrapolated"], bool)
             for name, c in dep["checks"].items():
@@ -246,3 +250,13 @@ def test_page_headers_name_the_site_and_the_instrument():
         at.switch_page(f"app_pages/{page}.py").run()
         line = next((m.value for m in at.markdown if "2022 · Slope Base" in m.value), "")
         assert not at.exception and needle in line, (page, line)
+
+
+def test_a_configured_reason_replaces_the_generic_one_for_a_run_that_cannot_be_made(tmp_path):
+    import copy
+    cfg = copy.deepcopy(CFG)
+    cfg["years"]["2025"]["sites"]["RS01SBPS"]["nitrate"]["reason"] = "no usable bottles near the profiler"
+    s = D.summarize(cfg, tmp_path)                                   # no outputs: every run is not assessed
+    hit = [d for _, d in _all(s) if d["run"] == "2025-RS01SBPS" and d["status"]["reason"] == "no usable bottles near the profiler"]
+    assert len(hit) == 1 and hit[0]["status"]["level"] is None
+    assert all(d["status"]["reason"] != "no usable bottles near the profiler" for _, d in _all(s) if d["run"] != "2025-RS01SBPS")

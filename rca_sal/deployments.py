@@ -413,13 +413,14 @@ def summarize(cfg: dict, outputs: str | Path) -> dict:
                                               "site_name": cfg.get("sites", {}).get(site_code, {}).get("name"), "deployments": []})
         base = {"year": int(year), "run": key, "cruise": ycfg.get("cruise"), "ship_cruise_id": ycfg.get("ship_cruise_id"),
                 "cast": (ycfg.get(var, {}).get("cast") if var != "salinity" else None) or ycfg.get("cast")}
+        why = (ycfg if var == "salinity" else ycfg.get(var, {})).get("reason")      # optional [years...] reason: why the run cannot be made
         if (folder / "missing.json").is_file():
             miss = [m["role"] for m in json.loads((folder / "missing.json").read_text(encoding="utf8"))["missing"]]
             g["deployments"].append({**base, "deployment": ycfg.get("deployment"), "calibrated": False, "calibration": "missing input", "missing": miss,
-                                     "status": _not_assessed("missing input: " + ", ".join(miss))})
+                                     "status": _not_assessed(why or "missing input: " + ", ".join(miss))})
             continue
         if rec is None:
-            reason = "profiler data not requested yet" if "profiler_nc" not in ycfg.get("inputs", {}) else "pipeline not run"
+            reason = why or ("profiler data not requested yet" if "profiler_nc" not in ycfg.get("inputs", {}) else "pipeline not run")
             g["deployments"].append({**base, "deployment": ycfg.get("deployment"), "calibrated": False, "calibration": "not run", "reason": reason,
                                      "status": _not_assessed(reason)})
             continue

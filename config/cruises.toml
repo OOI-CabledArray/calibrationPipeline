@@ -497,6 +497,29 @@ window_gap_h = 12.0                      # bottle times closer than this share o
 pad_h = 1.0                              # request window padding before the first and after the last bottle
 half_window_min = 10.0                   # instrument samples within this time of a bottle closure give its instrument value
 
+[early]                                  # scripts/fetch_early.py: the shallow profilers (CTD, oxygen, nitrate) around the earlier cruises
+last_year = 2019                         # cruises after this year are not read
+window_gap_h = 12.0                      # bottle times closer than this share one request
+pad_h = 36.0                             # request window padding before the first and after the last bottle (as [nitrate] half_window_h)
+
+# Longer CTD and oxygen windows where the profiler made fewer than 6 complete upcasts in the first window after the cast: it profiled
+# intermittently (2015 Axial Base), paused for about 4 days (2015 Slope Base) or did not profile until 7 days after the cast (2016 Slope Base).
+# Checked in the official profile indices (profileIndices) and in the downloaded data; begin is just before the cast, end is 10 days later.
+[[early.extensions]]
+site = "RS03AXPS"
+begin = "2015-07-13T12:00:00.000Z"
+end = "2015-07-23T12:00:00.000Z"
+
+[[early.extensions]]
+site = "RS01SBPS"
+begin = "2015-07-23T03:00:00.000Z"
+end = "2015-08-02T03:00:00.000Z"
+
+[[early.extensions]]
+site = "RS01SBPS"
+begin = "2016-07-18T16:00:00.000Z"
+end = "2016-07-28T16:00:00.000Z"
+
 [github]
 repo = "OOI-CabledArray/discreteSummaries"
 ref = "534acc5458f8a7d02ad324a3c8f8d89eea806cb4"
@@ -506,6 +529,524 @@ cache_dir = "data/cache/github"
 # Earlier years: shipboard inputs come from the GitHub repository in [github]. profiler_nc is the OOINet request file saved under
 # data/raw/ooinet/<request timestamp>/ (scripts/fetch_profiler.py). Variants are inherited from the template year ([upload] template_year).
 # =============================================================================================
+
+# --- 2015-2019: the earlier cruises ------------------------------------------------------------------------------------------------
+# Generated from the discrete summaries, the asset-management deployment tables, the official profile indices and the saved requests of
+# scripts/fetch_early.py (data/raw/ooinet/early_requests.json). One cast per site, year and variable: ship CTD casts that the instrument
+# inventory matches to the profiler; casts within 12 h of an official profile are preferred (else within 36 h), then the most bottles of the
+# variable (oxygen: Winkler bottles within the profiler's depth range), then the smallest gap. Salinity and oxygen also need the 6 complete
+# upcasts after the cast that the variants use. Bottle salinity comes from the discrete summary (these cruises have no cast-log workbook).
+# A table with a reason says why no run can be made.
+[years.2015]
+cruise = "Cabled-06"
+ship_cruise_id = "TN326"
+vessel = "R/V Thomas G. Thompson"
+cast = "CTD-011"  # 0.00 h from the nearest profile; 12 bottles; 0.16 km from the profiler; 6 complete upcasts follow in the requested window
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261106T114316027Z"
+
+[years.2015.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2015.csv"
+profiler_nc = "data/raw/ooinet/20261106T114316027Z/deployment0002_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20150713T120000.653458-20150723T115959.139934.nc"
+ooinet_status = "data/raw/ooinet/20261106T114316027Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T114316027Z/deployment0002_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T114316027Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.cnv"
+reference_btl = "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-011.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv"
+
+[years.2015.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T114422782Z"
+
+[years.2015.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T114422782Z/deployment0002_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20150713T120000.653458-20150723T115959.139934.nc"
+ooinet_status = "data/raw/ooinet/20261106T114422782Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T114422782Z/deployment0002_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T114422782Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2015.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T093139786Z"
+
+[years.2015.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T093139786Z/deployment0002_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20150712T035952.349422-20150715T075954.663488.nc"
+ooinet_status = "data/raw/ooinet/20261106T093139786Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T093139786Z/deployment0002_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T093139786Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2015.sites.RS01SBPS]
+cast = "CTD-020"  # 6.70 h from the nearest profile; 6 bottles; 1.23 km from the profiler; 23 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T114610149Z"
+
+[years.2015.sites.RS01SBPS.inputs]
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2015.csv"
+profiler_nc = "data/raw/ooinet/20261106T114610149Z/deployment0002_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20150723T030000.472317-20150802T025959.404152.nc"
+ooinet_status = "data/raw/ooinet/20261106T114610149Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T114610149Z/deployment0002_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T114610149Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-020.cnv"
+reference_btl = "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-020.btl"
+
+[years.2015.sites.RS01SBPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T114757343Z"
+
+[years.2015.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T114757343Z/deployment0002_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20150723T030000.472317-20150802T025959.404152.nc"
+ooinet_status = "data/raw/ooinet/20261106T114757343Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T114757343Z/deployment0002_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T114757343Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2015.sites.RS01SBPS.nitrate]
+cast = "CTD-014"  # 0.00 h from the nearest profile; 12 bottles; 0.17 km from the profiler
+cast_reason = "the cast with the most usable nitrate bottles within 12 h of an official profile"
+ooinet_request_dir = "data/raw/ooinet/20261106T093555588Z"
+
+[years.2015.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T093555588Z/deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20150715T045953.200990-20150718T115955.255318.nc"
+ooinet_status = "data/raw/ooinet/20261106T093555588Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T093555588Z/deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T093555588Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2015.sites.CE04OSPS]
+cast = "CTD-027"  # 0.47 h from the nearest profile; 6 bottles; 0.59 km from the profiler; 6 complete upcasts follow in the requested window (no salinity bottles: the cast of the first other variable)
+reason = "no ship CTD cast with bottle salinity within 36 h of an official profile"
+
+[years.2015.sites.CE04OSPS.inputs]
+
+[years.2015.sites.CE04OSPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T095101115Z"
+
+[years.2015.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = ["data/raw/ooinet/20261106T095101115Z/deployment0001_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20150801T130926.265282-20150801T141332.013419.nc", "data/raw/ooinet/20261106T095101115Z/deployment0002_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20150803T040543.362401-20150805T133438.888656.nc"]
+ooinet_status = "data/raw/ooinet/20261106T095101115Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T095101115Z/deployment0001_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T095101115Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2015.csv"
+reference_cnv = "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-027.cnv"
+reference_btl = "github:CruiseData/Cabled-06_TN326_2015-7-04/CTD Data/TN326_CTD-027.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-06_TN326_Discrete_Summary.csv"
+
+[years.2015.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T095348919Z"
+
+[years.2015.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T095348919Z/deployment0002_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20150803T151944.050183-20150805T130016.943038.nc"
+ooinet_status = "data/raw/ooinet/20261106T095348919Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T095348919Z/deployment0002_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T095348919Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2016]
+cruise = "Cabled-07"
+ship_cruise_id = "SKQ201610S"
+vessel = "R/V Sikuliaq"
+cast = "CTD-012"  # 0.00 h from the nearest profile; 14 bottles; 1.35 km from the profiler; 13 complete upcasts follow in the requested window
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261106T100240181Z"
+
+[years.2016.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2016.csv"
+profiler_nc = "data/raw/ooinet/20261106T100240181Z/deployment0003_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20160727T063637.913354-20160730T065155.195195.nc"
+ooinet_status = "data/raw/ooinet/20261106T100240181Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T100240181Z/deployment0003_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T100240181Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-07_SKQ201610S_2016-07-11/CTD Data/SKQ201610S_CTD-012.cnv"
+reference_btl = "github:CruiseData/Cabled-07_SKQ201610S_2016-07-11/CTD Data/SKQ201610S_CTD-012.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-07_SKQ201610S_Discrete_Summary.csv"
+
+[years.2016.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T100424514Z"
+
+[years.2016.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T100424514Z/deployment0003_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20160727T063637.913354-20160730T065155.195195.nc"
+ooinet_status = "data/raw/ooinet/20261106T100424514Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T100424514Z/deployment0003_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T100424514Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2016.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T100608787Z"
+
+[years.2016.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T100608787Z/deployment0003_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20160727T070012.388070-20160730T060012.337158.nc"
+ooinet_status = "data/raw/ooinet/20261106T100608787Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T100608787Z/deployment0003_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T100608787Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2016.sites.RS01SBPS]
+cast = "CTD-006"  # 0.00 h from the nearest profile; 5 bottles; 0.96 km from the profiler; 17 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T114944837Z"
+
+[years.2016.sites.RS01SBPS.inputs]
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2016.csv"
+profiler_nc = "data/raw/ooinet/20261106T114944837Z/deployment0003_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20160718T174252.421331-20160728T160000.071627.nc"
+ooinet_status = "data/raw/ooinet/20261106T114944837Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T114944837Z/deployment0003_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T114944837Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-07_SKQ201610S_2016-07-11/CTD Data/SKQ201610S_CTD-006.cnv"
+reference_btl = "github:CruiseData/Cabled-07_SKQ201610S_2016-07-11/CTD Data/SKQ201610S_CTD-006.btl"
+
+[years.2016.sites.RS01SBPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T115132169Z"
+
+[years.2016.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T115132169Z/deployment0003_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20160718T174252.421331-20160728T160000.071627.nc"
+ooinet_status = "data/raw/ooinet/20261106T115132169Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T115132169Z/deployment0003_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T115132169Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2016.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T095824644Z"
+
+[years.2016.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = ["data/raw/ooinet/20261106T095824644Z/deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20160715T060013.944612-20160716T200739.494929.nc", "data/raw/ooinet/20261106T095824644Z/deployment0003_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20160718T182653.767494-20160720T080007.550790.nc"]
+ooinet_status = "data/raw/ooinet/20261106T095824644Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T095824644Z/deployment0002_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T095824644Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2016.sites.CE04OSPS]
+cast = "CTD-014"  # 7.93 h from the nearest profile; 5 bottles; 0.57 km from the profiler; 11 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T100752780Z"
+
+[years.2016.sites.CE04OSPS.inputs]
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2016.csv"
+profiler_nc = "data/raw/ooinet/20261106T100752780Z/deployment0003_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20160805T193539.087863-20160808T200440.624608.nc"
+ooinet_status = "data/raw/ooinet/20261106T100752780Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T100752780Z/deployment0003_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T100752780Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-07_SKQ201610S_2016-07-11/CTD Data/SKQ201610S_CTD-014.cnv"
+reference_btl = "github:CruiseData/Cabled-07_SKQ201610S_2016-07-11/CTD Data/SKQ201610S_CTD-014.btl"
+
+[years.2016.sites.CE04OSPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T100836629Z"
+
+[years.2016.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T100836629Z/deployment0003_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20160805T193539.087863-20160808T200440.624608.nc"
+ooinet_status = "data/raw/ooinet/20261106T100836629Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T100836629Z/deployment0003_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T100836629Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2016.sites.CE04OSPS.nitrate]
+reason = "no ship CTD cast with usable nitrate bottles within 36 h of an official profile"
+inputs = {}
+
+[years.2017]
+cruise = "Cabled-08"
+ship_cruise_id = "RR1713-RR1717"
+vessel = "R/V Roger Revelle"
+cast = "CTD-011"  # 0.00 h from the nearest profile; 10 bottles; 0.50 km from the profiler; 14 complete upcasts follow in the requested window
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261106T102853328Z"
+
+[years.2017.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2017.csv"
+profiler_nc = "data/raw/ooinet/20261106T102853328Z/deployment0004_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20170812T085506.907894-20170815T100029.679005.nc"
+ooinet_status = "data/raw/ooinet/20261106T102853328Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T102853328Z/deployment0004_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T102853328Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-08_RR1713-RR1717_2017-07-27/CTD Data/RR1714_CTD-011.cnv"
+reference_btl = "github:CruiseData/Cabled-08_RR1713-RR1717_2017-07-27/CTD Data/RR1714_CTD-011.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-08_RR1713-RR1717_Discrete_Summary.csv"
+
+[years.2017.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T102937318Z"
+
+[years.2017.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T102937318Z/deployment0004_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20170812T085506.907894-20170815T100029.679005.nc"
+ooinet_status = "data/raw/ooinet/20261106T102937318Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T102937318Z/deployment0004_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T102937318Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2017.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T103121679Z"
+
+[years.2017.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T103121679Z/deployment0004_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20170812T210107.450638-20170815T084457.459756.nc"
+ooinet_status = "data/raw/ooinet/20261106T103121679Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T103121679Z/deployment0004_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T103121679Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2017.sites.RS01SBPS]
+cast = "CTD-014"  # 0.00 h from the nearest profile; 8 bottles; 0.22 km from the profiler; 13 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T103305244Z"
+
+[years.2017.sites.RS01SBPS.inputs]
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2017.csv"
+profiler_nc = "data/raw/ooinet/20261106T103305244Z/deployment0004_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20170815T202606.181554-20170818T204420.270720.nc"
+ooinet_status = "data/raw/ooinet/20261106T103305244Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T103305244Z/deployment0004_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T103305244Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-08_RR1713-RR1717_2017-07-27/CTD Data/RR1714_CTD-014.cnv"
+reference_btl = "github:CruiseData/Cabled-08_RR1713-RR1717_2017-07-27/CTD Data/RR1714_CTD-014.btl"
+
+[years.2017.sites.RS01SBPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T103350119Z"
+
+[years.2017.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T103350119Z/deployment0004_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20170815T202606.181554-20170818T204420.270720.nc"
+ooinet_status = "data/raw/ooinet/20261106T103350119Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T103350119Z/deployment0004_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T103350119Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2017.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T103534558Z"
+
+[years.2017.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T103534558Z/deployment0004_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20170815T204224.880411-20170818T204354.204963.nc"
+ooinet_status = "data/raw/ooinet/20261106T103534558Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T103534558Z/deployment0004_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T103534558Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2017.sites.CE04OSPS]
+cast = "CTD-010"  # 0.00 h from the nearest profile; 11 bottles; 0.24 km from the profiler; 13 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T102340719Z"
+
+[years.2017.sites.CE04OSPS.inputs]
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2017.csv"
+profiler_nc = "data/raw/ooinet/20261106T102340719Z/deployment0004_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20170805T164459.371605-20170807T203020.937422.nc"
+ooinet_status = "data/raw/ooinet/20261106T102340719Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T102340719Z/deployment0004_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T102340719Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-08_RR1713-RR1717_2017-07-27/CTD Data/RR1713_CTD-010.cnv"
+reference_btl = "github:CruiseData/Cabled-08_RR1713-RR1717_2017-07-27/CTD Data/RR1713_CTD-010.btl"
+
+[years.2017.sites.CE04OSPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T102525146Z"
+
+[years.2017.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T102525146Z/deployment0004_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20170804T214835.131424-20170807T203020.937422.nc"
+ooinet_status = "data/raw/ooinet/20261106T102525146Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T102525146Z/deployment0004_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T102525146Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2017.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T102709967Z"
+
+[years.2017.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T102709967Z/deployment0004_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20170805T164547.127655-20170807T082559.368361.nc"
+ooinet_status = "data/raw/ooinet/20261106T102709967Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T102709967Z/deployment0004_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T102709967Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2018]
+cruise = "Cabled-09"
+ship_cruise_id = "RR1809-RR1812"
+vessel = "R/V Roger Revelle"
+cast = "CTD-003"  # 15.67 h from the nearest profile; 11 bottles; 0.51 km from the profiler; 0 complete upcasts follow in the requested window
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261106T104132148Z"
+reason = "only 0 complete upcast(s) follow the cast in the profiler data; 6 are needed"
+
+[years.2018.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2018.csv"
+profiler_nc = "data/raw/ooinet/20261106T104132148Z/deployment0004_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20180701T091104.460838-20180702T202959.363422.nc"
+ooinet_status = "data/raw/ooinet/20261106T104132148Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T104132148Z/deployment0004_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T104132148Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1810_CTD-003.cnv"
+reference_btl = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1810_CTD-003.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-09_RR1809-RR1812_Discrete_Summary.csv"
+
+[years.2018.oxygen]
+winkler_within_profiler_range = true
+reason = "only 0 complete upcast(s) follow the cast in the profiler data; 6 are needed"
+ooinet_request_dir = "data/raw/ooinet/20261106T104215395Z"
+
+[years.2018.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T104215395Z/deployment0004_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20180701T091104.460838-20180702T202959.363422.nc"
+ooinet_status = "data/raw/ooinet/20261106T104215395Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T104215395Z/deployment0004_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T104215395Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2018.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T104359100Z"
+
+[years.2018.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T104359100Z/deployment0004_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20180701T210018.316788-20180702T195541.027800.nc"
+ooinet_status = "data/raw/ooinet/20261106T104359100Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T104359100Z/deployment0004_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T104359100Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2018.sites.RS01SBPS]
+cast = "CTD-006"  # 0.00 h from the nearest profile; 12 bottles; 0.25 km from the profiler; 14 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T104441800Z"
+
+[years.2018.sites.RS01SBPS.inputs]
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2018.csv"
+profiler_nc = "data/raw/ooinet/20261106T104441800Z/deployment0006_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20180710T170527.140820-20180712T124305.606126.nc"
+ooinet_status = "data/raw/ooinet/20261106T104441800Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T104441800Z/deployment0006_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T104441800Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1810_CTD-006.cnv"
+reference_btl = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1810_CTD-006.btl"
+
+[years.2018.sites.RS01SBPS.oxygen]
+winkler_within_profiler_range = true
+cast = "CTD-002"  # 0.00 h from the nearest profile; 8 bottles; 0.64 km from the profiler; 11 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T103742631Z"
+
+[years.2018.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T103742631Z/deployment0005_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20180624T165600.731931-20180628T090243.993935.nc"
+ooinet_status = "data/raw/ooinet/20261106T103742631Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T103742631Z/deployment0005_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T103742631Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2018.csv"
+reference_cnv = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1809_CTD-002.cnv"
+reference_btl = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1809_CTD-002.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-09_RR1809-RR1812_Discrete_Summary.csv"
+
+[years.2018.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T104814530Z"
+
+[years.2018.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T104814530Z/deployment0006_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20180710T170233.140750-20180712T083157.589601.nc"
+ooinet_status = "data/raw/ooinet/20261106T104814530Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T104814530Z/deployment0006_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T104814530Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2018.sites.CE04OSPS]
+cast = "CTD-011"  # 0.00 h from the nearest profile; 4 bottles; 0.27 km from the profiler; 9 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T104958542Z"
+
+[years.2018.sites.CE04OSPS.inputs]
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2018.csv"
+profiler_nc = "data/raw/ooinet/20261106T104958542Z/deployment0005_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20180717T153850.061576-20180719T110111.338500.nc"
+ooinet_status = "data/raw/ooinet/20261106T104958542Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T104958542Z/deployment0005_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T104958542Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1811_CTD-011.cnv"
+reference_btl = "github:CruiseData/Cabled-09_RR1809-RR1812_2018-07-23/CTD Data/RR1811_CTD-011.btl"
+
+[years.2018.sites.CE04OSPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T105043943Z"
+
+[years.2018.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = ["data/raw/ooinet/20261106T105043943Z/deployment0004_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20180713T225556.968401-20180717T142904.693269.nc", "data/raw/ooinet/20261106T105043943Z/deployment0005_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20180717T150145.489734-20180719T110111.338500.nc"]
+ooinet_status = "data/raw/ooinet/20261106T105043943Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T105043943Z/deployment0004_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T105043943Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2018.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T105229176Z"
+
+[years.2018.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T105229176Z/deployment0005_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20180717T204107.175231-20180719T083145.663032.nc"
+ooinet_status = "data/raw/ooinet/20261106T105229176Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T105229176Z/deployment0005_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T105229176Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
+
+[years.2019]
+cruise = "Cabled-10"
+ship_cruise_id = "AT42-12"
+vessel = "R/V Atlantis"
+cast = "CTD-013"  # 0.00 h from the nearest profile; 6 bottles; 0.54 km from the profiler; 15 complete upcasts follow in the requested window
+profiler_reference_designator = "RS03AXPS-SF03A-2A-CTDPFA302"
+profiler_stream = "streamed/ctdpf_sbe43_sample"
+ooinet_request_dir = "data/raw/ooinet/20261106T112756792Z"
+
+[years.2019.inputs]
+profile_index_csv = "github[profile_indices]:RS03AXPS_profiles_2019.csv"
+profiler_nc = "data/raw/ooinet/20261106T112756792Z/deployment0005_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_20190705T183251.413474-20190708T223041.179173.nc"
+ooinet_status = "data/raw/ooinet/20261106T112756792Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112756792Z/deployment0005_RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112756792Z/RS03AXPS-SF03A-2A-CTDPFA302-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-10_AT42-12_2019-08-05/CTD Data/AT42-12_CTD-013.cnv"
+reference_btl = "github:CruiseData/Cabled-10_AT42-12_2019-08-05/CTD Data/AT42-12_CTD-013.btl"
+discrete_summary_csv = "github:FinalSummaries/Cabled-10_AT42-12_Discrete_Summary.csv"
+
+[years.2019.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T112841107Z"
+
+[years.2019.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T112841107Z/deployment0005_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20190705T183251.413474-20190708T223041.179173.nc"
+ooinet_status = "data/raw/ooinet/20261106T112841107Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112841107Z/deployment0005_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112841107Z/RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_annotations.json"
+
+[years.2019.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T113025442Z"
+
+[years.2019.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T113025442Z/deployment0005_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_20190705T210011.397238-20190708T220636.995827.nc"
+ooinet_status = "data/raw/ooinet/20261106T113025442Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T113025442Z/deployment0005_RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T113025442Z/RS03AXPS-SF03A-4A-NUTNRA301-streamed-nutnr_a_sample_annotations.json"
+
+[years.2019.sites.RS01SBPS]
+cast = "CTD-010"  # 0.04 h from the nearest profile; 12 bottles; 0.25 km from the profiler; 9 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T111932187Z"
+
+[years.2019.sites.RS01SBPS.inputs]
+profile_index_csv = "github[profile_indices]:RS01SBPS_profiles_2019.csv"
+profiler_nc = "data/raw/ooinet/20261106T111932187Z/deployment0007_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_20190626T074644.608212-20190629T081405.656500.nc"
+ooinet_status = "data/raw/ooinet/20261106T111932187Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T111932187Z/deployment0007_RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T111932187Z/RS01SBPS-SF01A-2A-CTDPFA102-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-10_AT42-12_2019-08-05/CTD Data/AT42-12_CTD-010.cnv"
+reference_btl = "github:CruiseData/Cabled-10_AT42-12_2019-08-05/CTD Data/AT42-12_CTD-010.btl"
+
+[years.2019.sites.RS01SBPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T112016047Z"
+
+[years.2019.sites.RS01SBPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T112016047Z/deployment0007_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20190626T074644.608212-20190629T081405.656500.nc"
+ooinet_status = "data/raw/ooinet/20261106T112016047Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112016047Z/deployment0007_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112016047Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
+
+[years.2019.sites.RS01SBPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T112200862Z"
+
+[years.2019.sites.RS01SBPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T112200862Z/deployment0007_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_20190626T074645.646453-20190628T211243.444068.nc"
+ooinet_status = "data/raw/ooinet/20261106T112200862Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112200862Z/deployment0007_RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112200862Z/RS01SBPS-SF01A-4A-NUTNRA101-streamed-nutnr_a_sample_annotations.json"
+
+[years.2019.sites.CE04OSPS]
+cast = "CTD-012"  # 0.31 h from the nearest profile; 6 bottles; 0.26 km from the profiler; 14 complete upcasts follow in the requested window
+ooinet_request_dir = "data/raw/ooinet/20261106T112244027Z"
+
+[years.2019.sites.CE04OSPS.inputs]
+profile_index_csv = "github[profile_indices]:CE04OSPS_profiles_2019.csv"
+profiler_nc = "data/raw/ooinet/20261106T112244027Z/deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_20190627T054140.187345-20190630T060509.304937.nc"
+ooinet_status = "data/raw/ooinet/20261106T112244027Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112244027Z/deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112244027Z/CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_annotations.json"
+reference_cnv = "github:CruiseData/Cabled-10_AT42-12_2019-08-05/CTD Data/AT42-12_CTD-012.cnv"
+reference_btl = "github:CruiseData/Cabled-10_AT42-12_2019-08-05/CTD Data/AT42-12_CTD-012.btl"
+
+[years.2019.sites.CE04OSPS.oxygen]
+winkler_within_profiler_range = true
+ooinet_request_dir = "data/raw/ooinet/20261106T112408479Z"
+
+[years.2019.sites.CE04OSPS.oxygen.inputs]
+dofsta_nc = "data/raw/ooinet/20261106T112408479Z/deployment0006_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_20190627T054140.187345-20190630T060509.304937.nc"
+ooinet_status = "data/raw/ooinet/20261106T112408479Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112408479Z/deployment0006_CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112408479Z/CE04OSPS-SF01B-2A-DOFSTA107-streamed-do_fast_sample_annotations.json"
+
+[years.2019.sites.CE04OSPS.nitrate]
+ooinet_request_dir = "data/raw/ooinet/20261106T112613138Z"
+
+[years.2019.sites.CE04OSPS.nitrate.inputs]
+nutnr_nc = "data/raw/ooinet/20261106T112613138Z/deployment0006_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_20190627T072109.111342-20190629T215114.297421.nc"
+ooinet_status = "data/raw/ooinet/20261106T112613138Z/status.json"
+ooinet_provenance = "data/raw/ooinet/20261106T112613138Z/deployment0006_CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_aggregate_provenance.json"
+ooinet_annotations = "data/raw/ooinet/20261106T112613138Z/CE04OSPS-SF01B-4A-NUTNRA102-streamed-nutnr_a_sample_annotations.json"
 
 [years.2020]
 cruise = "Cabled-11"

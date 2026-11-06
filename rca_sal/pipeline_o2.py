@@ -169,7 +169,7 @@ def run_year_oxygen(year: int, config_path: str | Path, out_root: str | Path, ro
         flags.append({"severity": "warning", "code": "winkler_flagged",
                       "text": f"{int(bad.sum())} Winkler row(s) carry a bad bottle flag; excluded from every variant except the exact reproduction."})
 
-    d = ox.read_dofsta_nc(P("dofsta_nc"))
+    d = ox.read_dofsta_nc([_resolve(x, root) for x in inputs["dofsta_nc"]] if isinstance(inputs["dofsta_nc"], list) else P("dofsta_nc"))
     if d.attrs.get("o2_units") not in ("umol kg-1",):
         raise ValueError(f"unexpected DOFSTA O2 units {d.attrs.get('o2_units')!r}")
     site_cfg = cfg.get("sites", {}).get(ycfg.get("site"), {})
@@ -178,6 +178,16 @@ def run_year_oxygen(year: int, config_path: str | Path, out_root: str | Path, ro
     units = d.attrs.get("o2_units")
     d = ooi_qc.mark_exclusions(d, annotations, refdes)
     d.attrs["o2_units"] = units
+    if ocfg.get("winkler_within_profiler_range"):
+        deepest = float(d["depth_m"].max())
+        for k, v in list(winks.items()):
+            kept = ox.within_profiler_range(v, deepest)
+            flags.append({"severity": "caveat", "code": "winkler_depth_limited",
+                          "text": f"Winkler bottles deeper than the profiler's deepest sample ({deepest:.0f} m) are not used for the ship-sensor gain: "
+                                  f"{len(v) - len(kept)} of {len(v)} rows from the {k} left out."})
+            winks[k] = kept
+        if all(v.empty for v in winks.values()):
+            raise ValueError(f"no Winkler bottle of cast {cast} lies within the profiler's depth range (0-{deepest:.0f} m)")
     labelled = profiler.label_upcasts(d, profiler.UpcastParams(**par["upcast"]))
     summ = profiler.upcast_summary(labelled)
     if summ.empty:
@@ -226,7 +236,7 @@ def run_year_oxygen(year: int, config_path: str | Path, out_root: str | Path, ro
                            "profiler_reference_designator": ocfg.get("profiler_reference_designator") or st.get("oxygen_reference_designator"),
                            "profiler_stream": ocfg.get("profiler_stream") or st.get("oxygen_stream")}, P)
     prov_cols = {"record_id": str(record_id), "year": year, "ooinet_request_id": ooinet["request_id"],
-                 "dofsta_nc_sha256": files["dofsta_nc"][0].sha256,
+                 "dofsta_nc_sha256": ";".join(f.sha256 for f in files["dofsta_nc"]),
                  **{f"{r}_sha256": files[r][0].sha256 for r in OXYGEN_BOTTLE_ROLES if r in files},
                  "reference_cnv_sha256": files["reference_cnv"][0].sha256,
                  "config_sha256": next(c["sha256"] for c in code if c["role"] == "config")}

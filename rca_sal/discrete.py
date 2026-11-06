@@ -4,8 +4,12 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import numpy as np
 import openpyxl
 import pandas as pd
+
+from .instruments import ACCEPTED_BIT, BAD_NISKIN_BITS, BAD_SAMPLE_BITS
+from .oxygen import SUMMARY_MISSING, summary_flag_bits
 
 
 def normalize_bottle_id(x) -> str:
@@ -84,3 +88,43 @@ def salinity_samples_for_cast(sample_list: pd.DataFrame, cast: str) -> pd.DataFr
     out["sample_id"] = out["sample_id"].astype(str).str.strip().str.replace(r"\.0$", "", regex=True)
     out["bottle_id"] = out["sample_id"].map(normalize_bottle_id)
     return out.reset_index(drop=True)
+
+
+def read_summary_salinity(path: str | Path, cast: str, niskin_ok_text: str, salinity_ok_text: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Bottle salinity of one cast from an OOI discrete summary CSV, shaped like salinity_samples_for_cast and read_autosal (samples, autosal).
+
+    One row per Niskin; its salinity is the mean of the replicates that are acceptable (bit 2, no questionable/bad bit) in both the sample and
+    replicate flags, or of all replicates when none is. The summary's bit flags are written as the text the bottle check reads: the Niskin flag
+    as niskin_ok_text when acceptable, the salinity flag as salinity_ok_text when acceptable; a flag that is present but not acceptable is
+    'not acceptable'; an absent flag stays empty (the bottle is not excluded). The laboratory's 2rt ratio is not in the summary.
+    """
+    d = pd.read_csv(path, low_memory=False, encoding_errors="replace")
+    d = d[d["Cast"].astype(str) == str(cast)]
+    if d.empty:
+        raise ValueError(f"cast {cast!r} is not in {path}")
+    sal = pd.to_numeric(d["Discrete Salinity [psu]"], errors="coerce").where(lambda s: s != SUMMARY_MISSING)
+    d = d.assign(sal=sal)[sal.notna()]
+
+    def accepted(col, bad):
+        bits = d[col].map(summary_flag_bits)
+        return bits.isna().to_numpy(), bits.map(lambda b: b is not None and ACCEPTED_BIT in b and not (b & bad)).to_numpy()
+
+    s_absent, s_ok = accepted("Discrete Salinity Flag", BAD_SAMPLE_BITS)
+    r_absent, r_ok = accepted("Discrete Salinity Replicate Flag", BAD_SAMPLE_BITS)
+    n_absent, n_ok = accepted("Niskin Flag", BAD_NISKIN_BITS)
+    d = d.assign(good=(s_ok | s_absent) & (r_ok | r_absent), s_absent=s_absent, s_ok=s_ok, r_absent=r_absent, r_ok=r_ok, n_absent=n_absent, n_ok=n_ok)
+    text = lambda absent, ok, ok_text: np.where(absent, None, np.where(ok, ok_text, "not acceptable"))  # noqa: E731
+    rows = []
+    for niskin, g in d.groupby(d["Niskin/Bottle Position"].astype(int), sort=True):
+        use = g[g["good"]] if g["good"].any() else g
+        first = g.iloc[0]
+        rows.append({"cast": str(cast), "niskin": int(niskin), "niskin_flag": text(first.n_absent, first.n_ok, niskin_ok_text).item(),
+                     "target_depth_m": pd.to_numeric(first["CTD Depth [m]"], errors="coerce"), "sample_id": f"{cast} Niskin {int(niskin)}",
+                     "salinity_flag": text(use.s_absent.all(), use.s_ok.any(), salinity_ok_text).item(),
+                     "replicate_flag": text(use.r_absent.all(), use.r_ok.any(), "acceptable").item(),
+                     "bottle_id": str(int(niskin)), "salinity": float(use["sal"].mean()), "n_replicates": int(len(use))})
+    out = pd.DataFrame(rows, columns=["cast", "niskin", "niskin_flag", "target_depth_m", "sample_id", "salinity_flag", "replicate_flag", "bottle_id",
+                                      "salinity", "n_replicates"])
+    autosal = pd.DataFrame({"bottle_id": out["bottle_id"], "ratio_2rt": np.nan, "salinity": out["salinity"],
+                            "autosal_note": [f"mean of {n} replicate(s) in the discrete summary" for n in out["n_replicates"]], "is_standard_check": False})
+    return out.drop(columns=["salinity", "n_replicates"]), autosal

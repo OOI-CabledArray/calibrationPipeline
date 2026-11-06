@@ -179,7 +179,7 @@ def run_year_nitrate(year: int, config_path: str | Path, out_root: str | Path, r
                                                            "inputs": sorted(sf.sha256 for sf in all_sf), "code": sorted(c["sha256"] for c in code)}))
     ooinet = ooinet_block({**ncfg, "deployment": ycfg.get("deployment"), "inputs": inputs,
                            "profiler_reference_designator": refdes, "profiler_stream": ncfg.get("stream") or st["nitrate_stream"]}, P)
-    table = table.assign(record_id=str(record_id), year=year, nutnr_nc_sha256=files["nutnr_nc"][0].sha256,
+    table = table.assign(record_id=str(record_id), year=year, nutnr_nc_sha256=";".join(f.sha256 for f in files["nutnr_nc"]),
                          discrete_summary_csv_sha256=files["discrete_summary_csv"][0].sha256)
     table.to_csv(out / "calibration_table.csv", index=False)
     pd.concat(mats, ignore_index=True).assign(record_id=str(record_id)).to_csv(out / "bottle_matchups.csv", index=False)

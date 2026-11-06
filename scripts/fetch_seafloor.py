@@ -30,18 +30,41 @@ MANIFEST = RAW / "seafloor_requests.json"
 FMT = "%Y-%m-%dT%H:%M:%S.000Z"
 
 
-def windows(cfg: dict) -> pd.DataFrame:
-    par, sf = cfg["inventory"], cfg["seafloor"]
+def windows(cfg: dict, table: str = "seafloor", rds: list[str] | None = None) -> pd.DataFrame:
+    """Request windows of the instruments in cfg[table] (or rds) over the cruises up to cfg[table] last_year ([inventory] last_year if absent)."""
+    par, sf = cfg["inventory"], cfg[table]
     sources = github_data.sources_from_config(cfg, ROOT)
     discrete, assets = sources[None], sources["asset_management"]
     summaries = [pd.read_csv(discrete.fetch("github:" + p)[0], low_memory=False, encoding_errors="replace")
-                 for p in cruise_summaries(discrete.tree(), par["last_year"])]
+                 for p in cruise_summaries(discrete.tree(), sf.get("last_year", par["last_year"]))]
     dep = instruments.read_deployments([pd.read_csv(assets.fetch(f"github[asset_management]:deployment/{s}_Deploy.csv")[0], low_memory=False)
                                         for s in par["sites"]])
-    dep = dep[dep["rd"].isin(sf["instruments"])]
+    dep = dep[dep["rd"].isin(rds or sf["instruments"])]
     m = instruments.match_samples(pd.concat(summaries, ignore_index=True), dep, par["max_distance_km"], par["max_distance_rov_km"],
                                   par["max_depth_difference_m"], par["max_gap_hours"])
     return instruments.request_windows(m, sf["window_gap_h"], sf["pad_h"])
+
+
+def request(rd: str, method: str, stream: str, begin: str, end: str, done: list[dict], manifest: Path, wait_min: float) -> None:
+    """Submit one request, wait for it, save it unchanged and add it to the manifest (HTTP 404 is recorded as no data)."""
+    entry = {"ref_des": rd, "method": method, "stream": stream, "begin": begin, "end": end}
+    try:
+        resp = ooinet.submit(rd, method, stream, begin, end)
+    except ooinet.OoinetError as e:
+        if "404" not in str(e):
+            raise
+        print(f"{rd} {begin} .. {end}: OOINet has no data ({e})", flush=True)
+        done.append({**entry, "stamp": None, "folder": None, "saved_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                     "result": "no data (HTTP 404)"})
+        manifest.write_text(json.dumps(done, indent=2) + "\n", encoding="utf8")
+        return
+    stamp = re.search(r"/(\d{8}T\d{9}Z)-", resp["allURLs"][1]).group(1)
+    print(f"{rd} {begin} .. {end}: request {stamp}", flush=True)
+    out = ooinet.download(resp, RAW, stamp, wait_timeout_s=wait_min * 60)
+    done.append({**entry, "stamp": stamp, "folder": out.relative_to(ROOT).as_posix(),
+                 "saved_utc": datetime.now(timezone.utc).isoformat(timespec="seconds")})
+    manifest.write_text(json.dumps(done, indent=2) + "\n", encoding="utf8")
+    print(f"  saved {out.relative_to(ROOT)}: " + ", ".join(f"{f.name[:40]} {f.stat().st_size:,} B" for f in sorted(out.glob('*.nc'))), flush=True)
 
 
 def main(argv=None) -> int:
@@ -61,26 +84,10 @@ def main(argv=None) -> int:
         print(w.drop(columns="key").to_string(index=False))
         print(f"{int(w['saved'].sum())} of {len(w)} saved")
         return 0
+    method, stream = cfg["seafloor"]["stream"].split("/", 1)
     for r in w[~w["saved"]].head(a.max).itertuples():
         rd, begin, end = r.key
-        method, stream = cfg["seafloor"]["stream"].split("/", 1)
-        try:
-            resp = ooinet.submit(rd, method, stream, begin, end)
-        except ooinet.OoinetError as e:
-            if "404" not in str(e):
-                raise
-            print(f"{rd} {begin} .. {end}: OOINet has no data ({e})", flush=True)
-            done.append({"ref_des": rd, "method": method, "stream": stream, "begin": begin, "end": end, "stamp": None, "folder": None,
-                         "saved_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"), "result": "no data (HTTP 404)"})
-            MANIFEST.write_text(json.dumps(done, indent=2) + chr(10), encoding="utf8")
-            continue
-        stamp = re.search(r"/(\d{8}T\d{9}Z)-", resp["allURLs"][1]).group(1)
-        print(f"{rd} {begin} .. {end}: request {stamp}", flush=True)
-        out = ooinet.download(resp, RAW, stamp, wait_timeout_s=a.wait_min * 60)
-        done.append({"ref_des": rd, "method": method, "stream": stream, "begin": begin, "end": end, "stamp": stamp,
-                     "folder": out.relative_to(ROOT).as_posix(), "saved_utc": datetime.now(timezone.utc).isoformat(timespec="seconds")})
-        MANIFEST.write_text(json.dumps(done, indent=2) + "\n", encoding="utf8")
-        print(f"  saved {out.relative_to(ROOT)}: " + ", ".join(f"{f.name[:40]} {f.stat().st_size:,} B" for f in sorted(out.glob('*.nc'))), flush=True)
+        request(rd, method, stream, begin, end, done, MANIFEST, a.wait_min)
     return 0
 
 

@@ -180,3 +180,16 @@ def request_windows(matches: pd.DataFrame, gap_h: float, pad_h: float) -> pd.Dat
         for _, c in t.groupby((t.diff() > pd.Timedelta(hours=gap_h)).cumsum()):
             rows.append({"rd": rd, "begin": c.min() - pd.Timedelta(hours=pad_h), "end": c.max() + pd.Timedelta(hours=pad_h), "bottles": len(c)})
     return pd.DataFrame(rows, columns=["rd", "begin", "end", "bottles"])
+
+
+def merge_windows(windows: pd.DataFrame) -> pd.DataFrame:
+    """Windows of one instrument that overlap are one window (bottles are added). Same columns as request_windows, sorted by rd and begin."""
+    rows = []
+    for rd, g in windows.sort_values(["rd", "begin"]).groupby("rd", sort=True):
+        for w in g.itertuples():
+            if rows and rows[-1]["rd"] == rd and w.begin <= rows[-1]["end"]:
+                rows[-1]["end"] = max(rows[-1]["end"], w.end)
+                rows[-1]["bottles"] += w.bottles
+            else:
+                rows.append({"rd": rd, "begin": w.begin, "end": w.end, "bottles": w.bottles})
+    return pd.DataFrame(rows, columns=["rd", "begin", "end", "bottles"])

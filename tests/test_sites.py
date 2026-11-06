@@ -49,6 +49,8 @@ def test_every_configured_site_year_names_a_cast_and_an_index(cfg):
     n = 0
     for year, y in cfg["years"].items():
         for site, sc in y.get("sites", {}).items():
+            if "reason" in sc and "reference_cnv" not in sc["inputs"]:       # a run that cannot be made says why and names no files
+                continue
             n += 1
             assert site in cfg["sites"] and sc["cast"] in sc["inputs"]["reference_cnv"] and sc["cast"] in sc["inputs"]["reference_btl"]
             assert sc["inputs"]["profile_index_csv"] == f"github[profile_indices]:{cfg['profile_index']['file'].format(site=site, year=year)}"
