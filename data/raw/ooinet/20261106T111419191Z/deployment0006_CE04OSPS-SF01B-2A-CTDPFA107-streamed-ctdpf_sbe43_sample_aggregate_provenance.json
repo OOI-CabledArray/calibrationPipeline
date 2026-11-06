@@ -1,0 +1,5059 @@
+{
+  "provenance": {
+    "4e83f0d3-f9ec-48ce-a040-48129438a555": {
+      "file_name": "live-2019-06-23",
+      "parser_name": "mi.instrument.seabird.sbe16plus_v2.ctdpf_sbe43.driver",
+      "parser_version": "0.3.18"
+    },
+    "41a61e84-5353-4dc8-a2df-db1a79ad094b": {
+      "file_name": "live-2019-06-22",
+      "parser_name": "mi.instrument.seabird.sbe16plus_v2.ctdpf_sbe43.driver",
+      "parser_version": "0.3.18"
+    },
+    "a7c3acf0-e140-4034-8ebb-3ebbeed29464": {
+      "file_name": "live-2019-06-24",
+      "parser_name": "mi.instrument.seabird.sbe16plus_v2.ctdpf_sbe43.driver",
+      "parser_version": "0.3.18"
+    },
+    "4595fd1c-aba4-442f-abbf-94680dd208dd": {
+      "file_name": "live-2019-06-25",
+      "parser_name": "mi.instrument.seabird.sbe16plus_v2.ctdpf_sbe43.driver",
+      "parser_version": "0.3.18"
+    }
+  },
+  "instrument_provenance": {
+    "CE04OSPS-SF01B-2A-CTDPFA107": [
+      {
+        "@class": ".XDeployment",
+        "eventId": 2647,
+        "editPhase": "OPERATIONAL",
+        "eventName": "CE04OSPS-SF01B-2A-CTDPFA107",
+        "eventType": "DEPLOYMENT",
+        "referenceDesignator": "CE04OSPS-SF01B-2A-CTDPFA107",
+        "deploymentNumber": 6,
+        "versionNumber": 1,
+        "inductiveId": null,
+        "assetUid": null,
+        "dataSource": "Load from [CE04OSPS_Deploy.csv]",
+        "lastModifiedTimestamp": 1791209460323,
+        "tense": "UNKNOWN",
+        "ingestInfo": [],
+        "notes": null,
+        "mooring": {
+          "@class": ".XMooring",
+          "assetId": 920,
+          "assetType": "Mooring",
+          "dataSource": "BulkLoad from [platform_bulk_load-AssetRecord.csv]",
+          "deliveryDate": null,
+          "deliveryOrderNumber": null,
+          "depthRating": null,
+          "description": "Cabled Coastal Endurance Oregon Offshore Shallow Profiler Mooring",
+          "editPhase": "OPERATIONAL",
+          "events": [],
+          "firmwareVersion": null,
+          "institutionPropertyNumber": null,
+          "institutionPurchaseOrderNumber": null,
+          "lastModifiedTimestamp": 1791209410778,
+          "location": null,
+          "manufacturer": "UW-APL",
+          "mobile": false,
+          "modelNumber": "CE04OSPS",
+          "name": null,
+          "notes": null,
+          "ooiPartNumber": null,
+          "ooiPropertyNumber": null,
+          "ooiSerialNumber": null,
+          "owner": "University of Washington",
+          "physicalInfo": {
+            "height": -1.0,
+            "length": -1.0,
+            "weight": -1.0,
+            "width": -1.0
+          },
+          "powerRequirements": null,
+          "purchaseDate": null,
+          "purchasePrice": null,
+          "remoteResources": [],
+          "serialNumber": null,
+          "shelfLifeExpirationDate": null,
+          "softwareVersion": null,
+          "uid": "ATAPL-67762-10001"
+        },
+        "node": {
+          "@class": ".XNode",
+          "assetId": 1341,
+          "assetType": "Node",
+          "dataSource": "BulkLoad from [node_bulk_load-AssetRecord.csv]",
+          "deliveryDate": null,
+          "deliveryOrderNumber": null,
+          "depthRating": null,
+          "description": "Cabled Shallow Profiler Mooring Science Pod",
+          "editPhase": "OPERATIONAL",
+          "events": [],
+          "firmwareVersion": null,
+          "institutionPropertyNumber": null,
+          "institutionPurchaseOrderNumber": null,
+          "lastModifiedTimestamp": 1791209415561,
+          "location": null,
+          "manufacturer": "UW-APL",
+          "mobile": false,
+          "modelNumber": "CE04OSPS-SF01B",
+          "name": "SN0144",
+          "notes": null,
+          "ooiPartNumber": null,
+          "ooiPropertyNumber": null,
+          "ooiSerialNumber": null,
+          "owner": "University of Washington",
+          "physicalInfo": {
+            "height": -1.0,
+            "length": -1.0,
+            "weight": -1.0,
+            "width": -1.0
+          },
+          "powerRequirements": null,
+          "purchaseDate": null,
+          "purchasePrice": null,
+          "remoteResources": [],
+          "serialNumber": "SN0144",
+          "shelfLifeExpirationDate": null,
+          "softwareVersion": null,
+          "uid": "ATAPL-68870-00144"
+        },
+        "eventStartTime": 1560530520000,
+        "eventStopTime": 1596320940000,
+        "waterDepth": 574.0,
+        "location": {
+          "depth": null,
+          "latitude": 44.374227,
+          "longitude": -124.956461,
+          "orbitRadius": null,
+          "location": [
+            -124.956461,
+            44.374227
+          ]
+        },
+        "deployedBy": null,
+        "deployCruiseInfo": {
+          "@class": ".CruiseInfo",
+          "assetUid": null,
+          "cruiseIdentifier": null,
+          "dataSource": "Load from [CruiseInformation.csv]",
+          "editPhase": "OPERATIONAL",
+          "eventId": 188,
+          "eventName": "AT42-12",
+          "eventStartTime": 1559433600000,
+          "eventStopTime": 1562630400000,
+          "eventType": "CRUISE_INFO",
+          "lastModifiedTimestamp": 1791209386824,
+          "notes": null,
+          "shipName": "Atlantis",
+          "tense": "UNKNOWN",
+          "uniqueCruiseIdentifier": "AT42-12"
+        },
+        "recoveredBy": null,
+        "recoverCruiseInfo": null,
+        "sensor": {
+          "@class": ".XInstrument",
+          "assetId": 2860,
+          "assetType": "Sensor",
+          "dataSource": "BulkLoad from [sensor_bulk_load-AssetRecord.csv]",
+          "deliveryDate": null,
+          "deliveryOrderNumber": null,
+          "depthRating": null,
+          "description": "CTD Profiler: CTDPF Series A",
+          "editPhase": "OPERATIONAL",
+          "events": [],
+          "firmwareVersion": null,
+          "institutionPropertyNumber": null,
+          "institutionPurchaseOrderNumber": null,
+          "lastModifiedTimestamp": 1791209426356,
+          "location": null,
+          "manufacturer": "Sea-Bird Electronics",
+          "mobile": false,
+          "modelNumber": "SBE 16plus V2",
+          "name": "16-50112",
+          "notes": null,
+          "ooiPartNumber": null,
+          "ooiPropertyNumber": null,
+          "ooiSerialNumber": null,
+          "owner": null,
+          "physicalInfo": {
+            "height": -1.0,
+            "length": -1.0,
+            "weight": -1.0,
+            "width": -1.0
+          },
+          "powerRequirements": null,
+          "purchaseDate": null,
+          "purchasePrice": 27000.0,
+          "remoteResources": [],
+          "serialNumber": "16-50112",
+          "shelfLifeExpirationDate": null,
+          "softwareVersion": null,
+          "uid": "ATOSU-66662-00013",
+          "calibration": [
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26675,
+                  "eventName": "CC_i",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -0.000163997998
+                }
+              ],
+              "name": "CC_i"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26676,
+                  "eventName": "CC_h",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.147503625
+                }
+              ],
+              "name": "CC_h"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26677,
+                  "eventName": "CC_g",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -0.974413083
+                }
+              ],
+              "name": "CC_g"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26678,
+                  "eventName": "CC_pa0",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.151317338
+                }
+              ],
+              "name": "CC_pa0"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26679,
+                  "eventName": "CC_pa2",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 4.07421194e-12
+                }
+              ],
+              "name": "CC_pa2"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26680,
+                  "eventName": "CC_pa1",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.00155058495
+                }
+              ],
+              "name": "CC_pa1"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26681,
+                  "eventName": "CC_ptca1",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 7.07665193
+                }
+              ],
+              "name": "CC_ptca1"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26682,
+                  "eventName": "CC_ptcb2",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.0
+                }
+              ],
+              "name": "CC_ptcb2"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26683,
+                  "eventName": "CC_ptca0",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 523913.368
+                }
+              ],
+              "name": "CC_ptca0"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26684,
+                  "eventName": "CC_ptcb1",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.0001
+                }
+              ],
+              "name": "CC_ptcb1"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26685,
+                  "eventName": "CC_ptca2",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -0.120608143
+                }
+              ],
+              "name": "CC_ptca2"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26686,
+                  "eventName": "CC_ptcb0",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 24.8405
+                }
+              ],
+              "name": "CC_ptcb0"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26687,
+                  "eventName": "CC_a0",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.00126589947
+                }
+              ],
+              "name": "CC_a0"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26688,
+                  "eventName": "CC_ptempa2",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -0.163466345
+                }
+              ],
+              "name": "CC_ptempa2"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26689,
+                  "eventName": "CC_a1",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.00027261684
+                }
+              ],
+              "name": "CC_a1"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26690,
+                  "eventName": "CC_a2",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -1.08277498e-06
+                }
+              ],
+              "name": "CC_a2"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26691,
+                  "eventName": "CC_ptempa1",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 47.3765612
+                }
+              ],
+              "name": "CC_ptempa1"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26692,
+                  "eventName": "CC_a3",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 1.76238385e-07
+                }
+              ],
+              "name": "CC_a3"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26693,
+                  "eventName": "CC_ptempa0",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -79.80108309999999
+                }
+              ],
+              "name": "CC_ptempa0"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26694,
+                  "eventName": "CC_offset",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 0.0
+                }
+              ],
+              "name": "CC_offset"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26695,
+                  "eventName": "CC_cpcor",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": -9.57e-08
+                }
+              ],
+              "name": "CC_cpcor"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26696,
+                  "eventName": "CC_ctcor",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 3.25e-06
+                }
+              ],
+              "name": "CC_ctcor"
+            },
+            {
+              "@class": ".XCalibration",
+              "calData": [
+                {
+                  "@class": ".XCalibrationData",
+                  "assetUid": "ATOSU-66662-00013",
+                  "comments": null,
+                  "dataSource": "ATOSU-66662-00013__20180811.csv",
+                  "eventId": 26697,
+                  "eventName": "CC_j",
+                  "eventStartTime": 1533945600000,
+                  "eventStopTime": null,
+                  "eventType": "CALIBRATION_DATA",
+                  "lastModifiedTimestamp": 1791209563306,
+                  "notes": null,
+                  "tense": "UNKNOWN",
+                  "value": 3.35582111e-05
+                }
+              ],
+              "name": "CC_j"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "computed_provenance": {
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190622T175223.279415-20190622T235959.878617.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "e815b542-c7be-4a07-89c4-82cffcbe79e9"
+        ],
+        "sea_water_pressure": [
+          "955366a0-409d-4249-b7a2-21bf7bc4631f"
+        ],
+        "sea_water_electrical_conductivity": [
+          "a1e525e7-29c5-401b-9b0c-fd076bb644ee"
+        ],
+        "depth": [
+          "e01a9a4d-bf41-4362-8893-95920516cbb9"
+        ],
+        "sea_water_practical_salinity": [
+          "9b45c476-70dc-4d7e-84c0-8b1c62fdb9d0"
+        ],
+        "sea_water_density": [
+          "d9b133c2-a69f-4c4e-baab-6a1dcd7e0729"
+        ],
+        "corrected_dissolved_oxygen": [
+          "e95ba412-423d-470c-9c3a-768f7f50da6d"
+        ]
+      },
+      "calculations": {
+        "e815b542-c7be-4a07-89c4-82cffcbe79e9": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "955366a0-409d-4249-b7a2-21bf7bc4631f": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            }
+          }
+        },
+        "a1e525e7-29c5-401b-9b0c-fd076bb644ee": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "e01a9a4d-bf41-4362-8893-95920516cbb9": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "9b45c476-70dc-4d7e-84c0-8b1c62fdb9d0": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "d9b133c2-a69f-4c4e-baab-6a1dcd7e0729": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770214743.279415,
+              "data_end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "e95ba412-423d-470c-9c3a-768f7f50da6d": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770214743.279415,
+              "end": 3770236799.878617,
+              "beginDT": "2019-06-22T17:52:23.279415",
+              "endDT": "2019-06-22T23:59:59.878617"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770214743.279415,
+              "time_startDT": "2019-06-22T17:52:23.279415",
+              "time_end": 3770236799.878617,
+              "time_endDT": "2019-06-22T23:59:59.878617",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T000000.878208-20190623T115959.197484.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "085cc928-b657-4083-9894-cf0c3f8912e5"
+        ],
+        "sea_water_pressure": [
+          "0ea10ca0-8ba1-4a41-9975-b5e8d3fdcb69"
+        ],
+        "sea_water_electrical_conductivity": [
+          "ae2b19c6-1aec-40af-b1c6-fc5058c15802"
+        ],
+        "depth": [
+          "88c4b326-1aaa-443c-9fb0-180b82ef3414"
+        ],
+        "sea_water_practical_salinity": [
+          "40c251e6-e990-4a49-9944-5210f06230f0"
+        ],
+        "sea_water_density": [
+          "7cfb0c38-e988-4dc0-a758-c8c3ee996678"
+        ],
+        "corrected_dissolved_oxygen": [
+          "b9279a9b-8a95-4dff-9444-7c4454abeb1b"
+        ]
+      },
+      "calculations": {
+        "085cc928-b657-4083-9894-cf0c3f8912e5": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "0ea10ca0-8ba1-4a41-9975-b5e8d3fdcb69": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            }
+          }
+        },
+        "ae2b19c6-1aec-40af-b1c6-fc5058c15802": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "88c4b326-1aaa-443c-9fb0-180b82ef3414": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "40c251e6-e990-4a49-9944-5210f06230f0": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "7cfb0c38-e988-4dc0-a758-c8c3ee996678": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770236800.8782077,
+              "data_end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "b9279a9b-8a95-4dff-9444-7c4454abeb1b": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770236800.8782077,
+              "end": 3770279999.1974845,
+              "beginDT": "2019-06-23T00:00:00.878208",
+              "endDT": "2019-06-23T11:59:59.197484"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770236800.8782077,
+              "time_startDT": "2019-06-23T00:00:00.878208",
+              "time_end": 3770279999.1974845,
+              "time_endDT": "2019-06-23T11:59:59.197484",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T120000.197805-20190623T235959.554959.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "4feb11c8-7477-4d57-81e0-d3de99a0cc44"
+        ],
+        "sea_water_pressure": [
+          "f7fb4b87-4fa3-4296-bbb4-59b69b3d1484"
+        ],
+        "sea_water_electrical_conductivity": [
+          "e534cfcb-a4cf-4bd7-86a5-2e81480e89cc"
+        ],
+        "depth": [
+          "c8006c9c-24f6-4d6e-851d-61e569f57c17"
+        ],
+        "sea_water_practical_salinity": [
+          "bad039b0-08ce-4a56-9fa6-4e0b55e0e4a3"
+        ],
+        "sea_water_density": [
+          "57ba678d-79b8-4fa8-9191-e650968aafa1"
+        ],
+        "corrected_dissolved_oxygen": [
+          "d58f84c1-3d73-4168-b803-cca54e52d75a"
+        ]
+      },
+      "calculations": {
+        "4feb11c8-7477-4d57-81e0-d3de99a0cc44": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "f7fb4b87-4fa3-4296-bbb4-59b69b3d1484": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            }
+          }
+        },
+        "e534cfcb-a4cf-4bd7-86a5-2e81480e89cc": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "c8006c9c-24f6-4d6e-851d-61e569f57c17": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "bad039b0-08ce-4a56-9fa6-4e0b55e0e4a3": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "57ba678d-79b8-4fa8-9191-e650968aafa1": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770280000.1978054,
+              "data_end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "d58f84c1-3d73-4168-b803-cca54e52d75a": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770280000.1978054,
+              "end": 3770323199.5549593,
+              "beginDT": "2019-06-23T12:00:00.197805",
+              "endDT": "2019-06-23T23:59:59.554959"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770280000.1978054,
+              "time_startDT": "2019-06-23T12:00:00.197805",
+              "time_end": 3770323199.5549593,
+              "time_endDT": "2019-06-23T23:59:59.554959",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T000000.555177-20190624T115959.911329.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "b82b5e0a-72b2-4328-85ec-88455ccc4f50"
+        ],
+        "sea_water_pressure": [
+          "3e953c13-92cd-42e3-a186-333fb10aa0c9"
+        ],
+        "sea_water_electrical_conductivity": [
+          "0e9d31df-be1f-44ec-ad53-cd313ddda64d"
+        ],
+        "depth": [
+          "ec873c78-d6b3-449b-8c0f-18ee022cfbe3"
+        ],
+        "sea_water_practical_salinity": [
+          "22f3d39e-dd67-415c-a325-ef6e88873e3e"
+        ],
+        "sea_water_density": [
+          "219c8030-cd3a-4382-a22e-c6577de6778d"
+        ],
+        "corrected_dissolved_oxygen": [
+          "f5275c84-96e3-4cf8-bdf4-436f169f7297"
+        ]
+      },
+      "calculations": {
+        "b82b5e0a-72b2-4328-85ec-88455ccc4f50": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "3e953c13-92cd-42e3-a186-333fb10aa0c9": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            }
+          }
+        },
+        "0e9d31df-be1f-44ec-ad53-cd313ddda64d": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "ec873c78-d6b3-449b-8c0f-18ee022cfbe3": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "22f3d39e-dd67-415c-a325-ef6e88873e3e": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "219c8030-cd3a-4382-a22e-c6577de6778d": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770323200.555177,
+              "data_end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "f5275c84-96e3-4cf8-bdf4-436f169f7297": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770323200.555177,
+              "end": 3770366399.911329,
+              "beginDT": "2019-06-24T00:00:00.555177",
+              "endDT": "2019-06-24T11:59:59.911329"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770323200.555177,
+              "time_startDT": "2019-06-24T00:00:00.555177",
+              "time_end": 3770366399.911329,
+              "time_endDT": "2019-06-24T11:59:59.911329",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T120000.912171-20190624T235959.218975.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "1be532eb-cb08-4271-be52-a7b10ee1223e"
+        ],
+        "sea_water_pressure": [
+          "4ad381bc-0b8e-4d88-9f73-acdab3930132"
+        ],
+        "sea_water_electrical_conductivity": [
+          "edb50cc7-c347-449a-93b7-8c70e323b23b"
+        ],
+        "depth": [
+          "b3464b1b-8866-4ade-8102-97f0c1a4b49e"
+        ],
+        "sea_water_practical_salinity": [
+          "9ee8025a-a805-40c7-99e3-79636164eb34"
+        ],
+        "sea_water_density": [
+          "f50e02d7-2034-4d86-8a1d-b4bd135c885f"
+        ],
+        "corrected_dissolved_oxygen": [
+          "4ecda677-54ef-4a0b-83c9-c985d7d045e8"
+        ]
+      },
+      "calculations": {
+        "1be532eb-cb08-4271-be52-a7b10ee1223e": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "4ad381bc-0b8e-4d88-9f73-acdab3930132": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            }
+          }
+        },
+        "edb50cc7-c347-449a-93b7-8c70e323b23b": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "b3464b1b-8866-4ade-8102-97f0c1a4b49e": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "9ee8025a-a805-40c7-99e3-79636164eb34": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "f50e02d7-2034-4d86-8a1d-b4bd135c885f": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770366400.912171,
+              "data_end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "4ecda677-54ef-4a0b-83c9-c985d7d045e8": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770366400.912171,
+              "end": 3770409599.2189746,
+              "beginDT": "2019-06-24T12:00:00.912171",
+              "endDT": "2019-06-24T23:59:59.218975"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770366400.912171,
+              "time_startDT": "2019-06-24T12:00:00.912171",
+              "time_end": 3770409599.2189746,
+              "time_endDT": "2019-06-24T23:59:59.218975",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T000000.219817-20190625T115959.593821.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "98808685-2370-4135-ac73-8d249f06f77d"
+        ],
+        "sea_water_pressure": [
+          "853038ae-3c1d-405e-8970-609f8f753300"
+        ],
+        "sea_water_electrical_conductivity": [
+          "b8b63f5e-0832-4237-9f26-1a97a07ed9c5"
+        ],
+        "depth": [
+          "ad4a73c3-ffef-4088-8d6a-1e80b7d08c6c"
+        ],
+        "sea_water_practical_salinity": [
+          "70379287-9a39-4e64-9fde-64bb7e536346"
+        ],
+        "sea_water_density": [
+          "305adf21-4bc4-4372-bb7d-cdfffdae7a32"
+        ],
+        "corrected_dissolved_oxygen": [
+          "2a34c461-e43a-4b73-9679-88e6f011e1ba"
+        ]
+      },
+      "calculations": {
+        "98808685-2370-4135-ac73-8d249f06f77d": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "853038ae-3c1d-405e-8970-609f8f753300": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            }
+          }
+        },
+        "b8b63f5e-0832-4237-9f26-1a97a07ed9c5": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "ad4a73c3-ffef-4088-8d6a-1e80b7d08c6c": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "70379287-9a39-4e64-9fde-64bb7e536346": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "305adf21-4bc4-4372-bb7d-cdfffdae7a32": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770409600.2198167,
+              "data_end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "2a34c461-e43a-4b73-9679-88e6f011e1ba": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770409600.2198167,
+              "end": 3770452799.5938206,
+              "beginDT": "2019-06-25T00:00:00.219817",
+              "endDT": "2019-06-25T11:59:59.593821"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770409600.2198167,
+              "time_startDT": "2019-06-25T00:00:00.219817",
+              "time_end": 3770452799.5938206,
+              "time_endDT": "2019-06-25T11:59:59.593821",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T120000.593308-20190625T183043.239847.json": {
+      "parameters": {
+        "sea_water_temperature": [
+          "76dfac8d-f660-4ace-a98a-9d9a84bd5118"
+        ],
+        "sea_water_pressure": [
+          "a829148f-83e4-440c-be6c-2980ab07f4d9"
+        ],
+        "sea_water_electrical_conductivity": [
+          "8307f547-2054-4db9-8664-f49fbe8c1ea7"
+        ],
+        "depth": [
+          "fc8e026e-176c-4ee6-a74c-1344f80d07de"
+        ],
+        "sea_water_practical_salinity": [
+          "d3c07eed-6a5d-4c7f-956a-5f5301d8cd2f"
+        ],
+        "sea_water_density": [
+          "50ca2bcc-0af0-43e6-b245-ce19feac7b51"
+        ],
+        "corrected_dissolved_oxygen": [
+          "0d81ba02-5412-49d3-9900-c28b693e5c50"
+        ]
+      },
+      "calculations": {
+        "76dfac8d-f660-4ace-a98a-9d9a84bd5118": {
+          "function_name": "ctd_sbe16plus_tempwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 35,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "a1",
+            "a0",
+            "a3",
+            "a2",
+            "t0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "a1": {
+              "sources": 0.00027261684,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "a0": {
+              "sources": 0.00126589947,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "a3": {
+              "sources": 1.76238385e-07,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "a2": {
+              "sources": -1.08277498e-06,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 193,
+              "name": "temperature",
+              "data_product_identifier": "TEMPWAT_L0",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "a829148f-83e4-440c-be6c-2980ab07f4d9": {
+          "function_name": "ctd_sbe16plus_preswat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 36,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "pa0",
+            "ptca1",
+            "p0",
+            "pa1",
+            "pa2",
+            "t0",
+            "ptempa2",
+            "ptca0",
+            "ptempa0",
+            "ptempa1",
+            "offset",
+            "ptcb0",
+            "ptcb1",
+            "ptcb2",
+            "ptca2"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "pa0": {
+              "sources": 0.151317338,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptca1": {
+              "sources": 7.07665193,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "p0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 195,
+              "name": "pressure",
+              "data_product_identifier": "PRESWAT_L0",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "pa1": {
+              "sources": 0.00155058495,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "pa2": {
+              "sources": 4.07421194e-12,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "t0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 196,
+              "name": "pressure_temp",
+              "data_product_identifier": null,
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "ptempa2": {
+              "sources": -0.163466345,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptca0": {
+              "sources": 523913.368,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptempa0": {
+              "sources": -79.80108309999999,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptempa1": {
+              "sources": 47.3765612,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "offset": {
+              "sources": 0.0,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptcb0": {
+              "sources": 24.8405,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptcb1": {
+              "sources": 0.0001,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptcb2": {
+              "sources": 0.0,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ptca2": {
+              "sources": -0.120608143,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            }
+          }
+        },
+        "8307f547-2054-4db9-8664-f49fbe8c1ea7": {
+          "function_name": "ctd_sbe16plus_condwat",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 37,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p1",
+            "g",
+            "i",
+            "h",
+            "j",
+            "ctcor",
+            "t1",
+            "cpcor",
+            "c0"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "p1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "g": {
+              "sources": -0.974413083,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "i": {
+              "sources": -0.000163997998,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "h": {
+              "sources": 0.147503625,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "j": {
+              "sources": 3.35582111e-05,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "ctcor": {
+              "sources": 3.25e-06,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "t1": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "cpcor": {
+              "sources": -9.57e-08,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "c0": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 194,
+              "name": "conductivity",
+              "data_product_identifier": "CONDWAT_L0",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "fc8e026e-176c-4ee6-a74c-1344f80d07de": {
+          "function_name": "depth_from_pressure_dbar",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 217,
+          "function_owner": "ion_functions.data.adcp_functions",
+          "argument_list": [
+            "latitude",
+            "pressure",
+            "pressure_scale_factor"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "latitude": {
+              "sources": 44.374227,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "pressure": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "pressure_scale_factor": {
+              "constant": 1
+            }
+          }
+        },
+        "d3c07eed-6a5d-4c7f-956a-5f5301d8cd2f": {
+          "function_name": "ctd_pracsal",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 26,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "p",
+            "c",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "c": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 910,
+              "name": "seawater_conductivity",
+              "data_product_identifier": "CONDWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "50ca2bcc-0af0-43e6-b245-ce19feac7b51": {
+          "function_name": "ctd_density",
+          "function_type": "PythonFunction",
+          "function_version": "2.1.0",
+          "function_id": 27,
+          "function_owner": "ion_functions.data.ctd_functions",
+          "argument_list": [
+            "lat",
+            "p",
+            "SP",
+            "lon",
+            "t"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "lat": {
+              "sources": 44.374227,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "p": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 909,
+              "name": "seawater_pressure",
+              "data_product_identifier": "PRESWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "SP": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 13,
+              "name": "practical_salinity",
+              "data_product_identifier": "PRACSAL_L2",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            },
+            "lon": {
+              "sources": -124.956461,
+              "data_begin": 3770452800.5933084,
+              "data_end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847",
+              "type": "CC"
+            },
+            "t": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-CTDPFA107|streamed|ctdpf_sbe43_sample",
+              "parameter_id": 908,
+              "name": "seawater_temperature",
+              "data_product_identifier": "TEMPWAT_L1",
+              "interpolated": false,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        },
+        "0d81ba02-5412-49d3-9900-c28b693e5c50": {
+          "function_name": "x",
+          "function_type": "NumexprFunction",
+          "function_version": "unversioned",
+          "function_id": 16,
+          "function_owner": null,
+          "argument_list": [
+            "x"
+          ],
+          "arguments": {
+            "time_source": {
+              "begin": 3770452800.5933084,
+              "end": 3770476243.2398467,
+              "beginDT": "2019-06-25T12:00:00.593308",
+              "endDT": "2019-06-25T18:30:43.239847"
+            },
+            "x": {
+              "type": "parameter",
+              "source": "CE04OSPS|SF01B|2A-DOFSTA107|streamed|do_fast_sample",
+              "parameter_id": 3777,
+              "name": "corrected_dissolved_oxygen",
+              "data_product_identifier": "DOCONCF_L2",
+              "interpolated": true,
+              "time_start": 3770452800.5933084,
+              "time_startDT": "2019-06-25T12:00:00.593308",
+              "time_end": 3770476243.2398467,
+              "time_endDT": "2019-06-25T18:30:43.239847",
+              "deployments": [
+                6
+              ]
+            }
+          }
+        }
+      },
+      "errors": []
+    }
+  },
+  "query_parameter_provenance": {
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190622T175223.279415-20190622T235959.878617.json": {
+      "query_type": "JSON",
+      "query_uuid": "067ab56c-88eb-4942-8971-fda8b5484b2c",
+      "begin": 3770214743.0,
+      "beginDT": "2019-06-22T17:52:23",
+      "end": 3770236800.0,
+      "endDT": "2019-06-23T00:00:00",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T000000.878208-20190623T115959.197484.json": {
+      "query_type": "JSON",
+      "query_uuid": "f154d5ec-556d-4a50-a871-eee68ac0ace3",
+      "begin": 3770236800.0,
+      "beginDT": "2019-06-23T00:00:00",
+      "end": 3770280000.0,
+      "endDT": "2019-06-23T12:00:00",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T120000.197805-20190623T235959.554959.json": {
+      "query_type": "JSON",
+      "query_uuid": "8792b613-cd29-411d-8067-cd3d99cfd83b",
+      "begin": 3770280000.0,
+      "beginDT": "2019-06-23T12:00:00",
+      "end": 3770323200.0,
+      "endDT": "2019-06-24T00:00:00",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T000000.555177-20190624T115959.911329.json": {
+      "query_type": "JSON",
+      "query_uuid": "64417685-e11c-4e54-8652-d8d08180e352",
+      "begin": 3770323200.0,
+      "beginDT": "2019-06-24T00:00:00",
+      "end": 3770366400.0,
+      "endDT": "2019-06-24T12:00:00",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T120000.912171-20190624T235959.218975.json": {
+      "query_type": "JSON",
+      "query_uuid": "1112f987-4f26-41cc-b464-88b898cfc2c1",
+      "begin": 3770366400.0,
+      "beginDT": "2019-06-24T12:00:00",
+      "end": 3770409600.0,
+      "endDT": "2019-06-25T00:00:00",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T000000.219817-20190625T115959.593821.json": {
+      "query_type": "JSON",
+      "query_uuid": "afe380c7-8a90-499b-a797-967c9b00b73e",
+      "begin": 3770409600.0,
+      "beginDT": "2019-06-25T00:00:00",
+      "end": 3770452800.0,
+      "endDT": "2019-06-25T12:00:00",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    },
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T120000.593308-20190625T183043.239847.json": {
+      "query_type": "JSON",
+      "query_uuid": "88161517-02e5-4b8d-85ec-db15ffde1ced",
+      "begin": 3770452800.0,
+      "beginDT": "2019-06-25T12:00:00",
+      "end": 3770476244.0,
+      "endDT": "2019-06-25T18:30:44",
+      "limit": null,
+      "requested_stream": "CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample",
+      "include_provenance": true,
+      "include_annotations": true,
+      "strict_range": false
+    }
+  },
+  "provenance_messages": {
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190622T175223.279415-20190622T235959.878617.json": [],
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T000000.878208-20190623T115959.197484.json": [],
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T120000.197805-20190623T235959.554959.json": [],
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T000000.555177-20190624T115959.911329.json": [],
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T120000.912171-20190624T235959.218975.json": [],
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T000000.219817-20190625T115959.593821.json": [],
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T120000.593308-20190625T183043.239847.json": []
+  },
+  "requestUUID": {
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190622T175223.279415-20190622T235959.878617.json": "067ab56c-88eb-4942-8971-fda8b5484b2c",
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T000000.878208-20190623T115959.197484.json": "f154d5ec-556d-4a50-a871-eee68ac0ace3",
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190623T120000.197805-20190623T235959.554959.json": "8792b613-cd29-411d-8067-cd3d99cfd83b",
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T000000.555177-20190624T115959.911329.json": "64417685-e11c-4e54-8652-d8d08180e352",
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190624T120000.912171-20190624T235959.218975.json": "1112f987-4f26-41cc-b464-88b898cfc2c1",
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T000000.219817-20190625T115959.593821.json": "afe380c7-8a90-499b-a797-967c9b00b73e",
+    "deployment0006_CE04OSPS-SF01B-2A-CTDPFA107-streamed-ctdpf_sbe43_sample_provenance_20190625T120000.593308-20190625T183043.239847.json": "88161517-02e5-4b8d-85ec-db15ffde1ced"
+  }
+}
