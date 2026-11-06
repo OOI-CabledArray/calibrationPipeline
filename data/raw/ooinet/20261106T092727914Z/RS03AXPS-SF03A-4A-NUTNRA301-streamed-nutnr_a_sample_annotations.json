@@ -1,0 +1,53 @@
+{
+  "annotations": [
+    {
+      "id": 4716,
+      "subsite": "RS03AXPS",
+      "node": "SF03A",
+      "sensor": "4A-NUTNRA301",
+      "method": null,
+      "stream": null,
+      "annotation": "Onboard processing was set to freshwater mode following an instrument reset, leading to an invalid L1 Dissolved Nitrate Concentration data product. The L2 version of the data product ('Nitrate Concentration - Temp and Sal Corrected') is unaffected by that onboard setting as it is calculated using the L0 data with salinity and temperature from a co-located CTD.",
+      "exclusion_flag": false,
+      "source": "m.vardaro@gmail.com",
+      "qc_flag": "suspect",
+      "parameters": [],
+      "start": "2015-04-01 18:00:00",
+      "stop": "2015-07-08 19:07:00"
+    },
+    {
+      "id": 1350,
+      "subsite": "RS03AXPS",
+      "node": "SF03A",
+      "sensor": "2A-CTDPFA302",
+      "method": "streamed",
+      "stream": "ctdpf_sbe43_sample",
+      "annotation": "Data values are within plausible ranges, but lower than usual values during this time period make the data suspect.",
+      "exclusion_flag": false,
+      "source": "friedrich.knuth@rutgers.edu",
+      "qc_flag": "suspect",
+      "parameters": [
+        3777
+      ],
+      "start": "2015-06-04 12:00:00",
+      "stop": "2015-07-08 19:00:00"
+    },
+    {
+      "id": 212,
+      "subsite": "RS03AXPS",
+      "node": "SF03A",
+      "sensor": "2A-CTDPFA302",
+      "method": "streamed",
+      "stream": "ctdpf_sbe43_sample",
+      "annotation": "Due to errors during vendor calibration, a calibration offset (CC_offset) of -5.77 is being applied during the on-demand creation of the L1 Seawater Pressure (dbar) data product from this instrument. For more information please contact help@oceanobservatories.org.",
+      "exclusion_flag": false,
+      "source": "friedrich.knuth@rutgers.edu",
+      "qc_flag": null,
+      "parameters": [
+        909
+      ],
+      "start": "2015-07-09 04:16:00",
+      "stop": "2016-07-14 00:00:00"
+    }
+  ]
+}
