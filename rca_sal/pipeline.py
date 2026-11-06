@@ -527,7 +527,7 @@ def run_year(year: int, config_path: str | Path, out_root: str | Path, root: Pat
         samples = discrete.salinity_samples_for_cast(discrete.read_sample_list(P("cast_log_xlsm")), ycfg["cast"])
     else:
         samples, autosal = discrete.read_summary_salinity(P("discrete_summary_csv"), ycfg["cast"], par["bottle_ok_niskin_flags"][0],
-                                                          par["bottle_ok_salinity_flag_prefix"])
+                                                          par["bottle_ok_salinity_flag_prefix"], ctd_file=P("reference_cnv").stem)
         ahdr = {}
         flags.append({"severity": "caveat", "code": "bottle_salinity_from_summary",
                       "text": "Bottle salinity is taken from the cruise's discrete summary (the laboratory's Autosal and cast-log workbooks are not "

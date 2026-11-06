@@ -156,7 +156,7 @@ def run_year_oxygen(year: int, config_path: str | Path, out_root: str | Path, ro
     cast = ocfg.get("cast") or ycfg["cast"]
     winks = {}
     if "discrete_summary_csv" in inputs:
-        winks["summary"] = ox.read_discrete_oxygen(P("discrete_summary_csv"), cast)
+        winks["summary"] = ox.read_discrete_oxygen(P("discrete_summary_csv"), cast, ctd_file=Path(P("reference_cnv")).stem)
         flags.append({"severity": "caveat", "code": "winkler_from_summary",
                       "text": "Winkler oxygen is the discrete summary's mL/L value converted to umol/kg with the Sea-Bird formula, "
                               "using the CTD salinity 1, temperature 1 and pressure at each bottle closure."})

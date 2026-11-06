@@ -49,3 +49,14 @@ def test_bottle_source_is_the_workbooks_unless_only_the_summary_is_configured():
     assert salinity_bottle_roles({"discrete_summary_csv": "c"}) == summary
     assert salinity_bottle_roles({"autosal_xlsx": "a", "discrete_summary_csv": "c"}) == workbooks     # half a workbook set is reported missing
     assert salinity_bottle_roles({}) == workbooks
+
+
+def test_a_cast_label_over_two_ctd_files_keeps_the_rows_of_the_named_file(tmp_path):
+    rows = [{**_row(1, 33.0), "CTD File": "S_CTD-006"}, {**_row(2, 33.5), "CTD File": "S_CTD-006"}, {**_row(11, 32.0), "CTD File": "S_CTD-006a"}]
+    f = tmp_path / "s.csv"
+    pd.DataFrame(rows).to_csv(f, index=False)
+    samples, _ = discrete.read_summary_salinity(f, "CTD-001", "No problems noted", "Acceptable", ctd_file="S_CTD-006")
+    assert samples["niskin"].tolist() == [1, 2]
+    both, _ = discrete.read_summary_salinity(f, "CTD-001", "No problems noted", "Acceptable", ctd_file="other_name")      # no row has it: no filter
+    assert both["niskin"].tolist() == [1, 2, 11]
+    assert discrete.read_summary_salinity(f, "CTD-001", "No problems noted", "Acceptable")[0]["niskin"].tolist() == [1, 2, 11]

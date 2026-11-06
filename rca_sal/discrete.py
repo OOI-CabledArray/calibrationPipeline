@@ -90,18 +90,22 @@ def salinity_samples_for_cast(sample_list: pd.DataFrame, cast: str) -> pd.DataFr
     return out.reset_index(drop=True)
 
 
-def read_summary_salinity(path: str | Path, cast: str, niskin_ok_text: str, salinity_ok_text: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+def read_summary_salinity(path: str | Path, cast: str, niskin_ok_text: str, salinity_ok_text: str,
+                          ctd_file: str | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Bottle salinity of one cast from an OOI discrete summary CSV, shaped like salinity_samples_for_cast and read_autosal (samples, autosal).
 
     One row per Niskin; its salinity is the mean of the replicates that are acceptable (bit 2, no questionable/bad bit) in both the sample and
     replicate flags, or of all replicates when none is. The summary's bit flags are written as the text the bottle check reads: the Niskin flag
     as niskin_ok_text when acceptable, the salinity flag as salinity_ok_text when acceptable; a flag that is present but not acceptable is
     'not acceptable'; an absent flag stays empty (the bottle is not excluded). The laboratory's 2rt ratio is not in the summary.
+    A cast label can cover two CTD files (a restarted cast, e.g. 'CTD-006' and 'CTD-006a'): with ctd_file, only the rows of that CTD file are kept, unless no row carries that file name.
     """
     d = pd.read_csv(path, low_memory=False, encoding_errors="replace")
     d = d[d["Cast"].astype(str) == str(cast)]
     if d.empty:
         raise ValueError(f"cast {cast!r} is not in {path}")
+    if ctd_file is not None and "CTD File" in d.columns and (d["CTD File"].astype(str).str.strip() == ctd_file).any():
+        d = d[d["CTD File"].astype(str).str.strip() == ctd_file]
     sal = pd.to_numeric(d["Discrete Salinity [psu]"], errors="coerce").where(lambda s: s != SUMMARY_MISSING)
     d = d.assign(sal=sal)[sal.notna()]
 

@@ -75,7 +75,8 @@ def check_year_inputs(year: int, config_path: str | Path, root: Path = PROJECT_R
         info["btl"] = {"bottles": int(len(btl)), "niskins": sorted(int(b) for b in btl["bottle"])}
     if not oxygen and "autosal_xlsx" not in roles:
         got = parse("discrete_summary_csv", lambda p: discrete.read_summary_salinity(p, cast, cfg["parameters"]["bottle_ok_niskin_flags"][0],
-                                                                                      cfg["parameters"]["bottle_ok_salinity_flag_prefix"]))
+                                                                                      cfg["parameters"]["bottle_ok_salinity_flag_prefix"],
+                                                                                      ctd_file=paths["reference_cnv"].stem if "reference_cnv" in paths else None))
         if got is not None:
             samples, _ = got
             info["summary_salinity"] = {"niskins_with_salinity": int(len(samples)), "niskins": samples["niskin"].tolist()}

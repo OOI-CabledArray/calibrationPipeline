@@ -88,18 +88,22 @@ def _bottle_flag(o2_bits: set[int] | None, niskin_bits: set[int] | None) -> floa
     return 2.0
 
 
-def read_discrete_oxygen(path: str | Path, cast: str) -> pd.DataFrame:
+def read_discrete_oxygen(path: str | Path, cast: str, ctd_file: str | None = None) -> pd.DataFrame:
     """Winkler oxygen for one CTD cast from a cruise's OOI discrete summary CSV (OOI-CabledArray/discreteSummaries).
 
     The summary gives Discrete Oxygen in mL/L; it is converted to umol/kg with the Sea-Bird formula (mL/L x 44660 / (sigma-theta
     + 1000)) using the CTD salinity 1, temperature 1 and pressure at the bottle closure, all from the same row. Columns match
     read_winkler(); the summary's flags are kept as given and decoded into bottle_flag (see _bottle_flag).
+    A cast label can cover two CTD files (a restarted cast, e.g. 'CTD-006' and 'CTD-006a'): with ctd_file, only the rows of that CTD file are kept, unless no row carries that file name.
     """
     d = pd.read_csv(path)
     miss = [c for c in SUMMARY_COLS.values() if c not in d.columns]
     if miss:
         raise KeyError(f"discrete summary {path} lacks columns {miss}")
-    d = d[d[SUMMARY_COLS["cast"]].astype(str).str.strip() == cast].rename(columns={v: k for k, v in SUMMARY_COLS.items()})
+    d = d[d[SUMMARY_COLS["cast"]].astype(str).str.strip() == cast]
+    if ctd_file is not None and "CTD File" in d.columns and (d["CTD File"].astype(str).str.strip() == ctd_file).any():
+        d = d[d["CTD File"].astype(str).str.strip() == ctd_file]
+    d = d.rename(columns={v: k for k, v in SUMMARY_COLS.items()})
     num = ["niskin", "pressure_dbar", "depth_m", "ctd_sal", "ctd_t90", "o2_ml_l"]
     d[num] = d[num].apply(pd.to_numeric, errors="coerce").mask(lambda x: x <= SUMMARY_MISSING)
     d = d[d["o2_ml_l"].notna()]
