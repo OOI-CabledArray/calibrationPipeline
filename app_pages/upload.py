@@ -24,13 +24,12 @@ with st.form("upload_form"):
         cast = st.text_input("CTD cast name", placeholder="CTD-007", help="As written in the cast log and the Winkler workbook.")
         cruise = st.text_input("Cruise", placeholder="Cabled-16")
         ship_id = st.text_input("Ship cruise ID", placeholder="AT50-41")
-    st.subheader("Salinity files")
     up = {}
-    for role, (label, suffixes) in U.SALINITY_ROLES.items():
-        up[role] = st.file_uploader(label, type=[s.lstrip(".") for s in suffixes], key=f"up_{role}")
-    st.subheader("Oxygen files")
-    for role, (label, suffixes) in U.OXYGEN_ROLES.items():
-        up[role] = st.file_uploader(label, type=[s.lstrip(".") for s in suffixes], key=f"up_{role}")
+    for col, (title, roles) in zip(st.columns(2, gap="large"), (("Salinity files", U.SALINITY_ROLES), ("Oxygen files", U.OXYGEN_ROLES))):
+        with col:
+            st.subheader(title)
+            for role, (label, suffixes) in roles.items():
+                up[role] = st.file_uploader(label, type=[s.lstrip(".") for s in suffixes], key=f"up_{role}")
     with st.expander("Optional: reproduce a notebook window"):
         st.caption("UTC start and end of the profiler file the notebook used, e.g. 2025-08-18T00:13:29Z. Needed only for the exact-reproduction variant.")
         with st.container(horizontal=True):
@@ -75,13 +74,13 @@ if res is not None:
             st.markdown(f"**{name.capitalize()}**, primary variant `{prim['variant_id']}`")
             with st.container(horizontal=True):
                 if name == "salinity":
-                    st.metric("Offset (PSU)", L.fmt(prim["offset_psu"], signed=True))
+                    st.metric("Offset (PSU)", L.fmt(prim["offset_psu"], signed=True), help="median(profiler - CTD); corrected = raw - offset")
                     st.metric("IQR (PSU)", L.fmt(prim["iqr_psu"]))
                     st.metric("AN31 slope", L.fmt(prim["an31_slope"], 6))
                 else:
                     st.metric("CTD gain", L.fmt(prim["ctd_gain"], 5))
                     st.metric("DOFSTA gain", L.fmt(prim["dofsta_gain"], 5))
-                    st.metric("RMSE after (umol/kg)", L.fmt(prim["rmse_after_umolkg"], 2))
+                    st.metric("RMSE after (µmol/kg)", L.fmt(prim["rmse_after_umolkg"], 2))
             for f in rec["rca:flags"]:
                 if f["severity"] == "warning":
                     st.warning(f["text"])

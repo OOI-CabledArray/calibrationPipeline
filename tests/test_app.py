@@ -48,8 +48,18 @@ def test_oxygen_page_scorecard_comes_from_outputs():
 
 def test_provenance_page_can_show_oxygen():
     at = _run("app_pages/provenance.py")
-    at.sidebar.get("button_group")[0].set_value("Oxygen").run() if at.sidebar.get("button_group") else None
+    at.get("button_group")[0].set_value("Oxygen").run()
     assert not at.exception
+    assert not at.error
+
+
+def test_variant_choice_survives_a_run_change():
+    at = _run("app_pages/profiler.py")
+    at.selectbox(key="variant:2025").set_value("upcasts_all_depSM").run()
+    at.sidebar.selectbox[0].set_value("2020-CE04OSPS").run()
+    assert not at.exception
+    rec = json.loads((ROOT / "outputs/2020-CE04OSPS/calibration_record.json").read_text(encoding="utf8"))
+    assert at.selectbox(key="variant:2020-CE04OSPS").value == rec["rca:primaryVariant"]
 
 
 def test_year_with_missing_inputs_says_missing_and_stops(tmp_path, monkeypatch):
