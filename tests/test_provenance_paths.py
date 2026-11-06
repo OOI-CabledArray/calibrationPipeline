@@ -23,7 +23,7 @@ def _strings(o):
 
 
 def _records():
-    return sorted(ROOT.glob("outputs/*/calibration_record.json")) + sorted(ROOT.glob("outputs/*/oxygen/calibration_record.json"))
+    return [f for v in ("", "oxygen/", "nitrate/") for f in sorted(ROOT.glob(f"outputs/*/{v}calibration_record.json"))]
 
 
 def test_the_detector_finds_local_paths_and_accepts_urls():
@@ -34,10 +34,12 @@ def test_the_detector_finds_local_paths_and_accepts_urls():
 
 
 def test_there_are_records_to_check():
-    assert len(_records()) == 36
+    summary = json.loads((ROOT / "outputs" / "deployments.json").read_text(encoding="utf8"))
+    calibrated = sum(d["calibrated"] for g in summary["instruments"] for d in g["deployments"])
+    assert len(_records()) == calibrated > 0                        # one record per run that could be made
 
 
-@pytest.mark.parametrize("f", _records(), ids=lambda f: "/".join(f.parts[-3:-1] if f.parent.name == "oxygen" else f.parts[-2:-1]))
+@pytest.mark.parametrize("f", _records(), ids=lambda f: "/".join(f.parts[-3:-1] if f.parent.name in ("oxygen", "nitrate") else f.parts[-2:-1]))
 def test_record_has_no_local_path(f):
     rec = json.loads(f.read_text(encoding="utf8"))
     bad = [s[:90] for s in _strings(rec) if LOCAL.search(s)]

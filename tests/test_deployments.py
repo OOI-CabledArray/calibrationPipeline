@@ -199,7 +199,7 @@ def test_run_selector_names_the_site_and_the_instrument_of_every_run():
     at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120).run()
     sel = at.sidebar.selectbox[0]
     runs = [r for r in (ROOT / "outputs").iterdir() if r.is_dir() and r.name[:4].isdigit()]
-    assert len(sel.options) == len(runs) == 18
+    assert len(sel.options) == len(runs) == sum(1 + len(y.get("sites", {})) for y in CFG["years"].values())       # every year and site
     by_name = {t["short_name"]: t for t in CFG["sites"].values() if isinstance(t, dict)}
     for label in sel.options:
         year, name = label.split(" · ")
