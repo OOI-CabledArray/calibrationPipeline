@@ -1367,10 +1367,23 @@ ooinet_status = "data/raw/ooinet/20261026T220342378Z/status.json"
 ooinet_provenance = "data/raw/ooinet/20261026T220342378Z/deployment0008_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"
 ooinet_annotations = "data/raw/ooinet/20261026T220342378Z/RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_annotations.json"
 
+# 2021 CORRECTION (Cabled-12 / TN393, Axial Base CTD-001 and Slope Base CTD-005). On casts CTD-001 to CTD-005 (Aug 3-6 2021)
+# every analog channel of the shipboard CTD carries an offset of about +1.59 V: the NotInUse channel (voltage 7), which should
+# read 0 V, reads 1.57-1.59 V; PAR at depth reads 1.85 V and beam transmission 106-108 %. Both SBE43s (SN 2778, SN 2873) are
+# affected; frequency channels (T, C, P, so salinity) are not, and CTD-006/007 (Oregon Offshore, Aug 26) read 0 V there.
+# As recorded the SBE43 reads about twice the Winkler values (ship-CTD gains 0.532 Axial, 0.386 Slope).
+# Correction applied: the NotInUse channel's voltage, decoded from the raw .hex, is subtracted scan by scan from the oxygen voltage
+# (SBE43 SN 2778, sbeox0) and the oxygen recomputed with the sensor's .xmlcon coefficients (rca_sal.oxygen.remove_analog_offset).
+# At the bottle-closure scans Winkler/CTD is then 0.95-1.03, like casts without the fault. Against the downcast profile the
+# pipeline uses, the ship-CTD gain goes from 0.532 to 0.921 (Axial) and 0.386 to 0.884 (Slope); the Winkler gain still absorbs
+# the rest. The DOFSTA gains go from 0.867 to 0.884 (Axial) and 0.722 to 0.756 (Slope). The record carries rca:ctdO2AnalogOffset.
 [years.2021.oxygen]
 ooinet_request_dir = "data/raw/ooinet/20261026T220427182Z"
+ctd_o2_offset_reference = "NotInUse"    # analog channel that should read 0 V; see the 2021 correction above
 
 [years.2021.oxygen.inputs]
+reference_hex = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-001.hex"
+reference_xmlcon = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_COR.XMLCON"
 dofsta_nc = "data/raw/ooinet/20261026T220427182Z/deployment0007_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_20210804T180915.887960-20210806T025759.888021.nc"
 ooinet_status = "data/raw/ooinet/20261026T220427182Z/status.json"
 ooinet_provenance = "data/raw/ooinet/20261026T220427182Z/deployment0007_RS03AXPS-SF03A-2A-DOFSTA302-streamed-do_fast_sample_aggregate_provenance.json"
@@ -1387,8 +1400,11 @@ ooinet_annotations = "data/raw/ooinet/20261026T220532591Z/CE04OSPS-SF01B-2A-DOFS
 
 [years.2021.sites.RS01SBPS.oxygen]
 ooinet_request_dir = "data/raw/ooinet/20261026T220617157Z"
+ctd_o2_offset_reference = "NotInUse"    # 2021 analog-offset correction, see [years.2021.oxygen]
 
 [years.2021.sites.RS01SBPS.oxygen.inputs]
+reference_hex = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_CTD-005.hex"
+reference_xmlcon = "github:CruiseData/Cabled-12_TN393_2021-07-30/CTD Data/TN393_COR.XMLCON"
 dofsta_nc = "data/raw/ooinet/20261026T220617157Z/deployment0009_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_20210825T173000.652962-20210826T180859.304451.nc"
 ooinet_status = "data/raw/ooinet/20261026T220617157Z/status.json"
 ooinet_provenance = "data/raw/ooinet/20261026T220617157Z/deployment0009_RS01SBPS-SF01A-2A-DOFSTA102-streamed-do_fast_sample_aggregate_provenance.json"

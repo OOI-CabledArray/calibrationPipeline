@@ -1,0 +1,41 @@
+# Calibration of the OOI RCA shallow-profiler sensors (salinity, DOFSTA oxygen, nitrate) against cruise ship data, and the
+# Streamlit viewer of the results. The run configuration (cruises, casts, input files, parameters) is config/cruises.toml.
+#
+# Data corrections applied by the pipeline (each is configured, and described in full, in config/cruises.toml):
+#   2021, Cabled-12 / TN393, oxygen, Axial Base (CTD-001) and Slope Base (CTD-005): every analog channel of the shipboard CTD
+#   carries about +1.59 V on casts CTD-001 to CTD-005 (the NotInUse channel reads 1.57-1.59 V instead of 0 V), which doubles
+#   the SBE43 oxygen. The NotInUse channel's voltage, decoded from the raw .hex, is subtracted scan by scan from the SBE43
+#   (SN 2778) voltage before the Winkler gain (ctd_o2_offset_reference = "NotInUse", rca_sal.oxygen.remove_analog_offset).
+#   Ship-CTD gain 0.532 -> 0.921 (Axial) and 0.386 -> 0.884 (Slope); DOFSTA gain 0.867 -> 0.884 and 0.722 -> 0.756.
+#   Salinity (frequency channels) and Oregon Offshore (CTD-006, no offset) are unaffected.
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rca-sal"
+version = "0.1.0"
+description = "Calibration of OOI RCA shallow-profiler salinity, oxygen and nitrate against cruise CTD and bottle data"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "xarray",
+    "netCDF4",
+    "openpyxl",
+    "xlrd",
+    "pyarrow",
+    "certifi",
+]
+
+[project.optional-dependencies]
+viewer = ["streamlit>=1.65,<2", "plotly>=5.24"]
+dev = ["pytest", "pyyaml", "streamlit>=1.65,<2", "plotly>=5.24"]
+
+[tool.setuptools]
+packages = ["rca_sal"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

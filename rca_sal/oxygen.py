@@ -131,6 +131,46 @@ def ctd_o2_umolkg(ctd: pd.DataFrame) -> pd.Series:
     return pd.Series(eos80.oxygen_mll_to_umolkg(ctd[CTD_O2_MLL], ctd["sal00"], ctd["t090C"], ctd["prDM"]), index=ctd.index)
 
 
+def remove_analog_offset(ctd: pd.DataFrame, volts: np.ndarray, sensors: list[dict], reference_type: str = "NotInUse",
+                         max_decode_counts: int = 2) -> tuple[pd.DataFrame, dict]:
+    """Remove a voltage offset common to all analog channels from the shipboard SBE43 oxygen (sbeox0ML/L).
+
+    A channel with nothing connected (`reference_type`, normally NotInUse) reads 0 V; whatever it reads instead is an offset added
+    to every analog channel. The .cnv's scans are the first scans of the .hex, which is checked by comparing the decoded oxygen
+    voltage with the .cnv's sbeox0V (within `max_decode_counts` A/D counts). The SBE 43 equation is linear in the voltage, so the offset is removed scan by scan as
+        O2_corrected = O2 - Soc * V_ref * oxsol * (1 + A T + B T^2 + C T^3) * exp(E P / (T + 273.15))
+    with the sensor's own coefficients from the .xmlcon; the .cnv's other processing of the oxygen is kept. A ready-made
+    sbox0Mm/Kg column is scaled by the same ratio.
+    """
+    oxy = [s for s in sensors if s["type"] == "OxygenSensor"]
+    ref = [s for s in sensors if s["type"] == reference_type]
+    if not oxy or "coefficients" not in oxy[0]:
+        raise ValueError("the .xmlcon has no SBE 43 oxygen sensor with 2007-equation coefficients")
+    if len(ref) != 1:
+        raise ValueError(f"the .xmlcon has {len(ref)} {reference_type} channels; exactly one is needed as the zero reference")
+    o, r, c = oxy[0], ref[0], oxy[0]["coefficients"]
+    n = len(ctd)
+    if volts.shape[1] < n:
+        raise ValueError(f"the .hex has {volts.shape[1]} scans, fewer than the .cnv's {n}")
+    v_ox, v_ref = volts[o["voltage_channel"], :n], volts[r["voltage_channel"], :n]
+    diff = float(np.nanmax(np.abs(v_ox - ctd["sbeox0V"].to_numpy(float))))
+    if diff > max_decode_counts * 5 / 4095:          # A/D counts of the 12-bit, 0-5 V converter
+        raise ValueError(f"the .hex oxygen voltage does not match the .cnv's sbeox0V scan by scan (max difference {diff:.4f} V)")
+    t, p = ctd["t090C"].to_numpy(float), ctd["prDM"].to_numpy(float)
+    delta = c["Soc"] * v_ref * ctd["oxsolML/L"].to_numpy(float) * (1 + c["A"] * t + c["B"] * t**2 + c["C"] * t**3) * np.exp(c["E"] * p / (t + 273.15))
+    out = ctd.copy()
+    before = out[CTD_O2_MLL].to_numpy(float)
+    out[CTD_O2_MLL] = before - delta
+    if "sbox0Mm/Kg" in out.columns:
+        out["sbox0Mm/Kg"] = out["sbox0Mm/Kg"] * np.where(before != 0, (before - delta) / before, np.nan)
+    info = {"oxygen_sensor_serial": o["serial"], "oxygen_voltage_channel": o["voltage_channel"],
+            "reference_channel_type": reference_type, "reference_voltage_channel": r["voltage_channel"], "n_scans": n,
+            "reference_v_median": float(np.median(v_ref)), "reference_v_min": float(v_ref.min()), "reference_v_max": float(v_ref.max()),
+            "decode_max_abs_diff_v": diff, "o2_removed_mll_median": float(np.nanmedian(delta)),
+            "o2_mll_median_before": float(np.nanmedian(before)), "o2_mll_median_after": float(np.nanmedian(before - delta))}
+    return out, info
+
+
 @dataclass
 class WinklerGain:
     gain: float
@@ -149,6 +189,28 @@ def winkler_gain(wink_depth, wink_o2, ctd_depth, ctd_o2, extrapolate: bool = Tru
         raise ValueError("no Winkler bottle lies within the depth range of the shipboard CTD profile")
     q75, q25 = np.percentile(ratio[ok], [75, 25])
     return WinklerGain(float(np.median(ratio[ok])), int(ok.sum()), float(q75 - q25), ratio, at)
+
+
+def ctd_winkler_fit(ctd, winkler) -> dict:
+    """Ship CTD oxygen against Winkler oxygen at the same bottles: median CTD - Winkler, median Winkler / CTD, and the ordinary least-squares line
+    Winkler = intercept + slope x CTD with the slope's standard error, R2 and the RMSE about the line. Pairs with a missing value are left out.
+    The line's values are NaN below 3 pairs or when the CTD values do not vary, since no line can be tested there."""
+    x, y = np.asarray(ctd, float), np.asarray(winkler, float)
+    ok = np.isfinite(x) & np.isfinite(y)
+    x, y = x[ok], y[ok]
+    out = {"n": int(x.size), "median_offset": float(np.median(x - y)) if x.size else float("nan"),
+           "median_ratio": float(np.median(y[x != 0] / x[x != 0])) if (x != 0).any() else float("nan"),
+           "slope": float("nan"), "slope_se": float("nan"), "intercept": float("nan"), "r2": float("nan"), "rmse": float("nan")}
+    sxx = float(((x - x.mean()) ** 2).sum()) if x.size else 0.0
+    if x.size < 3 or sxx == 0:
+        return out
+    slope = float(((x - x.mean()) * (y - y.mean())).sum() / sxx)
+    intercept = float(y.mean() - slope * x.mean())
+    sse = float(((y - intercept - slope * x) ** 2).sum())
+    syy = float(((y - y.mean()) ** 2).sum())
+    out.update(slope=slope, intercept=intercept, slope_se=float(np.sqrt(sse / (x.size - 2) / sxx)), r2=1 - sse / syy if syy > 0 else float("nan"),
+               rmse=float(np.sqrt(sse / (x.size - 2))))
+    return out
 
 
 def within_profiler_range(winkler: pd.DataFrame, deepest_m: float) -> pd.DataFrame:

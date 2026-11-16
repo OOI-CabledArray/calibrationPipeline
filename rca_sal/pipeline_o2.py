@@ -141,6 +141,16 @@ def run_year_oxygen(year: int, config_path: str | Path, out_root: str | Path, ro
     flags: list[dict] = []
 
     ctd, hdr = seabird.read_cnv(P("reference_cnv"))
+    analog = None
+    if ocfg.get("ctd_o2_offset_reference"):
+        require_roles(inputs, ("reference_hex", "reference_xmlcon"))
+        ctd, analog = ox.remove_analog_offset(ctd, seabird.read_hex_voltages(P("reference_hex")), seabird.read_xmlcon_sensors(P("reference_xmlcon")),
+                                              ocfg["ctd_o2_offset_reference"])
+        flags.append({"severity": "warning", "code": "ctd_o2_analog_offset_removed",
+                      "text": f"The shipboard CTD's analog channels carry an offset: the {analog['reference_channel_type']} channel "
+                              f"(voltage {analog['reference_voltage_channel']}) reads a median {analog['reference_v_median']:.3f} V instead of 0 V. "
+                              f"It was subtracted scan by scan from the SBE43 (SN {analog['oxygen_sensor_serial']}) voltage before the Winkler gain, "
+                              f"lowering the CTD oxygen by a median {analog['o2_removed_mll_median']:.2f} ml/l."})
     ctd["o2_ctd_umolkg"] = ox.ctd_o2_umolkg(ctd)
     dc = par["ctd_downcast"]
     down = seabird.downcast(ctd, "prDM", dc["min_pressure_dbar"], dc["heave_tolerance_dbar"])
@@ -279,6 +289,7 @@ def run_year_oxygen(year: int, config_path: str | Path, out_root: str | Path, ro
         **({"rca:githubSource": github_record(gh_infos, cfg.get("github", {}).get("repo"))} if gh_infos else {}),
         "rca:cruise": cruise_meta({**ycfg, "cast": cast}) | cast_times,
         "rca:parameters": {"global": {k: v for k, v in par.items()}, "variants": variants, "notebook_window_utc": w},
+        **({"rca:ctdO2AnalogOffset": analog} if analog else {}),
         "rca:inputChecks": {"ctd_header": hdr, "ctd_scans_total": int(len(ctd)), "ctd_scans_downcast_reference": int(len(down)),
                             "winkler_rows": {k: int(len(v)) for k, v in winks.items()}, "winkler_rows_flagged_bad": int(bad.sum()),
                             "dofsta_samples": int(len(d)), "dofsta_o2_units": d.attrs.get("o2_units"),

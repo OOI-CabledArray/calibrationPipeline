@@ -131,3 +131,32 @@ def test_discrete_summary_oxygen_is_converted_with_the_bottle_ctd_values(tmp_pat
     assert w.loc[0, "o2_winkler_umolkg"] == pytest.approx(float(eos80.oxygen_mll_to_umolkg(5.0, 33.0, 8.0, 100.0)), rel=1e-12)
     with pytest.raises(ValueError, match="no discrete oxygen"):
         ox.read_discrete_oxygen(p, "CTD-009")
+
+
+def test_remove_analog_offset_subtracts_the_reference_channel():
+    """A constant offset on the NotInUse channel is removed from the SBE43 oxygen through the linear 2007 equation."""
+    import numpy as np
+    import pandas as pd
+    from rca_sal.oxygen import remove_analog_offset
+    c = {"Soc": 0.5, "offset": -0.5, "A": 0.0, "B": 0.0, "C": 0.0, "E": 0.0}
+    sensors = [{"type": "OxygenSensor", "serial": "1", "voltage_channel": 0, "coefficients": c},
+               {"type": "NotInUse", "serial": "", "voltage_channel": 1}]
+    v_true, off = np.array([2.0, 2.5, 3.0]), 1.5
+    oxsol = np.array([6.0, 6.0, 6.0])
+    ctd = pd.DataFrame({"sbeox0V": v_true + off, "sbeox0ML/L": c["Soc"] * (v_true + off + c["offset"]) * oxsol,
+                        "oxsolML/L": oxsol, "t090C": 5.0, "prDM": [10.0, 20.0, 30.0]})
+    out, info = remove_analog_offset(ctd, np.vstack([v_true + off, np.full(3, off), np.zeros(3)]), sensors)
+    assert np.allclose(out["sbeox0ML/L"], c["Soc"] * (v_true + c["offset"]) * oxsol)
+    assert info["reference_v_median"] == off and info["reference_voltage_channel"] == 1
+
+
+def test_remove_analog_offset_refuses_misaligned_scans():
+    import numpy as np
+    import pandas as pd
+    import pytest
+    from rca_sal.oxygen import remove_analog_offset
+    sensors = [{"type": "OxygenSensor", "serial": "1", "voltage_channel": 0, "coefficients": {"Soc": 1, "offset": 0, "A": 0, "B": 0, "C": 0, "E": 0}},
+               {"type": "NotInUse", "serial": "", "voltage_channel": 1}]
+    ctd = pd.DataFrame({"sbeox0V": [1.0, 2.0], "sbeox0ML/L": [1.0, 2.0], "oxsolML/L": 1.0, "t090C": 5.0, "prDM": 1.0})
+    with pytest.raises(ValueError, match="does not match"):
+        remove_analog_offset(ctd, np.array([[2.0, 1.0], [0.1, 0.1]]), sensors)
