@@ -76,7 +76,7 @@ for g in [g for g in summary["instruments"] if g["variable"] == variable.lower()
             "deployment": d["deployment"], "year": d["year"], "cast": d["cast"], "status": L.status_text(d["status"]),
             "set by": "; ".join(f"{c['criterion']} {c['outcome']}" for c in d.get("checks", [])
                                if c.get("level") == d["status"]["level"] and c["outcome"] in ("marginal", "fail"))
-                      or d["status"].get("reason", ""),
+                      or L.shipboard(d["status"].get("reason", "")),
             "offset to add": (d.get("flat_offset") or {}).get("value"),
             "function": (d.get("function_offset") or {}).get("apply"),
             "all checks pass": d["status"].get("all_checks_pass"),
@@ -85,7 +85,7 @@ for g in [g for g in summary["instruments"] if g["variable"] == variable.lower()
         st.dataframe(rows.style.apply(lambda _: tint, subset=["status"]), hide_index=True,
                      alt=f"Deployments of {g['refdes']} with offset, function and status",
                      column_config={"offset to add": st.column_config.NumberColumn(
-                                        format="%+.4f", help="Flat correction: corrected = raw + this value (salinity: minus the profiler page's median(profiler - CTD))"),
+                                        format="%+.4f", help="Flat correction: corrected = raw + this value (salinity: minus the profiler page's median(profiler - shipboard CTD))"),
                                     "deployment": st.column_config.NumberColumn(format="%d"),
                                     "set by": st.column_config.TextColumn(width="medium")})
         with st.expander("Checks behind each status", type="compact"):
@@ -93,15 +93,15 @@ for g in [g for g in summary["instruments"] if g["variable"] == variable.lower()
                 s = d["status"]
                 st.markdown(f"**Deployment {d['deployment']}** ({d['year']}, {d['cast']}, variant `{d['basis']['variant']}`) {L.badge(s)}")
                 for line in s["set_by"]:
-                    st.markdown(f"- sets the status: {line}")
+                    st.markdown(f"- sets the status: {L.shipboard(line)}")
                 for line in s["other_issues"]:
-                    st.markdown(f"- also: {line}")
+                    st.markdown(f"- also: {L.shipboard(line)}")
                 st.dataframe(pd.DataFrame([{
                     "check": c["criterion"], "severity": c["severity"], "outcome": c["outcome"], "level": c["level"],
                     "passed": c["passed"], "within limit": c["within_limit"], "sets status": c["sets_status"],
                     "value": c["value"], "units": c["units"], "target": c["target"], "limit": c["limit"],
                     "margin to target": c["margin_to_target"], "margin to limit": c["margin_to_limit"],
-                    "result": c["summary"], "details": _details(c["details"]),
+                    "result": L.shipboard(c["summary"]), "details": L.shipboard(_details(c["details"])),
                 } for c in d["checks"]]).astype({"value": str, "margin to target": str, "margin to limit": str}), hide_index=True,
                     alt=f"Checks for deployment {d['deployment']}: severity, outcome, value against target and limit, and the numbers behind it",
                     column_config={"result": st.column_config.TextColumn(width="large"),
@@ -110,4 +110,4 @@ for g in [g for g in summary["instruments"] if g["variable"] == variable.lower()
             st.code(to_yaml(compact_summary(g)), language="yaml")
 
 st.caption(f"Generated {summary['generated_utc']}. Margins are positive inside the target or limit and negative outside it. "
-           f"Conventions: {summary['conventions']}")
+           f"Conventions: {L.shipboard(summary['conventions'])}")

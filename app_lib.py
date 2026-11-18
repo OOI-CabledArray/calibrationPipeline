@@ -54,6 +54,16 @@ def load_bytes(path: str, mtime: float) -> bytes:
     return Path(path).read_bytes()
 
 
+# "CTD" alone means the shipboard CTD. Text stored in the records and the summary says "CTD", "ship CTD" or "reference CTD"; shipboard() words it the
+# viewer's way when it is shown and leaves the stored text alone. Cast and file names (CTD-007, AT50-41_CTD-007.cnv, "CTD Data") and CTDPFA do not match.
+_BARE_CTD = re.compile(r"(?<![\w/])(?:(?:[Ss]hip(?:board)?(?:'s)?|[Rr]eference) )?CTD\b(?![-\w]| Data| File)")
+
+
+def shipboard(text: str) -> str:
+    """Stored text with every mention of the CTD worded 'shipboard CTD' ('Shipboard CTD' at the start of the text)."""
+    return _BARE_CTD.sub(lambda m: "Shipboard CTD" if m.start() == 0 else "shipboard CTD", str(text))
+
+
 UPLOAD_SUFFIX = " (uploaded)"
 RUN_KEY = re.compile(r"^\d{4}(-[A-Z0-9]+)?$")      # "2025" (default site) or "2025-RS01SBPS"
 REFDES = {"salinity": "profiler_reference_designator", "oxygen": "oxygen_reference_designator", "nitrate": "nitrate_reference_designator"}
@@ -161,6 +171,40 @@ def fmt(x, nd=4, signed=False):
     return "missing" if x is None or (isinstance(x, float) and not np.isfinite(x)) else (f"{x:+.{nd}f}" if signed else f"{x:.{nd}f}")
 
 
+# --- shipboard CTD oxygen against Winkler, all cruises ---------------------------------------------------------------------------------------
+
+def _winkler_signature() -> tuple:
+    files = [CONFIG] + sorted(OUT.glob("*/oxygen/calibration_record.json")) + sorted(OUT.glob("*/oxygen/winkler_check.csv"))
+    return tuple((str(f), f.stat().st_mtime) for f in files)
+
+
+@st.cache_data(show_spinner="Reading the Winkler comparisons", max_entries=4)
+def _winkler_bottles(sig: tuple) -> pd.DataFrame:
+    cfg = _config(_mtime(CONFIG))
+    bad = cfg["parameters"]["oxygen"]["winkler_bad_flags"]
+    frames = []
+    for path in sorted(OUT.glob("*/oxygen/winkler_check.csv")):
+        run = path.parent.parent.name
+        rec = _load_json(str(path.parent / "calibration_record.json"), _mtime(path.parent / "calibration_record.json"))
+        d = pd.read_csv(path)
+        d = d[(d["variant_id"] == rec["rca:primaryVariant"]) & ~d["bottle_flag"].isin(bad)]
+        d = d.groupby("niskin", as_index=False).agg(depth_m=("winkler_depth_m", "mean"), winkler=("o2_winkler_umolkg", "mean"),
+                                                    ctd=("o2_ctd_at_winkler_umolkg", "mean")).dropna(subset=["winkler", "ctd"])
+        year, _, code = run.partition("-")
+        code = code or cfg["sites"]["default"]
+        cr = rec["rca:cruise"]
+        frames.append(d.assign(run=run, year=int(year), site=cfg["sites"][code]["short_name"], cruise=cr["cruise"], ship_cruise_id=cr["ship_cruise_id"],
+                               cast=cr["cast"]))
+    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+
+def winkler_bottles() -> pd.DataFrame:
+    """One row per Niskin of each repository oxygen run's cast, from its winkler_check.csv: the primary variant's rows without bad-flagged bottles,
+    replicate titrations averaged, bottles without a shipboard CTD value at their depth left out. Columns: run, year, site, cruise, ship_cruise_id, cast,
+    niskin, depth_m, winkler, ctd (µmol/kg; ctd is the raw shipboard CTD SBE43, before any gain)."""
+    return _winkler_bottles(_winkler_signature())
+
+
 # --- deployment status ------------------------------------------------------------------------------------------------------------------
 
 def _summary_signature() -> tuple:
@@ -214,7 +258,7 @@ def header(title: str | None, run, rec: dict, variable: str = "salinity", instru
     why = None
     if d:
         parts.append(f"{variable} status {badge(d['status'])}")
-        why = "\n".join(f"- {x}" for x in d["status"].get("set_by", []) + d["status"].get("other_issues", [])) or None
+        why = "\n".join(f"- {shipboard(x)}" for x in d["status"].get("set_by", []) + d["status"].get("other_issues", [])) or None
     st.markdown(" · ".join(parts), help=why)
 
 
@@ -246,7 +290,7 @@ def t2_notes(rec) -> list[str]:
 
 def flag_list(rec, codes=None, notes=()):
     for f in [f for f in rec["rca:flags"] if not codes or f["code"] in codes] + [{"severity": "caveat", "text": n} for n in notes]:
-        {"warning": st.warning, "caveat": st.info, "info": st.caption}.get(f["severity"], st.info)(f["text"])
+        {"warning": st.warning, "caveat": st.info, "info": st.caption}.get(f["severity"], st.info)(shipboard(f["text"]))
 
 
 def show_flags(rec, codes=None, notes=()):
@@ -262,7 +306,7 @@ def show_flags(rec, codes=None, notes=()):
 
 def per_cast_chart(x, y, err, ids, what: str, hover: str, ytitle: str, xtitle: str, cast_time: str,
                    ref=None, band=None):
-    """One estimate per upcast or profile against its time, with ± half IQR bars, the CTD cast time and the selected variant's value (dashed)."""
+    """One estimate per upcast or profile against its time, with ± half IQR bars, the shipboard CTD cast time and the selected variant's value (dashed)."""
     fig = go.Figure()
     if band is not None:
         fig.add_hrect(y0=-band, y1=band, fillcolor="#2E7D32", opacity=0.08, line_width=0)
@@ -271,7 +315,7 @@ def per_cast_chart(x, y, err, ids, what: str, hover: str, ytitle: str, xtitle: s
                              hovertemplate=f"{what} #%{{customdata}}<br>{hover}<extra></extra>"))
     if ref is not None:
         fig.add_hline(y=ref, line_color=C_REF, line_dash="dash")
-    fig.add_vline(x=pd.Timestamp(cast_time).to_pydatetime(), line_color=C_BOTTLE, line_dash="dot", annotation_text="CTD cast",
+    fig.add_vline(x=pd.Timestamp(cast_time).to_pydatetime(), line_color=C_BOTTLE, line_dash="dot", annotation_text="Shipboard CTD cast",
                   annotation_position="top right")
     fig.update_yaxes(title=ytitle)
     fig.update_xaxes(title=xtitle)

@@ -7,7 +7,7 @@ from streamlit.testing.v1 import AppTest
 
 from tests.conftest import ROOT
 
-PAGES = ["app_pages/bottles.py", "app_pages/profiler.py", "app_pages/oxygen_winkler.py", "app_pages/oxygen_dofsta.py", "app_pages/nitrate.py", "app_pages/upload.py", "app_pages/provenance.py"]
+PAGES = ["app_pages/bottles.py", "app_pages/profiler.py", "app_pages/oxygen_winkler.py", "app_pages/oxygen_dofsta.py", "app_pages/oxygen_cruises.py", "app_pages/nitrate.py", "app_pages/upload.py", "app_pages/provenance.py"]
 pytestmark = pytest.mark.skipif(
     not all((ROOT / "outputs" / "2025" / n).is_file() for n in ("calibration_record.json", "oxygen/calibration_record.json")),
     reason="outputs/2025 (salinity and oxygen) not generated")
@@ -43,7 +43,18 @@ def test_oxygen_page_scorecard_comes_from_outputs():
     prim = next(v for v in rec["rca:variants"] if v["variant_id"] == rec["rca:primaryVariant"])
     vals = {m.label: m.value for m in at.metric}
     assert vals["DOFSTA gain"] == f"{prim['dofsta_gain']:.5f}"
-    assert vals["CTD gain (step 1)"] == f"{prim['ctd_gain']:.5f}"
+    assert vals["Shipboard CTD gain (step 1)"] == f"{prim['ctd_gain']:.5f}"
+
+
+def test_cruise_regression_page_table_comes_from_outputs():
+    import pandas as pd
+    at = _run("app_pages/oxygen_cruises.py")
+    table = at.dataframe[0].value
+    rec = json.loads((ROOT / "outputs/2025/oxygen/calibration_record.json").read_text(encoding="utf8"))
+    assert rec["rca:cruise"]["cruise"] in set(table["Cruise"])
+    wk = pd.read_csv(ROOT / "outputs/2025/oxygen/winkler_check.csv")
+    wk = wk[(wk.variant_id == rec["rca:primaryVariant"]) & wk.o2_ctd_at_winkler_umolkg.notna()]
+    assert table.set_index("Cruise").loc[rec["rca:cruise"]["cruise"], "Niskins"] >= wk.niskin.nunique()
 
 
 def test_provenance_page_can_show_oxygen():
@@ -103,3 +114,22 @@ def test_nitrate_page_renders_for_every_run():
     for r in runs:
         at.sidebar.selectbox[0].set_value(r).run()
         assert not at.exception, r
+
+
+def test_stored_text_is_worded_shipboard_ctd_but_names_are_kept():
+    import app_lib
+    assert app_lib.shipboard("CTD cast") == "Shipboard CTD cast"
+    assert app_lib.shipboard("after the CTD cast; ship CTD; the reference CTD") == "after the shipboard CTD cast; shipboard CTD; the shipboard CTD"
+    assert app_lib.shipboard("per-bin profiler-CTD differences") == "per-bin profiler-shipboard CTD differences"
+    for name in ("CTD-007", "AT50-41_CTD-007.cnv", "RS03AXPS-SF03A-2A-CTDPFA302", "CTD Data/x.btl", "ctd_processing"):
+        assert app_lib.shipboard(name) == name
+
+
+@pytest.mark.parametrize("page", [*PAGES, "app_pages/deployments.py"])
+def test_every_page_says_shipboard_ctd(page):
+    import re
+    at = _run(page)
+    shown = [e.value for kind in ("title", "header", "subheader", "markdown", "caption", "info", "warning", "success") for e in getattr(at, kind)]
+    shown += [m.label for m in at.metric] + [m.help or "" for m in at.metric]
+    bare = re.compile(r"(?<![\w/])(?<![Ss]hipboard )CTD\b(?![-\w]| Data| File)")
+    assert not [s for s in shown if bare.search(str(s))]

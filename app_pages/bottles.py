@@ -9,16 +9,16 @@ L.missing("bottle_check.csv", t)
 bc = rec["rca:bottleCheck"]
 prim = next((v for v in rec["rca:variants"] if v["variant_id"] == rec["rca:primaryVariant"]), {})
 
-L.header("CTD vs Autosal", year, rec, instrument=False)
-L.answer("**Ship CTD minus bottle salinity:** "
+L.header("Shipboard CTD vs Autosal", year, rec, instrument=False)
+L.answer("**Shipboard CTD minus bottle salinity:** "
          + ", ".join(f"{s['sensor']} {L.fmt(s['median_diff_psu'], signed=True)} PSU (median of {s['n']})" for s in bc.values())
          + (f". The profiler is compared with `{prim['reference_sal_col']}`." if prim.get("reference_sal_col") else "."))
-st.caption("CTD minus Autosal at the salinity Niskins: the check on the reference before it is used for the profiler.")
+st.caption("Shipboard CTD minus Autosal at the salinity Niskins: the check on the reference before it is used for the profiler.")
 
 with st.container(horizontal=True):
     for s in bc.values():
         with L.card(f"{s['sensor']} · n = {s['n']}") as m:
-            m("Median CTD-bottle (PSU)", L.fmt(s["median_diff_psu"], signed=True))
+            m("Median shipboard CTD-bottle (PSU)", L.fmt(s["median_diff_psu"], signed=True))
             m("Mean (PSU)", L.fmt(s["mean_diff_psu"], signed=True))
             m("RMSE (PSU)", L.fmt(s["rmse_psu"]))
             m("AN31 slope", L.fmt(s["an31_slope"], 5))
@@ -34,17 +34,17 @@ for sensor, color, sym in (("sal00", L.C_OFF, "circle"), ("sal11", L.C_SLOPE, "d
         x=d.diff_psu, y=d.DepSM, mode="markers+text", name=sensor, text=[f"Niskin {n}" for n in d.niskin],
         textposition="middle right", cliponaxis=False,
         marker=dict(size=11, color=color, symbol=sym, line=dict(width=[2 if o else 0 for o in d.outlier], color="black")),
-        hovertemplate="%{text}<br>CTD-bottle %{x:+.4f} PSU<br>%{y:.0f} m<extra>" + sensor + "</extra>"))
+        hovertemplate="%{text}<br>Shipboard CTD-bottle %{x:+.4f} PSU<br>%{y:.0f} m<extra>" + sensor + "</extra>"))
 fig.add_vline(x=0, line_color="#555555", line_dash="dot")
 fig.update_yaxes(autorange="reversed", title="depSM at bottle closure (m)")
-fig.update_xaxes(title="CTD salinity minus Autosal salinity (PSU)", zeroline=False)
+fig.update_xaxes(title="Shipboard CTD salinity minus Autosal salinity (PSU)", zeroline=False)
 L.style(fig, height=430, margin=dict(l=10, r=80, t=10, b=10), legend=dict(orientation="h", y=1.08))
-st.plotly_chart(fig, theme=None, alt="Scatter of CTD minus Autosal salinity against depth at each salinity Niskin, for the primary and secondary CTD sensors")
+st.plotly_chart(fig, theme=None, alt="Scatter of shipboard CTD minus Autosal salinity against depth at each salinity Niskin, for the primary and secondary shipboard CTD sensors")
 st.caption("Black outline: more than the configured threshold from that sensor's median.")
 
 st.subheader("Bottles")
 st.dataframe(
     t.drop(columns=["record_id", "year"], errors="ignore"), hide_index=True,
-    alt="Per-bottle comparison of CTD and Autosal salinity",
+    alt="Per-bottle comparison of shipboard CTD and Autosal salinity",
     column_config={c: st.column_config.NumberColumn(format="%.4f") for c in
                    ("diff_psu", "bottle_salinity", "Sal00", "Sal11", "ctd_sal_gradient_psu_per_m")})

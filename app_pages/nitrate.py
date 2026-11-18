@@ -47,7 +47,7 @@ else:
             m("Fit slope", L.fmt(r.get("fit_slope"), 3), help="least squares SUNA = a + b × bottle; 1 means no gain error")
             m("Fit R²", L.fmt(r.get("fit_r2"), 3))
 st.caption(f"OOI L2 nitrate (`salinity_corrected_nitrate`) from SUNA profile #{int(r.profile_id)}, {abs(r.hours_from_cast):.1f} h "
-           f"{'after' if r.hours_from_cast >= 0 else 'before'} CTD cast {rec['rca:cruise']['cast']}, against the cast's discrete nitrate, "
+           f"{'after' if r.hours_from_cast >= 0 else 'before'} shipboard CTD cast {rec['rca:cruise']['cast']}, against the cast's discrete nitrate, "
            f"matched by {r.match_by}. Method: {rec['rca:method']}.")
 L.show_flags(rec, notes=L.t2_notes(rec))
 
@@ -95,7 +95,7 @@ with per_profile:
     st.plotly_chart(L.per_cast_chart(pd.to_datetime(pp.profile_mean_time_utc, utc=True), pp.offset_um, pp.offset_iqr_um / 2, pp.profile_id,
                                      "profile", "offset %{y:+.2f} µmol/L", "offset, bottle − SUNA (µmol/L)", "mean time of SUNA profile (UTC)",
                                      rec["rca:cruise"]["cast_time_utc"], band=acc),
-                    theme=None, alt="Offset from each SUNA profile in the request against its time, with the CTD cast time and the accuracy band")
+                    theme=None, alt="Offset from each SUNA profile in the request against its time, with the shipboard CTD cast time and the accuracy band")
     st.caption("Error bars are plus or minus half the IQR of that profile's bottle differences. A spread larger than the accuracy band "
                "means the offset depends on which profile is used.")
 with matchups:

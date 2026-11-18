@@ -25,12 +25,13 @@ page = st.navigation({
         st.Page("app_pages/deployments.py", title="Deployments", icon=":material/fact_check:"),
     ],
     "Salinity": [
-        st.Page("app_pages/bottles.py", title="CTD vs Autosal", icon=":material/science:", default=True),
-        st.Page("app_pages/profiler.py", title="Profiler vs CTD", icon=":material/vertical_align_bottom:"),
+        st.Page("app_pages/bottles.py", title="Shipboard CTD vs Autosal", icon=":material/science:", default=True),
+        st.Page("app_pages/profiler.py", title="Profiler vs shipboard CTD", icon=":material/vertical_align_bottom:"),
     ],
     "Oxygen": [
-        st.Page("app_pages/oxygen_winkler.py", title="CTD vs Winkler", icon=":material/biotech:"),
-        st.Page("app_pages/oxygen_dofsta.py", title="DOFSTA vs CTD", icon=":material/air:"),
+        st.Page("app_pages/oxygen_winkler.py", title="Shipboard CTD vs Winkler", icon=":material/biotech:"),
+        st.Page("app_pages/oxygen_dofsta.py", title="DOFSTA vs shipboard CTD", icon=":material/air:"),
+        st.Page("app_pages/oxygen_cruises.py", title="Shipboard CTD vs Winkler by cruise", icon=":material/scatter_plot:"),
     ],
     "Nitrate": [
         st.Page("app_pages/nitrate.py", title="SUNA vs bottles", icon=":material/water_drop:"),

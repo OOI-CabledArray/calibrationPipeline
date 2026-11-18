@@ -52,3 +52,25 @@ def test_winkler_deeper_than_the_profiler_is_left_out():
     w = pd.DataFrame({"depth_m": [10.0, 150.0, 200.0, 900.0, 2400.0], "o2_winkler_umolkg": [290.0, 250.0, 200.0, 0.5, 69.0]})
     kept = oxygen.within_profiler_range(w, 200.0)
     assert kept["depth_m"].tolist() == [10.0, 150.0, 200.0] and oxygen.within_profiler_range(w, 5.0).empty
+
+
+def test_ctd_winkler_fit_recovers_a_known_line_and_offset():
+    import numpy as np
+    import pytest
+    from rca_sal import oxygen
+    ctd =np.array([100.0, 200.0, 300.0, 400.0, np.nan])
+    f = oxygen.ctd_winkler_fit(ctd, 0.9 * ctd + 5.0)
+    assert f["n"] == 4
+    assert f["slope"] == pytest.approx(0.9) and f["intercept"] == pytest.approx(5.0) and f["r2"] == pytest.approx(1.0)
+    assert f["slope_se"] == pytest.approx(0.0, abs=1e-9) and f["rmse"] == pytest.approx(0.0, abs=1e-9)
+    assert f["median_offset"] == pytest.approx(np.median(ctd[:4] - (0.9 * ctd[:4] + 5.0)))
+
+
+def test_ctd_winkler_fit_gives_no_line_for_too_few_or_unvarying_bottles():
+    import numpy as np
+    import pytest
+    from rca_sal import oxygen
+    two = oxygen.ctd_winkler_fit([100.0, 200.0], [90.0, 180.0])
+    assert two["n"] == 2 and np.isnan(two["slope"]) and two["median_offset"] == pytest.approx(15.0)
+    assert np.isnan(oxygen.ctd_winkler_fit([100.0, 100.0, 100.0], [90.0, 91.0, 92.0])["slope"])
+    assert oxygen.ctd_winkler_fit([], [])["n"] == 0

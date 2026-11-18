@@ -21,7 +21,7 @@ with st.form("upload_form"):
     st.subheader("Cruise and cast")
     with st.container(horizontal=True):
         year = st.number_input("Year", min_value=2010, max_value=2100, step=1, value=None, placeholder="2025")
-        cast = st.text_input("CTD cast name", placeholder="CTD-007", help="As written in the cast log and the Winkler workbook.")
+        cast = st.text_input("Shipboard CTD cast name", placeholder="CTD-007", help="As written in the cast log and the Winkler workbook.")
         cruise = st.text_input("Cruise", placeholder="Cabled-16")
         ship_id = st.text_input("Ship cruise ID", placeholder="AT50-41")
     up = {}
@@ -74,16 +74,16 @@ if res is not None:
             st.markdown(f"**{name.capitalize()}**, primary variant `{prim['variant_id']}`")
             with st.container(horizontal=True):
                 if name == "salinity":
-                    st.metric("Offset (PSU)", L.fmt(prim["offset_psu"], signed=True), help="median(profiler - CTD); corrected = raw - offset")
+                    st.metric("Offset (PSU)", L.fmt(prim["offset_psu"], signed=True), help="median(profiler - shipboard CTD); corrected = raw - offset")
                     st.metric("IQR (PSU)", L.fmt(prim["iqr_psu"]))
                     st.metric("AN31 slope", L.fmt(prim["an31_slope"], 6))
                 else:
-                    st.metric("CTD gain", L.fmt(prim["ctd_gain"], 5))
+                    st.metric("Shipboard CTD gain", L.fmt(prim["ctd_gain"], 5))
                     st.metric("DOFSTA gain", L.fmt(prim["dofsta_gain"], 5))
                     st.metric("RMSE after (µmol/kg)", L.fmt(prim["rmse_after_umolkg"], 2))
             for f in rec["rca:flags"]:
                 if f["severity"] == "warning":
-                    st.warning(f["text"])
+                    st.warning(L.shipboard(f["text"]))
     for name, msg in res.errors.items():
         st.error(f"**{name.capitalize()} failed.** {msg}", icon=":material/error:")
     for name, why in res.skipped.items():

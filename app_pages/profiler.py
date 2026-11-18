@@ -10,13 +10,13 @@ tab, prof = L.get(year, "calibration_table.csv"), L.get(year, "binned_profiles.c
 ref, bt = L.get(year, "reference_ctd_profile.csv"), L.get(year, "bottle_check.csv")
 L.missing("calibration_table, binned_profiles, reference_ctd_profile or bottle_check", tab, prof, ref, bt)
 
-L.header("Profiler vs CTD", year, rec)
+L.header("Profiler vs shipboard CTD", year, rec)
 main = tab[tab.role != "per_upcast"].set_index("variant_id")
 vid = L.pick_variant("Variant", list(main.index), rec["rca:primaryVariant"], "variant", lambda v: f"{v}  [{main.loc[v, 'role']}]")
 r = main.loc[vid]
 cr = rec["rca:cruise"]
 
-L.answer(f"**Correction: add {L.fmt(-r.offset_psu, signed=True)} PSU to the profiler salinity** (offset = median(profiler − CTD) = "
+L.answer(f"**Correction: add {L.fmt(-r.offset_psu, signed=True)} PSU to the profiler salinity** (offset = median(profiler − shipboard CTD) = "
          f"{L.fmt(r.offset_psu, signed=True)} PSU), or scale its conductivity by {L.fmt(r.an31_slope, 6)} (AN31) and recompute salinity.")
 d_off = r.rmse_after_offset_common_bins_psu - r.rmse_before_common_bins_psu
 d_slope = r.rmse_after_slope_common_bins_psu - r.rmse_before_common_bins_psu
@@ -25,16 +25,16 @@ with st.container(horizontal=True):
         m("RMSE (PSU)", L.fmt(r.rmse_before_psu),
           help=f"On all {int(r.n_bins)} bins. The deltas compare with {L.fmt(r.rmse_before_common_bins_psu)}, the RMSE on the bins with conductivity.")
     with L.card("Flat offset") as m:
-        m("Offset (PSU)", L.fmt(r.offset_psu, signed=True), help="median(profiler - CTD); corrected = raw - offset")
+        m("Offset (PSU)", L.fmt(r.offset_psu, signed=True), help="median(profiler - shipboard CTD); corrected = raw - offset")
         m("IQR (PSU)", L.fmt(r.iqr_psu))
         m("RMSE after (PSU)", L.fmt(r.rmse_after_offset_common_bins_psu), delta=L.fmt(d_off, signed=True), delta_color="inverse",
           help=f"Same bins as the slope: those with conductivity. On all {int(r.n_bins)} bins: {L.fmt(r.rmse_after_offset_psu)}.")
     with L.card("AN31 conductivity slope") as m:
         m("AN31 slope", L.fmt(r.an31_slope, 6), help="Conductivity slope, offset 0; corrected salinity = S(slope x C, T, P).")
         m("RMSE after (PSU)", L.fmt(r.rmse_after_slope_common_bins_psu), delta=L.fmt(d_slope, signed=True), delta_color="inverse")
-st.caption(f"{r.description}. Reference: {cr['cast']} {r.reference_sal_col} on {r.reference_depth_col}, {r.reference_filter} scans. "
+st.caption(f"{L.shipboard(r.description)}. Reference: {cr['cast']} {r.reference_sal_col} on {r.reference_depth_col}, {r.reference_filter} scans. "
            f"{int(r.n_profiler_samples):,} profiler samples, {int(r.n_bins)} depth bins. Profiler mean time {r.t1_mean_profiler_time_utc[:19]} UTC, "
-           f"CTD cast {r.t1_cast_time_utc[:19]} UTC ({r.mean_profiler_minus_cast_h:+.1f} h).")
+           f"Shipboard CTD cast {r.t1_cast_time_utc[:19]} UTC ({r.mean_profiler_minus_cast_h:+.1f} h).")
 L.show_flags(rec, {"ooinet_annotation", "ooinet_empty_window", "upcasts_not_in_profile_index", "ctd_downcast_only", "ctd_processing"}, L.t2_notes(rec))
 
 v = prof[prof.variant_id == vid]
@@ -49,7 +49,7 @@ for i, (_, u) in enumerate(up.groupby("variant_id")):
                              name="raw upcasts", legendgroup="up", showlegend=i == 0,
                              hovertemplate=u.variant_id.iloc[0] + "<br>%{x:.3f} PSU @ %{y} m<extra></extra>"), 1, 1)
 fig.add_trace(go.Scatter(x=rd[r.reference_sal_col], y=rd[r.reference_depth_col], mode="lines",
-                         line=dict(color=L.C_REF, width=2.5), name=f"CTD {r.reference_sal_col}"), 1, 1)
+                         line=dict(color=L.C_REF, width=2.5), name=f"Shipboard CTD {r.reference_sal_col}"), 1, 1)
 bs = bt[(bt.sensor == "sal00") & (bt.DepSM <= zmax)]
 fig.add_trace(go.Scatter(x=bs.bottle_salinity, y=bs.DepSM, mode="markers", name="Autosal",
                          marker=dict(size=10, color=L.C_BOTTLE, symbol="square", line=dict(width=1, color="black")),
@@ -66,11 +66,11 @@ fig.add_vline(x=0, line_color="#555555", line_dash="dot", col=2, row=1)
 fig.update_yaxes(range=[zmax, 0])
 fig.update_yaxes(title="depth (m)", col=1, row=1)
 fig.update_xaxes(title="practical salinity (PSU)", col=1, row=1)
-fig.update_xaxes(title="profiler - CTD (PSU)", col=2, row=1)
+fig.update_xaxes(title="profiler - shipboard CTD (PSU)", col=2, row=1)
 L.style(fig, height=650, margin=dict(l=10, r=10, t=40, b=10), legend=dict(orientation="h", y=-0.1))
 st.plotly_chart(fig, theme=None,
-                alt="Salinity against depth for the reference CTD, Autosal bottles, raw upcasts and the raw, offset-corrected and slope-corrected "
-                    "profiler profile, with the residual against the CTD alongside")
+                alt="Salinity against depth for the shipboard CTD, Autosal bottles, raw upcasts and the raw, offset-corrected and slope-corrected "
+                    "profiler profile, with the residual against the shipboard CTD alongside")
 
 pix = rec.get("rca:profileIndex")
 tabs = st.tabs(["Upcast by upcast", "All variants"] + (["Profile index"] if pix else []))
@@ -79,7 +79,7 @@ with tabs[0]:
     st.plotly_chart(L.per_cast_chart(pd.to_datetime(pu.t1_mean_profiler_time_utc, utc=True), pu.offset_psu, pu.iqr_psu / 2, pu.upcast_id,
                                      "upcast", "offset %{y:+.4f} PSU", "offset (PSU)", "mean time of upcast (UTC)", r.t1_cast_time_utc,
                                      ref=r.offset_psu),
-                    theme=None, alt="Offset estimated from each upcast against its mean time, with the CTD cast time and the selected variant's offset marked")
+                    theme=None, alt="Offset estimated from each upcast against its mean time, with the shipboard CTD cast time and the selected variant's offset marked")
     st.caption(f"Error bars are plus or minus half the IQR of that upcast's per-bin differences. Dashed line: {vid} ({r.offset_psu:+.4f} PSU).")
 with tabs[1]:
     cols = ["variant_id", "role", "offset_psu", "iqr_psu", "rmse_before_psu", "rmse_after_offset_psu", "an31_slope",
